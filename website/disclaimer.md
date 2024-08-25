@@ -1,3 +1,3 @@
 # Disclaimer
 
-Please be aware that Artificial Intelligence (AI) tools have been employed in the creation of this documentation (including this disclaimer). These tools were used as an adjunct to augment and enrich both the creative and analytical aspects of our work.  While AI served as a supportive aid, its contributions have been examined and refined to ensure they align with our overarching objectives. This statement serves to maintain transparency and acknowledge the role of AI as an instrumental, yet supplementary component in our process.
+Please be aware that Artificial Intelligence (AI) tools were used to assist in the creation of this documentation. While AI contributed to creation processes, all content has been reviewed and refined to the best of our ability to ensure accuracy, alignment with our objectives, and that it does not violate copyright. This disclaimer is provided for transparency regarding the role of AI in our work.

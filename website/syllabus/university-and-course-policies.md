@@ -1,4 +1,4 @@
-# Course Policies
+# University and Course Policies
 
 ## Attendance and Participation
 

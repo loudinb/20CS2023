@@ -2,21 +2,15 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro
+root: syllabus/cs2023
 parts:
 - caption: Syllabus
   chapters:
-  - file: syllabus/instructor_information
-    title: Instructor Information
-  - file: syllabus/course_information
-    title: Course Information
+  - file: syllabus/24fs/24fs
+  - file: syllabus/instructor-information
+  - file: syllabus/assessment-plan-and-policies
   - file: syllabus/grading
-    title: Grading
-  - file: syllabus/course_policies
-    title: Course Policies
-- caption: Fall Semester 2024 
-  chapters:
-  - file: 24fs/frontmatter
+  - file: syllabus/university-and-course-policies
 - caption: FAQs
   chapters:
   - file: faq/oreilly/oreilly_access.md
