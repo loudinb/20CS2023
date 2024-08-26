@@ -1,4 +1,4 @@
-# Grading
+# Grading Policy
 
 Final numerical grades for the course are determined based on the following category weights.
 
@@ -21,6 +21,10 @@ Final numerical grades for the course are determined based on the following cate
 ## Final Letter Grades
 
 Final letter grades for the course will be determined using your final numerical grade and the following ranges.
+
+```{note}
+The instructor reserves the right to modify the range for each letter grade. However, the ranges posted here provide the minimum score you must achieve in order to guarantee yourself the grade indicated.  
+```
 
 :::{list-table}
 :align: left
@@ -56,8 +60,3 @@ Final letter grades for the course will be determined using your final numerical
     - 59 and below
 :::
 <br>
-
-```{note}
-The instructor reserves the right to modify the range for each letter grade. However, the ranges posted here provide the minimum score you must achieve in order to guarantee yourself the grade indicated.  
-```
-

@@ -9,18 +9,29 @@ parts:
   - file: syllabus/24fs/24fs
   - file: syllabus/instructor-information
   - file: syllabus/assessment-plan-and-policies
-  - file: syllabus/grading
-  - file: syllabus/university-and-course-policies
+  - file: syllabus/grading-policy
+  - file: syllabus/university-policies
+- caption: Course Materials
+  chapters:
+  - file: lectures/lecture-1
+    sections:
+    - file: topics/github-classroom
+    - file: topics/python-development-environment
+  - file: lectures/lecture-2
+    sections:
+    - file: topics/main-language-elements/basic-types
+    - file: topics/main-language-elements/loops
+    - file: topics/main-language-elements/conditionals
+    - file: topics/main-language-elements/functions
+    - file: topics/main-language-elements/scripts-modules-namespaces
+    - file: topics/main-language-elements/python-interpreter
+  
 - caption: FAQs
   chapters:
   - file: faq/oreilly/oreilly_access.md
     title: How do I access O'Reilly books?
   - file: faq/github_student_benefits.md
     title: How do I get support for GitHub student benefits?
-- caption: Textbooks
-  chapters:
-  - url: https://learning.oreilly.com/library/view/software-engineering-at/9781492082781/
-    title: Scientific Computing with Python
 - caption: Other Resources
   chapters:
   - url: https://github.com
