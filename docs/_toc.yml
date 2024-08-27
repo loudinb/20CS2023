@@ -15,17 +15,9 @@ parts:
   chapters:
   - file: lectures/lecture-1
     sections:
-    - file: topics/github-classroom
-    - file: topics/python-development-environment
-  - file: lectures/lecture-2
-    sections:
-    - file: topics/main-language-elements/basic-types
-    - file: topics/main-language-elements/loops
-    - file: topics/main-language-elements/conditionals
-    - file: topics/main-language-elements/functions
-    - file: topics/main-language-elements/scripts-modules-namespaces
-    - file: topics/main-language-elements/python-interpreter
-  
+    - file: topics/day1/class-profile
+    - file: topics/day1/github-classroom
+    - file: topics/day1/python-development-environment  
 - caption: FAQs
   chapters:
   - file: faq/oreilly/oreilly_access.md
