@@ -16,8 +16,7 @@ parts:
   - file: lectures/lecture-1
     sections:
     - file: topics/day1/class-profile
-    - file: topics/day1/github-classroom
-    - file: topics/day1/python-development-environment  
+    - file: topics/day1/claude-3.5-sonnet-example
 - caption: FAQs
   chapters:
   - file: faq/oreilly/oreilly_access.md
