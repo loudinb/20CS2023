@@ -39,8 +39,9 @@ latex:
 # Information about where the book exists on the web
 repository:
   url                       : https://github.com/loudinb/20CS2023  # Online location of your book
-  path                      : docs/  # The path to the folder containing the source files of your book relative to the repository root
+  path_to_book              : docs/  # The path to the folder containing the source files of your book relative to the repository root
   branch                    : main  # Which branch of the repository should be used when creating links (optional)
 
 launch_buttons:
-  colab_url: "https://colab.research.google.com"
+  notebook_interface: "jupyterlab"
+  binderhub_url: "https://mybinder.org/v2/gh/loudinb/20EECE3093C/HEAD"

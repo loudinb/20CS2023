@@ -1,0 +1,12 @@
+project:
+  title: "Python Programming (CS2023)"
+  output-dir: ../docs/_build/html/slides
+resources:
+  - "_static/*"
+format: 
+  revealjs:
+    slide-level: 2
+    scrollable: true
+    preview-links: true
+    css: "styles.css"
+    controls: true
