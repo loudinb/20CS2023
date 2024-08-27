@@ -208,4 +208,4 @@ b) Create a distribution plot for the "Level" values:
 - Proper error handling and edge case consideration
 ```
 
-We can use this [sample output](../topics/day1/claude-3.5-sonnet-example.ipynb) from Claude 3.5 Sonnet. Compare the output to the code found in [class profile](../topics/day1/class-profile.ipynb).  Interestingly, you may observe that the "Pre-Junior" academic level is missing from the GenAI code. **Why is that?**
+We can use this [sample output](../topics/day1/claude-sonnet-example.ipynb) from Claude 3.5 Sonnet. Compare the output to the code found in [class profile](../topics/day1/class-profile.ipynb).  Interestingly, you may observe that the "Pre-Junior" academic level is missing from the GenAI code. **Why is that?**
