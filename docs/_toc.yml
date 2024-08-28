@@ -16,7 +16,7 @@ parts:
   - file: lectures/lecture-1
     sections:
     - file: topics/day1/class-profile
-    - file: topics/day1/claude-sonnet-example
+    - file: topics/day1/claude-3.5-sonnet-demonstration
 - caption: FAQs
   chapters:
   - file: faq/oreilly/oreilly_access.md

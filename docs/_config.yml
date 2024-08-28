@@ -44,4 +44,4 @@ repository:
 
 launch_buttons:
   notebook_interface: "jupyterlab"
-  binderhub_url: "https://mybinder.org/v2/gh/loudinb/20CS2023/main"
+  colab_url: "https://colab.research.google.com"
