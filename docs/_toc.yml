@@ -13,10 +13,15 @@ parts:
   - file: syllabus/university-policies
 - caption: Course Materials
   chapters:
-  - file: lectures/lecture-1
+  - file: lectures/lecture-1-27AUG2024
     sections:
     - file: topics/day1/class-profile
     - file: topics/day1/claude-3.5-sonnet-demonstration
+  - file: lectures/lecture-2-29AUG2024
+    sections:
+    - file: topics/python-shell/python-shell
+    - file: topics/ipython-shell/ipython-shell
+    - file: topics/jupyter-notebooks/jupyter-notebooks
 - caption: FAQs
   chapters:
   - file: faq/oreilly/oreilly_access.md
