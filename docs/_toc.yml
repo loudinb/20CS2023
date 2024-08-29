@@ -22,6 +22,14 @@ parts:
     - file: topics/python-shell/python-shell
     - file: topics/ipython-shell/ipython-shell
     - file: topics/jupyter-notebooks/jupyter-notebooks
+    - file: topics/python-scripts/python-scripts
+    - file: topics/python-interpreter/interpreter-basics
+    - file: topics/python-style-guide/python-style-guide
+    - file: topics/variables-and-data-types
+    - file: topics/numerics/numeric-types
+    - file: topics/booleans/boolean-type
+    - file: topics/strings/string-type
+
 - caption: FAQs
   chapters:
   - file: faq/oreilly/oreilly_access.md
