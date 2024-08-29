@@ -29,7 +29,9 @@ parts:
     - file: topics/numerics/numeric-types
     - file: topics/booleans/boolean-type
     - file: topics/strings/string-type
-
+- caption: Knowledge Checks
+  chapters:
+  - file: knowledge-checks/knowledge-check-1
 - caption: FAQs
   chapters:
   - file: faq/oreilly/oreilly_access.md

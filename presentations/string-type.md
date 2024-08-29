@@ -4,6 +4,8 @@
 
 - Represented by the `str` class
 - Can be enclosed in single (`'`) or double (`"`) quotes.
+- Double quotes: "allows embedded 'single' quotes"
+- Triple quoted: '''Three single quotes''' or  """Three double quotes""" may span multiple lines.
 
 ```python
 single_quoted = 'Hello, World!'
