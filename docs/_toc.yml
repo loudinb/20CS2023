@@ -31,13 +31,9 @@ parts:
     - file: topics/strings/string-type
   - file: lectures/lecture-3-03SEP2024
     sections:
-    - file: topics/strings/string-methods
-    - file: topics/strings/string-formatting
-    - file: topics/strings/string-operations
-    - file: topics/strings/string-slicing
-    - file: topics/strings/string-indexing
-    - file: topics/strings/string-escaping
-    - file: topics/strings/string-encoding
+    - file: topics/lists/lists
+    - file: topics/lists/lists-shallow-and-deep-copy
+    - file: topics/lists/lists-hands-on
 - caption: Knowledge Checks
   chapters:
   - file: knowledge-checks/knowledge-check-1
