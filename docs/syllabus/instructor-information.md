@@ -10,8 +10,8 @@
 ## Teaching Assistant
 
 **Name:** Kate Plas<br>
-**Office Location:**<br>
-**Office Hours:** TBD<br>
+**Office Location:** Braunstein 140A<br>
+**Office Hours:** Monday 9-10am<br>
 **Email Address:** [plaska@ucmail.uc.edu](mailto:plaska@ucmail.uc.edu) <br>
 
 

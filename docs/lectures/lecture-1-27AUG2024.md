@@ -1,4 +1,4 @@
-# Lecture 1, August 27, 2024
+# Lecture 1, Aug 27, 2024
 
 Welcome to Python Programming (CS2023). This document outlines our plan for the first day and provides important information to get you started.
 

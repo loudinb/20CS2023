@@ -34,6 +34,10 @@ parts:
     - file: topics/lists/lists
     - file: topics/lists/lists-shallow-and-deep-copy
     - file: topics/lists/lists-hands-on
+    - file: topics/tuples/tuples
+    - file: topics/tuples/tuples-hands-on
+    - file: topics/packing-and-unpacking/packing-and-unpacking
+    - file: topics/packing-and-unpacking/argument-packing-hands-on
   - file: lectures/lecture-4-05SEP2024
 - caption: Knowledge Checks
   chapters:

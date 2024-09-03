@@ -1,4 +1,4 @@
-# Lecture 2, August 29, 2024
+# Lecture 2, Aug 29, 2024
 
 Today's lecture covers essential Python basics. These concepts are fundamental. Pay close attention (especially those new to Python) - they're crucial for the rest of the course.
 
