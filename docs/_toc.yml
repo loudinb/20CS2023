@@ -39,9 +39,13 @@ parts:
     - file: topics/packing-and-unpacking/packing-and-unpacking
     - file: topics/packing-and-unpacking/argument-packing-hands-on
   - file: lectures/lecture-4-05SEP2024
+    sections:
+    - file: topics/dictionaries/dictionaries
+    - file: topics/sets/sets
 - caption: Knowledge Checks
   chapters:
   - file: knowledge-checks/knowledge-check-1
+  - file: knowledge-checks/knowledge-check-2
 - caption: FAQs
   chapters:
   - file: faq/oreilly/oreilly_access.md

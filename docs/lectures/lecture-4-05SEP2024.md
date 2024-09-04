@@ -2,8 +2,5 @@
 
 Today's lecture is part 2 of 2 on Python data structures, focusing on dictionaries and sets.  We'll cover the following topics:
 
-1. Dictionaries
-2. Dictionaries - Hands-On Practice
-3. Sets
-4. Sets - Hands-On Practice
-5. Choosing the Right Data Structure
+1. [Dictionaries](../topics/dictionaries/dictionaries.ipynb): Ordered collections of key-value pairs.
+2. [Sets](../topics/sets/sets.ipynb): Unordered collections of unique elements.
