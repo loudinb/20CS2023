@@ -45,6 +45,8 @@ parts:
     - file: topics/dictionaries/hash-table-conceptual-overview
     - file: topics/sets/sets
     - file: topics/sets/set-hands-on
+    - file: topics/data-structures-use-cases
+    - file: topics/type-checking
 - caption: Knowledge Checks
   chapters:
   - file: knowledge-checks/knowledge-check-1

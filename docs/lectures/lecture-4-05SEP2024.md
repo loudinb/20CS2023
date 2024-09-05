@@ -2,7 +2,7 @@
 
 ```{admonition} Announcements
 - Knowledge Check 1 is graded, please contact me if you feel there is an error in the grading.
-- Knowledge Check 2 is available, it is due by 11:59 PM on Tuesday, September 10, 2024.
+- Knowledge Check 2 will be released later today, it is due by 11:59 PM on Tuesday, September 10, 2024.
 ```
 
 Today's lecture is part 2 of 2 on Python data structures.  Today we will run through the hands-on practices that we did not get to on Tuesday, September 3, 2024, and then we will discuss dictionaries and sets.
@@ -15,9 +15,10 @@ Today's lecture is part 2 of 2 on Python data structures.  Today we will run thr
 6. [Sets](../topics/sets/sets.ipynb): Unordered collections of unique elements.
 7. [Sets: Hands-On Practice](../topics/sets/sets-hands-on.ipynb): Practice creating and working with sets in Python.
 
-## Topice Time Permitting
-8. [Data Structures Use Cases](../topics/data-structures-use-cases.ipynb): Discuss use cases for the different data structures in Python.
-9. [Type Checking](../topics/type-checking.ipynb): Checking the type of an object in Python.
+## Additional Reading Material
+
+1. [Data Structures Use Cases](../topics/data-structures-use-cases.ipynb): Discuss use cases for the different data structures in Python.
+2. [Type Checking](../topics/type-checking.ipynb): Checking the type of an object in Python, understanding `type()` and `isinstance()`.
 
 
 
