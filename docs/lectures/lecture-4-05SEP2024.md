@@ -19,6 +19,7 @@ Today's lecture is part 2 of 2 on Python data structures.  Today we will run thr
 
 1. [Data Structures Use Cases](../topics/data-structures-use-cases.ipynb): Discuss use cases for the different data structures in Python.
 2. [Type Checking](../topics/type-checking.ipynb): Checking the type of an object in Python, understanding `type()` and `isinstance()`.
+3. [Dictionary Performance: Additional Explanation](../topics/dictionaries/dictionary-performance-additional-explanation.md)
 
 
 

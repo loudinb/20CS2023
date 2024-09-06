@@ -41,6 +41,7 @@ parts:
   - file: lectures/lecture-4-05SEP2024
     sections:
     - file: topics/dictionaries/dictionaries
+    - file: topics/dictionaries/dictionary-performance-additional-explanation
     - file: topics/dictionaries/dictionary-hands-on
     - file: topics/dictionaries/hash-table-conceptual-overview
     - file: topics/sets/sets
