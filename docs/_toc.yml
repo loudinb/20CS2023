@@ -48,6 +48,9 @@ parts:
     - file: topics/sets/set-hands-on
     - file: topics/data-structures-use-cases
     - file: topics/type-checking
+  - file: lectures/lecture-5-10SEP2024
+    sections:
+    - file: topics/functions/functions.ipynb
 - caption: Knowledge Checks
   chapters:
   - file: knowledge-checks/knowledge-check-1
