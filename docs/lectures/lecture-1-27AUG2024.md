@@ -57,7 +57,7 @@ Let's look at some Python code in an interactive [notebook](../topics/day1/class
 
 Our primary textbook will be available through O'Reilly Media.  Everyone should go through the steps now to confirm they can access the book through UC's institutional access.
 
-1. Review the [O'Reilly Access FAQ](../faq/oreilly/oreilly_access.md) and follow the instructions to create an account with your UC email address.
+1. Review the [O'Reilly Access FAQ](../faqs/oreilly_access.md) and follow the instructions to create an account with your UC email address.
 2. Verify you can access [Scientific Computing with Python](https://learning.oreilly.com/library/view/scientific-computing-with/9781838822323/).
 
 Physical books are also available for puchase online (e.g., Amazon, Barnes and Noble, etc.)

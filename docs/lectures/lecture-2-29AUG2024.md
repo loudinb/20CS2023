@@ -4,7 +4,7 @@ Today's lecture covers essential Python basics. These concepts are fundamental. 
 
 1. [Python shell](../topics/python-shell/python-shell.md): An interactive command-line interface for executing Python code in real-time, ideal for quick testing and learning.
 
-2. [IPython shell](../topics/ipython-shell/ipython-shell.md): An enhanced Python interpreter with features like syntax highlighting and auto-completion, offering a more user-friendly interactive experience.
+2. [IPython shell](../topics/ipython-shell/ipython-shell.ipynb): An enhanced Python interpreter with features like syntax highlighting and auto-completion, offering a more user-friendly interactive experience.
 
 3. [Jupyter Notebooks](../topics/jupyter-notebooks/jupyter-notebooks.ipynb): Web-based interactive environments for creating documents with live code, visualizations, and explanatory text, popular in data science and education.
 
