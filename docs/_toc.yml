@@ -4,75 +4,77 @@
 format: jb-book
 root: syllabus/cs2023
 parts:
-- caption: Syllabus
-  chapters:
-  - file: syllabus/24fs/24fs
-  - file: syllabus/instructor-information
-  - file: syllabus/assessment-plan-and-policies
-  - file: syllabus/grading-policy
-  - file: syllabus/university-policies
-- caption: Course Materials
-  chapters:
-  - file: lectures/lecture-1-27AUG2024
-    sections:
-    - file: topics/day1/class-profile
-    - file: topics/day1/claude-3.5-sonnet-demonstration
-  - file: lectures/lecture-2-29AUG2024
-    sections:
-    - file: topics/python-shell/python-shell
-    - file: topics/ipython-shell/ipython-shell
-    - file: topics/jupyter-notebooks/jupyter-notebooks
-    - file: topics/python-scripts/python-scripts
-    - file: topics/python-interpreter/interpreter-basics
-    - file: topics/python-style-guide/python-style-guide
-    - file: topics/variables-and-data-types
-    - file: topics/numerics/numeric-types
-    - file: topics/booleans/boolean-type
-    - file: topics/strings/string-type
-  - file: lectures/lecture-3-03SEP2024
-    sections:
-    - file: topics/lists/lists
-    - file: topics/lists/lists-shallow-and-deep-copy
-    - file: topics/lists/lists-hands-on
-    - file: topics/tuples/tuples
-    - file: topics/tuples/tuples-hands-on
-    - file: topics/packing-and-unpacking/packing-and-unpacking
-    - file: topics/packing-and-unpacking/argument-packing-hands-on
-  - file: lectures/lecture-4-05SEP2024
-    sections:
-    - file: topics/dictionaries/dictionaries
-    - file: topics/dictionaries/dictionary-performance-additional-explanation
-    - file: topics/dictionaries/dictionaries-hands-on
-    - file: topics/dictionaries/hash-table-conceptual-overview
-    - file: topics/sets/sets
-    - file: topics/sets/sets-hands-on
-    - file: topics/data-structures-use-cases
-    - file: topics/type-checking
-  - file: lectures/lecture-5-10SEP2024
-    sections:
-    - file: topics/functions/functions.ipynb
-  - file: lectures/lecture-6-12SEP2024
-    sections:
-    - file: topics/controlling-program-flow/logical-comparisons
-    - file: topics/controlling-program-flow/conditional-statements
-    - file: topics/controlling-program-flow/loops
-- caption: Knowledge Checks
-  chapters:
-  - file: knowledge-checks/knowledge-check-1
-  - file: knowledge-checks/knowledge-check-2
-- caption: FAQs
-  chapters:
-  - file: faq/oreilly/oreilly_access.md
-    title: How do I access O'Reilly books?
-  - file: faq/github_student_benefits.md
-    title: How do I get support for GitHub student benefits?
-- caption: Other Resources
-  chapters:
-  - url: https://github.com
-    title: GitHub
-  - url: https://code.visualstudio.com
-    title: Visual Studio Code
-- caption: Odds and End
-  chapters:
-  - file: disclaimer
-    title: Disclaimer
+  - caption: Syllabus
+    chapters:
+      - file: syllabus/24fs/24fs
+      - file: syllabus/instructor-information
+      - file: syllabus/assessment-plan-and-policies
+      - file: syllabus/grading-policy
+      - file: syllabus/university-policies
+  - caption: Course Materials
+    chapters:
+      - file: lectures/lecture-1-27AUG2024
+        sections:
+        - file: topics/day1/class-profile
+        - file: topics/day1/claude-3.5-sonnet-demonstration
+      - file: lectures/lecture-2-29AUG2024
+        sections:
+          - file: topics/python-shell/python-shell
+          - file: topics/ipython-shell/ipython-shell
+          - file: topics/jupyter-notebooks/jupyter-notebooks
+          - file: topics/python-scripts/python-scripts
+          - file: topics/python-interpreter/interpreter-basics
+          - file: topics/python-style-guide/python-style-guide
+          - file: topics/variables-and-data-types
+          - file: topics/numerics/numeric-types
+          - file: topics/booleans/boolean-type
+          - file: topics/strings/string-type
+      - file: lectures/lecture-3-03SEP2024
+        sections:
+          - file: topics/lists/lists
+          - file: topics/lists/lists-shallow-and-deep-copy
+          - file: topics/lists/lists-hands-on
+          - file: topics/tuples/tuples
+          - file: topics/tuples/tuples-hands-on
+          - file: topics/packing-and-unpacking/packing-and-unpacking
+          - file: topics/packing-and-unpacking/argument-packing-hands-on
+      - file: lectures/lecture-4-05SEP2024
+        sections:
+          - file: topics/dictionaries/dictionaries
+          - file: topics/dictionaries/dictionary-performance-additional-explanation
+          - file: topics/dictionaries/dictionaries-hands-on
+          - file: topics/dictionaries/hash-table-conceptual-overview
+          - file: topics/sets/sets
+          - file: topics/sets/sets-hands-on
+          - file: topics/data-structures-use-cases
+          - file: topics/type-checking
+      - file: lectures/lecture-5-10SEP2024
+        sections:
+          - file: topics/functions/functions.ipynb
+      - file: lectures/lecture-6-12SEP2024
+        sections:
+          - file: topics/controlling-program-flow/logical-comparisons
+          - file: topics/controlling-program-flow/conditional-statements
+          - file: topics/controlling-program-flow/loops
+  - caption: Practice Exercises
+    chapters:
+      - glob: knowledge-checks/knowledge-check-*
+  - caption: Practice Exercises
+    chapters:
+      - glob: exercises/*
+  - caption: FAQs
+    chapters:
+      - file: faq/oreilly/oreilly_access.md
+        title: How do I access O'Reilly books?
+      - file: faq/github_student_benefits.md
+        title: How do I get support for GitHub student benefits?
+  - caption: Other Resources
+    chapters:
+      - url: https://github.com
+        title: GitHub
+      - url: https://code.visualstudio.com
+        title: Visual Studio Code
+  - caption: Odds and End
+    chapters:
+      - file: disclaimer
+        title: Disclaimer
