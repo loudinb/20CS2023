@@ -1,0 +1,223 @@
+---
+title: Loops
+jupyter: python3
+---
+
+
+Loops in Python allow you to repeat a block of code multiple times. This is useful when you need to perform repetitive tasks, iterate over collections like lists or dictionaries, or manage large amounts of data.
+
+There are two primary types of loops in Python:
+- `for` loops
+- `while` loops
+
+Each of these loop types has different use cases and can be combined with other Python features to create logic that solves complex problems.
+
+::: {.notes}
+:::
+
+## {data-menu-title="for Loop"}
+
+The `for` loop in Python is used for iterating over a sequence (like a list, tuple, dictionary, string, or range). It is commonly used when you know the number of iterations beforehand.
+
+```python
+for variable in iterable:
+    # block of code
+```
+
+- **`variable`**: A placeholder for each element in the sequence.
+- **`iterable`**: The collection you are iterating over, such as a list, range, or string.
+
+::: {.notes}
+:::
+
+
+### {data-menu-title="list Iteration"}
+
+
+```{python}
+fruits = ['apple', 'banana', 'cherry']
+
+for fruit in fruits:
+    print(fruit)
+```
+
+::: {.notes}
+:::
+
+
+### {data-menu-title="range() Iteration"}
+
+The `range()` function generates a sequence of numbers, which is useful when you want to loop a specific number of times.  `range()` starts at 0 and stops before the specified number.
+
+```{python}
+for i in range(5):
+    print(i)
+```
+
+::: {.notes}
+:::
+
+
+### {data-menu-title="Looping with enumerate()"}
+
+The `enumerate()` function is used to loop over a sequence while keeping track of the index of the current item. This is useful when you need to access both the index and the value of each element in a list.
+
+```{python}
+fruits = ['apple', 'banana', 'cherry']
+
+for index, fruit in enumerate(fruits):
+    print(f"Index {index}: {fruit}")
+```
+
+::: {.notes}
+:::
+
+
+## {data-menu-title="while Loop"}
+
+The `while` loop keeps executing as long as a specified condition is `True`. It’s typically used when the number of iterations is not known ahead of time.
+
+```python
+while condition:
+    # block of code
+```
+
+- **`condition`**: A boolean expression that controls when the loop should stop.
+
+```{python}
+count = 0
+
+while count < 5:
+    print(count)
+    count += 1
+```
+
+::: {.notes}
+:::
+
+
+### {data-menu-title="Infinite `while` Loop with `break`"}
+
+If you forget to update the condition or write an incorrect condition, your loop can run infinitely. To prevent this, you can use the `break` statement to exit the loop.
+
+
+::: {.notes}
+:::
+
+
+## {data-menu-title="Loop Control Statements"}
+
+Loop control statements change the execution from its normal sequence. When the execution leaves a scope, all its changes are lost. Python supports the following loop control statements:
+
+- `break`: Terminates the loop statement and transfers execution to the statement immediately following the loop.
+- `continue`: Causes the loop to skip the remainder of its body and immediately retest its condition prior to reiterating.
+- `pass`: The `pass` statement is used as a placeholder for future code.
+
+::: {.notes}
+:::
+
+
+### {data-menu-title="break"}
+
+The `break` statement is used to exit the loop prematurely when a condition is met.
+
+```{python}
+for i in range(10):
+    if i == 5:
+        break
+    print(i)
+```
+
+A common use case for `break` is to stop the execution of an infinite while loop once a certain condition is met, preventing the loop from running indefinitely.
+
+```{python}
+count = 0
+
+while True:
+    print(count)
+    count += 1
+    if count == 5:
+        break
+```
+
+### {data-menu-title="continue"}
+The `continue` statement skips the rest of the current iteration and moves to the next iteration.
+
+```{python}
+for i in range(5):
+    if i == 2:
+        continue
+    print(i)
+```
+
+::: {.notes}
+:::
+
+
+### {data-menu-title="pass"}
+
+The `pass` statement is used when a statement is required syntactically but you do not want any command or code to execute.  It is a null operation, and nothing happens when it executes.  It is often used as a placeholder when working on new code.
+
+```{python}
+for i in range(5):
+    if i == 3:
+        pass
+    print(i)
+```
+
+::: {.notes}
+:::
+
+
+## {data-menu-title="Nested Loops"}
+Loops can be nested inside other loops. Nested loops are commonly used when working with multidimensional data structures.
+
+```{python}
+for i in range(3):
+    for j in range(2):
+        print(f"i: {i}, j: {j}")
+```
+
+::: {.notes}
+:::
+
+
+## {data-menu-title="`else` with Loops"}
+
+An `else` block can be added to loops. It executes after the loop finishes, **unless** the loop is terminated by a `break`.  That is, the `else` block will only execute if the loop completes all iterations without encountering a `break`.
+
+
+::: {.notes}
+:::
+
+
+### {data-menu-title="`for-else`"}
+
+The `for-else` statement is used to execute a block of code after the loop finishes. 
+
+```{python}
+for i in range(3):
+    print(i)
+else:
+    print("Loop is done!")
+```
+
+
+::: {.notes}
+:::
+
+
+### {data-menu-title="``while-else`"}
+
+```{python}
+count = 0
+
+while count < 3:
+    print(count)
+    count += 1
+else:
+    print("Loop is done!")
+```
+
+::: {.notes}
+:::
