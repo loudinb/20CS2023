@@ -1,7 +1,12 @@
 project:
-  type: default
-  output-dir: _stuff
-
-format:
+  title: "Python Programming (CS2023)"
+  output-dir: docs/_build/html/slides
+resources:
+  - "docs/_static/*"
+format: 
   revealjs:
-    theme: default
+    slide-level: 3
+    scrollable: true
+    preview-links: true
+    css: "quarto-styles.css"
+    controls: true

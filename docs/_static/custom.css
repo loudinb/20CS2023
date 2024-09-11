@@ -25,3 +25,12 @@
 .mystyle td:nth-child(4) {
     width: 250px;
 }
+
+
+.presentation-small table {
+    font-size: .5em
+}
+
+.presentation-medium table {
+    font-size: .75em
+}

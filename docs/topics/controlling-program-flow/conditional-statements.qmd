@@ -1,0 +1,167 @@
+---
+---
+
+# Conditional Statements
+
+::: {.notes}
+**Conditional Statements**
+
+Conditional statements are a fundamental concept in programming that allow you to control the flow of your code based on certain conditions. In Python, the primary conditional statement is the `if` statement.
+:::
+
+
+## {data-menu-title="if Statement"}
+
+The `if` statement:
+
+```python
+age = 18
+if age >= 18:
+    print("You are eligible to vote.")
+```
+
+::: {.notes}
+**`if` Statement**
+
+- The most basic form of a conditional statement. 
+- Used to evaluate a condition and execute a block of code if the condition is `True`. 
+- General syntax:
+
+```python
+if condition:
+    # code block
+```
+:::
+
+
+## {data-menu-title="if-else Statement"}
+
+The `if-else` statement:
+
+```python
+temperature = 25
+if temperature > 30:
+    print("It's hot outside!")
+else:
+    print("The weather is pleasant.")
+```
+
+::: {.notes}
+**`if-else` Statement**
+
+- The `if-else` statement is an extension of the `if` statement
+- allows you to execute one block of code if the condition is `True` and another block of code if the condition is `False`. 
+- The general syntax of an `if-else` statement is as follows:
+
+```python
+if condition:
+    # code block 1
+else:
+    # code block 2
+```
+:::
+
+## {data-menu-title="if-elif-else Statement"}
+
+The `if-elif-else` statement:
+
+```python
+score = 85
+if score >= 90:
+    print("A")
+elif score >= 80:
+    print("B")
+elif score >= 70:
+    print("C")
+else:
+    print("D")
+```
+
+::: {.notes}
+**`if-elif-else` Statement**
+
+- an extension of the `if-else` statement that allows you to evaluate multiple conditions. 
+- `elif` keyword is short for "else if" and is used to check additional conditions if the previous conditions are `False`.
+- You can have multiple `elif` blocks to check as many conditions as needed.
+- The `else` block is optional and will execute if none of the conditions are `True`.
+- The general syntax:
+
+```python
+if condition1:
+    # code block 1
+elif condition2:
+    # code block 2
+else:
+    # code block 3
+```
+:::
+
+
+## {data-menu-title="Nested Comparisons"}
+
+Nested comparisons:
+
+```python
+if condition1:
+    if condition2:
+        # code block 1
+    else:
+        # code block 2
+else:
+    # code block 3
+```
+
+::: {.callout-important}
+Excessive nesting of conditional statements can reduce code readability and maintainability. To simplify complex logic, consider using functions, or alternative control structures like elif, switch, or early returns.
+:::
+
+::: {.notes}
+**Nested Comparisons**
+
+To create more complex decision-making structures
+- You can nest conditional statements within other conditional statements.
+- Allows you to check multiple conditions in sequence or in combination.
+:::
+
+
+## {data-menu-title="Match Case Statement"}
+
+Match case statement:
+
+```python
+score = 85
+
+match score:
+    case score if score >= 90:
+        print("A")
+    case score if score >= 80:
+        print("B")
+    case score if score >= 70:
+        print("C")
+    case _:
+        print("D")
+```
+
+::: {.callout-note}
+The `_` acts as a wildcard or catch-all, matching any value that does not match the previous patterns.
+:::
+
+::: {.notes}
+**Match Case Statement**
+
+- provides a more concise and readable way to write conditional statements
+- allows you to match a value against multiple patterns and execute different code blocks based on the matched pattern. 
+- The `match-case` statement can be used to replace complex `if-elif-else` chains.
+
+The general syntax of a `match-case` statement is as follows:
+
+```python
+match value:
+    case pattern1:
+        # code block 1
+    case pattern2:
+        # code block 2
+    case _:
+        # default code block
+```
+:::
