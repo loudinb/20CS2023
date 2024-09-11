@@ -15,12 +15,12 @@
 				"GitHub.copilot-chat"
 			]
 		}
+	},
+	"features": {
+		"ghcr.io/rocker-org/devcontainer-features/quarto-cli:latest": {
+			"version": "latest"
+		}
 	}
-	// "features": {
-	// 	"ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {
-	// 		"version": "latest"
-	// 	}
-	// }
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
