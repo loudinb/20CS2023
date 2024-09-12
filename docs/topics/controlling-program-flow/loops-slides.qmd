@@ -4,15 +4,14 @@ jupyter: python3
 ---
 
 
-Loops in Python allow you to repeat a block of code multiple times. This is useful when you need to perform repetitive tasks, iterate over collections like lists or dictionaries, or manage large amounts of data.
 
-There are two primary types of loops in Python:
-- `for` loops
-- `while` loops
+
+::: {.notes}
+
+Loops are used to execute a block of code multiple times. Python provides two types of loops: `for` and `while`.
 
 Each of these loop types has different use cases and can be combined with other Python features to create logic that solves complex problems.
 
-::: {.notes}
 :::
 
 ## {data-menu-title="for Loop"}
@@ -74,6 +73,38 @@ for index, fruit in enumerate(fruits):
 
 
 ## {data-menu-title="while Loop"}
+
+
+```{dot}
+digraph G {
+    rankdir=TD;
+    splines=ortho;
+    nodesep=0.5;
+    ranksep=0.5;
+    
+    node [shape=box];
+    enter [label="Enter the while loop"];
+    exit [label="Exit the while loop"];
+    body [label="while loop\nbody"];
+    
+    node [shape=diamond];
+    condition [label="Test Condition"];
+    
+    enter -> condition;
+    condition -> exit [label="False"];
+    condition -> body [label="True"];
+    body -> condition:w [dir=back];
+    
+    { rank=same; condition exit }
+    
+    edge [style=invis];
+    condition -> body;
+    body -> exit;
+    
+    {rank=min; enter}
+    {rank=max; body}
+}
+```
 
 The `while` loop keeps executing as long as a specified condition is `True`. It’s typically used when the number of iterations is not known ahead of time.
 

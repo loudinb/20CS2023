@@ -12,10 +12,11 @@
 				"ms-python.python",
 				"ms-toolsai.jupyter",
 				"GitHub.copilot",
-				"GitHub.copilot-chat"
+				"GitHub.copilot-chat",
+				"quarto.quarto"
 			]
 		}
-	},
+	}
 	// "features": {
 	// 	"ghcr.io/rocker-org/devcontainer-features/quarto-cli:latest": {
 	// 		"version": "latest"
