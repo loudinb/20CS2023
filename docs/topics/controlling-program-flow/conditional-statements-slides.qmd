@@ -1,7 +1,12 @@
 ---
+title: Conditional Statements
+jupyter: python3
+format: 
+  revealjs:
+    scrollable: true
 ---
 
-# Conditional Statements
+## Introduction
 
 ::: {.notes}
 **Conditional Statements**

@@ -17,3 +17,11 @@
 .smaller-60 {
     font-size: .60em;
 }
+
+.hide h2 {
+    display: none;
+}
+
+.hide h3 {
+    display: none;
+}

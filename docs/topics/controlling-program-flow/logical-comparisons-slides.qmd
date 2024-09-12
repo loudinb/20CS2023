@@ -1,7 +1,12 @@
 ---
+title: Logical Comparisons
+jupyter: python3
+format: 
+  revealjs:
+    scrollable: true
 ---
 
-# Logical Comparisons
+## Introduction
 
 ::: {.notes}
 **Logical Comparisons**

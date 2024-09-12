@@ -1,254 +1,590 @@
 ---
-title: Loops
+title: Python Loops
 jupyter: python3
+format: 
+  revealjs:
+    scrollable: true
 ---
 
-
-
+## Introduction
 
 ::: {.notes}
+Loops are one of the most fundamental structures in Python and all programming languages. Loops allow for the automation of repetitive tasks, making code more efficient and easier to maintain.
 
-Loops are used to execute a block of code multiple times. Python provides two types of loops: `for` and `while`.
+There are two primary types of loops we’ll be covering:
+1. **For loops**: Typically used to iterate over a collection of elements or a sequence.
+2. **While loops**: These loops run as long as a specified condition remains true.
 
-Each of these loop types has different use cases and can be combined with other Python features to create logic that solves complex problems.
-
+In addition to understanding the basic loop types, we’ll also look at important concepts like:
+- Loop control statements (`break`, `continue`, `pass`)
+- Nested loops for handling multidimensional data or complex scenarios.
 :::
 
-## {data-menu-title="for Loop"}
 
-The `for` loop in Python is used for iterating over a sequence (like a list, tuple, dictionary, string, or range). It is commonly used when you know the number of iterations beforehand.
+## `for` Loops {.hide}
 
+`for` loops are used to iterate over a sequence (e.g., list, tuple, string) or other iterable objects.
+
+Basic syntax:
 ```python
 for variable in iterable:
-    # block of code
+    # Code block to be executed
 ```
 
-- **`variable`**: A placeholder for each element in the sequence.
-- **`iterable`**: The collection you are iterating over, such as a list, range, or string.
+- `variable`: Placeholder for each element in the sequence
+- `iterable`: The collection you're iterating over
+
 
 ::: {.notes}
+The `for` loop is one of the most commonly used looping constructs. It's designed to iterate over a sequence of items, such as lists, tuples, strings, or any iterable object in Python.
+
+- The `for` loop retrieves each item in a collection and assigns it to a variable, one at a time.
+- The loop automatically stops when it reaches the end of the collection, meaning you don’t need to manage indices manually.
+
+The basic syntax of a `for` loop in Python is straightforward:
+- `variable`: This is the placeholder for each element in the sequence as the loop iterates over the iterable.
+- `iterable`: This is the sequence or collection that the loop will process.
 :::
 
 
-### {data-menu-title="list Iteration"}
+### Examples {.hide}
 
-
-```{python}
+Iterating over lists:
+```python
 fruits = ['apple', 'banana', 'cherry']
-
 for fruit in fruits:
-    print(fruit)
+    print(fruit) # Outputs: apple, banana, cherry
+```
+
+Iterating over tuples:
+```python
+colors = ('red', 'green', 'blue')
+for color in colors:
+    print(color) # Outputs: red, green, blue
+```
+
+Iterating over strings:
+```python
+for char in "Python":
+    print(char) # Outputs: P, y, t, h, o, n
 ```
 
 ::: {.notes}
+One of the most frequent use cases for `for` loops is iterating over a list.
+
+- Lists are one of the primary data structures in Python that hold collections of items. Iterating over a list is fundamental to working with data in Python.
+- The upcoming slides will demonstrate different techniques for list iteration, highlighting how flexible and powerful `for` loops can be when processing lists.
+
+Example:
+- The `fruits` list contains three items: `'apple'`, `'banana'`, and `'cherry'`.
+- The `for` loop goes through each item in the list one by one, printing the value of `fruit` during each iteration.
 :::
 
 
-### {data-menu-title="range() Iteration"}
+### List Modification During Iteration
 
-The `range()` function generates a sequence of numbers, which is useful when you want to loop a specific number of times.  `range()` starts at 0 and stops before the specified number.
+:::: {style="font-size: 0.7em;"}
+::: {.callout-important}
+Directly modifying a list while iterating over it using indices is often considered non-Pythonic. Although it works, Python encourages more readable and efficient patterns, such as using list comprehensions.
+:::
+::::
 
-```{python}
+Index-based modification example:
+
+```python
+numbers = [1, 2, 3, 4, 5]
+for i in range(len(numbers)):
+    numbers[i] = numbers[i] ** 2
+print(numbers)  # Output: [1, 4, 9, 16, 25]
+```
+
+
+List Comprehension (Pythonic approach):
+
+```python
+numbers = [1, 2, 3, 4, 5]
+numbers = [x ** 2 for x in numbers]
+print(numbers)  # Output: [1, 4, 9, 16, 25]
+```
+
+::: {.notes}
+This demonstrates how to modify a list in place while iterating over it, and compares it to a more Pythonic approach using list comprehension.
+
+- **Index-based modification** is useful in certain scenarios, but it can lead to less readable and maintainable code.
+- Instead of iterating over the list directly, the loop uses `range(len(numbers))` to access each index. This allows us to modify the list in place without affecting the loop itself.
+
+- **List comprehension** creates a new list with the squared values and reassigns it to the variable `numbers`.
+- Pythonic code emphasizes **readability** and **expressiveness**, which often leads to more maintainable and efficient solutions.
+- Though it creates a new list rather than modifying the original in place, it’s generally more efficient and easier to understand.
+:::
+
+
+### Using `range()` {.hidden}
+
+The `range()` function generates a sequence of numbers, which is particularly useful for creating numeric loops.
+
+Basic syntax:
+
+```python
 for i in range(5):
-    print(i)
+    print(i)  # Outputs: 0, 1, 2, 3, 4
 ```
 
+
 ::: {.notes}
+The `range()` function is used to create loops that iterate over a sequence of numbers.
+
+- The `range()` function generates a sequence of numbers that can be used for iteration, making it ideal for creating loops that need to run a specific number of times.
+- `range()` is especially useful for numerical loops where you don’t necessarily have a predefined list of elements but need to work through a series of values.
+
+This is a simple example of using the `range()` function in a `for` loop.
+
+Example:
+- `range(5)` generates the numbers 0, 1, 2, 3, and 4. It starts at 0 by default and stops before the specified number (5 in this case).
+- This example prints each number in the range, illustrating how `range()` can be used to control the number of loop iterations without needing a predefined list of values.
+
+This is a typical use case for `range()` when you need a loop to run a specific number of times or when you're working with a sequence of numbers. It provides a clean and readable way to define how many times a loop will execute.
 :::
 
 
-### {data-menu-title="Looping with enumerate()"}
+### Using `range()` with Start, Stop, and Step {.hidden}
 
-The `enumerate()` function is used to loop over a sequence while keeping track of the index of the current item. This is useful when you need to access both the index and the value of each element in a list.
+You can customize the `range()` function by specifying both a start, stop value, and step value.
 
-```{python}
+```python
+for i in range(2, 6):
+    print(i)  # Outputs: 2, 3, 4, 5
+```
+
+With step value:
+
+```python
+for i in range(0, 10, 2):
+    print(i)  # Outputs: 0, 2, 4, 6, 8
+```
+
+::: {.notes}
+You can customize the `range()` function by specifying both a start and a stop value.
+
+Key points:
+- In this example, `range(2, 6)` generates the numbers 2, 3, 4, and 5. It starts at the first number (2) and stops before the second number (6).
+- This is useful when you want a loop to begin at a number other than 0 and iterate up to a specific point.
+
+This introduces the step value, this parameter is useful when you need to skip certain values or perform operations at regular intervals, such as processing every second or third item in a list. It’s also helpful when counting down or iterating over a sequence in reverse.
+
+Key points:
+- `range(0, 10, 2)` generates numbers from 0 to 8, incrementing by 2. The step value controls how much to increment (or decrement) the sequence in each iteration.
+- In this case, the numbers 0, 2, 4, 6, and 8 are generated.
+:::
+
+
+### Using `enumerate()`
+
+The `enumerate()` function allows you to loop over a sequence while keeping track of the index of the current item. It's particularly useful when you need both the index and the value of each element in a sequence.
+
+Basic syntax:
+
+```python
 fruits = ['apple', 'banana', 'cherry']
-
 for index, fruit in enumerate(fruits):
     print(f"Index {index}: {fruit}")
+
+# Outputs: Index 0: apple, Index 1: banana, Index 2: cherry
 ```
 
 ::: {.notes}
+`enumerate()` returns both the index and the value of each item in the iterable.
+
+This method simplifies code that would otherwise require manually tracking the index with a separate counter. It's a Pythonic approach that enhances readability and reduces the chance for error when dealing with indices.
+
+Key points:
+- `enumerate()` is particularly useful when you need to know both the position (index) and the value of each item during iteration.
+- In this example, the `fruits` list is iterated with both the index and the value printed.
 :::
 
 
-## {data-menu-title="while Loop"}
+### Using `enumerate()` with Start
 
+```python
+for index, fruit in enumerate(fruits, start=1):
+    print(f"Fruit #{index}: {fruit}")
 
-```{dot}
-digraph G {
-    rankdir=TD;
-    splines=ortho;
-    nodesep=0.5;
-    ranksep=0.5;
-    
-    node [shape=box];
-    enter [label="Enter the while loop"];
-    exit [label="Exit the while loop"];
-    body [label="while loop\nbody"];
-    
-    node [shape=diamond];
-    condition [label="Test Condition"];
-    
-    enter -> condition;
-    condition -> exit [label="False"];
-    condition -> body [label="True"];
-    body -> condition:w [dir=back];
-    
-    { rank=same; condition exit }
-    
-    edge [style=invis];
-    condition -> body;
-    body -> exit;
-    
-    {rank=min; enter}
-    {rank=max; body}
-}
+# Outputs: Fruit #1: apple, Fruit #2: banana, Fruit #3: cherry
 ```
 
-The `while` loop keeps executing as long as a specified condition is `True`. It’s typically used when the number of iterations is not known ahead of time.
+::: {.notes}
+`enumerate()` can take a custom start index.
+
+Key points:
+- By default, `enumerate()` starts indexing from 0, but you can change the starting index by passing a second argument to the `enumerate()` function.
+- In this example, `enumerate(fruits, start=1)` starts counting from 1 instead of 0.
+- This feature is useful when you need the index to start from a number other than 0, such as when numbering items for a user-facing list or for better readability.
+:::
+
+
+## `while` Loops
+
+A `while` loop repeatedly executes a block of code as long as a given condition is true.
+
+Basic syntax:
 
 ```python
 while condition:
-    # block of code
+    # Code block to be executed
 ```
 
-- **`condition`**: A boolean expression that controls when the loop should stop.
-
-```{python}
-count = 0
-
-while count < 5:
-    print(count)
-    count += 1
-```
-
-::: {.notes}
-:::
-
-
-### {data-menu-title="Infinite `while` Loop with `break`"}
-
-If you forget to update the condition or write an incorrect condition, your loop can run infinitely. To prevent this, you can use the `break` statement to exit the loop.
+- `condition`: A Boolean expression that is evaluated before each iteration of the loop. If it evaluates to `True`, the code block is executed; if `False`, the loop terminates.
 
 
 ::: {.notes}
+The `while` loop repeats a block of code as long as a specified condition remains true.
+
+- Unlike `for` loops, which iterate over a sequence, `while` loops are condition-based. They keep executing as long as the condition is true.
+- Once the condition becomes false, the loop terminates, and the program continues with the code after the loop.
+- Be cautious with `while` loops to avoid infinite loops, which occur when the condition never becomes false.
+ 
+The basic syntax of a `while` loop in Python is simple and condition-based:
+- `condition`: This is a Boolean expression that is checked before each iteration. As long as it evaluates to `True`, the loop will continue executing. When it becomes `False`, the loop stops.
+
+It’s important to ensure that the loop’s condition will eventually be false; otherwise, the loop could run indefinitely, which can cause the program to crash or become unresponsive. In practice, this means updating variables or states within the loop to ensure the condition is properly checked.
 :::
 
 
-## {data-menu-title="Loop Control Statements"}
 
-Loop control statements change the execution from its normal sequence. When the execution leaves a scope, all its changes are lost. Python supports the following loop control statements:
+### Example: Countdown
 
-- `break`: Terminates the loop statement and transfers execution to the statement immediately following the loop.
-- `continue`: Causes the loop to skip the remainder of its body and immediately retest its condition prior to reiterating.
-- `pass`: The `pass` statement is used as a placeholder for future code.
-
-::: {.notes}
-:::
-
-
-### {data-menu-title="break"}
-
-The `break` statement is used to exit the loop prematurely when a condition is met.
-
-```{python}
-for i in range(10):
-    if i == 5:
-        break
-    print(i)
+```python
+countdown = 5
+while countdown > 0:
+    print(f"{countdown}...")
+    countdown -= 1
+print("Liftoff!")
 ```
 
-A common use case for `break` is to stop the execution of an infinite while loop once a certain condition is met, preventing the loop from running indefinitely.
+::: {.notes}
+This slide provides an example of a `while` loop in action with a countdown.
 
-```{python}
-count = 0
+Key points:
+- The loop starts with a variable `countdown` set to 5. As long as `countdown > 0`, the loop prints the current countdown value and then decrements the value by 1 in each iteration.
+- Once `countdown` reaches 0, the loop ends, and the program prints "Liftoff!"
 
+This example is a clear, simple use case of a `while` loop, showcasing how a condition can drive the repetition of a task until a specific state is reached. It also highlights the importance of updating the loop condition within the loop to ensure it eventually terminates.
+:::
+
+
+### Simulating a Do-While Loop in Python {.hide}
+
+:::: {style="font-size: 0.7em;"}
+::: {.callout-note}
+Python doesn't have a built-in `do-while` loop like some other languages. However, you can simulate similar functionality using a `while True` loop with a conditional check inside the loop to break out of it.
+:::
+::::
+
+Basic Syntax:
+
+```python
 while True:
-    print(count)
-    count += 1
-    if count == 5:
+    # Code block to be executed at least once
+    if not condition:
         break
 ```
 
-### {data-menu-title="continue"}
-The `continue` statement skips the rest of the current iteration and moves to the next iteration.
+In this example, the loop runs at least once before checking the condition and breaks once `i` reaches 5.
 
-```{python}
-for i in range(5):
-    if i == 2:
-        continue
+```python
+i = 0
+while True:
     print(i)
+    i += 1
+    if i >= 5:
+        break
 ```
 
 ::: {.notes}
+Since Python doesn’t natively support a `do-while` loop, the `while True` structure with a `break` statement is a common way to achieve the same functionality. 
+
+- **Readability and Clarity**: Python emphasizes readability, so it’s generally preferred to place the loop’s condition at the start using a `while` loop. However, for cases where the loop must run at least once, this simulated `do-while` approach works well.
+- **Explicit Control**: The `while True` and `break` combination provides clear control over when the loop exits. Unlike `do-while` loops in other languages where the condition is evaluated after the loop body runs, this method ensures that the condition is checked explicitly after each iteration.
+
+While this pattern is less common in Python due to the preference for placing conditions upfront, it’s useful when you need the loop to run at least once before evaluating the condition.
 :::
 
 
-### {data-menu-title="pass"}
+## Loop Control Statements in Python
 
-The `pass` statement is used when a statement is required syntactically but you do not want any command or code to execute.  It is a null operation, and nothing happens when it executes.  It is often used as a placeholder when working on new code.
+Loop control statements alter the regular flow of loops. Python supports three main loop control statements:
 
-```{python}
+1. `break`: Exits the loop prematurely
+2. `continue`: Skips the rest of the current iteration
+3. `pass`: Does nothing, acts as a placeholder
+
+
+::: {.notes}
+The three primary loop control statements in Python: `break`, `continue`, and `pass`.
+
+Key points:
+1. **`break`**: Immediately exits the loop, regardless of the condition or iteration. It's useful when you want to stop the loop under certain conditions before completion.
+2. **`continue`**: Skips the rest of the code in the current iteration and moves to the next iteration of the loop.
+3. **`pass`**: Does nothing and acts as a placeholder when a loop or condition is required syntactically, but no operation is needed at the moment.
+
+These control statements provide flexibility in managing loop behavior, allowing you to exit early, skip certain iterations, or defer actions.
+:::
+
+
+### `break` Statement
+
+::: {.smaller}
+
+`for` loop example:
+
+```python
 for i in range(5):
     if i == 3:
-        pass
+        print("Breaking the loop")
+        break
     print(i)
+# Output: 0, 1, 2, Breaking the loop
 ```
 
-::: {.notes}
-:::
+`while` loop example:
 
-
-## {data-menu-title="Nested Loops"}
-Loops can be nested inside other loops. Nested loops are commonly used when working with multidimensional data structures.
-
-```{python}
-for i in range(3):
-    for j in range(2):
-        print(f"i: {i}, j: {j}")
-```
-
-::: {.notes}
-:::
-
-
-## {data-menu-title="`else` with Loops"}
-
-An `else` block can be added to loops. It executes after the loop finishes, **unless** the loop is terminated by a `break`.  That is, the `else` block will only execute if the loop completes all iterations without encountering a `break`.
-
-
-::: {.notes}
-:::
-
-
-### {data-menu-title="`for-else`"}
-
-The `for-else` statement is used to execute a block of code after the loop finishes. 
-
-```{python}
-for i in range(3):
+```python
+i = 0
+while i < 10:
+    if i == 5:
+        break  # Exits the loop when i is 5
     print(i)
-else:
-    print("Loop is done!")
+    i += 1
+# Output: 0, 1, 2, 3, 4
 ```
 
-
-::: {.notes}
 :::
 
 
-### {data-menu-title="``while-else`"}
+::: {.notes}
+The `break` statement immediately exits the loop, regardless of the condition or iteration.
 
-```{python}
-count = 0
+Key points:
+- The loop prints numbers from 0 to 2, but once the number 3 is encountered, the `break` statement is executed, causing the loop to exit prematurely.
+- The `break` statement is helpful when you want to stop the loop once a certain condition is met, even if the loop hasn’t finished iterating over all elements.
 
-while count < 3:
-    print(count)
-    count += 1
-else:
-    print("Loop is done!")
+This is a common pattern in loops when you need to terminate early based on certain conditions, such as finding a specific item in a list or when an error is encountered that requires stopping further processing.
+:::
+
+
+### `continue` Statement
+
+::: {.smaller}
+
+`for` loop example:
+
+```python
+for i in range(5):
+    if i == 2:
+        print("Skipping 2")
+        continue
+    print(i)
+# Output: 0, 1, Skipping 2, 3, 4
+```
+
+`while` loop example:
+
+```python
+i = 0
+while i < 10:
+    i += 1
+    if i % 2 == 0:
+        continue  # Skips printing when i is even
+    print(i)
+# Output: 1, 3, 5, 7, 9
+```
+
+:::
+
+
+::: {.notes}
+The `continue` statement allows the loop to skip the current iteration and move to the next one.
+
+Key points:
+- In this example, the loop prints numbers from 0 to 4, but when the number 2 is encountered, the `continue` statement is executed. This causes the loop to skip printing 2 and move directly to the next iteration.
+- The `continue` statement is useful when you want to bypass certain iterations based on specific conditions without terminating the entire loop.
+
+This pattern is commonly used when there are certain cases in a loop that should be ignored or skipped while still processing the rest of the items.
+:::
+
+
+### `pass` Statement
+
+::: {.smaller}
+
+`for` loop example:
+
+```python
+for i in range(5):
+    if i == 2:
+        pass  # Placeholder for future code
+    else:
+        print(i)
+# Output: 0, 1, 3, 4
+```
+
+`while` loop example:
+
+```python
+i = 0
+while i < 10:
+    if i == 5:
+        pass  # Does nothing when i is 5
+    print(i)
+    i += 1
+# Output: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+```
+
+:::
+
+::: {.notes}
+The `pass` statement acts as a placeholder in Python.  
+
+`pass` doesn't alter the flow of the loop like `break` or `continue` but simply tells Python to do nothing and move to the next operation.
+
+Key points:
+- In this example, when the loop encounters the number 2, the `pass` statement is executed, meaning the loop does nothing for that iteration, but continues with the next iteration.
+- The `pass` statement is useful when you need a block of code syntactically but don’t want to perform any action at that point. It's often used as a placeholder during development, where you might plan to add functionality later.
+:::
+
+
+## Nested Loops
+
+Nested loops are loops inside other loops. They are used for iterating over multiple dimensions of data or performing repetitive operations that themselves involve repetition.
+
+Basic syntax:
+
+```python
+for outer_variable in outer_iterable:
+    for inner_variable in inner_iterable:
+        # Code block to be executed
+```
+
+
+::: {.notes}
+A nested loop is where one loop is placed inside another.
+
+Key points:
+- Nested loops are useful when you need to work with multidimensional data or situations where each iteration of an outer loop triggers multiple iterations of an inner loop.
+- This structure is common in scenarios like generating grids, tables, or handling complex data processing tasks that involve multiple levels of iteration.
+:::
+
+
+### Example: Nested Loops with Different Iterables
+
+```python
+fruits = ['apple', 'banana', 'cherry']
+colors = ['red', 'yellow', 'green']
+
+for fruit in fruits:
+    for color in colors:
+        print(f"{color} {fruit}")
 ```
 
 ::: {.notes}
+This is an example of using nested loops with different iterables.
+
+Key points:
+- In this example, the outer loop iterates over a list of fruits (`fruits`), and the inner loop iterates over a list of colors (`colors`).
+- The result is a combination of every fruit with every color, printing combinations like "red apple" and "yellow banana."
+
+This is a practical use of nested loops when you need to pair or combine items from different collections. It highlights how nested loops can work across different iterable types, not just numerical ranges.
+:::
+
+
+## Using `else` with Loops
+
+In Python, loops can have an `else` clause. The `else` block executes when the loop completes normally, i.e., without encountering a `break` statement.
+
+::: {.notes}
+Both `for` and `while` loops can have an `else` clause.
+
+Key points:
+- The `else` block runs after the loop finishes, but only if the loop completes without encountering a `break` statement.
+- This is a useful tool for handling scenarios where you want to perform an action after a loop runs successfully, without interruption.
+
+This feature is not commonly found in many other programming languages and offers additional control for post-loop actions in Python. We'll see examples in the upcoming slides that demonstrate how this works in practice.
+:::
+
+
+### `for-else` Example
+
+```python
+def find_even(numbers):
+    for num in numbers:
+        if num % 2 == 0:
+            print(f"Found even number: {num}")
+            break
+    else:
+        print("No even number found")
+
+find_even([1, 3, 5, 7])  # No even number found
+find_even([1, 2, 3, 4])  # Found even number: 2
+```
+
+::: {.notes}
+This is an example of using the `else` clause with a `for` loop.
+
+Key points:
+- The function `find_even(numbers)` searches for an even number in the list. If an even number is found, it prints a message and breaks out of the loop.
+- If the loop completes without finding an even number (i.e., without hitting the `break` statement), the `else` block executes, printing that no even number was found.
+
+This is a practical example of how the `else` block works with a `for` loop. It allows for post-loop behavior depending on whether the loop completed successfully or was interrupted by a `break` statement.
+:::
+
+
+### `while-else` Example
+
+```python
+def find_divisor(n, max_divisor):
+    divisor = 2
+    while divisor <= max_divisor:
+        if n % divisor == 0:
+            print(f"{divisor} is a divisor of {n}")
+            break
+        divisor += 1
+    else:
+        print(f"No divisor found for {n} up to {max_divisor}")
+
+find_divisor(17, 5)  # No divisor found for 17 up to 5
+find_divisor(18, 5)  # 2 is a divisor of 18
+```
+
+
+::: {.notes}
+This is an example of using the `else` clause with a `while` loop.
+
+Key points:
+- The `find_divisor()` function searches for a divisor of `n` up to a specified maximum divisor.
+- If a divisor is found, the loop breaks and the `else` block is skipped.
+- If no divisor is found, the loop finishes, and the `else` block prints a message indicating no divisor was found.
+
+This is a common use case for `while` loops where the `else` block serves as a way to handle the scenario when the loop completes normally without breaking. It’s a powerful feature that helps avoid writing additional conditional checks outside the loop.
+:::
+
+
+## Wrap-Up: Python Loops
+
+1. **For Loops**: Iterate over sequences efficiently
+2. **While Loops**: Execute while a condition is true
+3. **Loop Control**: Use `break`, `continue`, and `pass`
+4. **Nested Loops**: Handle multi-dimensional data
+5. **Loop with else**: Execute code after normal loop completion
+
+::: {.notes}
+This slide summarizes the key takeaways from the presentation on Python loops.
+
+Key points:
+1. **For Loops**: These are ideal for iterating over sequences and collections.
+2. **While Loops**: Best suited for situations where the number of iterations depends on a condition.
+3. **Loop Control**: The `break`, `continue`, and `pass` statements offer ways to modify the behavior of loops.
+4. **Nested Loops**: Useful for handling multi-dimensional data or performing repetitive tasks within a loop.
+5. **Loop with else**: The `else` clause allows you to execute code after a loop completes successfully without hitting a `break`.
+
+These concepts provide a strong foundation for working with loops in Python, making your code more efficient and flexible.
 :::
