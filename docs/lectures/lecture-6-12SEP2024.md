@@ -11,3 +11,8 @@ We will cover the following topics:
 1. [Logical Comparisons](../topics/controlling-program-flow/logical-comparisons.ipynb): Learn about logical comparisons in Python, which are used to compare values and determine if they are equal, not equal, greater than, less than, etc.
 2. [Conditional Statements](../topics/controlling-program-flow/conditional-statements.ipynb): Learn about conditional statements in Python, which allow you to execute different blocks of code based on whether a condition is true or false.
 3. [Loops](../topics/controlling-program-flow/loops.ipynb): Learn about loops in Python, which allow you to repeat a block of code multiple times.
+
+
+```{admonition} Slides
+[https://20cs2023-fs24.github.io/slides/docs/lectures/lecture-6-12SEP2024.html](https://20cs2023-fs24.github.io/slides/docs/lectures/lecture-6-12SEP2024.html)
+```
