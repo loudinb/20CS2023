@@ -8,15 +8,16 @@ Conditional statements are a fundamental concept in programming that allow you t
 :::
 
 
-## {data-menu-title="if Statement"}
+## `if` Statement {.hide}
 
-The `if` statement:
+The basic syntax of the `if` statement:
 
+::: {.absolute width="80%"}
 ```python
-age = 18
-if age >= 18:
-    print("You are eligible to vote.")
+if condition:
+    # code block
 ```
+:::
 
 ::: {.notes}
 **`if` Statement**
@@ -32,17 +33,48 @@ if condition:
 :::
 
 
-## {data-menu-title="if-else Statement"}
+### `if` Example {.hide}
 
-The `if-else` statement:
+The `if` statement:
 
+::: {.r-stack}
+
+::: {.absolute width="80%"}
 ```python
-temperature = 25
-if temperature > 30:
-    print("It's hot outside!")
-else:
-    print("The weather is pleasant.")
+age = 18
+if age >= 18:
+    print("You are eligible to vote.")
 ```
+:::
+
+::: {.fragment .absolute width="80%"}
+```python
+age = 18
+if age >= 18:
+    print("You are eligible to vote.")
+
+# Output: You are eligible to vote.
+```
+:::
+
+:::
+
+::: {.notes}
+:::
+
+
+## `if-else` Statement {.hide}
+
+The basic syntax of the `if-else` statement:
+
+::: {.absolute width="80%"}
+```python
+if condition:
+    # code block 1
+else:
+    # code block 2
+```
+:::
 
 ::: {.notes}
 **`if-else` Statement**
@@ -59,21 +91,58 @@ else:
 ```
 :::
 
-## {data-menu-title="if-elif-else Statement"}
 
-The `if-elif-else` statement:
+### `if-else` Example {.hide}
 
+The `if-else` statement:
+
+::: {.r-stack}
+
+::: {.absolute width="80%"}
 ```python
-score = 85
-if score >= 90:
-    print("A")
-elif score >= 80:
-    print("B")
-elif score >= 70:
-    print("C")
+temperature = 25
+if temperature > 30:
+    print("It's hot outside!")
 else:
-    print("D")
+    print("The weather is pleasant.")
 ```
+:::
+
+::: {.fragment .absolute width="80%"}
+```python
+temperature = 25
+if temperature > 30:
+    print("It's hot outside!")
+else:
+    print("The weather is pleasant.")
+
+# Output: The weather is pleasant.
+```
+:::
+
+:::
+
+::: {.notes}
+:::
+
+
+
+## `if-elif-else` Statement {.hide}
+
+The basic syntax of the `if-elif-else` statement:
+
+
+::: {.absolute width="90%"}
+```python
+if condition1:
+    # code block 1
+elif condition2:
+    # code block 2
+else:
+    # code block 3
+```
+:::
+
 
 ::: {.notes}
 **`if-elif-else` Statement**
@@ -95,7 +164,91 @@ else:
 :::
 
 
-## {data-menu-title="Nested Comparisons"}
+### `if-elif-else` Example {.hide}
+
+The `if-elif-else` statement:
+
+::: {.r-stack}
+
+::: {.absolute width="90%"}
+```python
+score = 85
+if score >= 90:
+    print("A")
+elif score >= 80:
+    print("B")
+elif score >= 70:
+    print("C")
+else:
+    print("D")
+```
+:::
+
+::: {.fragment .absolute width="90%"}
+```python
+score = 85
+if score >= 90:  # False
+    print("A")
+elif score >= 80:
+    print("B")
+elif score >= 70:
+    print("C")
+else:
+    print("D")
+```
+:::
+
+::: {.fragment .absolute width="90%"}
+```python
+score = 85
+if score >= 90:  # False
+    print("A")
+elif score >= 80: # True
+    print("B")
+elif score >= 70:
+    print("C")
+else:
+    print("D")
+```
+:::
+
+::: {.fragment .absolute width="90%"}
+```python
+score = 85
+if score >= 90:  # False
+    print("A")
+elif score >= 80: # True
+    print("B")    # Executes code, exits if-elif-else statement
+elif score >= 70:
+    print("C")
+else:
+    print("D")
+```
+:::
+
+::: {.fragment .absolute width="80%"}
+```python
+score = 85
+if score >= 90:  # False
+    print("A")
+elif score >= 80: # True
+    print("B")    # Executes code, exits if-elif-else statement
+elif score >= 70:
+    print("C")
+else:
+    print("D")
+
+# Output: B
+```
+:::
+
+:::
+
+::: {.notes}
+:::
+
+
+## Nested Comparisons {.hide}
 
 Nested comparisons:
 
@@ -122,22 +275,20 @@ To create more complex decision-making structures
 :::
 
 
-## {data-menu-title="Match Case Statement"}
+## `match-case` Statement {.hide}
 
-Match case statement:
+The match case statement was introduced in Python 3.10. It provides a more concise and readable way to write conditional statements.  It is similar to the switch statement in other programming languages.
+
+General syntax of a `match-case` statement:
 
 ```python
-score = 85
-
-match score:
-    case score if score >= 90:
-        print("A")
-    case score if score >= 80:
-        print("B")
-    case score if score >= 70:
-        print("C")
+match value:
+    case pattern1:
+        # code block 1
+    case pattern2:
+        # code block 2
     case _:
-        print("D")
+        # default code block
 ```
 
 ::: {.callout-note}
@@ -162,4 +313,47 @@ match value:
     case _:
         # default code block
 ```
+:::
+
+
+### `match-case` Example {.hide}
+
+The `match-case` statement:
+
+::: {.r-stack}
+
+::: {.absolute width="90%"}
+```python
+score = 85
+
+match score:
+    case score if score >= 90:
+        print("A")
+    case score if score >= 80:
+        print("B")
+    case score if score >= 70:
+        print("C")
+    case _:
+        print("D")
+```
+:::
+
+::: {.fragment .absolute width="90%"}
+```python
+score = 85
+
+match score:
+    case score if score >= 90:
+        print("A")
+    case score if score >= 80: # True
+        print("B")
+    case score if score >= 70:
+        print("C")
+    case _:
+        print("D")
+
+# Output: B
+```
+:::
+
 :::

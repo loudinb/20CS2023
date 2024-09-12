@@ -42,25 +42,68 @@ The basic syntax of a `for` loop in Python is straightforward:
 
 ### Examples {.hide}
 
+::: {.r-stack}
+
+::: {.fragment .fade-out}
+Iterating over object.
+:::
+
+::: {.fragment .absolute width="80%" top=0 left=0}
 Iterating over lists:
 ```python
 fruits = ['apple', 'banana', 'cherry']
 for fruit in fruits:
-    print(fruit) # Outputs: apple, banana, cherry
+    print(fruit)
 ```
+:::
 
+::: {.fragment .absolute width="80%" top=0 left=0}
+Iterating over lists:
+```python
+fruits = ['apple', 'banana', 'cherry']
+for fruit in fruits:
+    print(fruit)
+# Outputs: apple, banana, cherry
+```
+:::
+
+::: {.fragment .absolute width="80%" top=200 left=0}
 Iterating over tuples:
 ```python
 colors = ('red', 'green', 'blue')
 for color in colors:
-    print(color) # Outputs: red, green, blue
+    print(color)
 ```
+:::
 
+::: {.fragment .absolute width="80%" top=200 left=0}
+Iterating over tuples:
+```python
+colors = ('red', 'green', 'blue')
+for color in colors:
+    print(color)
+# Outputs: red, green, blue
+```
+:::
+
+::: {.fragment .absolute width="80%" top=400 left=0}
 Iterating over strings:
 ```python
 for char in "Python":
-    print(char) # Outputs: P, y, t, h, o, n
+    print(char)
 ```
+:::
+
+::: {.fragment .absolute width="80%" top=400 left=0}
+Iterating over strings:
+```python
+for char in "Python":
+    print(char)
+# Outputs: P, y, t, h, o, n
+```
+:::
+
+:::
 
 ::: {.notes}
 One of the most frequent use cases for `for` loops is iterating over a list.
@@ -118,10 +161,25 @@ The `range()` function generates a sequence of numbers, which is particularly us
 
 Basic syntax:
 
+::: {.r-stack}
+
+::: {.fragment .absolute width="80%"}
 ```python
 for i in range(5):
-    print(i)  # Outputs: 0, 1, 2, 3, 4
+    print(i)
 ```
+:::
+
+::: {.fragment .absolute width="80%"}
+```python
+for i in range(5):
+    print(i)
+    
+# Outputs: 0, 1, 2, 3, 4
+```
+:::
+
+:::
 
 
 ::: {.notes}
@@ -140,21 +198,30 @@ This is a typical use case for `range()` when you need a loop to run a specific 
 :::
 
 
-### Using `range()` with Start, Stop, and Step {.hide}
+### `range()` with Start and Stop {.hide}
 
-You can customize the `range()` function by specifying both a start, stop value, and step value.
+`range` with start and stop values:
 
+::: {.r-stack}
+
+::: {.absolute width="80%"}
 ```python
 for i in range(2, 6):
-    print(i)  # Outputs: 2, 3, 4, 5
+    print(i)
 ```
+:::
 
-With step value:
-
+::: {.fragment .absolute width="80%"}
 ```python
-for i in range(0, 10, 2):
-    print(i)  # Outputs: 0, 2, 4, 6, 8
+for i in range(2, 6):
+    print(i)
+
+# Outputs: 2, 3, 4, 5
 ```
+:::
+
+:::
+
 
 ::: {.notes}
 You can customize the `range()` function by specifying both a start and a stop value.
@@ -162,7 +229,35 @@ You can customize the `range()` function by specifying both a start and a stop v
 Key points:
 - In this example, `range(2, 6)` generates the numbers 2, 3, 4, and 5. It starts at the first number (2) and stops before the second number (6).
 - This is useful when you want a loop to begin at a number other than 0 and iterate up to a specific point.
+:::
 
+
+### `range()` with Start, Stop, and Step {.hide}
+
+`range` with start, stop, and step values:
+
+::: {.r-stack}
+
+::: {.absolute width="80%"}
+```python
+for i in range(0, 10, 2):
+    print(i)  # Outputs: 0, 2, 4, 6, 8
+```
+:::
+
+::: {.fragment .absolute width="80%"}
+```python
+for i in range(0, 10, 2):
+    print(i)
+    
+# Outputs: 0, 2, 4, 6, 8
+```
+:::
+
+:::
+
+
+::: {.notes}
 This introduces the step value, this parameter is useful when you need to skip certain values or perform operations at regular intervals, such as processing every second or third item in a list. It’s also helpful when counting down or iterating over a sequence in reverse.
 
 Key points:
@@ -170,13 +265,23 @@ Key points:
 - In this case, the numbers 0, 2, 4, 6, and 8 are generated.
 :::
 
+### Using `enumerate()` {.hide}
 
-### Using `enumerate()`
-
-The `enumerate()` function allows you to loop over a sequence while keeping track of the index of the current item. It's particularly useful when you need both the index and the value of each element in a sequence.
+`enumerate()` allows you to loop over a sequence while keeping track of the index of the current item.
 
 Basic syntax:
 
+::: {.r-stack}
+
+::: {.absolute width="80%"}
+```python
+fruits = ['apple', 'banana', 'cherry']
+for index, fruit in enumerate(fruits):
+    print(f"Index {index}: {fruit}")
+```
+:::
+
+::: {.fragment .absolute width="80%"}
 ```python
 fruits = ['apple', 'banana', 'cherry']
 for index, fruit in enumerate(fruits):
@@ -184,6 +289,10 @@ for index, fruit in enumerate(fruits):
 
 # Outputs: Index 0: apple, Index 1: banana, Index 2: cherry
 ```
+:::
+
+
+:::
 
 ::: {.notes}
 `enumerate()` returns both the index and the value of each item in the iterable.
@@ -196,14 +305,28 @@ Key points:
 :::
 
 
-### Using `enumerate()` with Start
+### `enumerate()` with Start
 
+
+::: {.r-stack}
+
+::: {.absolute width="80%"}
+```python
+for index, fruit in enumerate(fruits, start=1):
+    print(f"Fruit #{index}: {fruit}")
+```
+:::
+
+::: {.fragment .absolute width="80%"}
 ```python
 for index, fruit in enumerate(fruits, start=1):
     print(f"Fruit #{index}: {fruit}")
 
 # Outputs: Fruit #1: apple, Fruit #2: banana, Fruit #3: cherry
 ```
+:::
+
+:::
 
 ::: {.notes}
 `enumerate()` can take a custom start index.
@@ -246,6 +369,9 @@ It’s important to ensure that the loop’s condition will eventually be false;
 
 ### Example: Countdown
 
+::: {.r-stack}
+
+::: {.absolute width="80%"}
 ```python
 countdown = 5
 while countdown > 0:
@@ -253,9 +379,28 @@ while countdown > 0:
     countdown -= 1
 print("Liftoff!")
 ```
+:::
+
+::: {.fragment .absolute width="80%"}
+```python
+countdown = 5
+while countdown > 0:
+    print(f"{countdown}...")
+    countdown -= 1
+print("Liftoff!")
+
+# Outputs: 5..., 4..., 3..., 2..., 1..., Liftoff!
+```
+:::
+
+:::
+
+
 
 ::: {.notes}
 This slide provides an example of a `while` loop in action with a countdown.
+
+-= is the subtraction assignment operator or the in-place subtraction operator
 
 Key points:
 - The loop starts with a variable `countdown` set to 5. As long as `countdown > 0`, the loop prints the current countdown value and then decrements the value by 1 in each iteration.
@@ -265,13 +410,13 @@ This example is a clear, simple use case of a `while` loop, showcasing how a con
 :::
 
 
-### Simulating a Do-While Loop in Python {.hide}
+### Simulating a Do-While Loop in Python
 
-:::: {style="font-size: 0.7em;"}
+::: {style="font-size: 0.7em;"}
 ::: {.callout-note}
 Python doesn't have a built-in `do-while` loop like some other languages. However, you can simulate similar functionality using a `while True` loop with a conditional check inside the loop to break out of it.
 :::
-::::
+:::
 
 Basic Syntax:
 
@@ -282,8 +427,22 @@ while True:
         break
 ```
 
-In this example, the loop runs at least once before checking the condition and breaks once `i` reaches 5.
+::: {.notes}
+Since Python doesn’t natively support a `do-while` loop, the `while True` structure with a `break` statement is a common way to achieve the same functionality. 
 
+- **Readability and Clarity**: Python emphasizes readability, so it’s generally preferred to place the loop’s condition at the start using a `while` loop. However, for cases where the loop must run at least once, this simulated `do-while` approach works well.
+- **Explicit Control**: The `while True` and `break` combination provides clear control over when the loop exits. Unlike `do-while` loops in other languages where the condition is evaluated after the loop body runs, this method ensures that the condition is checked explicitly after each iteration.
+
+While this pattern is less common in Python due to the preference for placing conditions upfront, it’s useful when you need the loop to run at least once before evaluating the condition.
+:::
+
+
+### Do-While Example
+
+
+::: {.r-stack}
+
+::: {.absolute width="80%"}
 ```python
 i = 0
 while True:
@@ -292,14 +451,26 @@ while True:
     if i >= 5:
         break
 ```
+:::
+
+
+::: {.fragment .absolute width="80%"}
+```python
+i = 0
+while True:
+    print(i)
+    i += 1
+    if i >= 5:
+        break
+
+# Outputs: 0, 1, 2, 3, 4
+```
+:::
+
+:::
 
 ::: {.notes}
-Since Python doesn’t natively support a `do-while` loop, the `while True` structure with a `break` statement is a common way to achieve the same functionality. 
-
-- **Readability and Clarity**: Python emphasizes readability, so it’s generally preferred to place the loop’s condition at the start using a `while` loop. However, for cases where the loop must run at least once, this simulated `do-while` approach works well.
-- **Explicit Control**: The `while True` and `break` combination provides clear control over when the loop exits. Unlike `do-while` loops in other languages where the condition is evaluated after the loop body runs, this method ensures that the condition is checked explicitly after each iteration.
-
-While this pattern is less common in Python due to the preference for placing conditions upfront, it’s useful when you need the loop to run at least once before evaluating the condition.
++= is the addition assignment operator or the in-place addition operator
 :::
 
 
@@ -470,6 +641,9 @@ Key points:
 
 ### Example: Nested Loops with Different Iterables
 
+::: {.r-stack}
+
+::: {.absolute width="80%"}
 ```python
 fruits = ['apple', 'banana', 'cherry']
 colors = ['red', 'yellow', 'green']
@@ -478,6 +652,24 @@ for fruit in fruits:
     for color in colors:
         print(f"{color} {fruit}")
 ```
+:::
+
+
+::: {.fragment .absolute width="80%"}
+```python
+fruits = ['apple', 'banana', 'cherry']
+colors = ['red', 'yellow', 'green']
+
+for fruit in fruits:
+    for color in colors:
+        print(f"{color} {fruit}")
+
+# Outputs: red apple, yellow apple, green apple, red banana, yellow banana, green banana, red cherry, yellow cherry, green cherry
+```
+:::
+
+:::
+
 
 ::: {.notes}
 This is an example of using nested loops with different iterables.
@@ -507,6 +699,21 @@ This feature is not commonly found in many other programming languages and offer
 
 ### `for-else` Example
 
+::: {.r-stack}
+
+::: {.absolute width="80%"}
+```python
+def find_even(numbers):
+    for num in numbers:
+        if num % 2 == 0:
+            print(f"Found even number: {num}")
+            break
+    else:
+        print("No even number found")
+```
+:::
+
+::: {.fragment .absolute width="80%"}
 ```python
 def find_even(numbers):
     for num in numbers:
@@ -516,9 +723,61 @@ def find_even(numbers):
     else:
         print("No even number found")
 
-find_even([1, 3, 5, 7])  # No even number found
-find_even([1, 2, 3, 4])  # Found even number: 2
+find_even([1, 3, 5, 7])
 ```
+:::
+
+::: {.fragment .absolute width="80%"}
+```python
+def find_even(numbers):
+    for num in numbers:
+        if num % 2 == 0:
+            print(f"Found even number: {num}")
+            break
+    else:
+        print("No even number found")
+
+find_even([1, 3, 5, 7])
+# Output: No even number found
+```
+:::
+
+::: {.fragment .absolute width="80%"}
+```python
+def find_even(numbers):
+    for num in numbers:
+        if num % 2 == 0:
+            print(f"Found even number: {num}")
+            break
+    else:
+        print("No even number found")
+
+find_even([1, 3, 5, 7])
+# Output: No even number found
+
+find_even([1, 2, 3, 4]) 
+```
+:::
+
+::: {.fragment .absolute width="80%"}
+```python
+def find_even(numbers):
+    for num in numbers:
+        if num % 2 == 0:
+            print(f"Found even number: {num}")
+            break
+    else:
+        print("No even number found")
+
+find_even([1, 3, 5, 7])
+# Output: No even number found
+
+find_even([1, 2, 3, 4])
+# Output: Found even number: 2
+```
+:::
+
+:::
 
 ::: {.notes}
 This is an example of using the `else` clause with a `for` loop.
@@ -533,6 +792,23 @@ This is a practical example of how the `else` block works with a `for` loop. It 
 
 ### `while-else` Example
 
+::: {.r-stack}
+
+::: {.absolute width="95%"}
+```python
+def find_divisor(n, max_divisor):
+    divisor = 2
+    while divisor <= max_divisor:
+        if n % divisor == 0:
+            print(f"{divisor} is a divisor of {n}")
+            break
+        divisor += 1
+    else:
+        print(f"No divisor found for {n} up to {max_divisor}")
+```
+:::
+
+::: {.fragment .absolute width="95%"}
 ```python
 def find_divisor(n, max_divisor):
     divisor = 2
@@ -544,10 +820,71 @@ def find_divisor(n, max_divisor):
     else:
         print(f"No divisor found for {n} up to {max_divisor}")
 
-find_divisor(17, 5)  # No divisor found for 17 up to 5
-find_divisor(18, 5)  # 2 is a divisor of 18
-```
 
+find_divisor(17, 5)
+```
+:::
+
+::: {.fragment .absolute width="95%"}
+```python
+def find_divisor(n, max_divisor):
+    divisor = 2
+    while divisor <= max_divisor:
+        if n % divisor == 0:
+            print(f"{divisor} is a divisor of {n}")
+            break
+        divisor += 1
+    else:
+        print(f"No divisor found for {n} up to {max_divisor}")
+
+
+find_divisor(17, 5)
+# Output: No divisor found for 17 up to 5
+```
+:::
+
+::: {.fragment .absolute width="95%"}
+```python
+def find_divisor(n, max_divisor):
+    divisor = 2
+    while divisor <= max_divisor:
+        if n % divisor == 0:
+            print(f"{divisor} is a divisor of {n}")
+            break
+        divisor += 1
+    else:
+        print(f"No divisor found for {n} up to {max_divisor}")
+
+
+find_divisor(17, 5)
+# Output: No divisor found for 17 up to 5
+
+find_divisor(18, 5)
+```
+:::
+
+::: {.fragment .absolute width="95%"}
+```python
+def find_divisor(n, max_divisor):
+    divisor = 2
+    while divisor <= max_divisor:
+        if n % divisor == 0:
+            print(f"{divisor} is a divisor of {n}")
+            break
+        divisor += 1
+    else:
+        print(f"No divisor found for {n} up to {max_divisor}")
+
+
+find_divisor(17, 5)
+# Output: No divisor found for 17 up to 5
+
+find_divisor(18, 5)
+# Output: 2 is a divisor of 18
+```
+:::
+
+:::
 
 ::: {.notes}
 This is an example of using the `else` clause with a `while` loop.

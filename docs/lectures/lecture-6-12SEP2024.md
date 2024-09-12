@@ -13,6 +13,6 @@ We will cover the following topics:
 3. [Loops](../topics/controlling-program-flow/loops.ipynb): Learn about loops in Python, which allow you to repeat a block of code multiple times.
 
 
-```{admonition} Slides
+```{admonition} Lecture Slides
 [https://20cs2023-fs24.github.io/slides/docs/lectures/lecture-6-12SEP2024.html](https://20cs2023-fs24.github.io/slides/docs/lectures/lecture-6-12SEP2024.html)
 ```

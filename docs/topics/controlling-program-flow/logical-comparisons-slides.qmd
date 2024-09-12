@@ -13,17 +13,16 @@ Comparison and logical operators allow us to create sophisticated decision-makin
 
 ## {data-menu-title="Comparison Operators"}
 
-::: {.smaller-90}
-| Operator | Description | Example |
-|----------|-------------|---------|
-| `==` | Equal to | `5 == 5` returns `True` |
-| `!=` | Not equal to | `5 != 3` returns `True` |
-| `>` | Greater than | `7 > 3` returns `True` |
-| `<` | Less than | `2 < 8` returns `True` |
-| `>=` | Greater than or equal to | `5 >= 5` returns `True` |
-| `<=` | Less than or equal to | `4 <= 4` returns `True` |
-
-: **Comparison Operators** {tbl-colwidths="[15,30,55]"}
+::: {.smaller-90 .absolute}
+| Operator | Description | Example | Result |
+|----------|-------------|---------| -------|
+| `==` | Equal to | `5 == 5` | <span class="fragment">`True`</span> |
+| `!=` | Not equal to | `5 != 3` | <span class="fragment">`True`</span> |
+| `>` | Greater than | `7 > 10` | <span class="fragment">`False`</span> |
+| `<` | Less than | `8 < 2` | <span class="fragment">`False`</span> |
+| `>=` | Greater than or equal to | `5 >= 5` | <span class="fragment">`True`</span> |
+| `<=` | Less than or equal to | `4 <= 4` | <span class="fragment">`True`</span> |
+: {tbl-colwidths="[15,45,25,15]"}
 :::
 
 ::: {.notes}
@@ -37,12 +36,61 @@ Comparison operators in Python return a Boolean value (`True` or `False`) based 
 
 What happens when we compare objects of different type?
 
+::: {.r-stack}
+
+::: {.fragment .absolute width="90%"}
 ```python
 print(5 == 5.0)
 print("5" == 5)
-print("apple" < "banana")
-print([1, 2, 3] == [1, 2])
+print([1, 2] == {1, 2})
 ```
+:::
+
+::: {.fragment .absolute width="90%"}
+```python
+print(5 == 5.0) # True (implicit type conversion)
+print("5" == 5)
+print([1, 2] == {1, 2})
+```
+:::
+
+::: {.fragment .absolute width="90%"}
+```python
+print(5 == 5.0) # True (implicit type conversion)
+print("5" == 5) # False (different types)
+print([1, 2] == {1, 2})
+```
+:::
+
+::: {.fragment .absolute width="90%"}
+```python
+print(5 == 5.0) # True (implicit type conversion)
+print("5" == 5) # False (different types)
+print([1, 2] == {1, 2}) # False (different types)
+```
+:::
+
+::: {.fragment .absolute width="90%"}
+```python
+print(5 == 5.0) # True (implicit type conversion)
+print("5" == 5) # False (different types)
+print([1, 2] == {1, 2}) # False (different types)
+print("apple" < "banana") # True (lexicographical order)
+```
+:::
+
+::: {.fragment .absolute width="90%"}
+```python
+print(5 == 5.0) # True (implicit type conversion)
+print("5" == 5) # False (different types)
+print([1, 2] == {1, 2}) # False (different types)
+print("apple" < "banana") # True (lexicographical order)
+print([1, 2, 3] == [1, 2]) # False (different lengths)
+```
+:::
+
+:::
+
 
 ::: {.notes}
 **Comparing Objects of Differing Types**
@@ -56,14 +104,14 @@ print([1, 2, 3] == [1, 2])
 
 ## {data-menu-title="Logical Operators"}
 
-::: {.smaller-90}
-| Operator | Description | Example |
-|----------|-------------|---------|
-| `and` | Returns `True` if both operands are true | `(5 > 3) and (10 < 20)` returns `True` |
-| `or` | Returns `True` if at least one operand is true | `(5 < 3) or (10 < 20)` returns `True` |
-| `not` | Negates the operand, returning the opposite Boolean value | `not (5 > 10)` returns `True` |
+::: {.smaller-80}
+| Operator | Description | Example | Result |
+|----------|-------------|---------| -------
+| `and` | Returns `True` if both operands are true | `(5 > 3) and (10 < 20)` | <span class="fragment">`True`</span> |
+| `or` | Returns `True` if at least one operand is true | `(5 < 3) or (10 < 20)` | <span class="fragment">`True`</span> |
+| `not` | Negates the operand, returning the opposite Boolean value | `not (5 > 10)` | <span class="fragment">`True`</span> |
 
-: **Logical Operators** {tbl-colwidths="[15,43,42]"}
+: **Logical Operators** {tbl-colwidths="[10,30,45,15]"}
 :::
 
 ::: {.notes}
@@ -81,6 +129,10 @@ We can chain comparisons together, the general syntax is:
 `result = val1 op1 val2 op2 val3 ... valN opN`
 :::
 
+
+
+::: {.r-stack}
+::: {.absolute width="90%"}
 ```python
 # compound comparison
 (1 < 2) and (2 < 3)
@@ -89,10 +141,73 @@ We can chain comparisons together, the general syntax is:
 1 < 2 < 3
 
 x = 10
-5 < x < 15  # Equivalent to (5 < x) and (x < 15)
+5 < x < 15
 
 not 5 < x < 15
 ```
+:::
+
+::: {.fragment .absolute width="90%"}
+```python
+# compound comparison
+(1 < 2) and (2 < 3) # True
+
+# chained comparisons
+1 < 2 < 3
+
+x = 10
+5 < x < 15
+
+not 5 < x < 15
+```
+:::
+
+::: {.fragment .absolute width="90%"}
+```python
+# compound comparison
+(1 < 2) and (2 < 3) # True
+
+# chained comparisons
+1 < 2 < 3 # True (equivalent to 1 < 2 and 2 < 3)
+
+x = 10
+5 < x < 15
+
+not 5 < x < 15
+```
+:::
+
+::: {.fragment .absolute width="90%"}
+```python
+# compound comparison
+(1 < 2) and (2 < 3) # True
+
+# chained comparisons
+1 < 2 < 3 # True (equivalent to 1 < 2 and 2 < 3)
+
+x = 10
+5 < x < 15 # True (equivalent to 5 < x and x < 15)
+
+not 5 < x < 15
+```
+:::
+
+::: {.fragment .absolute width="90%"}
+```python
+# compound comparison
+(1 < 2) and (2 < 3) # True
+
+# chained comparisons
+1 < 2 < 3 # True (equivalent to 1 < 2 and 2 < 3)
+
+x = 10
+5 < x < 15 # True (equivalent to 5 < x and x < 15)
+
+not 5 < x < 15 # False (negation of 5 < x < 15)
+```
+:::
+
+:::
 
 ::: {.notes}
 **Comparison Chaining**

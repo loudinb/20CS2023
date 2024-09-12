@@ -5,7 +5,7 @@ resources:
   - "docs/_static/*"
 format: 
   revealjs:
-    slide-level: 3
+    slide-level: 4
     scrollable: true
     preview-links: true
     css: "quarto-styles.css"
