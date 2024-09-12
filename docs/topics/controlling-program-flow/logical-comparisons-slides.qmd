@@ -1,12 +1,5 @@
----
-title: Logical Comparisons
-jupyter: python3
-format: 
-  revealjs:
-    scrollable: true
----
-
-## Introduction
+# Logical Comparisons
+Logical comparisons are used to compare values and determine if they are equal, not equal, greater than, less than, etc.
 
 ::: {.notes}
 **Logical Comparisons**

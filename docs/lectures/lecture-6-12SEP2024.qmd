@@ -1,0 +1,17 @@
+# Thursday, September 12, 2024
+
+## Agenda
+
+Today we will explore how to control the flow of a program using conditional statements and loops.
+
+::: {.smaller}
+- Logical comparisons, using operators like `==`, `>`, and `!=`, provide conditions that guide execution. While some flow controls are unconditional, many use these comparisons to make decisions based on variable values or user input.
+- Flow control determines the order in which program instructions are executed, enabling decision-making, looping, and branching. Key structures include conditionals (`if-else`), loops (`for`, `while`), and control statements (`break`, `continue`, `return`).
+:::
+
+{{< include ../topics/controlling-program-flow/logical-comparisons-slides.qmd >}}
+
+{{< include ../topics/controlling-program-flow/conditional-statements-slides.qmd >}}
+
+{{< include ../topics/controlling-program-flow/loops-slides.qmd >}}
+

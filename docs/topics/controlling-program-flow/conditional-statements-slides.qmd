@@ -1,12 +1,5 @@
----
-title: Conditional Statements
-jupyter: python3
-format: 
-  revealjs:
-    scrollable: true
----
-
-## Introduction
+# Conditional Statements
+Conditional statements allow you to execute different blocks of code based on whether a condition is true or false.
 
 ::: {.notes}
 **Conditional Statements**

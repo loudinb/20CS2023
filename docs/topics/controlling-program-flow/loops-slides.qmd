@@ -1,12 +1,5 @@
----
-title: Python Loops
-jupyter: python3
-format: 
-  revealjs:
-    scrollable: true
----
-
-## Introduction
+# Loops
+Loops allow you to repeat a block of code multiple times.
 
 ::: {.notes}
 Loops are one of the most fundamental structures in Python and all programming languages. Loops allow for the automation of repetitive tasks, making code more efficient and easier to maintain.
@@ -119,7 +112,7 @@ This demonstrates how to modify a list in place while iterating over it, and com
 :::
 
 
-### Using `range()` {.hidden}
+### Using `range()` {.hide}
 
 The `range()` function generates a sequence of numbers, which is particularly useful for creating numeric loops.
 
@@ -147,7 +140,7 @@ This is a typical use case for `range()` when you need a loop to run a specific 
 :::
 
 
-### Using `range()` with Start, Stop, and Step {.hidden}
+### Using `range()` with Start, Stop, and Step {.hide}
 
 You can customize the `range()` function by specifying both a start, stop value, and step value.
 
