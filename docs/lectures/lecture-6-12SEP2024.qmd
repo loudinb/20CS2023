@@ -13,5 +13,7 @@ Today we will explore how to control the flow of a program using conditional sta
 
 {{< include ../topics/controlling-program-flow/conditional-statements-slides.qmd >}}
 
+{{< include ../topics/controlling-program-flow/exercise-password-validation.qmd >}}
+
 {{< include ../topics/controlling-program-flow/loops-slides.qmd >}}
 
