@@ -1,0 +1,147 @@
+# Class-Level Attributes and Methods, and Static Methods
+
+## Class Attributes
+
+- Shared across all instances of a class
+- Defined within the class body, outside any method
+- Accessed via the class or any instance
+
+```python
+class User:
+    active_users = 0  # Class attribute
+    platform = "Instagram"  # Another class attribute
+
+    def __init__(self, username, bio):
+        self.username = username
+        self.bio = bio
+        User.active_users += 1
+
+print(User.platform)  # Output: Instagram
+user1 = User("john_doe", "Python enthusiast")
+print(user1.platform)  # Output: Instagram
+print(User.active_users)  # Output: 1
+```
+
+:::{.notes}
+Emphasize:
+1. Class attributes are shared among all instances
+2. They're useful for storing class-wide information
+3. Can be accessed through the class name or any instance
+4. Modifying a class attribute affects all instances
+5. Use cases: constants, counters, configuration settings
+:::
+
+---
+
+## Class Methods
+
+- Operate on the class itself, not on instances
+- Defined using the `@classmethod` decorator
+- First parameter is `cls` (convention), referring to the class
+- Can access and modify class attributes
+- Can be called on the class or any instance
+
+```python
+class User:
+    active_users = 0
+
+    @classmethod
+    def display_active_users(cls):
+        return f"There are currently {cls.active_users} active users."
+
+    @classmethod
+    def from_string(cls, user_string):
+        username, bio = user_string.split(',')
+        return cls(username, bio)
+
+print(User.display_active_users())  # Output: There are currently 0 active users.
+new_user = User.from_string("jane_doe,AI researcher")
+print(User.display_active_users())  # Output: There are currently 1 active users.
+```
+
+:::{.notes}
+Highlight:
+1. Class methods operate on the class, not instances
+2. They're often used as alternative constructors
+3. Can access and modify class attributes
+4. Useful for operations that don't require instance-specific data
+5. Can be called on the class or any instance
+:::
+
+---
+
+## Static Methods
+
+- Do not operate on instance or class data
+- Defined using the `@staticmethod` decorator
+- No mandatory first parameter
+- Cannot access instance or class attributes (unless passed)
+- Used for utility functions related to the class
+
+```python
+class User:
+    @staticmethod
+    def validate_username(username):
+        return len(username) >= 3 and username.isalnum()
+
+    def __init__(self, username):
+        if User.validate_username(username):
+            self.username = username
+        else:
+            raise ValueError("Invalid username")
+
+print(User.validate_username("john123"))  # Output: True
+print(User.validate_username("a"))  # Output: False
+
+user1 = User("jane_doe")  # Valid
+# user2 = User("x")  # Raises ValueError
+```
+
+:::{.notes}
+Stress:
+1. Static methods don't access instance or class state
+2. They're essentially regular functions grouped in the class namespace
+3. Useful for utility functions related to the class's purpose
+4. Can be called on the class or instances
+5. Helps in organizing code logically within the class
+:::
+
+---
+
+## Comparison: Instance vs. Class vs. Static Methods
+
+| Feature | Instance Method | Class Method | Static Method |
+|---------|-----------------|--------------|---------------|
+| Decorator | None | `@classmethod` | `@staticmethod` |
+| First parameter | `self` | `cls` | None (optional) |
+| Can access | Instance & class attributes | Class attributes | Neither (unless passed) |
+| Called on | Instance | Class or instance | Class or instance |
+| Use case | Instance-specific operations | Class-related operations, alternative constructors | Utility functions |
+
+```python
+class Example:
+    class_attr = "I'm a class attribute"
+
+    def __init__(self):
+        pass
+
+    def instance_method(self):
+        return f"Instance method, can access {self.class_attr}"
+
+    @classmethod
+    def class_method(cls):
+        return f"Class method, can access {cls.class_attr}"
+
+    @staticmethod
+    def static_method():
+        return "Static method, cannot access class or instance attributes"
+```
+
+:::{.notes}
+Emphasize:
+1. The different use cases for each type of method
+2. How they differ in terms of what data they can access
+3. When to use each type in real-world scenarios
+4. The flexibility of class and static methods (can be called on class or instance)
+5. Encourage students to practice identifying which type of method is most appropriate for different situations
+:::

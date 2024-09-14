@@ -1,0 +1,21 @@
+# Tuesday, September 17, 2024
+
+## Agenda
+
+Today we will discuss object-oriented programming and how to create classes and objects in Python.  We will leverage these concepts to create an instagram like application.
+
+::: {.smaller}
+- Logical comparisons, using operators like `==`, `>`, and `!=`, provide conditions that guide execution. While some flow controls are unconditional, many use these comparisons to make decisions based on variable values or user input.
+- Flow control determines the order in which program instructions are executed, enabling decision-making, looping, and branching. Key structures include conditionals (`if-else`), loops (`for`, `while`), and control statements (`break`, `continue`, `return`).
+:::
+
+{{< include ../topics/object-oriented-programming/slides/0-oop-introduction.qmd >}}
+
+{{< include ../topics/object-oriented-programming/slides/1-classes.qmd >}}
+{{< include ../topics/object-oriented-programming/slides/1-hands-on.qmd >}}
+
+{{< include ../topics/object-oriented-programming/slides/2-objects.qmd >}}
+{{< include ../topics/object-oriented-programming/slides/2-hands-on.qmd >}}
+
+{{< include ../topics/object-oriented-programming/slides/3-property-decorator.qmd >}}
+{{< include ../topics/object-oriented-programming/slides/3-hands-on.qmd >}}

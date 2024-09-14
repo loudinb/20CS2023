@@ -1,0 +1,33 @@
+# Hands-On: Objects
+
+## Instantiating `User` Objects {.hide}
+
+Create multiple instances of the `User` class and demonstrate how they have unique attributes but share methods.
+
+- Import the `User` class from the `user` module
+- Create two `User` instances
+- Verify instance attributes
+- Demonstrate shared methods
+
+
+:::{.notes}
+```python
+from user import User
+```
+
+1. Instantiation: We create two distinct User objects. This shows how a class serves as a blueprint for creating multiple instances.
+
+2. Unique Attributes: Each user has its own username and bio. This illustrates how instances maintain their own state.
+
+3. Shared Methods: Both users can call the same methods (create_post, get_posts, get_join_date). This demonstrates how instances share behavior defined in the class.
+
+4. Encapsulation: We interact with the objects using their methods, not by directly manipulating their attributes. This is a key principle of OOP.
+
+5. Identity: Even though both users are created from the same class, they are distinct objects with their own identity.
+
+When running this code, observe:
+- The different usernames and bios printed for each user.
+- How each user can create posts independently.
+- The posts for each user are stored separately.
+- The join dates might be slightly different due to the time of instantiation.
+:::

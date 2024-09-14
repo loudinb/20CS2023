@@ -6,6 +6,7 @@ resources:
 format: 
   revealjs:
     slide-level: 4
+    toc-depth: 4
     scrollable: true
     preview-links: true
     css: "quarto-styles.css"
