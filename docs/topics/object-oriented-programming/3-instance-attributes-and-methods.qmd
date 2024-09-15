@@ -1,0 +1,161 @@
+# Instance Attributes and Methods
+
+::: {.notes}
+Welcome to our session on Instance Attributes and Methods in Python. Today, we'll explore how to work with attributes and methods specific to individual objects, which is a key aspect of object-oriented programming.
+:::
+
+
+## What are Instance Attributes?
+
+- Data specific to each object
+- Defined inside the `__init__` method
+- Accessed using `self.attribute_name`
+
+::: {.notes}
+Instance attributes are pieces of data that belong to a specific instance of a class. They're unique to each object and represent the object's state. We define these attributes in the `__init__` method, which is called when we create a new object. Inside the class, we access these attributes using `self.attribute_name`.
+:::
+
+
+## Creating Instance Attributes
+
+```python
+class User:
+    def __init__(self, username, email):
+        self.username = username
+        self.email = email
+        self.posts = []
+```
+
+::: {.notes}
+In this example, we're creating a `User` class with three instance attributes: `username`, `email`, and `posts`. The `__init__` method takes `username` and `email` as parameters and assigns them to the instance attributes. We also initialize `posts` as an empty list. Each `User` object we create will have its own set of these attributes.
+:::
+
+
+## Accessing Instance Attributes
+
+```python
+user1 = User("alice", "alice@example.com")
+print(user1.username)  # Output: alice
+print(user1.email)     # Output: alice@example.com
+```
+
+::: {.notes}
+Once we've created an object, we can access its instance attributes using dot notation. Here, we're creating a `User` object and then printing out its `username` and `email` attributes. This demonstrates how each object maintains its own state.
+:::
+
+
+## Modifying Instance Attributes
+
+```python
+user1.email = "newalice@example.com"
+print(user1.email)  # Output: newalice@example.com
+```
+
+::: {.notes}
+We can also modify instance attributes after the object has been created. Here, we're changing the `email` attribute of `user1`. This change only affects this particular instance of the `User` class. If we had other `User` objects, their `email` attributes would remain unchanged.
+:::
+
+
+## What are Instance Methods?
+
+- Functions defined inside a class
+- Operate on instance attributes
+- First parameter is always `self`
+
+::: {.notes}
+Instance methods are functions that we define inside a class. They can access and modify the instance attributes of the object they're called on. The first parameter of an instance method is always `self`, which refers to the instance the method is being called on. This allows the method to access the instance's attributes and other methods.
+:::
+
+
+## Creating Instance Methods
+
+```python
+class User:
+    def __init__(self, username, email):
+        self.username = username
+        self.email = email
+        self.posts = []
+    
+    def add_post(self, content):
+        self.posts.append(content)
+        return f"Post added: {content}"
+```
+
+::: {.notes}
+Here, we've added an `add_post` method to our `User` class. This method takes a `content` parameter and appends it to the `posts` list. Note that `self` is the first parameter, allowing the method to access the instance's `posts` attribute.
+:::
+
+
+## Calling Instance Methods
+
+```python
+user1 = User("bob", "bob@example.com")
+result = user1.add_post("Hello, world!")
+print(result)  # Output: Post added: Hello, world!
+print(user1.posts)  # Output: ['Hello, world!']
+```
+
+::: {.notes}
+To call an instance method, we use dot notation on an object. Here, we're calling the `add_post` method on `user1`. The method adds the post to the `posts` list and returns a confirmation message. After calling the method, we can see that the `posts` attribute has been updated.
+:::
+
+
+## Instance Methods vs Functions
+
+- Instance methods can access instance attributes
+- They can call other instance methods
+- They're specific to the class and its instances
+
+::: {.notes}
+Instance methods differ from regular functions in several ways:
+1. They have access to instance attributes through `self`.
+2. They can call other instance methods of the same class.
+3. They're bound to the class and can only be called on instances of that class.
+These characteristics make instance methods powerful for encapsulating behavior that's specific to a particular type of object.
+:::
+
+
+## The `self` Parameter
+
+- Represents the instance in method definitions
+- Automatically passed when calling method on an object
+- Allows access to instance attributes and methods
+
+::: {.notes}
+The `self` parameter is crucial in instance methods. When we define a method, `self` represents the instance that the method will be called on. When we call a method on an object, Python automatically passes the object as the `self` argument. This is why we don't need to explicitly pass `self` when calling a method.
+:::
+
+
+## Using `self` in Methods
+
+```python
+class User:
+    def __init__(self, username, email):
+        self.username = username
+        self.email = email
+    
+    def get_info(self):
+        return f"Username: {self.username}, Email: {self.email}"
+```
+
+::: {.notes}
+In this example, the `get_info` method uses `self` to access the `username` and `email` attributes of the instance. This allows the method to work with the specific data of the object it's called on. When we call this method on a `User` object, it will return a string with that user's information.
+:::
+
+
+## Summary
+
+- Instance attributes store object-specific data
+- They're defined in `__init__` and accessed with `self`
+- Instance methods operate on instance attributes
+- Methods use `self` to access instance data
+- These concepts allow for encapsulation in OOP
+
+::: {.notes}
+To summarize, we've learned about instance attributes and methods:
+- Instance attributes allow each object to have its own state.
+- We define them in the `__init__` method and access them using `self`.
+- Instance methods are functions defined in a class that can operate on instance attributes.
+- The `self` parameter in methods refers to the instance the method is called on.
+- These concepts are fundamental to encapsulation in object-oriented programming, allowing us to bundle data and the methods that operate on that data together in objects.
+:::

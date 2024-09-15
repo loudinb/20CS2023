@@ -1,0 +1,118 @@
+# Classes and Objects
+
+::: {.notes}
+In this session, we'll explore what classes and objects are in Python, how to define them, and how to create instances of classes. We'll also see how classes help us organize code and manage complexity.
+:::
+
+
+## What is a Class?
+
+- A blueprint for creating objects
+- Defines attributes (data) and methods (functions)
+- Allows us to create multiple objects with the same structure
+
+::: {.notes}
+A class is like a template that specifies what data an object will hold and what operations can be performed on that data. By defining a class, we can create multiple objects that share the same structure but have different values for their attributes.
+:::
+
+
+## Defining a Class
+
+```python
+class User:
+    def __init__(self, username, bio):
+        self.username = username
+        self.bio = bio
+        self.posts = []
+```
+
+::: {.notes}
+Here, we define a class named `User`. The `__init__` method is a special method called a constructor. It initializes new instances of the class. The `self` parameter refers to the instance being created. We set up attributes like `username`, `bio`, and `posts` for each user.
+:::
+
+
+## What is an Object?
+
+- An instance of a class
+- Has its own unique set of attribute values
+- Shares methods defined by the class
+
+::: {.notes}
+An object is a specific realization of a class. When we create an object, we are instantiating the class. Each object has its own data stored in attributes and can use the methods defined by the class.
+:::
+
+
+## Creating Objects (Instantiation)
+
+```python
+user1 = User("john_doe", "Just another user")
+user2 = User("jane_smith", "Loves photography")
+```
+
+::: {.notes}
+We create objects by calling the class as if it were a function. Here, `user1` and `user2` are two instances of the `User` class, each with their own `username` and `bio`. They also have their own `posts` list, initialized as empty.
+:::
+
+
+## Accessing Attributes
+
+```python
+print(user1.username)  # Output: john_doe
+print(user2.bio)       # Output: Loves photography
+```
+
+::: {.notes}
+We can access an object's attributes using dot notation. This allows us to retrieve or modify the data stored in the object. For example, `user1.username` gives us the username of `user1`.
+:::
+
+
+## Adding Methods to a Class
+
+```python
+class User:
+    def __init__(self, username, bio):
+        self.username = username
+        self.bio = bio
+        self.posts = []
+    
+    def add_post(self, post):
+        self.posts.append(post)
+```
+
+::: {.notes}
+We can add methods to a class to define behaviors. The `add_post` method allows a user to add a new post to their list of posts. Methods are functions that operate on the data within the object.
+:::
+
+
+## Using Methods
+
+```python
+user1.add_post("Hello, world!")
+print(user1.posts)  # Output: ['Hello, world!']
+```
+
+::: {.notes}
+We call methods on an object using dot notation. Here, `user1` adds a post, and we can see the updated list of posts. Methods can modify the object's attributes or perform actions using those attributes.
+:::
+
+
+## The `self` Parameter
+
+- Represents the instance of the class
+- Used to access attributes and methods within the class
+- Must be the first parameter in instance methods
+
+::: {.notes}
+The `self` parameter is how a method knows which object it is working with. It allows methods to access and modify the attributes of the specific instance. In the class definition, every instance method must have `self` as its first parameter.
+:::
+
+
+## The `__init__` Method
+
+- Called automatically when creating a new object
+- Used to initialize attributes
+- The `self` parameter refers to the new object
+
+::: {.notes}
+The `__init__` method is a special method in Python classes. It's called automatically when a new object is created from the class. This method is commonly used to set up the initial state of the object by assigning values to the object's attributes.
+:::

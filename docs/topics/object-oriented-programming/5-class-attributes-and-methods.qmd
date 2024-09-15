@@ -1,0 +1,243 @@
+# Class Attributes and Methods
+
+::: {.notes}
+Welcome to our session on Class Attributes and Methods in Python. Today, we'll explore these important concepts that allow us to define data and behavior at the class level, rather than at the instance level.
+:::
+
+
+## What are Class Attributes?
+
+- Attributes shared by all instances of a class
+- Defined outside any method in the class
+- Accessed using the class name or instance name
+
+::: {.notes}
+Class attributes are variables that are shared by all instances of a class. Unlike instance attributes, which are specific to each object, class attributes have the same value for every instance. They are defined outside of any method in the class and can be accessed using either the class name or an instance of the class.
+:::
+
+
+## Defining Class Attributes
+
+```python
+class User:
+    user_count = 0  # This is a class attribute
+
+    def __init__(self, username):
+        self.username = username
+        User.user_count += 1
+```
+
+::: {.notes}
+In this example, `user_count` is a class attribute. It's defined directly in the class body, outside of any method. We increment it in the `__init__` method every time a new User object is created, allowing us to keep track of how many User objects have been instantiated.
+:::
+
+
+## Accessing Class Attributes
+
+```python
+print(User.user_count)  # Access via class name
+user = User("alice")
+print(user.user_count)  # Access via instance
+print(User.user_count)  # Class attribute updated
+```
+
+::: {.notes}
+Class attributes can be accessed using the class name (User.user_count) or through an instance of the class (user.user_count). When we create a new User object, the user_count is incremented. Note that whether we access it through the class or an instance, we're referring to the same shared data.
+:::
+
+
+## Modifying Class Attributes
+
+```python
+User.user_count = 10  # Modifies the class attribute
+user1 = User("bob")
+user2 = User("charlie")
+print(User.user_count)  # Output: 12
+```
+
+::: {.notes}
+Class attributes can be modified by referring to them through the class name. Here, we directly set User.user_count to 10. Then, when we create two more User objects, it's incremented twice, resulting in a final value of 12. This change affects all instances of the User class.
+:::
+
+
+## Class Attributes vs Instance Attributes
+
+```python
+class Example:
+    class_attr = "I'm a class attribute"
+    
+    def __init__(self):
+        self.instance_attr = "I'm an instance attribute"
+
+e1 = Example()
+e2 = Example()
+
+print(e1.class_attr)  # Output: I'm a class attribute
+print(e2.class_attr)  # Output: I'm a class attribute
+print(e1.instance_attr)  # Output: I'm an instance attribute
+print(e2.instance_attr)  # Output: I'm an instance attribute
+
+Example.class_attr = "Modified class attribute"
+print(e1.class_attr)  # Output: Modified class attribute
+print(e2.class_attr)  # Output: Modified class attribute
+
+e1.instance_attr = "Modified instance attribute"
+print(e1.instance_attr)  # Output: Modified instance attribute
+print(e2.instance_attr)  # Output: I'm an instance attribute
+```
+
+::: {.notes}
+This example illustrates the difference between class attributes and instance attributes:
+1. Class attributes (class_attr) are shared among all instances.
+2. Instance attributes (instance_attr) are specific to each instance.
+3. Modifying a class attribute affects all instances.
+4. Modifying an instance attribute only affects that specific instance.
+Understanding this distinction is crucial for designing classes effectively.
+:::
+
+
+## What are Class Methods?
+
+- Methods that operate on the class itself
+- Defined using the `@classmethod` decorator
+- First parameter is `cls` (the class) instead of `self`
+
+::: {.notes}
+Class methods are methods that are bound to the class rather than its instances. They can access and modify class state that applies across all instances of the class. Class methods are defined using the `@classmethod` decorator, and their first parameter is conventionally named `cls`, which refers to the class itself.
+:::
+
+
+## Defining Class Methods
+
+```python
+class User:
+    user_count = 0
+
+    def __init__(self, username):
+        self.username = username
+        User.user_count += 1
+
+    @classmethod
+    def display_user_count(cls):
+        print(f"There are {cls.user_count} users")
+
+    @classmethod
+    def create_anonymous(cls):
+        return cls("Anonymous")
+```
+
+::: {.notes}
+In this example, we've defined two class methods:
+1. `display_user_count` which prints the current user count.
+2. `create_anonymous` which creates a new User instance with the username "Anonymous".
+Note that both methods use `cls` instead of `self` as their first parameter.
+:::
+
+
+## Using Class Methods
+
+```python
+User.display_user_count()  # Output: There are 0 users
+user1 = User("alice")
+User.display_user_count()  # Output: There are 1 users
+
+anon_user = User.create_anonymous()
+print(anon_user.username)  # Output: Anonymous
+User.display_user_count()  # Output: There are 2 users
+```
+
+::: {.notes}
+Class methods can be called on the class itself, without needing to create an instance. In this example, we call `display_user_count` directly on the User class. We also use the `create_anonymous` class method to create a new User instance with a predefined username. Class methods are useful for operations that involve the class as a whole, rather than a specific instance.
+:::
+
+
+## Class Methods vs Static Methods
+
+- Static methods don't receive an automatic first argument
+- Defined using the `@staticmethod` decorator
+- Cannot access or modify class state
+
+```python
+class MathOperations:
+    @classmethod
+    def add_and_double(cls, x, y):
+        return cls.double(x + y)
+    
+    @staticmethod
+    def double(x):
+        return x * 2
+
+print(MathOperations.add_and_double(3, 4))  # Output: 14
+print(MathOperations.double(5))  # Output: 10
+```
+
+::: {.notes}
+While class methods receive the class as an implicit first argument, static methods don't receive any implicit arguments. Static methods are defined using the `@staticmethod` decorator. They can't access or modify class state. In this example, `add_and_double` is a class method that can call other methods of the class, while `double` is a static method that operates independently of the class state.
+:::
+
+
+## When to Use Class Methods
+
+- Factory methods for creating instances
+- Methods that modify class state
+- Methods that depend on class state but not instance state
+
+::: {.notes}
+Class methods are particularly useful in several scenarios:
+1. As factory methods that return instances of the class, potentially with some preprocessing.
+2. When you need to modify the class state that applies across all instances.
+3. For methods that need to access class attributes but don't need to access instance attributes.
+Always consider whether an operation is related to the class as a whole or to specific instances when deciding between class and instance methods.
+:::
+
+
+## Class Methods as Alternative Constructors
+
+```python
+class Date:
+    def __init__(self, year, month, day):
+        self.year = year
+        self.month = month
+        self.day = day
+
+    @classmethod
+    def from_string(cls, date_string):
+        year, month, day = map(int, date_string.split('-'))
+        return cls(year, month, day)
+
+    @classmethod
+    def today(cls):
+        import datetime
+        d = datetime.date.today()
+        return cls(d.year, d.month, d.day)
+
+date1 = Date(2023, 9, 15)
+date2 = Date.from_string("2023-09-15")
+date3 = Date.today()
+```
+
+::: {.notes}
+Class methods are often used as alternative constructors. In this example, we have a Date class with two class methods:
+1. `from_string` which creates a Date object from a string representation.
+2. `today` which creates a Date object representing the current date.
+These methods provide different ways to create Date objects, enhancing the flexibility of our class.
+:::
+
+
+## Summary
+
+- Class attributes are shared across all instances
+- Class methods operate on the class, not instances
+- Use `@classmethod` decorator for class methods
+- Class methods receive `cls` as first parameter
+- Useful for factory methods and class-wide operations
+
+::: {.notes}
+To summarize, we've covered:
+1. Class attributes, which are shared by all instances of a class.
+2. Class methods, which operate on the class itself rather than on instances.
+3. How to define class methods using the `@classmethod` decorator.
+4. The difference between class methods and static methods.
+5. Common use cases for class methods, including alternative constructors.
+Understanding these concepts allows you to write more efficient and organized code, especially when dealing with operations that affect all instances of a class or when you need alternative ways to create objects.
+:::

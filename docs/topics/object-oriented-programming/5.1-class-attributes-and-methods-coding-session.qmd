@@ -1,0 +1,178 @@
+# Coding Session: Class Attributes and Methods
+
+
+## Overview
+
+In this coding session, we'll enhance our Instagram-like app by adding class attributes and methods to our `User` class. We'll implement features like user tracking, content moderation, and alternative ways to create user accounts.
+
+
+## Step 1: Open the `user.py` File
+
+Open the `user.py` file from our previous sessions. We'll be adding to this file to implement class attributes and methods.
+
+
+## Step 2: Add Class Attributes
+
+Add the following class attributes to the `User` class:
+
+```python
+class User:
+    user_count = 0
+    max_username_length = 20
+    banned_words = ["spam", "offensive", "inappropriate"]
+```
+
+::: {.notes}
+We've added three class attributes:
+- `user_count` to keep track of the number of users
+- `max_username_length` to set a limit on username length
+- `banned_words` to implement basic content moderation
+:::
+
+
+## Step 3: Update the `__init__` Method
+
+Modify the `__init__` method to use the class attributes:
+
+```python
+def __init__(self, username, email, password, bio=""):
+    if len(username) > User.max_username_length:
+        raise ValueError(f"Username must be {User.max_username_length} characters or less")
+    self._username = username
+    self._email = email
+    self._bio = bio
+    self._posts = []
+    self._followers = []
+    self._following = []
+    self.__password_hash = self.__hash_password(password)
+    User.user_count += 1
+```
+
+::: {.notes}
+We've updated the `__init__` method to check the username length against `max_username_length`. We also increment the `user_count` when a new user is created.
+:::
+
+
+## Step 4: Implement a Class Method for User Statistics
+
+Add a class method to display user statistics:
+
+```python
+@classmethod
+def display_user_stats(cls):
+    return f"Total users: {cls.user_count}"
+```
+
+::: {.notes}
+This class method allows us to display the total number of users without needing to create an instance of the `User` class.
+:::
+
+
+## Step 5: Implement a Class Method for Content Moderation
+
+Add a class method for content moderation:
+
+```python
+@classmethod
+def is_content_allowed(cls, content):
+    return not any(word in content.lower() for word in cls.banned_words)
+```
+
+::: {.notes}
+This class method checks if the given content contains any banned words. It can be used to moderate posts, comments, or other user-generated content.
+:::
+
+
+## Step 6: Create an Alternative Constructor
+
+Add a class method to create an anonymous user:
+
+```python
+@classmethod
+def create_anonymous(cls):
+    username = f"anonymous_{cls.user_count + 1}"
+    email = f"{username}@example.com"
+    return cls(username, email, "anonymous_password")
+```
+
+::: {.notes}
+This class method serves as an alternative constructor, creating a user with an anonymous username and email.
+:::
+
+
+## Step 7: Update the `create_post` Method
+
+Modify the `create_post` method to use content moderation:
+
+```python
+def create_post(self, image_url, caption):
+    if User.is_content_allowed(caption):
+        post = {
+            'image_url': image_url,
+            'caption': caption,
+            'timestamp': datetime.now()
+        }
+        self._posts.append(post)
+        return f"Post created: {caption}"
+    else:
+        return "Post not allowed due to inappropriate content"
+```
+
+::: {.notes}
+We've updated the `create_post` method to check the caption using our `is_content_allowed` class method before creating a post.
+:::
+
+
+## Step 8: Test Your Enhanced Class
+
+Create a new Python file named `test_class_features.py` and add the following code:
+
+```python
+from user import User
+
+# Test user creation and user count
+user1 = User("alice", "alice@example.com", "password123")
+user2 = User("bob", "bob@example.com", "password456")
+print(User.display_user_stats())  # Should display total users
+
+# Test max username length
+try:
+    User("very_long_username_that_exceeds_limit", "test@example.com", "password")
+except ValueError as e:
+    print(f"Caught an error: {e}")
+
+# Test content moderation
+user1.create_post("image.jpg", "Hello, world!")
+print(user1.create_post("image2.jpg", "This post contains spam"))
+
+# Test anonymous user creation
+anon_user = User.create_anonymous()
+print(f"Anonymous user created: {anon_user.username}")
+
+# Display final user stats
+print(User.display_user_stats())
+```
+
+::: {.notes}
+This test script demonstrates:
+1. Creating users and checking the user count
+2. Testing the username length limit
+3. Testing the content moderation feature
+4. Creating an anonymous user
+5. Displaying user statistics
+Run this script and observe the output. Make sure all the new features are working as expected.
+:::
+
+
+## Conclusion
+
+In this coding session, we've enhanced our `User` class with class attributes and methods:
+
+1. We've added class attributes for user tracking and content moderation.
+2. We've implemented class methods for user statistics and content checking.
+3. We've created an alternative constructor for anonymous users.
+4. We've updated existing methods to use these new features.
+
+::: {.notes}
+This session has given you hands-on experience with implementing class attributes and methods. You've seen how they can be used to add features that apply to all instances of a class, such as user tracking and content moderation. These concepts are powerful tools for creating more robust and feature-rich classes in your applications.
+:::

@@ -1,0 +1,152 @@
+# Coding Session: Instance Attributes and Methods
+
+
+## Overview
+
+In this coding session, we'll enhance our `User` class by adding more instance attributes and methods. We'll focus on creating a simple profile system for our Instagram-like app.
+
+
+## Step 1: Open the `user.py` File
+
+Open the `user.py` file we created in the previous session. We'll be adding to this file.
+
+
+## Step 2: Add New Instance Attributes
+
+Update the `__init__` method to include new attributes:
+
+```python
+class User:
+    def __init__(self, username, email, bio=""):
+        self.username = username
+        self.email = email
+        self.bio = bio
+        self.posts = []
+        self.followers = []
+        self.following = []
+```
+
+::: {.notes}
+We've added `email`, `bio`, `followers`, and `following` attributes. The `bio` parameter has a default value of an empty string.
+:::
+
+
+## Step 3: Create a Method to Update Bio
+
+Add a method to update the user's bio:
+
+```python
+def update_bio(self, new_bio):
+    self.bio = new_bio
+    return f"Bio updated: {self.bio}"
+```
+
+::: {.notes}
+This method allows us to change the user's bio and returns a confirmation message.
+:::
+
+
+## Step 4: Create a Method to Follow Another User
+
+Add a method to follow another user:
+
+```python
+def follow(self, other_user):
+    if other_user not in self.following:
+        self.following.append(other_user)
+        other_user.followers.append(self)
+        return f"{self.username} is now following {other_user.username}"
+    return f"{self.username} is already following {other_user.username}"
+```
+
+::: {.notes}
+This method adds another user to the `following` list and adds the current user to the other user's `followers` list.
+:::
+
+
+## Step 5: Create a Method to Unfollow a User
+
+Add a method to unfollow a user:
+
+```python
+def unfollow(self, other_user):
+    if other_user in self.following:
+        self.following.remove(other_user)
+        other_user.followers.remove(self)
+        return f"{self.username} has unfollowed {other_user.username}"
+    return f"{self.username} is not following {other_user.username}"
+```
+
+::: {.notes}
+This method removes a user from the `following` list and removes the current user from the other user's `followers` list.
+:::
+
+
+## Step 6: Create a Method to Get User Info
+
+Add a method to get user information:
+
+```python
+def get_user_info(self):
+    return (f"Username: {self.username}\n"
+            f"Email: {self.email}\n"
+            f"Bio: {self.bio}\n"
+            f"Posts: {len(self.posts)}\n"
+            f"Followers: {len(self.followers)}\n"
+            f"Following: {len(self.following)}")
+```
+
+::: {.notes}
+This method returns a formatted string with the user's information, including the number of posts, followers, and users they're following.
+:::
+
+
+## Step 7: Test Your New Methods
+
+Create a new Python file named `test_user.py` and add the following code:
+
+```python
+from user import User
+
+# Create users
+alice = User("alice", "alice@example.com", "I love photography")
+bob = User("bob", "bob@example.com")
+
+# Update bob's bio
+print(bob.update_bio("Coffee enthusiast"))
+
+# Alice follows Bob
+print(alice.follow(bob))
+
+# Get user info
+print(alice.get_user_info())
+print(bob.get_user_info())
+
+# Bob follows Alice
+print(bob.follow(alice))
+
+# Alice unfollows Bob
+print(alice.unfollow(bob))
+
+# Print updated user info
+print(alice.get_user_info())
+print(bob.get_user_info())
+```
+
+::: {.notes}
+This script creates two users, updates a bio, demonstrates following and unfollowing, and prints user information at different stages.
+:::
+
+
+## Step 8: Run the Test Script
+
+Run the `test_user.py` script and observe the output. Make sure all the methods are working as expected.
+
+
+## Conclusion
+
+In this coding session, we've added several instance attributes and methods to our `User` class, making it more functional for our Instagram-like app. We've implemented features like updating bios, following/unfollowing users, and getting user information.
+
+::: {.notes}
+This session has given you hands-on experience with creating and using instance attributes and methods. You've seen how these concepts can be applied to build features commonly found in social media applications. Remember, instance attributes store data specific to each object, while instance methods allow us to define behaviors that can interact with and modify this data.
+:::

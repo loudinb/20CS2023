@@ -1,0 +1,204 @@
+# Coding Session: Encapsulation and Data Hiding
+
+
+## Overview
+
+In this coding session, we'll apply encapsulation and data hiding principles to our `User` class. We'll use protected attributes, properties, and add validation to ensure data integrity.
+
+
+## Step 1: Open the `user.py` File
+
+Open the `user.py` file from our previous sessions. We'll be modifying this file to implement encapsulation and data hiding.
+
+
+## Step 2: Update Attributes to Protected
+
+Change the attributes to use the protected naming convention:
+
+```python
+class User:
+    def __init__(self, username, email, bio=""):
+        self._username = username
+        self._email = email
+        self._bio = bio
+        self._posts = []
+        self._followers = []
+        self._following = []
+```
+
+::: {.notes}
+We've changed all attributes to use a single underscore prefix, indicating they should be treated as protected. This signals that these attributes are intended for internal use within the class and its subclasses.
+:::
+
+
+## Step 3: Implement Properties for Attributes
+
+Add properties for `username`, `email`, and `bio`:
+
+```python
+@property
+def username(self):
+    return self._username
+
+@property
+def email(self):
+    return self._email
+
+@email.setter
+def email(self, new_email):
+    if '@' in new_email:
+        self._email = new_email
+    else:
+        raise ValueError("Invalid email format")
+
+@property
+def bio(self):
+    return self._bio
+
+@bio.setter
+def bio(self, new_bio):
+    if len(new_bio) <= 150:
+        self._bio = new_bio
+    else:
+        raise ValueError("Bio must be 150 characters or less")
+```
+
+::: {.notes}
+We've added properties for `username`, `email`, and `bio`. The `username` is read-only, while `email` and `bio` have both getters and setters. The setters include validation to ensure data integrity.
+:::
+
+
+## Step 4: Update Methods to Use Properties
+
+Update the `update_bio` method to use the new `bio` property:
+
+```python
+def update_bio(self, new_bio):
+    self.bio = new_bio
+    return f"Bio updated: {self.bio}"
+```
+
+::: {.notes}
+We've updated the `update_bio` method to use the `bio` property. This ensures that the validation in the property's setter is used when updating the bio.
+:::
+
+
+## Step 5: Add a Private Attribute
+
+Add a private attribute for storing the user's password hash:
+
+```python
+import hashlib
+
+class User:
+    def __init__(self, username, email, password, bio=""):
+        # ... other attributes ...
+        self.__password_hash = self.__hash_password(password)
+
+    def __hash_password(self, password):
+        return hashlib.sha256(password.encode()).hexdigest()
+
+    def check_password(self, password):
+        return self.__password_hash == self.__hash_password(password)
+```
+
+::: {.notes}
+We've added a private attribute `__password_hash` to store a hashed version of the user's password. The `__hash_password` method is private and used internally to hash passwords. The `check_password` method allows for password verification without exposing the hash.
+:::
+
+
+## Step 6: Implement a Property for Posts
+
+Add a property for `posts` that returns a copy of the posts list:
+
+```python
+@property
+def posts(self):
+    return self._posts.copy()
+```
+
+::: {.notes}
+This property returns a copy of the `_posts` list, preventing direct modification of the original list from outside the class. This is an example of providing controlled access to internal data.
+:::
+
+
+## Step 7: Update the `get_user_info` Method
+
+Update the `get_user_info` method to use properties:
+
+```python
+def get_user_info(self):
+    return (f"Username: {self.username}\n"
+            f"Email: {self.email}\n"
+            f"Bio: {self.bio}\n"
+            f"Posts: {len(self.posts)}\n"
+            f"Followers: {len(self._followers)}\n"
+            f"Following: {len(self._following)}")
+```
+
+::: {.notes}
+We've updated `get_user_info` to use the properties we've defined. This ensures that any logic in the property getters is applied when retrieving this information.
+:::
+
+
+## Step 8: Test Your Encapsulated Class
+
+Create a new Python file named `test_encapsulation.py` and add the following code:
+
+```python
+from user import User
+
+try:
+    # Create a user
+    user = User("alice", "alice@example.com", "password123", "I love coding")
+    
+    # Test properties
+    print(user.username)
+    print(user.email)
+    print(user.bio)
+    
+    # Try to set email and bio
+    user.email = "newalice@example.com"
+    user.bio = "Python enthusiast"
+    print(user.get_user_info())
+    
+    # Try invalid email and bio
+    user.email = "invalid_email"  # Should raise ValueError
+except ValueError as e:
+    print(f"Caught an error: {e}")
+
+try:
+    user.bio = "A" * 200  # Should raise ValueError
+except ValueError as e:
+    print(f"Caught an error: {e}")
+
+# Test password checking
+print(user.check_password("password123"))  # Should return True
+print(user.check_password("wrong_password"))  # Should return False
+
+# Try to access private attribute
+try:
+    print(user.__password_hash)  # Should raise AttributeError
+except AttributeError as e:
+    print(f"Caught an error: {e}")
+```
+
+::: {.notes}
+This test script creates a User object and tests various aspects of our encapsulation:
+1. It tests the properties we've created.
+2. It attempts to set valid and invalid values for email and bio.
+3. It tests the password checking functionality.
+4. It attempts to access the private `__password_hash` attribute.
+Run this script and observe the output. Make sure all the encapsulation features are working as expected.
+:::
+
+
+## Conclusion
+
+In this coding session, we've applied encapsulation and data hiding principles to our `User` class:
+
+1. We've used protected attributes with a single underscore prefix.
+2. We've implemented properties for controlled access to attributes.
+3. We've added validation in our setters to ensure data integrity.
+4. We've used a private attribute for sensitive data (password hash).
+5. We've provided methods for interacting with the object that respect our encapsulation.

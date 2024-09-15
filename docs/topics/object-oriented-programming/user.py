@@ -7,6 +7,7 @@ methods for creating posts, retrieving posts, and getting the user's join date.
 
 from datetime import datetime
 
+
 class User:
     """A class representing a user with a profile and posts."""
 
@@ -17,10 +18,10 @@ class User:
             username (str): The username of the user.
             bio (str): A short bio for the user.
         """
-        self.username = username         # Initialize username
-        self.bio = bio                   # Initialize bio
-        self.posts = []                  # Initialize posts as an empty list
-        self.join_date = datetime.now()  # Initialize join_date to the current date and time
+        self.username = username  # Initialize username
+        self.bio = bio  # Initialize bio
+        self.posts = []  # Initialize posts as an empty list
+        self.join_date = datetime.now()  # Initialize join_date to current date
 
     def create_post(self, image_url, caption):
         """Creates a new post for the user.
@@ -32,16 +33,14 @@ class User:
         Returns:
             str: A confirmation message for the post creation.
         """
-        # Create a dictionary representing the post
         post = {
             'image_url': image_url,
             'caption': caption,
             'timestamp': datetime.now()  # Set to the current date and time
         }
-        # Append the post to the posts list
         self.posts.append(post)
-        # Return a confirmation message
-        return f"{self.username} posted: {caption} at {post['timestamp'].strftime('%Y-%m-%d %H:%M:%S')}"
+        return (f"{self.username} posted: {caption} at "
+                f"{post['timestamp'].strftime('%Y-%m-%d %H:%M:%S')}")
 
     def get_posts(self):
         """Returns the list of posts created by the user.
