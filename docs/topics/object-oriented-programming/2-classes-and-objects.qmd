@@ -1,17 +1,5 @@
 # Classes and Objects
 
-## Overview
-
-- What is a Class?
-- Defining a Class
-- What is an Object?
-- Creating Objects (Instantiation)
-- Accessing Attributes
-- Adding Methods to a Class
-- Using Methods
-- The `self` Parameter
-- The `__init__` Method
-
 ::: {.notes}
 Welcome to our session on Classes and Objects in Python. Today, we'll explore the fundamental building blocks of Object-Oriented Programming. We'll learn how to define classes, create objects, and work with attributes and methods. This knowledge will form the foundation of our journey into OOP.
 :::
@@ -188,10 +176,10 @@ The `__init__` method allows us to ensure that every object starts with the attr
 ## Summary
 
 - Classes are blueprints for creating objects
+- The `__init__` method initializes new objects
+- The `self` parameter represents the instance in method definitions
 - Objects are instances of a class with their own attribute values
 - We use dot notation to access attributes and call methods
-- The `self` parameter represents the instance in method definitions
-- The `__init__` method initializes new objects
 
 ::: {.notes}
 Let's recap what we've learned about classes and objects:

@@ -1,0 +1,326 @@
+# Static Methods
+
+## What are Static Methods?
+
+- Methods that don't operate on instance or class data
+- Defined using the `@staticmethod` decorator
+- Don't receive `self` or `cls` as first argument
+- Behave like regular functions but belong to the class namespace
+
+::: {.notes}
+Static methods in Python are a unique type of method within a class. Here are the key points to understand:
+
+1. Independence: Unlike instance methods or class methods, static methods don't operate on instance-specific or class-specific data.
+
+2. Decorator: We use the `@staticmethod` decorator to define static methods.
+
+3. No Automatic First Argument: Unlike instance methods (which get `self`) or class methods (which get `cls`), static methods don't automatically receive any arguments.
+
+4. Namespace: While they behave like regular functions, static methods belong to the class namespace, which affects how we call them and organizes related functions together.
+
+Static methods are useful for creating utility functions that are related to the class but don't need to access or modify the class or instance state.
+:::
+
+
+## Defining Static Methods
+
+```python
+class MathOperations:
+    @staticmethod
+    def add(x, y):
+        return x + y
+    
+    @staticmethod
+    def multiply(x, y):
+        return x * y
+
+# Using static methods
+result = MathOperations.add(3, 4)
+print(result)  # Output: 7
+```
+
+::: {.notes}
+Let's break down how to define and use static methods:
+
+1. Class Definition: We start by defining a class as usual. Here, we've created a `MathOperations` class.
+
+2. `@staticmethod` Decorator: We use this decorator right above the method definition to indicate that it's a static method.
+
+3. Method Definition: We define the method like a regular function, but it's inside the class. Notice that it doesn't have `self` or `cls` as the first parameter.
+
+4. Method Body: The method can perform any operation, but it typically doesn't access instance or class attributes.
+
+5. Calling Static Methods: We can call static methods directly on the class, without creating an instance. We use the class name, followed by the method name.
+
+This example shows how static methods can be used to group related functions within a class namespace, even when they don't need to interact with class or instance data.
+:::
+
+
+## Static Methods vs Instance Methods
+
+```python
+class MyClass:
+    def __init__(self, value):
+        self.value = value
+    
+    def instance_method(self):
+        return f"Instance value: {self.value}"
+    
+    @staticmethod
+    def static_method(x):
+        return f"Static value: {x}"
+
+obj = MyClass(5)
+print(obj.instance_method())  # Output: Instance value: 5
+print(MyClass.static_method(10))  # Output: Static value: 10
+```
+
+::: {.notes}
+This example illustrates the key differences between static methods and instance methods:
+
+1. Instance Methods:
+   - Automatically receive `self` as the first argument
+   - Can access and modify instance attributes
+   - Are called on instances of the class
+
+2. Static Methods:
+   - Don't receive `self` or `cls`
+   - Can't access instance or class attributes (unless explicitly passed)
+   - Can be called on the class itself or on instances
+
+3. Usage:
+   - Instance methods are used when we need to work with instance-specific data
+   - Static methods are used for operations that don't require access to instance or class attributes
+
+4. Calling Convention:
+   - Instance methods are typically called on instances (`obj.instance_method()`)
+   - Static methods can be called on the class (`MyClass.static_method(10)`) or instances (`obj.static_method(10)`)
+
+Understanding these differences helps in deciding when to use each type of method in your classes.
+:::
+
+
+## Static Methods vs Class Methods
+
+```python
+class TimeUtilities:
+    @staticmethod
+    def is_valid_time(hours, minutes, seconds):
+        return 0 <= hours < 24 and 0 <= minutes < 60 and 0 <= seconds < 60
+    
+    @classmethod
+    def from_string(cls, time_str):
+        hours, minutes, seconds = map(int, time_str.split(':'))
+        if cls.is_valid_time(hours, minutes, seconds):
+            return cls(hours, minutes, seconds)
+        raise ValueError("Invalid time format")
+```
+
+::: {.notes}
+This example shows the differences between static methods and class methods:
+
+1. Static Methods:
+   - Use the `@staticmethod` decorator
+   - Don't receive any implicit first argument
+   - Can't access or modify class state
+   - Used for utility functions that don't need class or instance data
+
+2. Class Methods:
+   - Use the `@classmethod` decorator
+   - Receive the class as an implicit first argument (`cls`)
+   - Can access and modify class state
+   - Often used for alternative constructors
+
+3. Usage in the Example:
+   - `is_valid_time` is a static method because it doesn't need to access any class or instance data
+   - `from_string` is a class method because it needs to create and return an instance of the class
+
+4. Interaction:
+   - Class methods can call static methods (as seen in `from_string` calling `is_valid_time`)
+   - Static methods can't call class methods or access class state without explicitly passing the class
+
+This example demonstrates how static and class methods can work together in a class, each serving a different purpose.
+:::
+
+
+## When to Use Static Methods
+
+- Utility functions related to the class
+- Operations that don't require class or instance state
+- Grouping related functions in a class namespace
+
+::: {.notes}
+Static methods are particularly useful in several scenarios:
+
+1. Utility Functions: When you have helper functions that are related to the class but don't need to access class or instance data.
+
+2. Stateless Operations: For operations that are independent of the class and instance state but logically belong to the class.
+
+3. Namespace Organization: To group related functions within a class namespace, improving code organization.
+
+4. Pure Functions: For functions that always produce the same output for the same input, without side effects.
+
+5. Alternative Constructors: While class methods are more common for this, static methods can also be used for simple alternative constructors that don't need access to class attributes.
+
+6. Data Validation: For methods that validate data without needing to access instance or class state.
+
+When deciding between static methods and regular functions, consider whether the function logically belongs to the class and whether grouping it with the class improves code organization and readability.
+:::
+
+
+## Static Method Use Cases
+
+```python
+import re
+
+class EmailValidator:
+    @staticmethod
+    def is_valid_email(email):
+        pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+        return re.match(pattern, email) is not None
+
+class MathUtils:
+    @staticmethod
+    def factorial(n):
+        if n == 0 or n == 1:
+            return 1
+        return n * MathUtils.factorial(n - 1)
+
+# Usage
+print(EmailValidator.is_valid_email("user@example.com"))  # True
+print(MathUtils.factorial(5))  # 120
+```
+
+::: {.notes}
+These examples demonstrate practical use cases for static methods:
+
+1. Email Validation:
+   - The `is_valid_email` method in `EmailValidator` is a perfect candidate for a static method.
+   - It performs a stateless operation (email validation) that's related to the class's purpose.
+   - It doesn't need access to any instance or class data.
+
+2. Mathematical Utilities:
+   - The `factorial` method in `MathUtils` is another good example of a static method.
+   - It performs a calculation that doesn't depend on any class or instance state.
+   - Grouping it in a `MathUtils` class helps organize related mathematical functions.
+
+3. Benefits:
+   - Code Organization: These methods are logically grouped with related functionality.
+   - Reusability: They can be easily used anywhere in the code by referencing the class.
+   - Clarity: The static nature clearly communicates that these methods don't depend on or modify class/instance state.
+
+4. Usage:
+   - These methods are called directly on the class, not on instances.
+   - This makes their utility-function nature clear in the code where they're used.
+
+Static methods like these help in creating clean, organized, and easily understandable code structures.
+:::
+
+
+## Static Methods in Inheritance
+
+```python
+class Animal:
+    @staticmethod
+    def breathe():
+        return "Breathing..."
+
+class Dog(Animal):
+    @staticmethod
+    def bark():
+        return "Woof!"
+
+print(Dog.breathe())  # Output: Breathing...
+print(Dog.bark())     # Output: Woof!
+```
+
+::: {.notes}
+This example illustrates how static methods work in the context of inheritance:
+
+1. Inheritance of Static Methods:
+   - Static methods are inherited just like any other method.
+   - In this case, `Dog` inherits the `breathe` method from `Animal`.
+
+2. Calling Inherited Static Methods:
+   - We can call the inherited static method `breathe` on the `Dog` class.
+   - This works without needing to create an instance of `Dog`.
+
+3. Class-Specific Static Methods:
+   - The `Dog` class also has its own static method `bark`.
+   - This method is specific to `Dog` and not available in the `Animal` class.
+
+4. No Override Concerns:
+   - Unlike instance methods, there's no concept of overriding for static methods.
+   - If `Dog` defined its own `breathe` method, it would simply replace the inherited one, not override it in the traditional OOP sense.
+
+5. Usage:
+   - Both methods can be called on the `Dog` class directly.
+   - This demonstrates how static methods can be used to define both shared (inherited) and specific behaviors.
+
+Understanding how static methods work with inheritance helps in designing class hierarchies and utilizing static methods effectively across related classes.
+:::
+
+
+## Limitations of Static Methods
+
+- Can't access or modify instance or class state
+- Don't have access to `self` or `cls`
+- Can't be used as alternative constructors (use class methods instead)
+
+::: {.notes}
+While static methods are useful, they come with certain limitations:
+
+1. No Access to Instance or Class State:
+   - Static methods can't access or modify instance attributes (no `self`).
+   - They also can't access or modify class attributes directly (no `cls`).
+
+2. Limited Functionality:
+   - They can't call other instance methods or class methods directly.
+   - To use instance or class data, it must be passed as arguments.
+
+3. Not Suitable for Alternative Constructors:
+   - Unlike class methods, static methods don't receive the class as a first argument.
+   - This makes them less suitable for creating alternative constructors.
+
+4. No Method Overriding:
+   - In inheritance, static methods are not truly overridden like instance methods.
+   - A static method in a subclass simply hides the superclass method rather than overriding it.
+
+5. Can't Modify Object State:
+   - Since they don't have access to `self`, they can't modify the state of the object.
+
+6. Limited Polymorphism:
+   - Static methods don't play well with polymorphism, as they're essentially just functions.
+
+Understanding these limitations helps in deciding when to use static methods and when other types of methods (instance or class) might be more appropriate.
+:::
+
+
+## Summary
+
+- Static methods are utility functions within a class
+- They don't access instance or class state
+- Defined using the `@staticmethod` decorator
+- Useful for organizing related functions
+- Can be called on the class or instances
+- Have limitations in terms of accessing class/instance data
+
+::: {.notes}
+Let's recap what we've learned about static methods:
+
+1. Purpose: Static methods are utility functions that belong to a class but don't operate on instance or class data.
+
+2. Definition: They are defined using the `@staticmethod` decorator and don't receive `self` or `cls` as a first argument.
+
+3. Usage: They can be called on the class itself or on instances of the class.
+
+4. Use Cases: Ideal for utility functions, stateless operations, and organizing related functions within a class namespace.
+
+5. Inheritance: Static methods are inherited by subclasses and can be used to define shared behaviors.
+
+6. Limitations: They can't access or modify instance or class state directly and are not suitable for operations that need to work with the object's state.
+
+7. Comparison: Unlike instance methods, they don't have access to `self`, and unlike class methods, they don't have access to `cls`.
+
+Understanding static methods and when to use them is crucial for writing clean, organized, and efficient Python code. They provide a way to include utility functions within the logical structure of your classes, enhancing code organization and readability.
+:::

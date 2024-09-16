@@ -3,150 +3,83 @@
 
 ## Overview
 
-In this coding session, we'll enhance our `User` class by adding more instance attributes and methods. We'll focus on creating a simple profile system for our Instagram-like app.
+In this coding session, we will enhance our `User` class by adding more instance attributes and methods. We'll focus on creating a more robust user profile system for our social media application.
 
 
-## Step 1: Open the `user.py` File
+## Step 1: Update the `User` Class
 
-Open the `user.py` file we created in the previous session. We'll be adding to this file.
+Open the `user.py` file and update the `User` class:
 
+1. Add new instance attributes in the `__init__` method:
+   - `email` (string)
+   - `followers` (initialize as an empty list)
+   - `following` (initialize as an empty list)
 
-## Step 2: Add New Instance Attributes
-
-Update the `__init__` method to include new attributes:
-
-```python
-class User:
-    def __init__(self, username, email, bio=""):
-        self.username = username
-        self.email = email
-        self.bio = bio
-        self.posts = []
-        self.followers = []
-        self.following = []
-```
-
-::: {.notes}
-We've added `email`, `bio`, `followers`, and `following` attributes. The `bio` parameter has a default value of an empty string.
-:::
+2. Update the `__init__` method signature to include the `email` parameter.
 
 
-## Step 3: Create a Method to Update Bio
+## Step 2: Add a Method to Follow Users
 
-Add a method to update the user's bio:
+Add a new instance method called `follow`:
 
-```python
-def update_bio(self, new_bio):
-    self.bio = new_bio
-    return f"Bio updated: {self.bio}"
-```
-
-::: {.notes}
-This method allows us to change the user's bio and returns a confirmation message.
-:::
+- Accept another `User` object as a parameter.
+- Add the other user to this user's `following` list.
+- Add this user to the other user's `followers` list.
+- Return a string confirming the follow action.
 
 
-## Step 4: Create a Method to Follow Another User
+## Step 3: Add a Method to Unfollow Users
 
-Add a method to follow another user:
+Add a new instance method called `unfollow`:
 
-```python
-def follow(self, other_user):
-    if other_user not in self.following:
-        self.following.append(other_user)
-        other_user.followers.append(self)
-        return f"{self.username} is now following {other_user.username}"
-    return f"{self.username} is already following {other_user.username}"
-```
-
-::: {.notes}
-This method adds another user to the `following` list and adds the current user to the other user's `followers` list.
-:::
+- Accept another `User` object as a parameter.
+- Remove the other user from this user's `following` list.
+- Remove this user from the other user's `followers` list.
+- Return a string confirming the unfollow action.
 
 
-## Step 5: Create a Method to Unfollow a User
+## Step 4: Add a Method to Display User Info
 
-Add a method to unfollow a user:
+Create a method called `display_info`:
 
-```python
-def unfollow(self, other_user):
-    if other_user in self.following:
-        self.following.remove(other_user)
-        other_user.followers.remove(self)
-        return f"{self.username} has unfollowed {other_user.username}"
-    return f"{self.username} is not following {other_user.username}"
-```
-
-::: {.notes}
-This method removes a user from the `following` list and removes the current user from the other user's `followers` list.
-:::
+- Return a string containing the user's username, email, bio, number of posts, followers count, and following count.
 
 
-## Step 6: Create a Method to Get User Info
+## Step 5: Update the `create_post` Method
 
-Add a method to get user information:
+Modify the `create_post` method:
 
-```python
-def get_user_info(self):
-    return (f"Username: {self.username}\n"
-            f"Email: {self.email}\n"
-            f"Bio: {self.bio}\n"
-            f"Posts: {len(self.posts)}\n"
-            f"Followers: {len(self.followers)}\n"
-            f"Following: {len(self.following)}")
-```
-
-::: {.notes}
-This method returns a formatted string with the user's information, including the number of posts, followers, and users they're following.
-:::
+- Add a `likes` key to the post dictionary, initialized to 0.
 
 
-## Step 7: Test Your New Methods
+## Step 6: Add a Method to Like Posts
 
-Create a new Python file named `test_user.py` and add the following code:
+Create a new method called `like_post`:
 
-```python
-from user import User
-
-# Create users
-alice = User("alice", "alice@example.com", "I love photography")
-bob = User("bob", "bob@example.com")
-
-# Update bob's bio
-print(bob.update_bio("Coffee enthusiast"))
-
-# Alice follows Bob
-print(alice.follow(bob))
-
-# Get user info
-print(alice.get_user_info())
-print(bob.get_user_info())
-
-# Bob follows Alice
-print(bob.follow(alice))
-
-# Alice unfollows Bob
-print(alice.unfollow(bob))
-
-# Print updated user info
-print(alice.get_user_info())
-print(bob.get_user_info())
-```
-
-::: {.notes}
-This script creates two users, updates a bio, demonstrates following and unfollowing, and prints user information at different stages.
-:::
+- Accept a `User` object and a post index as parameters.
+- Increment the `likes` count for the specified post of the given user.
+- Return a string confirming the like action.
 
 
-## Step 8: Run the Test Script
+## Step 7: Testing the New Functionality
 
-Run the `test_user.py` script and observe the output. Make sure all the methods are working as expected.
+Create a new Python file called `test_user.py`:
+
+1. Import the `User` class from `user.py`.
+2. Create several `User` instances.
+3. Test the new methods:
+   - Follow and unfollow users
+   - Create posts
+   - Like posts
+   - Display user info
+
+Print the results of these actions to verify the functionality.
 
 
 ## Conclusion
 
-In this coding session, we've added several instance attributes and methods to our `User` class, making it more functional for our Instagram-like app. We've implemented features like updating bios, following/unfollowing users, and getting user information.
+In this coding session, we've significantly expanded our `User` class with new instance attributes and methods. These additions allow for more complex interactions between users, enhancing the functionality of our social media application.
 
 ::: {.notes}
-This session has given you hands-on experience with creating and using instance attributes and methods. You've seen how these concepts can be applied to build features commonly found in social media applications. Remember, instance attributes store data specific to each object, while instance methods allow us to define behaviors that can interact with and modify this data.
+This coding session builds upon the previous one, introducing more complex instance attributes and methods. It encourages students to think about how different objects (users in this case) can interact with each other through method calls. The session also reinforces the concept of modifying object state through methods, a key aspect of working with instance attributes and methods.
 :::

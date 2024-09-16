@@ -1,19 +1,5 @@
 # Class Attributes and Methods
 
-## Overview
-
-- What are Class Attributes?
-- Defining Class Attributes
-- Accessing Class Attributes
-- Modifying Class Attributes
-- Class Attributes vs Instance Attributes
-- What are Class Methods?
-- Defining Class Methods
-- Using Class Methods
-- Class Methods vs Static Methods
-- When to Use Class Methods
-- Class Methods as Alternative Constructors
-
 ::: {.notes}
 Welcome to our session on Class Attributes and Methods. Today, we'll explore these important concepts that allow us to define data and behavior at the class level, rather than at the instance level. We'll see how class attributes and methods can be used to manage state and behavior that is shared across all instances of a class, and how they differ from instance attributes and methods. This knowledge will expand our toolkit for designing effective and efficient classes in Python.
 :::

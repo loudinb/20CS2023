@@ -58,6 +58,9 @@ parts:
             - file: topics/controlling-program-flow/logical-comparisons
             - file: topics/controlling-program-flow/conditional-statements
             - file: topics/controlling-program-flow/loops
+        - file: lectures/lecture-7-17SEP2024
+        - file: lectures/lecture-8-19SEP2024
+        - file: lectures/lecture-9-24SEP2024
     - file: exercises
       sections:
         - glob: exercises/*

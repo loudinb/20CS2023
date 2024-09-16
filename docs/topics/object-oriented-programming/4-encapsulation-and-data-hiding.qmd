@@ -1,18 +1,5 @@
 # Encapsulation and Data Hiding
 
-## Overview
-
-- What is Encapsulation?
-- Benefits of Encapsulation
-- Data Hiding in Python
-- Public Attributes
-- Protected Attributes
-- Private Attributes
-- Name Mangling
-- Getters and Setters
-- Properties in Python
-- Encapsulation Best Practices
-
 ::: {.notes}
 Welcome to our session on Encapsulation and Data Hiding in Python. Today, we'll explore these fundamental concepts of object-oriented programming and how they contribute to creating robust and maintainable code. We'll learn how to control access to our object's data, why this is important, and the Python-specific ways of implementing these concepts.
 :::
@@ -186,6 +173,8 @@ print(user._User__password)  # Works, but not recommended
 ```
 
 ::: {.notes}
+Name mangling is Python's way of making it harder (but not impossible) to accidentally access or override private attributes, especially in inheritance scenarios. It's a reminder that these attributes are not meant to be accessed directly from outside the class.
+
 Let's break down this example to understand name mangling:
 
 1. We define a `User` class with a public `username` and a private `__password`.
@@ -197,8 +186,6 @@ Let's break down this example to understand name mangling:
 4. Trying to access `user.__password` raises an AttributeError. Python has changed the name internally.
 
 5. We can still access the password using `user._User__password`, but this is not recommended. It goes against the principle of data hiding.
-
-Name mangling is Python's way of making it harder (but not impossible) to accidentally access or override private attributes, especially in inheritance scenarios. It's a reminder that these attributes are not meant to be accessed directly from outside the class.
 :::
 
 

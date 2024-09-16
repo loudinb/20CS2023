@@ -2,12 +2,8 @@
 
 ## Agenda
 
-Today we will discuss object-oriented programming and how to create classes and objects in Python.  We will leverage these concepts to create an instagram like application.
+Today's lecture is part 1 of our discussion on object-oriented programming and how to create classes and objects in Python. We will reinforce these concepts with a coding session to create a simple class and object for a Instagram like application.
 
-::: {.smaller}
-- Logical comparisons, using operators like `==`, `>`, and `!=`, provide conditions that guide execution. While some flow controls are unconditional, many use these comparisons to make decisions based on variable values or user input.
-- Flow control determines the order in which program instructions are executed, enabling decision-making, looping, and branching. Key structures include conditionals (`if-else`), loops (`for`, `while`), and control statements (`break`, `continue`, `return`).
-:::
 
 {{< include ../topics/object-oriented-programming/1-introduction-to-object-oriented-programming.qmd >}}
 
@@ -19,6 +15,3 @@ Today we will discuss object-oriented programming and how to create classes and 
 
 {{< include ../topics/object-oriented-programming/4-encapsulation-and-data-hiding.qmd >}}
 {{< include ../topics/object-oriented-programming/4.1-encapsulation-and-data-hiding-coding-session.qmd >}}
-
-{{< include ../topics/object-oriented-programming/5-class-attributes-and-methods.qmd >}}
-{{< include ../topics/object-oriented-programming/5.1-class-attributes-and-methods-coding-session.qmd >}}

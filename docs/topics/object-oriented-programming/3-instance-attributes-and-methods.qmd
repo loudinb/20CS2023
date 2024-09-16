@@ -1,18 +1,5 @@
 # Instance Attributes and Methods
 
-## Overview
-
-- What are Instance Attributes?
-- Creating Instance Attributes
-- Accessing Instance Attributes
-- Modifying Instance Attributes
-- What are Instance Methods?
-- Creating Instance Methods
-- Calling Instance Methods
-- Instance Methods vs Functions
-- The `self` Parameter
-- Using `self` in Methods
-
 ::: {.notes}
 Welcome to our session on Instance Attributes and Methods. Today, we'll dive deeper into how we work with individual objects in Python. We'll explore how to create and manipulate data specific to each object, and how to define behaviors that operate on that data. This knowledge is crucial for creating flexible and powerful classes in object-oriented programming.
 :::

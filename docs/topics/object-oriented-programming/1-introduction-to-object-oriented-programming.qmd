@@ -4,13 +4,13 @@
 
 - What is Object-Oriented Programming?
 - Programming Paradigms
-- Core Concepts of OOP
-- Benefits of OOP
-- Real-World Analogy
-- Learning OOP with a Project
+- Core Concepts & Benefits of OOP
+
 
 ::: {.notes}
 Welcome to our session on Object-Oriented Programming, or OOP. In this lecture, we'll explore the fundamentals of OOP, compare it to other programming styles, and discuss why it's a powerful tool in software development. We'll also introduce a project that will help you apply these concepts in practice.
+
+It is important to note that this is not an exhaustive guide to OOP. Our goal is to provide a sufficient overiew to enable our discussion on OOP in Python.
 :::
 
 
@@ -19,9 +19,18 @@ Welcome to our session on Object-Oriented Programming, or OOP. In this lecture, 
 - A programming approach that organizes code around objects
 - Objects contain data (attributes) and code (methods)
 - Classes serve as blueprints for creating objects
+- Objects are instances of classes, like houses built from blueprints.
 
 ::: {.notes}
 Object-Oriented Programming is a way of organizing our code that focuses on objects. These objects are like containers that hold both data (which we call attributes) and the code that operates on that data (which we call methods). In OOP, we use classes as templates or blueprints to create these objects. This approach helps us structure our code in a way that often matches how we think about things in the real world.
+
+** Analogy: **
+
+Think of a class as a blueprint for a house. The blueprint isn't a house itself, but it contains all the information needed to build a house. It specifies things like the layout, the number of rooms, where the doors and windows go, and so on.
+
+An object, then, is like an actual house built from that blueprint. You can build many houses from the same blueprint, just like you can create many objects from the same class. Each house (or object) will have the same basic structure, but might have different specific details (like paint color, furniture, etc.).
+
+This analogy helps us understand how classes serve as templates for creating objects, and how multiple objects can be created from the same class.
 :::
 
 
@@ -88,22 +97,6 @@ These benefits become especially apparent as our programs grow larger and more c
 :::
 
 
-## Real-World Analogy
-
-- Class: Blueprint for a house
-- Object: An actual house built from the blueprint
-
-::: {.notes}
-To help understand the relationship between classes and objects, let's use a real-world analogy:
-
-Think of a class as a blueprint for a house. The blueprint isn't a house itself, but it contains all the information needed to build a house. It specifies things like the layout, the number of rooms, where the doors and windows go, and so on.
-
-An object, then, is like an actual house built from that blueprint. You can build many houses from the same blueprint, just like you can create many objects from the same class. Each house (or object) will have the same basic structure, but might have different specific details (like paint color, furniture, etc.).
-
-This analogy helps us understand how classes serve as templates for creating objects, and how multiple objects can be created from the same class.
-:::
-
-
 ## Learning OOP with a Project
 
 - We'll build a simple Instagram-like app
@@ -115,26 +108,4 @@ To help solidify our understanding of OOP, we're going to work on a project thro
 This project will give us a chance to apply the OOP concepts we learn in a practical, real-world context. We'll create classes for users, posts, and other features of the app. As we learn new OOP concepts, we'll use them to add functionality to our app.
 
 This hands-on approach will help reinforce the concepts we discuss in lectures and give you practical experience in using OOP to build a real application.
-:::
-
-
-## Summary
-
-- OOP organizes code around objects and data
-- Core concepts: Encapsulation, Inheritance, Polymorphism, Abstraction
-- Benefits include modularity, reusability, flexibility, and maintainability
-- We'll apply these concepts in our Instagram-like project
-
-::: {.notes}
-To wrap up, let's recap what we've covered:
-
-1. Object-Oriented Programming is an approach that organizes code around objects, which contain both data and the methods to manipulate that data.
-
-2. The core concepts of OOP are encapsulation, inheritance, polymorphism, and abstraction. These provide powerful tools for structuring our code.
-
-3. OOP offers benefits like modularity, reusability, flexibility, and maintainability, which become increasingly important as our programs grow in size and complexity.
-
-4. We'll be applying these concepts as we build our Instagram-like app, giving you practical experience with OOP.
-
-In our next sessions, we'll start diving deeper into these concepts and begin building our project. Get ready to start thinking in terms of objects!
 :::
