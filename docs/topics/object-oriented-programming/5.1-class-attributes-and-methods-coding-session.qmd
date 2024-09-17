@@ -1,87 +1,52 @@
-# Coding Session: Class Attributes and Methods
-
+# Class Attributes and Methods Coding Session
 
 ## Overview
 
-In this coding session, we will enhance our `User` class by adding class attributes and methods. We'll implement features that are relevant to the class as a whole, such as tracking the total number of users and posts, and creating class methods for user management.
+In this coding session, you will enhance the existing classes with class attributes and methods, and create a new `Analytics` class to practice these concepts further.
 
+## Step 1: Enhance the `User` Class
 
-## Step 1: Add Class Attributes
+Update the `user.py` file:
 
-Open the `user.py` file and add the following class attributes to the `User` class:
+1. Add a class attribute `total_users` to keep track of the number of users.
+2. Implement a class method `get_user_count` that returns the total number of users.
+3. Create a static method `is_valid_username` that checks if a username meets certain criteria (e.g., length, allowed characters).
+4. Add a class method `create_anonymous_user` that creates a user with a generated username.
 
-1. `total_users`: Initialize to 0
-2. `total_posts`: Initialize to 0
+## Step 2: Enhance the `Post` Class
 
+Update the `post.py` file:
 
-## Step 2: Update the `__init__` Method
+1. Add a class attribute `post_id_counter` to generate unique IDs for posts.
+2. Implement a class method `get_post_count` that returns the total number of posts created.
+3. Create a static method `is_valid_content` that checks if the post content is appropriate (e.g., not empty, within character limit).
+4. Add a class method `create_shared_post` that creates a new post as a share of an existing post.
 
-Modify the `__init__` method:
+## Step 3: Enhance the `Comment` Class
 
-1. Increment `User.total_users` each time a new user is created.
-2. Add a new protected instance attribute `_user_id` and assign it the current value of `total_users`.
+Update the `comment.py` file:
 
+1. Add a class attribute to track the total number of comments across all posts.
+2. Implement a class method to get the average number of comments per post.
+3. Create a static method to format comment content (e.g., remove extra whitespace, capitalize first letter).
 
-## Step 3: Update the `create_post` Method
+## Step 4: Create an `Analytics` Class
 
-Modify the `create_post` method:
+Create a new file `analytics.py`:
 
-1. Increment `User.total_posts` each time a new post is created.
+1. Implement an `Analytics` class with the following features:
+   - Class attributes to store app-wide statistics (e.g., total likes, total shares, active users).
+   - Class methods to update these statistics.
+   - Static methods for data analysis (e.g., calculating engagement rates, identifying trending posts).
+   - A class method to generate a summary report of app statistics.
 
+## Step 5: Implement Tagging System
 
-## Step 4: Create a Class Method to Display Stats
+Create a new file `tag.py`:
 
-Add a class method called `display_user_stats`:
+1. Implement a `Tag` class with the following features:
+   - A class attribute to store all created tags.
+   - A class method to get or create a tag (ensuring no duplicate tags).
+   - Static methods for trending tag analysis.
 
-1. Use the `@classmethod` decorator.
-2. The method should return a string with the total number of users and posts.
-
-
-## Step 5: Implement a Class Method as an Alternative Constructor
-
-Create a class method called `create_anonymous`:
-
-1. Use the `@classmethod` decorator.
-2. This method should create and return a new `User` instance with the username "Anonymous", a generic email, and an empty bio.
-
-
-## Step 6: Add a Static Method
-
-Add a static method called `is_valid_username`:
-
-1. Use the `@staticmethod` decorator.
-2. This method should take a username as an argument and return `True` if it's valid (e.g., only alphanumeric characters and underscores), and `False` otherwise.
-3. Update the username setter to use this static method for validation.
-
-
-## Step 7: Implement User Search Functionality
-
-Add a class method called `search_users`:
-
-1. Use the `@classmethod` decorator.
-2. This method should take a search term as an argument.
-3. It should return a list of users whose usernames or emails match the search term.
-4. To implement this, you'll need to maintain a list or dictionary of all created users as a class attribute.
-
-
-## Step 8: Testing Class Attributes and Methods
-
-Create a new Python file called `test_user_class.py`:
-
-1. Import the `User` class from `user.py`.
-2. Create several `User` instances.
-3. Test the new class attributes and methods:
-   - Print the total number of users and posts
-   - Create an anonymous user
-   - Validate usernames
-   - Search for users
-4. Verify that class attributes are shared among all instances.
-
-
-## Conclusion
-
-In this coding session, we've expanded our `User` class with class attributes and methods. These additions allow us to manage and interact with the class as a whole, providing functionality that goes beyond individual instances. This approach is crucial for implementing features that affect all users or require class-wide information.
-
-::: {.notes}
-This coding session introduces class attributes and methods to the `User` class. It demonstrates how to use class attributes to maintain state across all instances, how to create alternative constructors using class methods, and how to implement utility functions as static methods. The session also includes a more complex class method for user search, encouraging students to think about class-level operations. This builds upon the previous sessions, showing how individual instances, encapsulation, and class-level features can all work together in a well-designed class.
-:::
+2. Update the `Post` class to use the `Tag` class for handling hashtags.

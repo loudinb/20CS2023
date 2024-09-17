@@ -1,85 +1,40 @@
-# Coding Session: Instance Attributes and Methods
-
+# Instance Attributes and Methods Coding Session
 
 ## Overview
 
-In this coding session, we will enhance our `User` class by adding more instance attributes and methods. We'll focus on creating a more robust user profile system for our social media application.
+In this coding session, you will expand the Instagram-like app by adding a new `Comment` class and enhancing the existing `User` and `Post` classes with more instance attributes and methods.
 
+## Step 1: Create `comment.py` File
 
-## Step 1: Update the `User` Class
+Create a new Python file named `comment.py`.
 
-Open the `user.py` file and update the `User` class:
+1. Open your preferred text editor or IDE.
+2. Create a new file and save it as `comment.py` in your project directory.
+3. Import the `datetime` module at the top of the file.
 
-1. Add new instance attributes in the `__init__` method:
-   - `email` (string)
-   - `followers` (initialize as an empty list)
-   - `following` (initialize as an empty list)
+## Step 2: Implement the `Comment` Class
 
-2. Update the `__init__` method signature to include the `email` parameter.
+In `comment.py`, create a `Comment` class with the following features:
 
+1. An `__init__` method that takes `user`, `post`, and `content` as parameters.
+2. Instance attributes for `user`, `post`, `content`, `timestamp` (use `datetime.now()`), and `likes` (initialize to 0).
+3. A `like(self)` method that increments the likes count.
+4. A `display(self)` method that prints the comment's content, author, timestamp, and likes.
 
-## Step 2: Add a Method to Follow Users
+## Step 3: Update the `Post` Class
 
-Add a new instance method called `follow`:
+In `post.py`, update the `Post` class:
 
-- Accept another `User` object as a parameter.
-- Add the other user to this user's `following` list.
-- Add this user to the other user's `followers` list.
-- Return a string confirming the follow action.
+1. Import the `Comment` class from `comment.py`.
+2. Add a `comments` attribute to the `__init__` method, initialized as an empty list.
+3. Implement an `add_comment(self, user, content)` method that creates a new `Comment` instance and adds it to the `comments` list.
+4. Update the `display(self)` method to show the number of comments and list all comments.
 
+## Step 4: Enhance the `User` Class
 
-## Step 3: Add a Method to Unfollow Users
+In `user.py`, enhance the `User` class:
 
-Add a new instance method called `unfollow`:
-
-- Accept another `User` object as a parameter.
-- Remove the other user from this user's `following` list.
-- Remove this user from the other user's `followers` list.
-- Return a string confirming the unfollow action.
-
-
-## Step 4: Add a Method to Display User Info
-
-Create a method called `display_info`:
-
-- Return a string containing the user's username, email, bio, number of posts, followers count, and following count.
-
-
-## Step 5: Update the `create_post` Method
-
-Modify the `create_post` method:
-
-- Add a `likes` key to the post dictionary, initialized to 0.
-
-
-## Step 6: Add a Method to Like Posts
-
-Create a new method called `like_post`:
-
-- Accept a `User` object and a post index as parameters.
-- Increment the `likes` count for the specified post of the given user.
-- Return a string confirming the like action.
-
-
-## Step 7: Testing the New Functionality
-
-Create a new Python file called `test_user.py`:
-
-1. Import the `User` class from `user.py`.
-2. Create several `User` instances.
-3. Test the new methods:
-   - Follow and unfollow users
-   - Create posts
-   - Like posts
-   - Display user info
-
-Print the results of these actions to verify the functionality.
-
-
-## Conclusion
-
-In this coding session, we've significantly expanded our `User` class with new instance attributes and methods. These additions allow for more complex interactions between users, enhancing the functionality of our social media application.
-
-::: {.notes}
-This coding session builds upon the previous one, introducing more complex instance attributes and methods. It encourages students to think about how different objects (users in this case) can interact with each other through method calls. The session also reinforces the concept of modifying object state through methods, a key aspect of working with instance attributes and methods.
-:::
+1. Add a `liked_posts` attribute to the `__init__` method, initialized as an empty set.
+2. Implement a `like_post(self, post)` method that adds the post to `liked_posts` and calls the post's `like_post` method.
+3. Add a `comment_on_post(self, post, content)` method that calls the post's `add_comment` method.
+4. Implement a `get_activity_feed(self)` method that returns a list of the user's recent actions (posts created, posts liked, and comments made), sorted by timestamp.

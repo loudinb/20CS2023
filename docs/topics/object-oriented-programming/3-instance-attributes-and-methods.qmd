@@ -1,10 +1,5 @@
 # Instance Attributes and Methods
 
-::: {.notes}
-Welcome to our session on Instance Attributes and Methods. Today, we'll dive deeper into how we work with individual objects in Python. We'll explore how to create and manipulate data specific to each object, and how to define behaviors that operate on that data. This knowledge is crucial for creating flexible and powerful classes in object-oriented programming.
-:::
-
-
 ## What are Instance Attributes?
 
 - Data specific to each object
@@ -224,6 +219,31 @@ This use of `self` is what allows our methods to be reusable across all instance
 :::
 
 
+## Brief Comparison: Instance vs Class Attributes/Methods
+
+- Instance attributes/methods:
+  - Specific to each object
+  - Accessed via `self` or object name
+- Class attributes/methods:
+  - Shared by all instances of the class
+  - Accessed via class name
+  - We'll cover these in detail later
+
+::: {.notes}
+While we'll cover class attributes and methods in more detail later, it's useful to briefly compare them with instance attributes and methods:
+
+1. Instance attributes are specific to each object, while class attributes are shared by all instances of the class.
+
+2. Instance methods operate on individual objects and use `self` to access instance-specific data. Class methods operate on the class itself and use `cls` as their first parameter.
+
+3. We access instance attributes/methods using the object name (e.g., `user.username`, `user.get_info()`), while we typically access class attributes/methods using the class name (e.g., `User.some_class_attribute`).
+
+4. Instance attributes/methods are used when we need unique data or behavior for each object. Class attributes/methods are used when we want to share data or behavior across all instances of a class.
+
+We'll explore class attributes and methods in more depth in a future topic. For now, focus on mastering instance attributes and methods, as they form the foundation of working with objects in Python.
+:::
+
+
 ## Summary
 
 - Instance attributes store object-specific data
@@ -247,5 +267,7 @@ Let's recap what we've learned about instance attributes and methods:
 
 6. These concepts are fundamental to encapsulation in object-oriented programming, allowing us to bundle data and the methods that operate on that data together in objects.
 
-In our next sessions, we'll build on these concepts to create more complex and powerful class structures.
+7. Instance attributes and methods differ from class attributes and methods in their scope and how they're accessed. We'll explore class-level concepts in more detail in a future topic.
+
+In our next sessions, we'll build on these concepts to create more complex and powerful class structures. Understanding instance attributes and methods is crucial for effective object-oriented programming in Python.
 :::

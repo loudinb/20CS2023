@@ -1,91 +1,40 @@
-# Coding Session: Classes and Objects
-
+# Classes and Objects Coding Session
 
 ## Overview
 
-In this coding session,  we will create a `User` class to represent users in a social media application. We will define attributes like `username`, `bio`, and `join_date`, as well as methods to create posts, get posts, and retrieve the join date.
+In this coding session, you will create two classes for our Instagram-like app: `User` and `Post`. You'll define these classes in separate files to practice good code organization.
 
+## Step 1: Create `user.py` and `post.py` Files
 
-## Step 1: Create a `user` Module
+Create two new Python files named `user.py` and `post.py`.
 
-Create a new Python file named `user.py`. This file will contain the `User` class.
+1. Open your preferred text editor or IDE.
+2. Create two new files and save them as `user.py` and `post.py` in your project directory.
+3. At the top of both files, import the `datetime` module.
 
-- At the top of the file, import the `datetime` module.
+## Step 2: Create the `User` Class
 
+In your `user.py` file, create a `User` class with the following requirements:
 
-## Step 2: Create the `User` Class  {.hide}
+1. Import the `Post` class from `post.py`.
+2. Define an `__init__` method that takes `username` and `email` as parameters.
+3. Initialize instance attributes for `username`, `email`, and `join_date` (use `datetime.now()` for `join_date`).
+4. Initialize an empty list called `posts` to store the user's posts.
 
-Add a `User` class to the `user.py` file:
+## Step 3: Create the `Post` Class
 
-- Define the `User` class using the `def` keyword.
-- Add an `__init__` method that takes `username` and `bio` as parameters and initializes the following attributes:
-  
-  - `username` (string)
-  - `bio` (string)
-  - `posts` (initialize as an empty list)
-  - `join_date` (initialize to the current date and time using `datetime.now()`)
+In your `post.py` file, create a `Post` class with these requirements:
 
+1. Define an `__init__` method that takes `user` and `content` as parameters.
+2. Initialize instance attributes for `user`, `content`, `timestamp` (use `datetime.now()`), and `likes` (initialize to 0).
 
-## Step 3: Create a `create_post` Method {.hide}
+## Step 4: Add Methods to the `User` Class
 
-Add an instance method called `create_post`:
+In `user.py`, add the following methods to your `User` class:
 
-::: {.smaller-90}
-  - Accept `image_url` (string) and `caption` (string) as parameters.
-  - Create a dictionary representing the post with the following keys:
-    
-    - `image_url` (string)
-    - `caption` (string)
-    - `timestamp` (set to the current date and time using `datetime.now()`)
-  - Append this dictionary to the `posts` list.
-  - Return a string confirming post (e.g., "username posted: caption at YYYY-MM-DD HH:MM:SS").
-:::
+1. `create_post(self, content)`: Creates a new `Post` instance and adds it to the user's `posts` list.
+2. `display_info(self)`: Prints out the user's username, email, join date, and number of posts.
 
+## Step 5: Add a Method to the `Post` Class
 
-## Step 4: Create a `get_posts` Method {.hide}
-
-Add an instance method called `get_posts`:
-
-   - Define a method called `get_posts`.
-   - Returns the list of posts.
-
-
-## Step 5: Create a `get_join_date` Method {.hide}
-
-Add an instance method called `get_join_date`:
-
-   - Define a method called `get_join_date`.
-   - Return the user's join date in a readable format (e.g., "Joined on: YYYY-MM-DD").
-
-
-## Step 6: Instantiating `User` Objects {.hide}
-
-Create multiple instances of the `User` class and demonstrate how they have unique attributes but share methods.
-
-- Import the `User` class from the `user` module
-- Create two `User` instances
-- Verify instance attributes
-- Demonstrate shared methods
-
-
-:::{.notes}
-```python
-from user import User
-```
-
-1. Instantiation: We create two distinct User objects. This shows how a class serves as a blueprint for creating multiple instances.
-
-2. Unique Attributes: Each user has its own username and bio. This illustrates how instances maintain their own state.
-
-3. Shared Methods: Both users can call the same methods (create_post, get_posts, get_join_date). This demonstrates how instances share behavior defined in the class.
-
-4. Encapsulation: We interact with the objects using their methods, not by directly manipulating their attributes. This is a key principle of OOP.
-
-5. Identity: Even though both users are created from the same class, they are distinct objects with their own identity.
-
-When running this code, observe:
-- The different usernames and bios printed for each user.
-- How each user can create posts independently.
-- The posts for each user are stored separately.
-- The join dates might be slightly different due to the time of instantiation.
-:::
+In `post.py`, add a `display(self)` method to your `Post` class that prints out the post's content, timestamp, and number of likes.

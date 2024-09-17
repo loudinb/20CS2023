@@ -1,87 +1,50 @@
-# Coding Session: Encapsulation and Data Hiding
-
+# Encapsulation and Data Hiding Coding Session
 
 ## Overview
 
-In this coding session, we will refactor our `User` class to implement encapsulation and data hiding principles. We'll use Python's conventions for indicating private attributes and create getter and setter methods using the `@property` decorator.
+In this coding session, you will refactor the existing classes to implement encapsulation and data hiding principles. You'll also create a new `PrivateMessage` class to practice these concepts further.
 
+## Step 1: Refactor the `User` Class
 
-## Step 1: Refactor Instance Attributes
+Update the `user.py` file:
 
-Update the `User` class in `user.py`:
+1. Change all instance attributes to use a single underscore prefix (e.g., `self._username`).
+2. Implement properties for `username` and `email` with appropriate getters and setters.
+3. Create a `_validate_email` private method to check email format.
+4. Update the `update_bio` method to use a property for `bio` with a setter that enforces the character limit.
 
-1. Prefix all instance attributes with a single underscore to indicate they are protected:
-   - `_username`
-   - `_email`
-   - `_bio`
-   - `_posts`
-   - `_join_date`
-   - `_followers`
-   - `_following`
+## Step 2: Refactor the `Post` Class
 
-2. Update the `__init__` method to use these new protected attribute names.
+Update the `post.py` file:
 
+1. Change appropriate instance attributes to use a single underscore prefix.
+2. Implement a property for `likes_count` with a getter only.
+3. Make the `like_post` and `unlike_post` methods protected by adding a single underscore prefix.
+4. Create a public `toggle_like` method that calls the protected methods as appropriate.
 
-## Step 2: Implement Getter and Setter for Username
+## Step 3: Refactor the `Comment` Class
 
-Add getter and setter methods for the `username` attribute:
+Update the `comment.py` file:
 
-1. Create a method `username` using the `@property` decorator.
-2. Create a setter method for `username` using the `@username.setter` decorator.
-3. In the setter, add validation to ensure the username is not empty and contains only alphanumeric characters and underscores.
+1. Change appropriate instance attributes to use a single underscore prefix.
+2. Implement a read-only property for `timestamp`.
+3. Create a protected `_increment_likes` method and a public `like` method that calls it.
 
+## Step 4: Create a `PrivateMessage` Class
 
-## Step 3: Implement Getter and Setter for Email
+Create a new file `private_message.py`:
 
-Add getter and setter methods for the `email` attribute:
+1. Implement a `PrivateMessage` class with the following features:
+   - Private attributes for sender, recipient, content, and timestamp.
+   - A class attribute for keeping track of the total number of messages sent.
+   - A static method to get the total message count.
+   - Properties for accessing the private attributes (read-only for sender and recipient).
+   - A method to display the message contents only if the provided user is either the sender or the recipient.
 
-1. Create a method `email` using the `@property` decorator.
-2. Create a setter method for `email` using the `@email.setter` decorator.
-3. In the setter, add validation to ensure the email is in a valid format (you can use a simple check or the `re` module for more complex validation).
+## Step 5: Update the `User` Class for Private Messages
 
+In the `user.py` file:
 
-## Step 4: Implement Read-Only Properties
-
-Create read-only properties for `join_date`, `followers_count`, and `following_count`:
-
-1. Use the `@property` decorator for each.
-2. For `followers_count` and `following_count`, return the length of the respective lists.
-
-
-## Step 5: Update Existing Methods
-
-Modify existing methods to use the new protected attributes and property methods:
-
-1. Update `create_post`, `get_posts`, `follow`, `unfollow`, and `like_post` methods.
-2. Ensure these methods use the protected attribute names (with underscores).
-
-
-## Step 6: Implement a Private Method
-
-Create a private method `__validate_post_index`:
-
-1. Prefix the method name with double underscores.
-2. This method should take a post index as an argument and raise an `IndexError` if the index is invalid.
-3. Update the `like_post` method to use this private method for validation.
-
-
-## Step 7: Testing the Refactored Class
-
-Update the `test_user.py` file:
-
-1. Modify the existing tests to work with the new property methods.
-2. Add new tests to verify:
-   - The getter and setter methods for `username` and `email`
-   - The read-only properties
-   - That direct access to protected attributes raises an AttributeError (use try/except)
-
-Run the tests to ensure all functionality works as expected with the new encapsulation.
-
-
-## Conclusion
-
-In this coding session, we've applied encapsulation and data hiding principles to our `User` class. By using protected attributes, properties, and a private method, we've improved the design of our class, making it more robust and easier to maintain.
-
-::: {.notes}
-This coding session focuses on applying encapsulation and data hiding techniques to the existing `User` class. It introduces students to Python's conventions for protected and private attributes, as well as the use of properties for controlled access to attributes. The session also demonstrates how to refactor existing code to improve its design, an important skill in software development.
-:::
+1. Add a private attribute `_received_messages` initialized as an empty list.
+2. Implement a method `send_private_message` that creates a new `PrivateMessage` and adds it to the recipient's `_received_messages`.
+3. Create a method `view_private_messages` that returns a list of the user's received messages.

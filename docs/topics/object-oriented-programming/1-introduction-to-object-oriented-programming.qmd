@@ -1,25 +1,25 @@
 # Introduction to Object-Oriented Programming
 
-## Overview
+
+::: {.notes}
+
+This is a brief introduction to Object-Oriented Programming (OOP). This is not an exhaustive guide to OOP. Our goal is to provide a sufficient overiew to enable our discussion on OOP in Python.
+
+We'll cover the following topics in this session:
 
 - What is Object-Oriented Programming?
 - Programming Paradigms
 - Core Concepts & Benefits of OOP
 
-
-::: {.notes}
-Welcome to our session on Object-Oriented Programming, or OOP. In this lecture, we'll explore the fundamentals of OOP, compare it to other programming styles, and discuss why it's a powerful tool in software development. We'll also introduce a project that will help you apply these concepts in practice.
-
-It is important to note that this is not an exhaustive guide to OOP. Our goal is to provide a sufficient overiew to enable our discussion on OOP in Python.
 :::
 
 
 ## What is Object-Oriented Programming?
 
 - A programming approach that organizes code around objects
-- Objects contain data (attributes) and code (methods)
 - Classes serve as blueprints for creating objects
 - Objects are instances of classes, like houses built from blueprints.
+- Objects contain data (attributes) and code (methods)
 
 ::: {.notes}
 Object-Oriented Programming is a way of organizing our code that focuses on objects. These objects are like containers that hold both data (which we call attributes) and the code that operates on that data (which we call methods). In OOP, we use classes as templates or blueprints to create these objects. This approach helps us structure our code in a way that often matches how we think about things in the real world.
@@ -36,9 +36,9 @@ This analogy helps us understand how classes serve as templates for creating obj
 
 ## Programming Paradigms
 
-- Procedural Programming
-- Functional Programming
-- Object-Oriented Programming
+- **Procedural Programming**: Step-by-step instructions
+- **Functional Programming**: Functions to solve problems
+- **Object-Oriented Programming**: Objects with data and methods
 
 ::: {.notes}
 Before we dive deeper into OOP, let's briefly compare it to other programming paradigms:
@@ -55,10 +55,10 @@ Each paradigm has its strengths, and understanding them helps us choose the best
 
 ## Core Concepts of OOP
 
-- Encapsulation
-- Inheritance
-- Polymorphism
-- Abstraction
+- **Encapsulation**: Bundling data and methods
+- **Inheritance**: Creating new classes from existing ones
+- **Polymorphism**: Treating different objects as the same type
+- **Abstraction**: Hiding complex details
 
 ::: {.notes}
 OOP is built on four main concepts:
@@ -99,8 +99,7 @@ These benefits become especially apparent as our programs grow larger and more c
 
 ## Learning OOP with a Project
 
-- We'll build a simple Instagram-like app
-- Apply OOP concepts in a practical setting
+Over the next few lectures we will implement elements of a simple Instagram-like app using OOP concepts.
 
 ::: {.notes}
 To help solidify our understanding of OOP, we're going to work on a project throughout this course. We'll be building a simplified version of Instagram.
