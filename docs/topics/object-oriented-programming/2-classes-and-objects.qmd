@@ -10,11 +10,13 @@
 A class in Python is like a blueprint or a template. It defines the structure and behavior that all objects of that class will have. Think of it as a way to create your own custom data type.
 
 Key points to emphasize:
+
 1. A class is not an object itself, but a description of how to create objects.
 2. It encapsulates both data (attributes) and behavior (methods) in a single unit.
 3. Classes allow us to create complex data structures that model real-world concepts or abstract ideas.
 
-Example: A `Car` class might define attributes like `color` and `model`, and methods like `start_engine()` and `drive()`.
+Example: 
+A `Car` class might define attributes like `color` and `model`, and methods like `start_engine()` and `drive()`.
 :::
 
 
@@ -33,13 +35,13 @@ Here's how we define a simple class in Python:
 3. The colon (:) indicates the start of the class body.
 4. In this simple example, we use `pass` as a placeholder. It means "do nothing" and is used when we want to have an empty class.
 
-This `User` class doesn't have any attributes or methods yet, but it's a valid class definition. We'll add more to it as we progress.
-
-It's important to note that indentation is crucial in Python. The body of the class (everything that belongs to the class) must be indented.
+This `User` class doesn't have any attributes or methods yet, but it's a valid class definition.
 :::
 
 
 ## The `__init__` Method
+
+The `__init__` method is the constructor for a class. It's called automatically when we create a new object of the class.
 
 ```python
 class User:
@@ -66,10 +68,10 @@ The `__init__` method allows us to ensure that every object starts with the attr
 :::
 
 
-## Attributes and Methods: A Brief Introduction
+## Attributes and Methods
 
 - Attributes: Data associated with an object
-- Methods: Functions that operate on the object's data
+- Methods: Functions that operate on the object's data (behavior)
 
 ```python
 class User:
@@ -82,15 +84,12 @@ class User:
 ```
 
 ::: {.notes}
-Before we dive deeper into objects, let's briefly introduce attributes and methods:
 
 1. Attributes are variables that store data for each object. In our `User` class, `username` and `email` are attributes.
-
 2. Methods are functions defined inside a class that can operate on the object's data. The `display_info` method in our example is a simple method that prints the user's information.
-
 3. Both attributes and methods are accessed using dot notation (e.g., `user.username` or `user.display_info()`).
 
-We'll explore attributes and methods in more detail in the next topic. For now, it's important to understand that classes can contain both data (attributes) and behavior (methods).
+For now, it's important to understand that classes can contain both data (attributes) and behavior (methods).
 :::
 
 
@@ -115,7 +114,9 @@ Objects are fundamental to object-oriented programming because they allow us to 
 :::
 
 
-## Creating Objects (Instantiation)
+## Creating Objects
+
+We **instantiate** objects from a class to create concrete instances with specific attribute values.
 
 ```python
 user1 = User("alice", "alice@example.com")

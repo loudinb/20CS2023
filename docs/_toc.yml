@@ -67,6 +67,9 @@ parts:
     - file: knowledge-checks
       sections:
         - glob: knowledge-checks/knowledge-check-*
+    - file: programming-assignments
+      sections:
+        - glob: programming-assignmnets/programming-assignmnet-*
   - caption: Other Resources
     chapters:
       - file: faqs

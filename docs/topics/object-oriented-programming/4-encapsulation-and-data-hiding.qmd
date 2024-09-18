@@ -2,16 +2,19 @@
 
 ## What is Encapsulation?
 
-- Bundling of data and methods that operate on that data
-- Restricting direct access to some of an object's components
-- Prevents accidental modification of data
+::: {.smaller-90}
+- **Bundling Data and Methods**: Encapsulation groups related data (attributes) and the methods that operate on that data within a single unit or object. This organization helps in maintaining a clear structure.
+- **Access Control**: It restricts access to an object's internal details, often hiding them from the outside world. This is known as data hiding or information hiding.
+- **Data Integrity**: By controlling access to the internal details of an object, encapsulation helps prevent unauthorized or accidental changes to the object's data, thereby improving the reliability and security of the code.
+:::
 
 ::: {.notes}
-Encapsulation is one of the core principles of object-oriented programming. Here's what it involves:
+Encapsulation is one of the core principles of object-oriented programming. Here's what encapsulation involves:
 
-1. Bundling: It groups the data (attributes) and the methods that work on that data within a single unit or object.
-2. Restriction: It controls access to an object's internal details, often hiding them from the outside world.
-3. Protection: By controlling access, it helps prevent accidental or unauthorized changes to the object's data.
+1. **Bundling Data and Methods**: Encapsulation bundles the data (attributes) and the methods that operate on that data within a single unit or object. This helps organize related code and data together.
+2. **Restricting Access**: It controls access to an object's internal details, often hiding them from the outside world. This is known as data hiding or information hiding.
+3. **Preventing Unauthorized Changes**: By restricting access to the internal details of an object, encapsulation helps prevent unauthorized or accidental changes to the object's data. This can improve the reliability and security of the code.
+
 
 Think of encapsulation like a capsule or a pill: the outer layer (the public interface) protects and contains the inner contents (the private data and implementation details). This concept helps us create more organized, safer, and more maintainable code.
 :::
@@ -36,32 +39,6 @@ Encapsulation offers several key benefits in software development:
 4. Flexibility: It allows us to change the internal implementation of a class without affecting the code that uses the class, as long as the public interface remains the same.
 
 These benefits become increasingly important as our programs grow larger and more complex. Encapsulation is a key tool for creating maintainable and robust software systems.
-:::
-
-
-## Practical Benefits in Larger Projects
-
-- Simplifies collaboration among team members
-- Reduces bugs by preventing unintended data manipulation
-- Enables easier maintenance and updates
-- Supports the creation of stable APIs
-
-::: {.notes}
-In larger software projects, encapsulation provides several practical benefits:
-
-1. Collaboration: When working in a team, encapsulation allows developers to work on different parts of the code without interfering with each other's work. They only need to understand and use the public interfaces of other components.
-
-2. Bug Reduction: By restricting direct access to data, encapsulation reduces the chances of unintended data manipulation, which is a common source of bugs in large projects.
-
-3. Maintenance: When you need to update or fix a part of your code, encapsulation ensures that changes are localized. You can modify the internal workings of a class without affecting the code that uses it, as long as the public interface remains the same.
-
-4. API Stability: Encapsulation is crucial for creating stable APIs. By clearly defining what's public and what's private, you can ensure that other parts of the system (or external systems) interact with your code in a controlled, predictable manner.
-
-5. Code Reusability: Well-encapsulated code is often more reusable because it has clear boundaries and interfaces. This makes it easier to take a class or module from one project and use it in another.
-
-6. Testing: Encapsulation can make unit testing easier. By having a clear public interface, you can write tests that interact with your objects in the same way that the rest of your code does.
-
-Understanding and applying encapsulation becomes increasingly important as you work on larger, more complex software projects. It's a key practice for writing professional-grade, maintainable code.
 :::
 
 
@@ -216,6 +193,10 @@ Let's break down this example to understand name mangling:
 - Provide controlled access to attributes
 - Allow for additional logic when getting/setting values
 
+:::{.callout-important}
+While getters and setters are common in many OOP languages, Python often uses properties instead for a more Pythonic approach.
+:::
+
 ::: {.notes}
 Getters and setters are methods used to access and modify the values of attributes:
 
@@ -246,7 +227,7 @@ Getters and setters are methods used to access and modify the values of attribut
                raise ValueError("Invalid age")
    ```
 
-While getters and setters are common in many OOP languages, Python often uses properties instead for a more Pythonic approach.
+
 :::
 
 
@@ -254,7 +235,7 @@ While getters and setters are common in many OOP languages, Python often uses pr
 
 - Built-in `@property` decorator
 - Allows getter-like behavior
-- `@attribute.setter` for setter behavior
+- `@attribute.setter` for setter behavior (optional)
 - Provides clean syntax for accessing attributes
 
 ::: {.notes}
@@ -299,8 +280,8 @@ Properties allow us to use simple attribute access syntax while still controllin
 ## Encapsulation Best Practices
 
 - Use public attributes for stable APIs
-- Use protected attributes for internal use
-- Use private attributes to avoid name clashes
+- Use protected attributes for internal use (within the class)
+- Use private attributes to enforce encapsulation and protect sensitive data
 - Use properties for controlled access to attributes
 - Document your class's public interface
 

@@ -85,18 +85,16 @@ Being able to modify attributes allows our objects to change state over time, wh
 ## What are Instance Methods?
 
 - Functions defined inside a class
-- Operate on instance attributes
-- First parameter is always `self`
+- Operate on instance data (attributes)
+- The first parameter is **always** `self`
 
 ::: {.notes}
 Instance methods are functions that we define inside a class. They define the behaviors or actions that objects of the class can perform. Here are the key points about instance methods:
 
 1. They are defined inside the class, just like regular functions.
 2. They can access and modify the instance attributes of the object they're called on.
-3. The first parameter is always `self`, which refers to the instance the method is being called on.
+3. The first parameter is always `self`, which refers to the instance the method is being called on.  The reason is specfic to Python's object-oriented programming model, we will discuss more later.
 4. They can also take additional parameters.
-
-Instance methods are powerful because they allow us to define behaviors that are specific to our class and can work with the object's data.
 :::
 
 
@@ -219,15 +217,20 @@ This use of `self` is what allows our methods to be reusable across all instance
 :::
 
 
-## Brief Comparison: Instance vs Class Attributes/Methods
+## Class Attributes and Methods
+
+We will talk about class attributes and methods in detail later, for now just know that there are two types of attributes and methods in a class:
 
 - Instance attributes/methods:
-  - Specific to each object
+
+  - Specific to each instance of the class (object)
   - Accessed via `self` or object name
+
 - Class attributes/methods:
+
   - Shared by all instances of the class
-  - Accessed via class name
-  - We'll cover these in detail later
+  - Accessed via `cls` or class name
+
 
 ::: {.notes}
 While we'll cover class attributes and methods in more detail later, it's useful to briefly compare them with instance attributes and methods:

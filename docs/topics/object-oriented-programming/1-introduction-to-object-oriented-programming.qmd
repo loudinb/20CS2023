@@ -1,19 +1,6 @@
 # Introduction to Object-Oriented Programming
 
 
-::: {.notes}
-
-This is a brief introduction to Object-Oriented Programming (OOP). This is not an exhaustive guide to OOP. Our goal is to provide a sufficient overiew to enable our discussion on OOP in Python.
-
-We'll cover the following topics in this session:
-
-- What is Object-Oriented Programming?
-- Programming Paradigms
-- Core Concepts & Benefits of OOP
-
-:::
-
-
 ## What is Object-Oriented Programming?
 
 - A programming approach that organizes code around objects

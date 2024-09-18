@@ -10,14 +10,14 @@ Update the `user.py` file:
 
 1. Change all instance attributes to use a single underscore prefix (e.g., `self._username`).
 2. Implement properties for `username` and `email` with appropriate getters and setters.
-3. Create a `_validate_email` private method to check email format.
+3. Create a `_validate_email` private method to check email format and use it within the email setter.
 4. Update the `update_bio` method to use a property for `bio` with a setter that enforces the character limit.
 
 ## Step 2: Refactor the `Post` Class
 
 Update the `post.py` file:
 
-1. Change appropriate instance attributes to use a single underscore prefix.
+1. Change all instance attributes to use a single underscore prefix (e.g., `self._content`).
 2. Implement a property for `likes_count` with a getter only.
 3. Make the `like_post` and `unlike_post` methods protected by adding a single underscore prefix.
 4. Create a public `toggle_like` method that calls the protected methods as appropriate.
@@ -26,7 +26,7 @@ Update the `post.py` file:
 
 Update the `comment.py` file:
 
-1. Change appropriate instance attributes to use a single underscore prefix.
+1. Change all instance attributes to use a single underscore prefix (e.g., `self._content`).
 2. Implement a read-only property for `timestamp`.
 3. Create a protected `_increment_likes` method and a public `like` method that calls it.
 

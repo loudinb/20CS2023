@@ -2,8 +2,11 @@
 
 ## Agenda
 
-Today's lecture is part 1 of our discussion on object-oriented programming and how to create classes and objects in Python. We will reinforce these concepts with a coding session to create a simple class and object for a Instagram like application.
+Today's lecture is part 1 of our discussion on object-oriented programming and how to create classes and objects in Python. We will reinforce these concepts with coding sessions to implement OOP concepts in Python for an Instagram-like application.
 
+:::{.callout-important}
+Programming Assignment 1 will be completion of the coding sessions over the next three classes that cover object-oriented programming. An announcement will be posted on Canvas shortly.
+:::
 
 {{< include ../topics/object-oriented-programming/1-introduction-to-object-oriented-programming.qmd >}}
 
