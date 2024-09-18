@@ -69,7 +69,11 @@ parts:
         - glob: knowledge-checks/knowledge-check-*
     - file: programming-assignments
       sections:
-        - glob: programming-assignmnets/programming-assignmnet-*
+        - file: programming-assignments/pa-1/pa-1
+          sections:
+            - file: programming-assignments/pa-1/exercise-1/exercise-1
+            - file: programming-assignments/pa-1/exercise-2/exercise-2
+            - file: programming-assignments/pa-1/exercise-3/exercise-3
   - caption: Other Resources
     chapters:
       - file: faqs
