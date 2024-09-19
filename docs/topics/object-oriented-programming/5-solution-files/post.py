@@ -13,7 +13,8 @@ class Post:
         self._timestamp = datetime.now()
         self._likes = set()
         self._comments = []
-        self._tags = self._extract_tags(content)
+        self.tags = []
+        self._extract_tags(content)
         Post.post_id_counter += 1
         self._id = Post.post_id_counter
         Post.total_posts += 1
@@ -47,6 +48,14 @@ class Post:
         content = f"Shared: {original_post._content[:50]}..."
         return cls(user, content)
 
-    def _extract_tags(self, content):
+    def add_tag(self, tag_name: str) -> None:
+        tag = Tag.get_or_create(tag_name)
+        if tag not in self.tags:
+            self.tags.append(tag)
+            tag.increment_usage()
+
+    def _extract_tags(self, content: str) -> None:
         words = content.split()
-        return [Tag.get_or_create_tag(word[1:]) for word in words if word.startswith('#')]
+        for word in words:
+            if word.startswith('#'):
+                self.add_tag(word[1:])

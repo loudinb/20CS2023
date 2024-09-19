@@ -1,32 +1,34 @@
+
 import unittest
 from tag import Tag
 
 class TestTag(unittest.TestCase):
-    def test_tag_creation(self):
-        tag = Tag.get_or_create_tag("python")
-        self.assertEqual(tag.name, "python")
-        self.assertEqual(tag.post_count, 0)
+    def setUp(self):
+        Tag.all_tags.clear()
 
-    def test_get_or_create_tag(self):
-        tag1 = Tag.get_or_create_tag("python")
-        tag2 = Tag.get_or_create_tag("python")
-        self.assertIs(tag1, tag2)  # Should be the same object
+    def test_get_or_create(self):
+        tag1 = Tag.get_or_create("python")
+        tag2 = Tag.get_or_create("python")
+        self.assertIs(tag1, tag2)
+        self.assertEqual(len(Tag.all_tags), 1)
 
-    def test_increment_post_count(self):
-        tag = Tag.get_or_create_tag("python")
-        initial_count = tag.post_count
-        tag.increment_post_count()
-        self.assertEqual(tag.post_count, initial_count + 1)
+    def test_increment_usage(self):
+        tag = Tag.get_or_create("python")
+        tag.increment_usage()
+        self.assertEqual(tag.usage_count, 1)
 
     def test_get_trending_tags(self):
-        Tag.all_tags.clear()  # Clear existing tags
-        python_tag = Tag.get_or_create_tag("python")
-        java_tag = Tag.get_or_create_tag("java")
-        cpp_tag = Tag.get_or_create_tag("cpp")
+        tags = ["python", "java", "javascript", "csharp", "ruby", "go"]
+        for tag_name in tags:
+            tag = Tag.get_or_create(tag_name)
+            for _ in range(tags.index(tag_name) + 1):
+                tag.increment_usage()
 
-        python_tag.increment_post_count()
-        python_tag.increment_post_count()
-        java_tag.increment_post_count()
+        trending = Tag.get_trending_tags(3)
+        self.assertEqual(len(trending), 3)
+        self.assertEqual(trending[0].name, "go")
+        self.assertEqual(trending[1].name, "ruby")
+        self.assertEqual(trending[2].name, "csharp")
 
-        trending_tags = Tag.get_trending_tags(limit=2)
-        self.assertEqual(
+if __name__ == '__main__':
+    unittest.main()

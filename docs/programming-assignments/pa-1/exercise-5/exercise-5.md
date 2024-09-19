@@ -35,21 +35,73 @@ Update the `comment.py` file:
 3. Implement a static method `is_valid_content` to check if the comment content is appropriate.
 4. Add a static method `generate_comment_preview` that takes a comment and returns a short preview.
 
-## Step 4: Create a `Utility` Class
+## Step 4: Create an `Analytics` Class
 
-Create a new file `utility.py`:
+Create a new file `analytics.py`:
 
-1. Implement a `Utility` class with the following static methods:
-   - `is_valid_email`: Checks if an email address is valid.
-   - `generate_random_string`: Generates a random string of a given length.
-   - `format_timestamp`: Formats a datetime object into a readable string.
-   - `truncate_string`: Truncates a string to a specified length, adding an ellipsis if necessary.
+1. Implement an `Analytics` class with the following features:
 
-## Step 5: Update Existing Classes to Use `Utility` Methods
+   a. Class attributes:
+      - `total_likes`: int, initialized to 0
+      - `total_shares`: int, initialized to 0
+      - `active_users`: set(), initialized as an empty set
 
-1. In the `User` class, use `Utility.is_valid_email` for email validation.
-2. In the `Post` class, use `Utility.truncate_string` in the `format_post` method.
-3. In the `Comment` class, use `Utility.format_timestamp` when displaying comment timestamps.
+   b. Class methods:
+      - `update_likes(cls, count: int) -> None`: Increases `total_likes` by `count`
+      - `update_shares(cls, count: int) -> None`: Increases `total_shares` by `count`
+      - `add_active_user(cls, user_id: str) -> None`: Adds `user_id` to `active_users` set
+      - `remove_active_user(cls, user_id: str) -> None`: Removes `user_id` from `active_users` set
+
+   c. Static methods:
+      - `calculate_engagement_rate(total_interactions: int, total_users: int) -> float`: 
+        Returns the engagement rate as a percentage (interactions / users * 100)
+      - `identify_trending_posts(posts: List[Post], threshold: int) -> List[Post]`: 
+        Returns a list of Post objects with likes above the given threshold
+
+   d. Class method:
+      - `generate_report(cls) -> str`: Returns a formatted string containing:
+        - Total likes
+        - Total shares
+        - Number of active users
+        - Current engagement rate (using `calculate_engagement_rate`)
+
+
+## Step 5: Implement Tagging System
+
+Create a new file `tag.py`:
+
+1. Implement a `Tag` class with the following features:
+
+   a. Class attribute:
+      - `all_tags`: Dict[str, 'Tag'], initialized as an empty dictionary
+
+   b. Instance attributes (in `__init__`):
+      - `name`: str
+      - `usage_count`: int, initialized to 0
+
+   c. Class method:
+      - `get_or_create(cls, tag_name: str) -> 'Tag'`: 
+        If a tag with `tag_name` exists in `all_tags`, return it. Otherwise, create a new Tag, add it to `all_tags`, and return it.
+
+   d. Instance method:
+      - `increment_usage(self) -> None`: Increases `usage_count` by 1
+
+   e. Static methods:
+      - `get_trending_tags(top_n: int = 5) -> List['Tag']`: 
+        Returns the `top_n` tags with the highest `usage_count`
+
+2. Update the `Post` class in `post.py`:
+   
+   a. Add an instance attribute:
+      - `tags`: List[Tag], initialized as an empty list in `__init__`
+
+   b. Add a method:
+      - `add_tag(self, tag_name: str) -> None`: 
+        Uses `Tag.get_or_create(tag_name)` to get a Tag object, adds it to the `tags` list, and calls `increment_usage()` on the tag.
+
+   c. Modify the `__init__` method to automatically detect and add tags from the post content:
+      - Look for words starting with '#' in the post content
+      - For each hashtag found, call `self.add_tag(tag_name)`
 
 ## Testing
 
