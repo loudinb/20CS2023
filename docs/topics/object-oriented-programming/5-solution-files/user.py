@@ -1,22 +1,16 @@
-from datetime import datetime
 import re
-from post import Post
 from private_message import PrivateMessage
 
 class User:
     total_users = 0
-    min_username_length = 3
 
     def __init__(self, username, email):
         if not User.is_valid_username(username):
-            raise ValueError(f"Username must be at least {User.min_username_length} characters long and contain only letters and numbers")
+            raise ValueError("Invalid username")
         self._username = username
         self._email = email
-        self._join_date = datetime.now()
         self._posts = []
-        self._liked_posts = set()
         self._received_messages = []
-        self._bio = ""
         User.total_users += 1
 
     @property
@@ -34,69 +28,29 @@ class User:
         else:
             raise ValueError("Invalid email format")
 
-    @property
-    def bio(self):
-        return self._bio
+    @staticmethod
+    def is_valid_username(username):
+        return username.isalnum() and 3 <= len(username) <= 20
 
-    @bio.setter
-    def bio(self, value):
-        if len(value) <= 150:
-            self._bio = value
-        else:
-            raise ValueError("Bio must be 150 characters or less")
+    @staticmethod
+    def _validate_email(email):
+        pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        return re.match(pattern, email) is not None
 
     @classmethod
     def get_user_count(cls):
         return cls.total_users
 
-    @staticmethod
-    def is_valid_username(username):
-        return len(username) >= User.min_username_length and username.isalnum()
-
     @classmethod
     def create_anonymous_user(cls):
-        anonymous_username = f"anonymous_{cls.total_users + 1}"
-        anonymous_email = f"{anonymous_username}@example.com"
-        return cls(anonymous_username, anonymous_email)
-
-    def _validate_email(self, email):
-        pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-        return re.match(pattern, email) is not None
+        anonymous_username = f"anon_{cls.total_users + 1}"
+        return cls(anonymous_username, f"{anonymous_username}@example.com")
 
     def create_post(self, content):
+        from post import Post
         new_post = Post(self, content)
         self._posts.append(new_post)
         return new_post
-
-    def like_post(self, post):
-        if post not in self._liked_posts:
-            self._liked_posts.add(post)
-            post.toggle_like()
-            return True
-        return False
-
-    def comment_on_post(self, post, content):
-        return post.add_comment(self, content)
-
-    def display_info(self):
-        print(f"Username: {self._username}")
-        print(f"Email: {self._email}")
-        print(f"Bio: {self._bio}")
-        print(f"Joined on: {self._join_date.strftime('%Y-%m-%d %H:%M:%S')}")
-        print(f"Number of posts: {len(self._posts)}")
-        print(f"Number of liked posts: {len(self._liked_posts)}")
-
-    def get_activity_feed(self):
-        activities = []
-        for post in self._posts:
-            activities.append(("Post created", post.timestamp, post.content))
-        for post in self._liked_posts:
-            activities.append(("Post liked", post.timestamp, post.content))
-        for post in self._posts:
-            for comment in post.comments:
-                if comment.user == self:
-                    activities.append(("Comment made", comment.timestamp, comment.content))
-        return sorted(activities, key=lambda x: x[1], reverse=True)
 
     def send_private_message(self, recipient, content):
         message = PrivateMessage(self, recipient, content)

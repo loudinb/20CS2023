@@ -1,7 +1,3 @@
-from user import User
-from post import Post
-from comment import Comment
-
 class Analytics:
     total_likes = 0
     total_shares = 0
@@ -21,20 +17,17 @@ class Analytics:
 
     @staticmethod
     def calculate_engagement_rate(post):
-        total_interactions = post.likes_count + len(post.comments)
-        return total_interactions / len(User.get_user_count()) if User.get_user_count() > 0 else 0
-
-    @classmethod
-    def identify_trending_posts(cls, posts, threshold=0.1):
-        return [post for post in posts if cls.calculate_engagement_rate(post) > threshold]
+        total_interactions = post.likes_count + len(post._comments)
+        return total_interactions / len(Analytics.active_users) if Analytics.active_users else 0
 
     @classmethod
     def generate_summary_report(cls):
-        report = f"Total Users: {User.get_user_count()}\n"
-        report += f"Total Posts: {Post.get_post_count()}\n"
-        report += f"Total Comments: {Comment.get_total_comments()}\n"
-        report += f"Total Likes: {cls.total_likes}\n"
-        report += f"Total Shares: {cls.total_shares}\n"
-        report += f"Active Users: {len(cls.active_users)}\n"
-        report += f"Average Comments per Post: {Comment.get_average_comments_per_post():.2f}"
-        return report
+        return f"""
+        Total Likes: {cls.total_likes}
+        Total Shares: {cls.total_shares}
+        Active Users: {len(cls.active_users)}
+        """
+
+    @staticmethod
+    def identify_trending_posts(posts, threshold=0.5):
+        return [post for post in posts if Analytics.calculate_engagement_rate(post) > threshold]

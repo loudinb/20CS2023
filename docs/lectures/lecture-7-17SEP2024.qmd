@@ -11,7 +11,14 @@ Programming Assignment 1 will be completion of the coding sessions over the next
 {{< include ../topics/object-oriented-programming/1-introduction-to-object-oriented-programming.qmd >}}
 
 {{< include ../topics/object-oriented-programming/2-classes-and-objects.qmd >}}
-{{< include ../topics/object-oriented-programming/2.1-classes-and-objects-coding-session.qmd >}}
+
+## Coding Session
+
+[Static Methods Coding Session](../programming-assignments/pa-1/exercise-1/exercise-1.md)
+
 
 {{< include ../topics/object-oriented-programming/3-instance-attributes-and-methods.qmd >}}
-{{< include ../topics/object-oriented-programming/3.1-instance-attributes-and-methods-coding-session.qmd >}}
+
+## Coding Session
+
+[Static Methods Coding Session](../programming-assignments/pa-1/exercise-2/exercise-2.md)

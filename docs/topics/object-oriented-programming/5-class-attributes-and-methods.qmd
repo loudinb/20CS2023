@@ -2,366 +2,162 @@
 
 ## What are Class Attributes?
 
-- Attributes shared by all instances of a class
+- Variables shared by all instances of a class
 - Defined outside any method in the class
-- Accessed using the class name or instance name
-
-::: {.notes}
-Class attributes are variables that are shared by all instances of a class. Here are the key points to understand:
-
-1. Shared Data: Unlike instance attributes, which are specific to each object, class attributes have the same value for every instance of the class.
-
-2. Definition: They are defined directly in the class body, outside of any method.
-
-3. Access: They can be accessed using either the class name or an instance of the class.
-
-4. Use Cases: Class attributes are useful for defining constants or tracking data that should be shared by all instances of a class.
-
-Class attributes provide a way to maintain state that is consistent across all instances of a class, which can be very useful in certain design scenarios.
-:::
-
-
-## Defining Class Attributes
+- Accessed using the class name or instance
 
 ```python
-class User:
-    user_count = 0  # This is a class attribute
+class Book:
+    library_name = "City Library"  # Class attribute
 
-    def __init__(self, username):
-        self.username = username
-        User.user_count += 1
+    def __init__(self, title):
+        self.title = title  # Instance attribute
+
+print(Book.library_name)  # Accessing class attribute
 ```
 
 ::: {.notes}
-Let's break down how we define and use class attributes:
-
-1. Definition: The `user_count` attribute is defined directly in the class body, outside of any method. This makes it a class attribute.
-
-2. Initialization: We set its initial value to 0.
-
-3. Usage: In the `__init__` method, we increment `User.user_count` each time a new User object is created.
-
-4. Shared State: This `user_count` will be shared by all instances of the User class, allowing us to keep track of how many User objects have been created.
-
-This example demonstrates how class attributes can be used to maintain state that is relevant to the class as a whole, rather than to individual instances.
+Class attributes are shared by all instances of a class. They're defined at the class level, outside of any method. In this example, `library_name` is a class attribute that all `Book` instances will share. We can access it using the class name `Book.library_name`.
 :::
 
 
 ## Accessing Class Attributes
 
+- Best practice: Use class name (e.g., `Book.library_name`)
+- Can also access through instance, but less clear
+
 ```python
-print(User.user_count)  # Access via class name
-user = User("alice")
-print(user.user_count)  # Access via instance
-print(User.user_count)  # Class attribute updated
+book1 = Book("1984")
+book2 = Book("To Kill a Mockingbird")
+
+print(Book.library_name)  # Recommended
+print(book1.library_name)  # Works, but less clear
 ```
 
 ::: {.notes}
-Class attributes can be accessed in multiple ways:
-
-1. Via Class Name: We can access the class attribute directly through the class name (`User.user_count`).
-
-2. Via Instance: We can also access it through an instance of the class (`user.user_count`).
-
-3. Consistent Value: Whether we access it through the class or an instance, we're referring to the same shared data.
-
-4. Updates: When we create a new User object, the `user_count` is incremented. This change is reflected whether we access the attribute through the class or an instance.
-
-It's important to note that while you can access class attributes through instances, it's often clearer and more explicit to access them through the class name, especially when you're not inside a method of the class.
+We can access class attributes using either the class name or an instance. However, using the class name (like `Book.library_name`) is clearer because it shows that the attribute is shared by all instances. Accessing through an instance (`book1.library_name`) works but doesn't clearly show it's a shared attribute.
 :::
 
 
 ## Modifying Class Attributes
 
+- Changes affect all instances when modified through class
+- Be careful when modifying through an instance
+
 ```python
-User.user_count = 10  # Modifies the class attribute
-user1 = User("bob")
-user2 = User("charlie")
-print(User.user_count)  # Output: 12
+Book.library_name = "City Central Library"
+print(book1.library_name)  # "City Central Library"
+print(book2.library_name)  # "City Central Library"
+
+book1.library_name = "School Library"  # Creates instance attribute
+print(Book.library_name)  # Still "City Central Library"
+print(book2.library_name)  # Still "City Central Library"
 ```
 
 ::: {.notes}
-Class attributes can be modified, but it's important to understand how this works:
-
-1. Direct Modification: We can modify a class attribute by assigning a new value to it using the class name (`User.user_count = 10`).
-
-2. Effect on All Instances: This change affects all instances of the class, both existing and future ones.
-
-3. Incrementation: In this example, after setting `user_count` to 10, we create two more User objects. Each creation increments the count, resulting in a final value of 12.
-
-4. Caution: Be careful when modifying class attributes, as the change will impact all instances of the class. This can lead to unexpected behavior if not managed carefully.
-
-Modifying class attributes can be powerful, but it should be done thoughtfully and with a clear understanding of the implications for all instances of the class.
+When we modify a class attribute using the class name, it affects all instances. However, if we try to modify it through an instance, we actually create a new instance attribute with the same name, which doesn't affect other instances or the class attribute itself. This behavior can be confusing, so it's best to modify class attributes using the class name.
 :::
 
 
 ## Class Attributes vs Instance Attributes
 
+- Class attributes: Shared by all instances
+- Instance attributes: Unique to each instance
+
 ```python
-class Example:
-    class_attr = "I'm a class attribute"
-    
-    def __init__(self):
-        self.instance_attr = "I'm an instance attribute"
+class Book:
+    library_name = "City Library"  # Class attribute
 
-e1 = Example()
-e2 = Example()
+    def __init__(self, title):
+        self.title = title  # Instance attribute
 
-print(e1.class_attr)  # Output: I'm a class attribute
-print(e2.class_attr)  # Output: I'm a class attribute
-print(e1.instance_attr)  # Output: I'm an instance attribute
-print(e2.instance_attr)  # Output: I'm an instance attribute
+book1 = Book("1984")
+book2 = Book("To Kill a Mockingbird")
 
-Example.class_attr = "Modified class attribute"
-print(e1.class_attr)  # Output: Modified class attribute
-print(e2.class_attr)  # Output: Modified class attribute
-
-e1.instance_attr = "Modified instance attribute"
-print(e1.instance_attr)  # Output: Modified instance attribute
-print(e2.instance_attr)  # Output: I'm an instance attribute
+print(book1.title)  # "1984"
+print(book2.title)  # "To Kill a Mockingbird"
+print(book1.library_name)  # "City Library"
+print(book2.library_name)  # "City Library"
 ```
 
 ::: {.notes}
-This example illustrates the key differences between class attributes and instance attributes:
-
-1. Definition: 
-   - Class attributes (class_attr) are defined in the class body.
-   - Instance attributes (instance_attr) are typically defined in the __init__ method.
-
-2. Shared vs Individual:
-   - Class attributes are shared among all instances.
-   - Instance attributes are specific to each instance.
-
-3. Modification:
-   - Modifying a class attribute affects all instances.
-   - Modifying an instance attribute only affects that specific instance.
-
-4. Usage:
-   - Use class attributes for data that should be shared by all instances.
-   - Use instance attributes for data that's unique to each instance.
-
-Understanding this distinction is crucial for designing classes effectively and managing state appropriately in your programs.
+This example shows the difference between class and instance attributes. `library_name` is a class attribute shared by all `Book` instances, while `title` is an instance attribute unique to each book. Understanding this difference is crucial for proper class design and usage.
 :::
 
 
 ## What are Class Methods?
 
-- Methods that operate on the class itself
+- Methods that operate on the class, not instances
 - Defined using the `@classmethod` decorator
-- First parameter is `cls` (the class) instead of `self`
-
-::: {.notes}
-Class methods are methods that are bound to the class rather than its instances. Here are the key points to understand:
-
-1. Purpose: They are designed to operate on the class itself, rather than on instances of the class.
-
-2. Definition: They are defined using the `@classmethod` decorator.
-
-3. First Parameter: Instead of `self`, they use `cls` as their first parameter, which represents the class.
-
-4. Access: They can access and modify class state that applies across all instances of the class.
-
-5. Usage: They are often used for alternative constructors or for methods that need to operate on class attributes.
-
-Class methods provide a way to define behavior that is related to the class as a whole, rather than to specific instances of the class.
-:::
-
-
-## Defining Class Methods
+- First parameter is `cls` (the class itself)
 
 ```python
-class User:
-    user_count = 0
+class Book:
+    total_books = 0
 
-    def __init__(self, username):
-        self.username = username
-        User.user_count += 1
-
-    @classmethod
-    def display_user_count(cls):
-        print(f"There are {cls.user_count} users")
+    def __init__(self, title):
+        self.title = title
+        Book.total_books += 1
 
     @classmethod
-    def create_anonymous(cls):
-        return cls("Anonymous")
+    def display_total(cls):
+        print(f"Total books: {cls.total_books}")
 ```
 
 ::: {.notes}
-Let's break down this example of defining class methods:
-
-1. The `@classmethod` Decorator: This tells Python that the following method is a class method.
-
-2. The `cls` Parameter: By convention, we use `cls` as the first parameter. It represents the class itself.
-
-3. Accessing Class Attributes: We can access class attributes using `cls.attribute_name`.
-
-4. Different Purposes: 
-   - `display_user_count` is a utility method that prints information about the class state.
-   - `create_anonymous` is an alternative constructor that creates a User with a predefined username.
-
-5. Returning Instances: Class methods can create and return new instances of the class, as seen in `create_anonymous`.
-
-Class methods allow us to define behavior that's related to the class as a whole, which can be very useful for certain types of operations or alternative ways of creating objects.
+Class methods are methods that operate on the class itself, not on instances. They're defined using the `@classmethod` decorator and take `cls` as their first parameter, which represents the class. In this example, `display_total` is a class method that prints the total number of books created.
 :::
 
 
 ## Using Class Methods
 
-```python
-User.display_user_count()  # Output: There are 0 users
-user1 = User("alice")
-User.display_user_count()  # Output: There are 1 users
+- Call class methods on the class itself
+- Useful for operations involving class-level data
 
-anon_user = User.create_anonymous()
-print(anon_user.username)  # Output: Anonymous
-User.display_user_count()  # Output: There are 2 users
+```python
+Book.display_total()  # Total books: 0
+
+book1 = Book("1984")
+book2 = Book("To Kill a Mockingbird")
+
+Book.display_total()  # Total books: 2
 ```
 
 ::: {.notes}
-This example demonstrates how to use class methods:
-
-1. Calling on the Class: We can call class methods directly on the class itself, without needing to create an instance.
-
-2. Updating Class State: The `display_user_count` method shows how the class attribute `user_count` is updated as we create new users.
-
-3. Alternative Constructor: The `create_anonymous` method is used to create a new User instance with a predefined username.
-
-4. Automatic `cls` Passing: When we call a class method, Python automatically passes the class as the first argument.
-
-Class methods are particularly useful for operations that involve the class as a whole, rather than a specific instance. They provide a clean way to work with class-level data and behavior.
-:::
-
-
-## Class Methods vs Static Methods
-
-- Static methods don't receive an automatic first argument
-- Defined using the `@staticmethod` decorator
-- Cannot access or modify class state
-
-```python
-class MathOperations:
-    @classmethod
-    def add_and_double(cls, x, y):
-        return cls.double(x + y)
-    
-    @staticmethod
-    def double(x):
-        return x * 2
-
-print(MathOperations.add_and_double(3, 4))  # Output: 14
-print(MathOperations.double(5))  # Output: 10
-```
-
-::: {.notes}
-Let's compare class methods and static methods:
-
-1. Class Methods:
-   - Use the `@classmethod` decorator
-   - Receive the class as an implicit first argument (`cls`)
-   - Can access and modify class state
-   - Can be used to create alternative constructors
-
-2. Static Methods:
-   - Use the `@staticmethod` decorator
-   - Don't receive any implicit first argument
-   - Cannot access or modify class state (unless explicitly passed)
-   - Behave like regular functions but belong to the class's namespace
-
-3. Usage:
-   - Use class methods when you need to access or modify class state
-   - Use static methods for utility functions that are related to the class but don't need to access class or instance data
-
-In the example, `add_and_double` is a class method that can call other methods of the class, while `double` is a static method that operates independently of the class state.
-:::
-
-
-## When to Use Class Methods
-
-- Factory methods for creating instances
-- Methods that modify class state
-- Methods that depend on class state but not instance state
-
-::: {.notes}
-Class methods are particularly useful in several scenarios:
-
-1. Factory Methods: They can serve as alternative constructors, providing different ways to create instances of the class.
-
-2. Modifying Class State: When you need to change state that's shared by all instances of the class.
-
-3. Class-level Operations: For operations that are related to the class as a whole, but don't need to access instance-specific data.
-
-4. Polymorphism: Class methods can be inherited and overridden in subclasses, allowing for polymorphic behavior at the class level.
-
-5. Organizational Tool: They can be used to organize methods that don't need to be tied to a specific instance.
-
-When deciding between class and instance methods, consider whether the operation is related to the class as a whole or to specific instances. If it's the former, a class method might be appropriate.
+We can call class methods directly on the class, without needing an instance. This is useful for operations that involve class-level data or behavior. In this example, we use the `display_total` method to show the number of books created, which is tracked using a class attribute.
 :::
 
 
 ## Class Methods as Alternative Constructors
 
+- Provide different ways to create class instances
+- Useful for creating objects from various data sources
+
 ```python
-class Date:
-    def __init__(self, year, month, day):
-        self.year = year
-        self.month = month
-        self.day = day
-
+class Book:
     @classmethod
-    def from_string(cls, date_string):
-        year, month, day = map(int, date_string.split('-'))
-        return cls(year, month, day)
+    def from_string(cls, book_info):
+        title, author = book_info.split(', ')
+        return cls(title, author)
 
-    @classmethod
-    def today(cls):
-        import datetime
-        d = datetime.date.today()
-        return cls(d.year, d.month, d.day)
-
-date1 = Date(2023, 9, 15)
-date2 = Date.from_string("2023-09-15")
-date3 = Date.today()
+book = Book.from_string("1984, George Orwell")
+print(book.title)  # "1984"
+print(book.author)  # "George Orwell"
 ```
 
 ::: {.notes}
-This example demonstrates how class methods can be used as alternative constructors:
-
-1. Regular Constructor: The `__init__` method serves as the regular constructor, taking year, month, and day as separate arguments.
-
-2. From String: The `from_string` class method provides an alternative way to create a Date object from a string representation.
-
-3. Today's Date: The `today` class method creates a Date object representing the current date.
-
-4. Flexibility: These alternative constructors provide different ways to create Date objects, enhancing the flexibility and usability of the class.
-
-5. Using `cls`: By using `cls` instead of the class name, these methods will work correctly even in subclasses.
-
-Alternative constructors are a common and powerful use of class methods. They allow you to provide multiple ways to create objects, each suited to different scenarios or input formats.
+Class methods can serve as alternative constructors, providing different ways to create instances of a class. This is useful when you want to create objects from different data sources or formats. In this example, `from_string` is a class method that creates a `Book` instance from a string containing the title and author.
 :::
 
 
 ## Summary
 
-- Class attributes are shared across all instances
-- Class methods operate on the class, not instances
-- Use `@classmethod` decorator for class methods
-- Class methods receive `cls` as first parameter
-- Useful for factory methods and class-wide operations
+- Class attributes: Shared by all instances
+- Instance attributes: Unique to each instance
+- Class methods: Operate on the class, not instances
+- Use class name to access/modify class attributes
+- Class methods as alternative constructors
 
 ::: {.notes}
-Let's recap what we've covered about class attributes and methods:
-
-1. Class attributes are shared by all instances of a class and can be used to maintain state that's relevant to the class as a whole.
-
-2. Class methods operate on the class itself rather than on instances. They're defined using the `@classmethod` decorator.
-
-3. Class methods receive the class as their first argument, conventionally named `cls`.
-
-4. Class methods can access and modify class attributes, and can be used to create alternative constructors.
-
-5. Unlike static methods, class methods can access class state and are often used for operations that involve the class as a whole.
-
-6. Class methods are particularly useful for factory methods, modifying class state, and performing operations that depend on class state but not instance state.
-
-Understanding these concepts allows you to write more efficient and organized code, especially when dealing with operations that affect all instances of a class or when you need alternative ways to create objects.
+To summarize, class attributes are shared among all instances of a class, while instance attributes are unique to each instance. Class methods operate on the class itself and are useful for class-wide operations or as alternative constructors. Remember to use the class name when accessing or modifying class attributes to avoid confusion. These concepts are fundamental to object-oriented programming in Python and provide powerful tools for designing flexible and efficient classes.
 :::

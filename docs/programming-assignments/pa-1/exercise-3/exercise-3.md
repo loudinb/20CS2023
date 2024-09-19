@@ -1,6 +1,6 @@
 # Exercise 3
 
-## Encapsulation and Data Hiding
+## Encapsulation
 
 In this exercise, you will refactor the existing classes to implement encapsulation and data hiding principles. You'll also create a new `PrivateMessage` class to practice these concepts further.
 

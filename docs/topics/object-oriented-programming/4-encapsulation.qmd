@@ -2,6 +2,8 @@
 
 ## What is Encapsulation?
 
+Encapsulation is the concept of bundling data (attributes) and methods (functions) that operate on that data into a single unit called a class.  Since we have already discsussed classes, instance attributes, and methods, we have already been using encapsulation.  But there is more to encapsulation than just bundling data and methods together.
+
 - Bundling data and methods together in a single unit (class)
 - Controlling access to an object's internal details
 - Protecting data integrity through controlled access

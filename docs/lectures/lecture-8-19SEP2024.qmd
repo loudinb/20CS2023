@@ -4,8 +4,97 @@
 
 Today's lecture is part 2 of our series on object-oriented programming (OOP) in Python. We will continue our exploration of OOP concepts, focusing on  encapsulation, data hiding, class attributes, and methods.
 
+## Review of Classes and Objects
+
+Last time we learned about classes and objects in Python.  A class is a blueprint for creating objects, and objects are instances of classes.
+
+Classes can contain attributes (data) and methods (behaviors) that operate on that data. This organization helps us create more structured and reusable code.
+
+## Class Definition
+
+You define a class using the `class` keyword"
+
+```python
+class Person:
+    pass
+```
+
+- Class names are written in CamelCase by convention.
+
+## The __init__ Method
+
+The `__init__` method is a special method used to initialize objects. It is called when a new object is created.
+
+```python
+class Person:
+    def __init__(self):
+        pass
+```
+
+`self` is a reference to the current instance of the class. It is used to access attributes and methods of the class, it is not a keyword.
+
+
+## Instance Attributes
+
+Instance attributes are the data associated with an object.
+
+```python
+class Person:
+    def init(self, name, age):
+        self.name = name
+        self.age = age
+        self.friends = []
+```
+
+- Instance attributes are unique to each object.
+- They are accessed using `self` within the class.
+- They are defined in the `__init__` method.
+- They can have default values, that is you do not have to pass a value when creating an object.
+
+
+## Instance Methods
+
+Instance methods are the behaviors associated with an object.  They operate on the object's data.
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        self.friends = []
+
+    def add_friend(self, friend):
+        self.friends.append(friend)
+```
+
+- They take `self` as the first parameter.
+- They can access and modify the object's attributes.
+
+## Object Creation
+
+To create an object, you call the class as if it were a function.
+
+```python
+alice = Person("Alice", 30)
+bob = Person("Bob", 25)
+
+alice.add_friend(bob)
+```
+
 {{< include ../topics/object-oriented-programming/4-encapsulation.qmd >}}
-{{< include ../topics/object-oriented-programming/4.1-encapsulation-coding-session.qmd >}}
+
+## Coding Session
+
+[Encapsulation Coding Session](../programming-assignments/pa-1/exercise-3/exercise-3.md)
 
 {{< include ../topics/object-oriented-programming/5-class-attributes-and-methods.qmd >}}
-{{< include ../topics/object-oriented-programming/5.1-class-attributes-and-methods-coding-session.qmd >}}
+
+## Coding Session
+
+[Class Attributes and Methods Coding Session](../programming-assignments/pa-1/exercise-4/exercise-4.md)
+
+{{< include ../topics/object-oriented-programming/6-static-methods.qmd >}}
+
+## Coding Session
+
+[Static Methods Coding Session](../programming-assignments/pa-1/exercise-5/exercise-5.md)
