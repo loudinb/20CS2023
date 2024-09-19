@@ -2,8 +2,11 @@
 
 ## Agenda
 
-- **Namespaces and Scope**: An overview of how Python organizes, manages, and controls the visibility of names (variables, functions, etc.) within different parts of a program.
-- **Packages and Modules**: Techniques for organizing and structuring code into reusable, modular components to enhance maintainability and reusability.
-- **Python Standard Library**: An extensive collection of built-in modules and packages that come with Python, providing tools for a wide range of tasks.
-- **Python Package Index (PyPI)**: A comprehensive repository of third-party Python packages, offering a vast array of additional functionalities that can be easily integrated into projects.
-- **Structuring Python Projects**: Best practices for organizing project files, managing dependencies efficiently, and implementing version control to maintain clean and sustainable codebases.
+Today's lecture is part 4 of our series on object-oriented programming (OOP) in Python.  We will cover advanced topics in OOP, including abstraction, special methods, operator overloading, the life cycle of objects, and more. We will continue to implement these concepts in our Instagram-like application to demonstrate their practical applications.
+
+
+{{< include ../topics/object-oriented-programming/9-abstraction.qmd >}}
+
+{{< include ../topics/object-oriented-programming/10-special-methods-and-operator-overloading.qmd >}}
+
+{{< include ../topics/object-oriented-programming/11-advanced-topics.qmd >}}

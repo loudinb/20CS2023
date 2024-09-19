@@ -1,0 +1,458 @@
+# Encapsulation
+
+## What is Encapsulation?
+
+- Bundling data and methods together in a single unit (class)
+- Controlling access to an object's internal details
+- Protecting data integrity through controlled access
+
+```python
+class BankAccount:
+    def __init__(self, balance):
+        self.__balance = balance  # Private attribute
+
+    def get_balance(self):
+        return self.__balance  # Controlled access
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount  # Data integrity check
+        else:
+            raise ValueError("Invalid deposit amount")
+```
+
+::: {.notes}
+Think of encapsulation like a capsule or a pill: the outer layer (the public interface) protects and contains the inner contents (the private data and implementation details). This concept helps us create more organized, safer, and more maintainable code.
+
+Encapsulation is a fundamental concept in object-oriented programming that involves three main aspects:
+
+1. Bundling: It groups related data (attributes) and the methods that operate on that data within a single class. This organization helps in maintaining a clear structure and promotes modularity.
+
+2. Access Control: It manages how the internal details of an object are accessed. In Python, this is typically done using conventions like single underscore for protected attributes and double underscore for private attributes.
+
+3. Data Integrity: It maintains the accuracy and consistency of an object's data by using controlled access methods (like getters and setters) to validate and protect data from incorrect modifications.
+
+In the example:
+- `__balance` is a private attribute, demonstrating access control.
+- `get_balance()` provides controlled access to the balance.
+- `deposit()` includes a check to ensure data integrity by only allowing positive deposits.
+
+This encapsulation helps create more robust and maintainable code by clearly defining the interface for interacting with the object and protecting its internal state.
+:::
+
+## Data Hiding {.hide}
+
+**Data hiding** is a key aspect of encapsulation, allowing you to protect the internal state of an object.
+
+- Python uses **naming conventions** for data hiding
+- Conventions signal how attributes and methods should be used
+- No strict private variables (unlike some other languages)
+
+```python
+class User:
+    def __init__(self, name, age, password):
+        self.name = name            # Public
+        self._age = age             # Protected
+        self.__password = password  # Private
+```
+
+::: {.notes}
+Python's approach to data hiding is a bit different from some other object-oriented languages:
+
+1. Naming Conventions: Python uses naming conventions to indicate how variables should be treated. These are signals to programmers, not strict rules enforced by the language.
+
+2. No Strict Private Variables: Unlike languages like Java or C++, Python doesn't have strict private variables. All attributes can technically be accessed from outside the class.
+
+3. "We're all consenting adults here": This Python philosophy trusts developers to use attributes and methods responsibly, even if they're not strictly private.
+
+4. Conventions over Enforcement: While Python doesn't enforce privacy, following its conventions helps create more maintainable and understandable code.
+
+Understanding these conventions is crucial for writing Pythonic object-oriented code and working effectively with other Python developers.
+:::
+
+
+## Access Modifiers {.hide}
+
+| Access Modifier | Prefix | Class Itself | Outside Class | Derived Class |
+|-----------------|--------|--------------|---------------|---------------|
+| Public          | None   | ✅            | ✅             | ✅             |
+| Protected       | `_`    | ✅            | ❌ (but accessible) | ✅         |
+| Private         | `__`   | ✅            | ❌ (name mangling) | ❌ (name mangling) |
+
+::: {.notes}
+This table summarizes how different access modifiers work in Python:
+
+1. Public attributes have no prefix and are fully accessible from anywhere.
+2. Protected attributes use a single underscore prefix. They're accessible but this access is discouraged outside the class and its subclasses.
+3. Private attributes use a double underscore prefix. They undergo name mangling, making them harder (but not impossible) to access from outside the class.
+
+It's important to note that these are conventions in Python, not strict rules. The language itself doesn't prevent access to protected or private attributes, but following these conventions helps create more maintainable and understandable code.
+:::
+
+
+## Public Attributes {.hide}
+
+**Public Attributes** are accessible from anywhere.
+
+- Accessible and modifiable from outside the class
+- No special naming convention
+- Example: `self.name = name`
+
+```python
+class User:
+    def __init__(self, name):
+        self.name = name  # Public attribute
+
+user = User("Alice")
+print(user.name)  # Outputs: Alice
+user.name = "Bob"  # Allowed, but might not always be best practice
+```
+
+::: {.notes}
+Public attributes in Python are straightforward:
+
+1. Naming: They don't have any special prefix. For example, `self.name = name` in the `__init__` method creates a public attribute.
+
+2. Access: They can be freely accessed and modified from outside the class.
+
+3. Usage: While they're accessible, it doesn't always mean they should be directly modified from outside the class. It's often better to use methods to interact with attributes, even public ones.
+
+4. Example:
+   
+   ```python
+   class User:
+       def __init__(self, name):
+           self.name = name
+   
+   user = User("Alice")
+   print(user.name)  # Outputs: Alice
+   user.name = "Bob"  # This is allowed, but might not always be the best practice
+   ```
+
+Remember, just because an attribute is public doesn't mean it should always be directly accessed or modified from outside the class. Consider the overall design of your class when deciding how attributes should be used.
+:::
+
+
+## Protected Attributes {.hide}
+
+**Protected attributes** are used for internal use within the class and its subclasses.
+
+- Indicated by a single underscore prefix
+- Accessible, but should be treated as non-public
+- Example: `self._age = age`
+
+```python
+class User:
+    def __init__(self, age):
+        self._age = age  # Protected attribute
+
+user = User(30)
+print(user._age)  # This works, but it's discouraged
+```
+
+::: {.notes}
+Protected attributes in Python use a naming convention to signal their intended usage:
+
+1. Naming: They are prefixed with a single underscore, like `self._age = age`.
+
+2. Access: They can still be accessed and modified from outside the class, but this is discouraged.
+
+3. Meaning: The single underscore is a signal to other programmers that this attribute is intended for internal use within the class and its subclasses.
+
+4. Example:
+   ```python
+   class User:
+       def __init__(self, age):
+           self._age = age
+   
+   user = User(30)
+   print(user._age)  # This works, but it's discouraged
+   ```
+
+5. IDE Behavior: Many IDEs will not auto-complete these attributes when accessed from outside the class, as a reminder of their protected nature.
+
+Remember, the single underscore is just a convention. It doesn't prevent access to the attribute, but it communicates to other developers that they should be careful when interacting with it directly.
+:::
+
+
+## Private Attributes {.hide}
+
+**Private attributes** are used to hide data from the outside world.
+
+- Indicated by a double underscore prefix
+- Name mangling applied
+- Example: `self.__password = password`
+
+::: {.smaller-90}
+```python
+class User:
+    def __init__(self, username, password):
+        self.username = username
+        self.__password = password  # Private attribute
+
+user = User("alice", "secret123")
+print(user.username)  # Works fine
+print(user.__password)  # Raises AttributeError
+print(user._User__password)  # Works, but you shouldn't do this
+```
+:::
+
+::: {.notes}
+Private attributes in Python use a special naming convention that triggers name mangling:
+
+1. Naming: They are prefixed with a double underscore, like `self.__password = password`.
+
+2. Name Mangling: Python changes the name of these attributes internally, making them harder (but not impossible) to access from outside the class.
+
+3. Purpose: This provides a higher level of naming protection, particularly useful for avoiding naming conflicts in inherited classes.
+
+4. Access: While they can still be accessed with the mangled name, this is strongly discouraged and goes against the intention of using private attributes.
+
+5. Example:
+   ```python
+   class User:
+       def __init__(self, username, password):
+           self.username = username
+           self.__password = password
+   
+   user = User("alice", "secret123")
+   print(user.username)  # Works fine
+   print(user.__password)  # Raises AttributeError
+   print(user._User__password)  # Works, but it's strongly discouraged
+   ```
+
+The double underscore is the strongest form of attribute protection in Python, but remember, it's still based on convention and can be bypassed if someone really wants to.
+:::
+
+## Getters and Setters {.hide}
+
+**Getters and setters** are a common pattern in object-oriented programming to provide controlled access to attributes, allowing you to validate data before setting it or perform calculations when getting or setting values. 
+
+::: {.smaller-80}
+```python
+class User:
+    def __init__(self, age):
+        self._age = age
+    
+    def get_age(self):
+        return self._age
+    
+    def set_age(self, age):
+        if 0 < age < 120:
+            self._age = age
+        else:
+            raise ValueError("Invalid age")
+
+# Usage
+user = User(30)
+print(user.get_age())  # Output: 30
+user.set_age(35)
+print(user.get_age())  # Output: 35
+```
+:::
+
+::: {.notes}
+Getters and setters are methods used to access and modify the values of attributes:
+
+1. Getters: Methods that return the value of an attribute. They often start with "get_".
+2. Setters: Methods that set the value of an attribute. They often start with "set_".
+3. Advantages:
+   - They allow you to validate data before setting it.
+   - You can perform calculations or transformations when getting or setting values.
+   - They make it easier to change the internal implementation without affecting the public interface.
+
+In this example, we have a `User` class with a getter (`get_age`) and a setter (`set_age`) for the `_age` attribute. The setter includes validation to ensure the age is within a reasonable range.
+:::
+
+
+## Introduction to Properties {.hide}
+
+In Python, the `@property` decorator is the `Pythonic` way to implement getters and setters for attributes. It allows you to use attribute syntax while still using getter and setter methods behind the scenes.
+
+::: {.smaller-90}
+```python
+class User:
+    def __init__(self, age):
+        self._age = age
+    
+    @property
+    def age(self):
+        return self._age
+    
+    @age.setter
+    def age(self, value):
+        if 0 < value < 120:
+            self._age = value
+        else:
+            raise ValueError("Invalid age")
+```
+:::
+
+::: {.notes}
+Properties in Python provide a cleaner way to implement getter and setter behavior:
+
+1. The `@property` decorator: This turns a method into a getter for an attribute.
+2. The `@attribute.setter` decorator: This creates a setter for the attribute.
+3. Syntax: Properties allow you to use attribute syntax while still using getter and setter methods behind the scenes.
+4. Advantages:
+   - Cleaner, more Pythonic syntax
+   - Allows you to start with simple attributes and add properties later without changing the interface
+
+In this example, we've converted the `get_age` and `set_age` methods into a property. The `age` property now provides both getter and setter functionality.
+:::
+
+::: {.smaller-90}
+## Using Properties
+
+```python
+# Creating a User instance
+user = User(30)
+
+# Getting the age (uses the getter)
+print(user.age)  # Output: 30
+
+# Setting the age (uses the setter)
+user.age = 35
+print(user.age)  # Output: 35
+
+# Attempting to set an invalid age
+try:
+    user.age = 150
+except ValueError as e:
+    print(str(e))  # Output: Invalid age
+```
+:::
+
+::: {.notes}
+This example demonstrates how to use properties in Python:
+
+1. We create a `User` instance with an initial age of 30.
+2. We can access the age using simple attribute syntax (`user.age`), which internally calls the getter method.
+3. We can set the age using the same attribute syntax (`user.age = 35`), which internally calls the setter method.
+4. The setter still performs validation, raising a `ValueError` if we try to set an invalid age.
+
+Properties allow us to use simple attribute access syntax while still controlling how values are set and retrieved. This aligns well with Python's philosophy of simplicity and readability.
+
+It's important to note that while getters and setters are common in many OOP languages, Python often uses properties instead for a more Pythonic approach. Properties provide a clean way to add controlled access to attributes without changing the public interface of the class.
+:::
+
+
+## Encapsulation Best Practices
+
+- Use public attributes for simple, directly accessible data
+- Use protected attributes (single underscore) for internal implementation details
+- Use private attributes (double underscore) to avoid name conflicts in inheritance
+- Use `@property` for controlled access and to add behavior to attribute access
+- Write clear docstrings for your class and its public methods
+
+::: {.notes}
+This example demonstrates the key encapsulation best practices in Python:
+
+1. Public attributes: `self.owner` is directly accessible.
+
+2. Protected attributes: `self._balance` is used for internal implementation details.
+
+3. Private attributes: `self.__account_number` uses name mangling to avoid conflicts.
+
+4. Properties: `balance` property provides controlled access to `_balance`.
+
+5. Docstrings: The class and each method have clear docstrings explaining their purpose, parameters, return values, and potential exceptions.
+
+Key points about docstrings:
+- The class docstring provides an overview of the class, its attributes, and usage example.
+- Method docstrings describe what each method does, its parameters, return values, and any exceptions it might raise.
+- Type hints (e.g., `str`, `float`) are used to indicate expected types.
+
+Remember:
+- These practices create clear, maintainable code that communicates intentions effectively.
+- Python relies on conventions rather than strict access control.
+- Well-written docstrings serve as documentation and can be used to generate automated documentation.
+- Clear documentation is crucial for creating encapsulated, easy-to-use classes.
+:::
+
+## Example
+
+::: {.smaller-90}
+```python
+class BankAccount:
+    """
+    A class representing a simple bank account.
+
+    This class provides basic functionality for managing a bank account,
+    including deposits and balance inquiries.
+
+    Attributes:
+        owner (str): The name of the account owner.
+
+    Usage:
+        account = BankAccount("John Doe", 1000)
+        account.deposit(500)
+        current_balance = account.balance
+    """
+
+    def __init__(self, owner: str, initial_balance: float):
+        """
+        Initialize a new BankAccount instance.
+
+        Args:
+            owner (str): The name of the account owner.
+            initial_balance (float): The starting balance of the account.
+
+        Raises:
+            ValueError: If the initial balance is negative.
+        """
+        self.owner = owner  # Public attribute
+        if initial_balance < 0:
+            raise ValueError("Initial balance cannot be negative")
+        self._balance = initial_balance  # Protected attribute
+        self.__account_number = self._generate_account_number()  # Private attribute
+
+    @property
+    def balance(self) -> float:
+        """
+        Get the current balance of the account.
+
+        Returns:
+            float: The current balance.
+        """
+        return self._balance
+
+    @balance.setter
+    def balance(self, value: float) -> None:
+        """
+        Set the balance of the account.
+
+        Args:
+            value (float): The new balance value.
+
+        Raises:
+            ValueError: If the new balance is negative.
+        """
+        if value < 0:
+            raise ValueError("Balance cannot be negative")
+        self._balance = value
+
+    def deposit(self, amount: float) -> str:
+        """
+        Deposit money into the account.
+
+        Args:
+            amount (float): The amount to deposit.
+
+        Returns:
+            str: A message confirming the deposit and new balance.
+
+        Raises:
+            ValueError: If the deposit amount is not positive.
+        """
+        if amount <= 0:
+            raise ValueError("Deposit amount must be positive")
+        self.balance += amount
+        return f"Deposited ${amount}. New balance: ${self.balance}"
+
+    def _generate_account_number(self) -> str:
+        """Generate a random account number."""
+        import random
+        return f"ACC-{random.randint(10000, 99999)}"
+```
+:::

@@ -15,6 +15,3 @@ Programming Assignment 1 will be completion of the coding sessions over the next
 
 {{< include ../topics/object-oriented-programming/3-instance-attributes-and-methods.qmd >}}
 {{< include ../topics/object-oriented-programming/3.1-instance-attributes-and-methods-coding-session.qmd >}}
-
-{{< include ../topics/object-oriented-programming/4-encapsulation-and-data-hiding.qmd >}}
-{{< include ../topics/object-oriented-programming/4.1-encapsulation-and-data-hiding-coding-session.qmd >}}

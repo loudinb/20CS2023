@@ -2,14 +2,10 @@
 
 ## Agenda
 
-Today's lecture is part 2 of our series on object-oriented programming (OOP) in Python. We will continue our exploration of OOP concepts, focusing on inheritance, polymorphism, and method overriding. These concepts are fundamental to understanding how classes can be organized and extended in Python.  We will continue to implement these concepts in our Instagram-like application to demonstrate their practical applications.
+Today's lecture is part 2 of our series on object-oriented programming (OOP) in Python. We will continue our exploration of OOP concepts, focusing on  encapsulation, data hiding, class attributes, and methods.
 
+{{< include ../topics/object-oriented-programming/4-encapsulation.qmd >}}
+{{< include ../topics/object-oriented-programming/4.1-encapsulation-coding-session.qmd >}}
 
 {{< include ../topics/object-oriented-programming/5-class-attributes-and-methods.qmd >}}
 {{< include ../topics/object-oriented-programming/5.1-class-attributes-and-methods-coding-session.qmd >}}
-
-{{< include ../topics/object-oriented-programming/6-static-methods.qmd >}}
-
-{{< include ../topics/object-oriented-programming/7-inheritance.qmd >}}
-
-{{< include ../topics/object-oriented-programming/8-polymorphism.qmd >}}
