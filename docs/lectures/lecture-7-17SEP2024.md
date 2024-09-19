@@ -23,9 +23,3 @@ In today’s lecture we will explore concepts related to object-oriented program
    - Defining instance attributes
    - Creating instance methods
    - Accessing and modifying attributes
-
-4. **Encapsulation and Data Hiding**
-   - Principles of encapsulation in OOP
-   - Public vs. private attributes (conventions using `_` and `__`)
-   - Getters and setters with the `@property` decorator
-

@@ -60,7 +60,6 @@ parts:
             - file: topics/controlling-program-flow/loops
         - file: lectures/lecture-7-17SEP2024
         - file: lectures/lecture-8-19SEP2024
-        - file: lectures/lecture-9-24SEP2024
     - file: exercises
       sections:
         - glob: exercises/*
@@ -74,6 +73,8 @@ parts:
             - file: programming-assignments/pa-1/exercise-1/exercise-1
             - file: programming-assignments/pa-1/exercise-2/exercise-2
             - file: programming-assignments/pa-1/exercise-3/exercise-3
+            - file: programming-assignments/pa-1/exercise-4/exercise-4
+            - file: programming-assignments/pa-1/exercise-5/exercise-5
   - caption: Other Resources
     chapters:
       - file: faqs

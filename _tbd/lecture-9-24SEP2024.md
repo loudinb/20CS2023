@@ -8,6 +8,18 @@ Today's lecture is part 3 of our series on object-oriented programming (OOP) in 
 [https://20cs2023-fs24.github.io/slides/docs/lectures/lecture-9-24SEP2024.html](https://20cs2023-fs24.github.io/slides/docs/lectures/lecture-9-24SEP2024.html)
 ```
 
+
+7. **Inheritance**
+   - Concept of inheritance and code reuse
+   - Creating subclasses
+   - Overriding methods
+   - Utilizing the `super()` function
+
+8. **Polymorphism**
+   - Understanding polymorphism in OOP
+   - Method overriding and dynamic typing in Python
+   - Polymorphic functions and methods
+
 9. **Abstraction**
    - Concept of abstraction in OOP
    - Abstract classes and methods using the `abc` module

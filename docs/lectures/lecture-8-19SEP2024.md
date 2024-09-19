@@ -8,6 +8,12 @@ Today's lecture is part 2 of our series on object-oriented programming (OOP) in 
 [https://20cs2023-fs24.github.io/slides/docs/lectures/lecture-8-19SEP2024.html](https://20cs2023-fs24.github.io/slides/docs/lectures/lecture-8-19SEP2024.html)
 ```
 
+
+4. **Encapsulation and Data Hiding**
+   - Principles of encapsulation in OOP
+   - Public vs. private attributes (conventions using `_` and `__`)
+   - Getters and setters with the `@property` decorator
+
 5. **Class Attributes and Methods**
    - Class-level attributes
    - Using the `@classmethod` decorator
@@ -17,15 +23,3 @@ Today's lecture is part 2 of our series on object-oriented programming (OOP) in 
    - Purpose of static methods
    - Using the `@staticmethod` decorator
    - When to use static methods vs. class methods
-
-7. **Inheritance**
-   - Concept of inheritance and code reuse
-   - Creating subclasses
-   - Overriding methods
-   - Utilizing the `super()` function
-
-8. **Polymorphism**
-   - Understanding polymorphism in OOP
-   - Method overriding and dynamic typing in Python
-   - Polymorphic functions and methods
-
