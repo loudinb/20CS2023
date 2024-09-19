@@ -94,32 +94,6 @@ Static methods can be called on either the class itself or an instance of the cl
 :::
 
 
-## Static Methods in Inheritance
-
-- Inherited like regular methods
-- Can be overridden in subclasses
-- Don't have access to class-specific data
-
-```python
-class Animal:
-    @staticmethod
-    def breathe():
-        return "Breathing..."
-
-class Dog(Animal):
-    @staticmethod
-    def bark():
-        return "Woof!"
-
-print(Dog.breathe())  # Output: Breathing...
-print(Dog.bark())     # Output: Woof!
-```
-
-::: {.notes}
-Static methods are inherited like regular methods and can be overridden in subclasses. However, they don't have access to class-specific data, so they behave the same regardless of which class they're called on. In this example, `Dog` inherits the `breathe` static method from `Animal` and defines its own `bark` static method.
-:::
-
-
 ## Summary
 
 - Static methods: Don't operate on instance or class data
@@ -127,7 +101,6 @@ Static methods are inherited like regular methods and can be overridden in subcl
 - Useful for utility functions related to the class
 - Don't receive `self` or `cls` as first parameter
 - Can be called on class or instance
-- Inherited but don't have access to class-specific data
 
 ::: {.notes}
 Static methods are tools for organizing utility functions within a class's namespace. They don't operate on instance or class data, making them useful for operations that are conceptually related to a class but don't need access to its state. Remember to use the `@staticmethod` decorator when defining them, and consider whether a function truly needs to be a static method or if it could be a standalone function or a class method instead.
