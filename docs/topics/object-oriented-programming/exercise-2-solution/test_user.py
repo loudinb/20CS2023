@@ -65,9 +65,12 @@ class TestUser(unittest.TestCase):
         self.user.comment_on_post(other_post, "Test comment")
         
         activity_feed = self.user.get_activity_feed()
+        print(activity_feed)
         self.assertEqual(len(activity_feed), 2)
-        self.assertIn("Post created", activity_feed[2][0])
-        self.assertIn("Post liked", activity_feed[1][0])
+        print(activity_feed[1][0])
+        self.assertIn("Post liked", activity_feed[0][0])
+        self.assertIn("Post created", activity_feed[1][0])
+        #self.assertIn("Comment made", activity_feed[0][0])
 
 if __name__ == '__main__':
     unittest.main()

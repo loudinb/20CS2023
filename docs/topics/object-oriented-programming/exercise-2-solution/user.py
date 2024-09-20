@@ -43,6 +43,7 @@ class User:
             activities.append(("Post liked", post.timestamp, post.content))
         for post in self.posts:
             for comment in post.comments:
+                print(comment.content)
                 if comment.user == self:
                     activities.append(("Comment made", comment.timestamp, comment.content))
         return sorted(activities, key=lambda x: x[1], reverse=True)

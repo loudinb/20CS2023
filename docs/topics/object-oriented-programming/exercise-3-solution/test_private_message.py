@@ -16,4 +16,4 @@ class TestPrivateMessage(unittest.TestCase):
     def test_get_total_message_count(self):
         initial_count = PrivateMessage.get_total_message_count()
         PrivateMessage(self.sender, self.recipient, "Another message")
-        self.assertEqual(PrivateMessage.get_total_message_count(), initial
+        self.assertEqual(PrivateMessage.get_total_message_count(), initial_count+1)

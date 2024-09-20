@@ -44,7 +44,7 @@ class User:
 
     @classmethod
     def create_anonymous_user(cls):
-        anonymous_username = f"anon_{cls.total_users + 1}"
+        anonymous_username = f"anon{cls.total_users + 1}"
         return cls(anonymous_username, f"{anonymous_username}@example.com")
 
     def create_post(self, content):
