@@ -17,6 +17,7 @@ class User:
         self._posts = []  # Private list of posts
         self._followers = []  # Private list of followers
         self._following = []  # Private list of following users
+        self._messages = []  # Private list to store received messages
 
         User.user_count += 1
 
@@ -39,7 +40,7 @@ class User:
             self._posts.remove(post)
 
     def follow(self, user):
-        if user not in self._following:
+        if user not in self._following and user != self:
             self._following.append(user)
             user._followers.append(self)
 
@@ -57,10 +58,12 @@ class User:
     def comment_on_post(self, post, content):
         post.add_comment(self, content)
 
-
-    def send_message(self, recipient: 'User', content: str) -> None:
+    def send_message(self, recipient, content):
         message = Message(self, recipient, content)
         recipient.receive_message(message)
+    
+    def receive_message(self, message):
+        self._messages.append(message)
 
     @classmethod
     def get_user_count(cls):
