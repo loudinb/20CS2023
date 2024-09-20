@@ -1,4 +1,5 @@
 from datetime import datetime
+from comment import Comment  # Import here to avoid circular import
 
 class Post:
     post_count = 0
@@ -44,7 +45,6 @@ class Post:
             self._tags.remove(tag)
 
     def add_comment(self, user, content):
-        from comment import Comment  # Import here to avoid circular import
         comment = Comment(user, content)
         self._comments.append(comment)
 

@@ -1,4 +1,6 @@
 import re
+from post import Post
+from message import Message
 
 class User:
     user_count = 0
@@ -29,7 +31,6 @@ class User:
         self._bio = value
 
     def create_post(self, content, tags=None):
-        from post import Post  # Import here to avoid circular import
         post = Post(content, self, tags)
         self._posts.append(post)
 
@@ -55,6 +56,11 @@ class User:
 
     def comment_on_post(self, post, content):
         post.add_comment(self, content)
+
+
+    def send_message(self, recipient: 'User', content: str) -> None:
+        message = Message(self, recipient, content)
+        recipient.receive_message(message)
 
     @classmethod
     def get_user_count(cls):

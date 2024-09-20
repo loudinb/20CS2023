@@ -1,26 +1,20 @@
 from datetime import datetime
-from user import User  # Assuming User is defined elsewhere
 
 class Message:
-    def __init__(self, sender: User, recipient: User, content: str):
+    def __init__(self, sender, recipient, content):
         if len(content) > 2000:
             raise ValueError("Message content must be 2000 characters or less.")
-        
-        self.__content: str = content
-        self.timestamp: datetime = datetime.now()
-        self.sender: User = sender  # Add sender attribute
-        self.recipient: User = recipient  # Add recipient attribute
-
-    def send_message(self, recipient: 'User', content: str) -> None:
-        message = Message(self, recipient, content)
-        recipient.receive_message(message)
+        self.__content = content
+        self.timestamp = datetime.now()
+        self.sender = sender  # Add sender attribute
+        self.recipient = recipient  # Add recipient attribute
 
     @property
-    def content(self) -> str:
+    def content(self):
         return self.__content
 
     @content.setter
-    def content(self, value: str) -> None:
+    def content(self, value):
         if len(value) > 2000:
             raise ValueError("Message content must be 2000 characters or less.")
         self.__content = value
