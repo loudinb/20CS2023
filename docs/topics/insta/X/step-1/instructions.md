@@ -4,7 +4,7 @@ Create a `user.py` file and define a `User` class that represents a user in the 
 
 ## Instance Attributes:
 
-- **`username`**: A **public** string representing the user's unique username. This attribute is directly accessible, and its validation is handled by the `is_valid_username` static method.
+- **`username`**: A **public** string representing the user's unique username. This attribute is directly accessible, and its validation is handled by the `is_valid_username` static method. 
 
 - **`_email`**: A **protected** string representing the user's email address. The email can be accessed or validated through methods if needed but is protected to prevent external modifications.
 
@@ -12,7 +12,7 @@ Create a `user.py` file and define a `User` class that represents a user in the 
 
 ## Instance Methods:
 
-- **`__init__(self, username: str, email: str)`**: Initializes the `User` object with a `username` and an `email`. The `username` and `email` are validated using the `is_valid_username` and `is_valid_email` static methods. The `bio` is initialized to an empty string, and lists for posts, followers, and following are initialized as empty lists. This method also increments the `user_count` class attribute.
+- **`__init__(self, username: str, email: str)`**: Initializes the `User` object with a `username` and an `email`. The `username` and `email` are validated using the `is_valid_username` and `is_valid_email` static methods. The `bio` is initialized to an empty string, and lists for posts, followers, and following are initialized as empty lists. This method also increments the `user_count` class attribute.  Raise a `ValueError` if the username or email is invalid.
 
 - **`@property bio(self) -> str`**: A property method for accessing the user's biography. The getter returns the `_bio` value, and the setter ensures that the bio is no longer than 150 characters. If the limit is exceeded, a `ValueError` is raised.
 
