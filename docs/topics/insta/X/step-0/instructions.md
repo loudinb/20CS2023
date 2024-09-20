@@ -4,9 +4,11 @@
 
 In this assignment, you will implement an Instagram-like application using **Object-Oriented Programming (OOP)** principles in Python. The application will simulate basic social media functionalities, including user creation, following, posting, commenting, and messaging. The focus will be on two core OOP principles: **encapsulation** and **composition**.
 
-This application will demonstrate the following OOP concepts and Python syntax:
+## OOP Concepts in the Assignment
 
-### 1. Instance Attributes and Methods
+The assignment will require you to apply various OOP concepts to design and implement the Instagram-like application. Here are some key concepts that you will use:
+
+### Instance Attributes and Methods
 
 Instance attributes are specific to each object instance, and instance methods operate on those individual instances. Each object has its own copy of the instance attributes, and instance methods can modify those attributes.
 
@@ -21,7 +23,7 @@ class User:
         pass
 ```
 
-### 2. Class Attributes and Class Methods
+### Class Attributes and Class Methods
 
 Class attributes are shared among all instances of a class, meaning they maintain a single value across all objects. Class methods operate on the class itself and can modify class attributes but not instance attributes.
 
@@ -34,7 +36,7 @@ class User:
         return cls.user_count
 ```
 
-### 3. Static Methods
+### Static Methods
 
 Static methods are independent of the class state and do not modify class or instance attributes. They are typically utility functions that logically belong to the class but do not need to access or modify class/instance data.
 
@@ -46,7 +48,7 @@ class User:
         return len(username) > 2
 ```
 
-### 4. Properties
+### Properties
 
 The `@property` decorator is used to define a method as a property, which allows access to an attribute through getter and setter methods. This provides control over how attributes are accessed and modified, enabling validation and constraints.
 
@@ -69,7 +71,7 @@ class User:
             raise ValueError("Bio cannot exceed 150 characters.")
 ```
 
-### 5. Data Encapsulation (Public, Protected, and Private Attributes)
+### Data Encapsulation (Public, Protected, and Private Attributes)
 
 Encapsulation controls how attributes are accessed and modified, allowing for restricted access when necessary:
 
@@ -85,7 +87,7 @@ class User:
         self.__id = 123  # Private attribute: only accessible within this class
 ```
 
-### 6. Composition (Classes Containing Instances of Other Classes)
+### Composition (Classes Containing Instances of Other Classes)
 
 Composition is the practice of building complex objects by including instances of other classes as attributes. This allows you to model relationships where one object is "composed" of others.
 
@@ -102,4 +104,45 @@ class Post:
     def __init__(self, content: str, author: User):
         self.content = content
         self.author = author  # Composition: The post has a user as its author
+```
+
+## Python Syntax in the Assignment
+
+There are several Python features and syntax elements that you will use in this assignment to implement the Instagram-like application. We have not covered all of them in detail, so I will provide a brief overview of some key concepts:
+
+### Regular Expressions
+
+Regular expressions (regex) are powerful tools for pattern matching and string manipulation. They can be used to validate input, extract specific information, or perform complex text processing tasks.
+
+For example, you can use regex to validate email addresses:
+
+```python
+import re
+
+def is_valid_email(email: str) -> bool:
+    pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+    return re.match(pattern, email) is not None
+```
+
+### Date and Time Handling
+
+Python's `datetime` module provides classes for working with dates and times. You can use these classes to handle timestamps, time differences, and date formatting.
+
+```python
+from datetime import datetime
+
+current_time = datetime.now()
+formatted_time = current_time.strftime("%Y-%m-%d %H:%M:%S")
+```
+
+### Raising a ValueError
+
+When validating input or enforcing constraints, you can raise a `ValueError` to indicate that the input is invalid. This allows you to handle errors and exceptions gracefully.
+
+```python
+def set_username(self, username: str) -> None:
+    if len(username) > 3:
+        self.username = username
+    else:
+        raise ValueError("Username must be at least 3 characters long.")
 ```
