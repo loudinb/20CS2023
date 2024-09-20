@@ -1,5 +1,9 @@
 # Step 3: Final Enhancements
 
+```{warning}
+I am currently updating this assignment to improve the instructions and provide more detailed guidance. There were too many complications that I felt distracted from understanding the core implementation of OOP in Python. Please wait for a few days as I make these updates. If you have any questions or need assistance, feel free to reach out to me.
+```
+
 In this step, we will make final enhancements to our Instagram-like application by adding more functionality to the existing classes. We will focus on refining the `User` and `Post` classes to support additional features.
 
 ## `User` Class

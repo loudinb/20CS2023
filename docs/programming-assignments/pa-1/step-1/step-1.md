@@ -1,6 +1,8 @@
 # Step 1: Implement Core Classes
 
-This document provides instructions for implementing the core classes of our Instagram-like app: User, Post, Comment, and Message. Each class should be implemented in its own Python file.
+```{warning}
+I am currently updating this assignment to improve the instructions and provide more detailed guidance. There were too many complications that I felt distracted from understanding the core implementation of OOP in Python. Please wait for a few days as I make these updates. If you have any questions or need assistance, feel free to reach out to me.
+```
 
 ## `User` Class
 

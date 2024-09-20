@@ -70,11 +70,9 @@ parts:
       sections:
         - file: programming-assignments/pa-1/pa-1
           sections:
-            - file: programming-assignments/pa-1/exercise-1/exercise-1
-            - file: programming-assignments/pa-1/exercise-2/exercise-2
-            - file: programming-assignments/pa-1/exercise-3/exercise-3
-            - file: programming-assignments/pa-1/exercise-4/exercise-4
-            - file: programming-assignments/pa-1/exercise-5/exercise-5
+            - file: programming-assignments/pa-1/step-1/step-1
+            - file: programming-assignments/pa-1/step-2/step-2
+            - file: programming-assignments/pa-1/step-3/step-3
   - caption: Other Resources
     chapters:
       - file: faqs

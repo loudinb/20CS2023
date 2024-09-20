@@ -1,5 +1,10 @@
 # Step 2: Enhance Core Classes
 
+```{warning}
+I am currently updating this assignment to improve the instructions and provide more detailed guidance. There were too many complications that I felt distracted from understanding the core implementation of OOP in Python. Please wait for a few days as I make these updates. If you have any questions or need assistance, feel free to reach out to me.
+```
+
+
 In this step, we will enhance our Instagram-like application by adding more functionality to the existing classes. We will introduce new methods and attributes to the `User`, `Post`, `Comment`, and `Message` classes to support features like creating posts, liking posts, commenting on posts, following/unfollowing users, and sending messages.
 
 ## `User` Class
