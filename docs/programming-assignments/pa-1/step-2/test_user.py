@@ -1,66 +1,61 @@
 import unittest
+from datetime import datetime
 from user import User
+from post import Post
+from comment import Comment
 
 class TestUser(unittest.TestCase):
     def setUp(self):
-        self.user = User("testuser", "test@example.com")
+        self.user1 = User("user1", "user1@example.com")
+        self.user2 = User("user2", "user2@example.com")
 
     def test_init(self):
-        self.assertEqual(self.user.username, "testuser")
-        self.assertEqual(self.user._email, "test@example.com")
-        self.assertEqual(self.user._bio, "")
-        self.assertEqual(self.user._followers, [])
-        self.assertEqual(self.user._following, [])
+        self.assertEqual(self.user1.username, "user1")
+        self.assertEqual(self.user1._email, "user1@example.com")
+        self.assertIsInstance(self.user1._joined_on, datetime)
 
     def test_invalid_username(self):
         with self.assertRaises(ValueError):
-            User("a", "test@example.com")
-        with self.assertRaises(ValueError):
-            User("a" * 31, "test@example.com")
-        with self.assertRaises(ValueError):
-            User("invalid@user", "test@example.com")
+            User("u", "user3@example.com")
 
     def test_invalid_email(self):
         with self.assertRaises(ValueError):
-            User("validuser", "invalid_email")
+            User("user3", "invalid-email")
 
-    def test_follow(self):
-        other_user = User("otheruser", "other@example.com")
-        self.user.follow(other_user)
-        self.assertIn(other_user, self.user._following)
-        self.assertIn(self.user, other_user._followers)
-
-    def test_unfollow(self):
-        other_user = User("otheruser", "other@example.com")
-        self.user.follow(other_user)
-        self.user.unfollow(other_user)
-        self.assertNotIn(other_user, self.user._following)
-        self.assertNotIn(self.user, other_user._followers)
-
-    def test_bio_property(self):
-        self.user.bio = "Test bio"
-        self.assertEqual(self.user.bio, "Test bio")
-
-    def test_bio_setter_too_long(self):
+    def test_bio_setter(self):
+        self.user1.bio = "This is a bio"
+        self.assertEqual(self.user1.bio, "This is a bio")
         with self.assertRaises(ValueError):
-            self.user.bio = "a" * 151
+            self.user1.bio = "a" * 151
 
-    def test_get_user_count(self):
-        initial_count = User.get_user_count()
-        User("newuser", "new@example.com")
-        self.assertEqual(User.get_user_count(), initial_count + 1)
+    def test_create_post(self):
+        self.user1.create_post("This is a post")
+        self.assertEqual(len(self.user1._posts), 1)
+        self.assertEqual(self.user1._posts[0]._content, "This is a post")
 
-    def test_is_valid_username(self):
-        self.assertTrue(User.is_valid_username("valid_user"))
-        self.assertTrue(User.is_valid_username("valid.user"))
-        self.assertFalse(User.is_valid_username("in"))
-        self.assertFalse(User.is_valid_username("a" * 31))
-        self.assertFalse(User.is_valid_username("invalid@user"))
+    def test_delete_post(self):
+        post = Post("This is a post")
+        self.user1.create_post("This is a post")
+        self.user1.delete_post(post)
+        self.assertEqual(len(self.user1._posts), 0)
 
-    def test_is_valid_email(self):
-        self.assertTrue(User.is_valid_email("test@example.com"))
-        self.assertFalse(User.is_valid_email("invalid_email"))
-        self.assertFalse(User.is_valid_email("test@example"))
+    def test_like_post(self):
+        post = Post("This is a post")
+        self.user1.like_post(post)
+        self.assertIn(self.user1, post._likes)
+
+    def test_unlike_post(self):
+        post = Post("This is a post")
+        self.user1.like_post(post)
+        self.user1.unlike_post(post)
+        self.assertNotIn(self.user1, post._likes)
+
+    def test_follow_unfollow(self):
+        self.user1.follow(self.user2)
+        self.assertIn(self.user2, self.user1._following)
+        self.assertIn(self.user1, self.user2._followers)
+        self.user1.unfollow(self.user2)
+        self.assertNotIn(self.user2, self.user1._following)
 
 if __name__ == '__main__':
     unittest.main()

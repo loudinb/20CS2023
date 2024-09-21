@@ -10,25 +10,28 @@ class TestMessage(unittest.TestCase):
         self.assertIsInstance(message.timestamp, datetime)
 
     def test_init_invalid(self):
-        content = "a" * 2001
+        content = "a" * 2201  # Exceeds 2200 characters
         with self.assertRaises(ValueError):
             Message(content)
+
+    def test_init_valid_boundary(self):
+        content = "a" * 2200  # Exactly 2200 characters
+        message = Message(content)
+        self.assertEqual(message.content, content)
 
     def test_content_property(self):
         content = "Test content"
         message = Message(content)
         self.assertEqual(message.content, content)
 
-    def test_content_setter_valid(self):
-        message = Message("Initial content")
-        new_content = "Updated content"
-        message.content = new_content
-        self.assertEqual(message.content, new_content)
+    def test_timestamp(self):
+        message = Message("This is a valid message")
+        self.assertIsInstance(message.timestamp, datetime)
 
-    def test_content_setter_invalid(self):
-        message = Message("Initial content")
-        with self.assertRaises(ValueError):
-            message.content = "a" * 2001
+    def test_empty_message(self):
+        content = ""
+        message = Message(content)
+        self.assertEqual(message.content, content)  # Empty content should be valid
 
 if __name__ == '__main__':
     unittest.main()

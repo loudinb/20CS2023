@@ -1,42 +1,51 @@
-from typing import List, Optional
 from datetime import datetime
 
-class Post:
-    post_count: int = 0
 
-    def __init__(self, content: str, tags: Optional[List[str]] = None):
-        if len(content) > 2200:
-            raise ValueError("Content must be 2200 characters or less.")
+class Post:
+    
+    post_count = 0
+
+    def __init__(self, content, tags=None):
+        if not self.is_valid_content(content):
+            raise ValueError("Content exceeds 2200 characters.")
         
-        self.__content: str = content
-        self.timestamp: datetime = datetime.now()
-        self._tags: List[str] = tags or []
+        self._tags = set()
+        if tags is not None:
+            for tag in tags:
+                if not self.is_valid_tag(tag):
+                    raise ValueError("Invalid tag.")
+                self._tags.add(tag)            
         
+        self._content = content     
+        self.timestamp = datetime.now()
+
         Post.post_count += 1
 
+
     @property
-    def content(self) -> str:
-        return self.__content
-
-    @content.setter
-    def content(self, value: str) -> None:
-        if len(value) > 2200:
-            raise ValueError("Content must be 2200 characters or less.")
-        self.__content = value
-
-    def add_tag(self, tag: str) -> None:
+    def content(self):
+        return self._content
+    
+    @property
+    def tags(self):
+        return self._tags
+    
+    def add_tag(self, tag):
         if not self.is_valid_tag(tag):
-            raise ValueError("Invalid tag")
-        self._tags.append(tag)
+            raise ValueError("Invalid tag.")
+        self._tags.add(tag)
 
-    def remove_tag(self, tag: str) -> None:
-        if tag in self._tags:
-            self._tags.remove(tag)
-
-    @classmethod
-    def get_post_count(cls) -> int:
-        return cls.post_count
+    def remove_tag(self, tag):
+        self._tags.discard(tag)
+        
+    @staticmethod
+    def is_valid_tag(tag):
+        return len(tag) <= 30 and tag.isalnum()
 
     @staticmethod
-    def is_valid_tag(tag: str) -> bool:
-        return len(tag) <= 30 and tag.isalnum()
+    def is_valid_content(content):
+        return 3 <= len(content) <= 2200
+    
+    @classmethod
+    def get_post_count(cls):
+        return cls.post_count

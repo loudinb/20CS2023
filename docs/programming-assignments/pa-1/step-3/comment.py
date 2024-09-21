@@ -1,19 +1,34 @@
 from datetime import datetime
 
 class Comment:
+
     def __init__(self, author, content):
         if len(content) > 2200:
-            raise ValueError("Content must be 2200 characters or less.")
-        self.author = author  # Add the author attribute
-        self.__content = content
+            raise ValueError("Comment is too long")
+        self.author = author  # New attribute for author
+        self._content = content
+        self._tags = set()
         self.timestamp = datetime.now()
 
     @property
     def content(self):
-        return self.__content
-
+        return self._content
+    
     @content.setter
     def content(self, value):
         if len(value) > 2200:
-            raise ValueError("Content must be 2200 characters or less.")
-        self.__content = value
+            raise ValueError("Comment is too long")
+        self._content = value
+
+    @property
+    def tags(self):
+        return self._tags
+    
+    def add_tag(self, tag):
+        if len(tag) <= 30 and tag.isalnum():
+            self._tags.add(tag)
+        else:
+            raise ValueError("Invalid tag.")
+    
+    def remove_tag(self, tag):
+        self._tags.discard(tag)

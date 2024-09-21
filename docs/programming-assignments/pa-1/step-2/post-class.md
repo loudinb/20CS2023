@@ -4,15 +4,18 @@ Update the `Post` class in `post.py` to include the following methods and attrib
 
 ## Additional Instance Attributes:
 
-- **`author`**: A **public** `User` object representing the user who created the post.
-- **`_likes`**: A **protected** list of `User` objects representing users who have liked the post. Initialize as an empty list in the constructor.
+| Name     | Kind      | Access Level | Type         | Description                                                                |
+|----------|-----------|--------------|--------------|----------------------------------------------------------------------------|
+| `author` | Instance  | Public (+)   | `User`       | The `User` object representing the author who created the post.             |
+| `_likes` | Instance  | Protected (#)| `list[User]` | A protected list of `User` objects representing users who have liked the post. Initialize as an empty list in the constructor. |
 
 ## Additional Instance Methods:
 
-1. **`add_like(self, user)`**: 
-   - Check if the user is not already in the `_likes` list.
-   - If not, append the user to the `_likes` list.
+### **`add_like(self, user)`**:
+- Check if the user is not already in the `_likes` list.
+- If the user is not in the list, append the user to `_likes`.
 
-2. **`remove_like(self, user)`**: 
-   - Check if the user is in the `_likes` list.
-   - If so, remove the user from the `_likes` list.
+### **`remove_like(self, user)`**:
+- Check if the user is in the `_likes` list.
+- If the user is in the list, remove them from `_likes`.
+

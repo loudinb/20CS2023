@@ -1,5 +1,8 @@
+# Updated test_user.py to cover all functionality and edge cases
+
 import unittest
 from user import User
+from datetime import datetime
 
 class TestUser(unittest.TestCase):
     def setUp(self):
@@ -11,13 +14,16 @@ class TestUser(unittest.TestCase):
         self.assertEqual(user._email, "valid@email.com")
         self.assertEqual(user.bio, "")
         self.assertEqual(User.user_count, 1)
+        self.assertIsInstance(user._joined_on, datetime)  # Test if _joined_on is a datetime object
 
     def test_init_invalid_username(self):
         with self.assertRaises(ValueError):
             User("in", "valid@email.com")  # Too short
         with self.assertRaises(ValueError):
             User("invalid username", "valid@email.com")  # Contains space
-
+        with self.assertRaises(ValueError):
+            User("a" * 31, "valid@email.com")  # Too long
+    
     def test_init_invalid_email(self):
         with self.assertRaises(ValueError):
             User("validuser", "invalid-email")
@@ -25,7 +31,7 @@ class TestUser(unittest.TestCase):
     def test_bio_property(self):
         user = User("testuser", "test@email.com")
         self.assertEqual(user.bio, "")
-
+    
     def test_bio_setter_valid(self):
         user = User("testuser", "test@email.com")
         user.bio = "This is a valid bio"
@@ -35,6 +41,12 @@ class TestUser(unittest.TestCase):
         user = User("testuser", "test@email.com")
         with self.assertRaises(ValueError):
             user.bio = "a" * 151  # Too long
+    
+    def test_bio_setter_edge_case(self):
+        user = User("testuser", "test@email.com")
+        bio_text = "a" * 150  # Exactly 150 characters
+        user.bio = bio_text
+        self.assertEqual(user.bio, bio_text)  # Should accept 150 characters without error
 
     def test_get_user_count(self):
         User("user1", "user1@email.com")
@@ -47,6 +59,8 @@ class TestUser(unittest.TestCase):
         self.assertFalse(User.is_valid_username("in"))  # Too short
         self.assertFalse(User.is_valid_username("invalid username"))  # Contains space
         self.assertFalse(User.is_valid_username("a" * 31))  # Too long
+        self.assertTrue(User.is_valid_username("abc"))  # Exactly 3 characters
+        self.assertTrue(User.is_valid_username("a" * 30))  # Exactly 30 characters
 
     def test_is_valid_email(self):
         self.assertTrue(User.is_valid_email("valid@email.com"))

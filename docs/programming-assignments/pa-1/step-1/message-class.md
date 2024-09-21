@@ -1,23 +1,54 @@
 # `Message` Class
 
-Create a `message.py` file and implement the `Message` class as follows:
+::::{grid}
+:gutter: 2
 
-### [Instance Attributes](#pa1-instance-attributes):
+::: {grid-item}
+:columns: 8
+The `Message` class represents a message in an Instagram-like application. Each message has content and a timestamp.
 
-- **`__content`**: A **private** string for message content, limited to 2000 characters.
-- **`timestamp`**: A **public** `datetime` object for message creation time.
+The class diagram below provides an overview of the class structure. Create a `message.py` file and implement the `Message` class according to the following specifications, including the attributes and methods that need to be implemented.
+:::
 
-### [Instance Methods](#pa1-instance-methods):
+::: {grid-item}
+:columns: 4
+```{mermaid}
+classDiagram
+    class Message {
+         +str content
+         +datetime timestamp
+         +__init__(content)
+         +content()
+    }
+```
+:::
 
-1. **`__init__(self, content)`**: 
-   - Parameters: `content` (str)
-   - Set `__content` using the `content` property setter (which will validate the length).
-   - Set `timestamp` to the current date and time using `datetime.now()`.
+::::
 
-### [Instance Properties](#pa1-properties):
+## Attributes
 
-Properties are methods defined with the `@property` decorator to allow controlled access to the attributes and add validation logic.
+The `Message` class must have the following attributes:
 
-2. **`content(self) `**: 
-   - Implement a getter that returns the `__content` value.
-   - Implement a setter that accepts a string value. If the new content is longer than 2000 characters, raise a `ValueError`. Otherwise, set `__content` to the new value.
+| Name         | Kind      | Access Level | Type         | Description                                                                |
+|--------------|-----------|--------------|--------------|----------------------------------------------------------------------------|
+| `_content`   | Instance  | Private      | `str`        | The content of the message, with a maximum length of 2200 characters.       |
+| `timestamp`  | Instance  | Public (+)   | `datetime`   | The timestamp when the message is created, set to the current date and time.|
+
+## Methods
+
+The `Message` class must have the following methods:
+
+| Name                | Kind          | Return Type   | Parameters         | Description                                                                 |
+|---------------------|---------------|---------------|--------------------|-----------------------------------------------------------------------------|
+| `__init__(self, content)` | Instance | `None`        | `content: str`     | Initializes the message with content and sets the timestamp. Validates content length. |
+| `content(self)`      | Property      | `str`         | None               | Returns the content of the message.                                          |
+
+### Implementation Details
+
+**`__init__(self, content)`**:
+- The `__init__` method is the constructor for the `Message` class.
+- If `content` exceeds 2200 characters, raise a `ValueError`. Otherwise, set the `_content` attribute to the value of `content`.
+- Set the `timestamp` attribute to the current date and time.
+
+**`content(self)`**:
+- Implement a getter method that returns the value of `_content`.

@@ -1,31 +1,33 @@
+
 # `Post` Class
-
-
 
 ::::{grid}
 :gutter: 2
 
-:::{grid-item}
+::: {grid-item}
 :columns: 8
-The `Post` class represents a post in the Instagram-like application. Each post has content, tags, and a timestamp.
+The `Post` class represents a post in an Instagram-like application. Each post has content, tags, and a timestamp.
 
-The class diagram shown provides an overview of the class structure.  Create a `post.py` file and implement the `Post` class following the specifications below, including the attributes and methods that need to be implemented.
+The class diagram below provides an overview of the class structure. Create a `post.py` file and implement the `Post` class according to the following specifications, including the attributes and methods that need to be implemented.
 :::
-:::{grid-item}
+
+::: {grid-item}
 :columns: 4
 ```{mermaid}
 classDiagram
     class Post {
-         +str __content
+         +str _content
          +datetime timestamp
-         #List[str] _tags
+         #set(str) _tags
          +static int post_count
-         +__init__(content, tags)
+         +__init__(content, tags=None)
          +content()
+         +tags()
          +add_tag(tag)
          +remove_tag(tag)
-         +get_post_count()
          +is_valid_tag(tag)
+         +is_valid_content(content)
+         +get_post_count()
     }
 ```
 :::
@@ -34,58 +36,61 @@ classDiagram
 
 ## Attributes
 
-
 The `Post` class must have the following attributes:
 
-| Name               | Kind          | Access Level  | Type                          | Description                                         |
-|--------------------|---------------|---------------|-------------------------------|-----------------------------------------------------|
-| `__content`        | Instance      | Private       | `str`                         | The content of the post, with a max length of 2200 characters. |
-| `timestamp`        | Instance      | Public (+)    | `datetime`                    | The timestamp when the post is created, set to the current date and time. |
-| `_tags`            | Instance      | Protected (#) | `List[str]`                   | A list of tags associated with the post.             |
-| `post_count`       | Class         | Public (+)    | `int`                         | Tracks the total number of posts created.            |
-
+| Name         | Kind      | Access Level | Type         | Description                                                                |
+|--------------|-----------|--------------|--------------|----------------------------------------------------------------------------|
+| `_content`   | Instance  | Protected (#) | `str`        | The content of the post, which must be between 3 and 2200 characters long.  |
+| `timestamp`  | Instance  | Public (+)    | `datetime`   | The timestamp when the post is created, set to the current date and time.   |
+| `_tags`      | Instance  | Protected (#) | `set`        | A set of tags associated with the post.                                    |
+| `post_count` | Class     | Public (+)    | `int`        | Tracks the total number of posts created.                                   |
 
 ## Methods
 
 The `Post` class must have the following methods:
 
-
-| Name                | Kind          | Return Type   | Parameters                          | Description                                |
-|---------------------|---------------|--------------|-------------------------------------|--------------------------------------------|
-| `__init__`          | Instance      | `None`        | `self`, `content`, `tags=None`      | Initializes a new post with content, tags, and a timestamp. Increments `post_count`. |
-| `content`           | Property      | `str`         | `self`                              | Gets the post content. Validates content length on setting. |
-| `add_tag`           | Instance      | `None`        | `self`, `tag`                       | Adds a valid tag to the `_tags` list. Raises `ValueError` if invalid. |
-| `remove_tag`        | Instance      | `None`        | `self`, `tag`                       | Removes the specified tag from the `_tags` list if it exists. |
-| `get_post_count`    | Class         | `int`         | `cls`                               | Returns the total number of posts created. |
-| `is_valid_tag`      | Static        | `bool`        | `tag`                               | Returns `True` if the tag is alphanumeric and <= 30 characters. |
-
+| Name                | Kind          | Return Type   | Parameters         | Description                                                                 |
+|---------------------|---------------|---------------|--------------------|-----------------------------------------------------------------------------|
+| `__init__(self, content, tags=None)` | Instance     | None          | `content: str`, `tags: set` (optional) | Initializes the post with content and optional tags, and validates them.     |
+| `content(self)`      | Property      | `str`         | None               | Returns the post's content.                                                  |
+| `tags(self)`         | Property      | `set`         | None               | Returns the post's set of tags.                                              |
+| `add_tag(self, tag)` | Instance      | None          | `tag: str`         | Adds a valid tag to the post.                                                |
+| `remove_tag(self, tag)` | Instance   | None          | `tag: str`         | Removes a tag from the post's set of tags. Does nothing if the tag is not present. |
+| `get_post_count(cls)`| Class         | `int`         | None               | Returns the total number of posts created.                                   |
+| `is_valid_tag(tag)`  | Static        | `bool`        | `tag: str`         | Returns `True` if the tag is alphanumeric and no more than 30 characters long. |
+| `is_valid_content(content)` | Static  | `bool`        | `content: str`     | Returns `True` if the content is between 3 and 2200 characters long.         |
 
 ### Implementation Details
 
-**`__init__(self, content, tags)`**:
-- The `__init__` method initializes a new post object with the provided content and tags (if any).
-- The `__init__` method should set the `__content` attribute using the `content` property setter (which will validate the length). If `tags` are provided, validate 
-
-
-initialize the `_tags` attribute using ; otherwise, initialize it with an empty list.
-- Set `timestamp` to the current date and time using `datetime.now()`.
-- Increment the `post_count` class attribute by 1.
-
-
-**`add_tag(self, tag)`**: 
-- Validate the tag using `is_valid_tag` static method.
-- If valid, add the tag to `_tags`. If invalid, raise a `ValueError`.
-
-**`remove_tag(self, tag)`**: 
-   - Remove the specified tag from `_tags` if it exists. Do nothing if the tag is not in the list.
+**`__init__(self, content, tags=None)`**:
+- The `__init__` method is the constructor for the `Post` class. The `content` parameter is required, and `tags` is optional.
+- Validate `content` using the `is_valid_content` static method. If the content is invalid, raise a `ValueError`. Otherwise, set the `_content` attribute.
+- If `tags` is not provided, initialize `_tags` with an empty set.
+- If `tags` are provided, validate each tag using the `is_valid_tag` static method. If any tag is invalid, raise a `ValueError`. Otherwise, add each valid tag to the `_tags` attribute.
+- Set the `timestamp` attribute to the current date and time.
+- Increment the `post_count` class attribute by 1 to keep track of the number of posts created.
 
 **`content(self)`**:
-   - Implement a getter that returns the `__content` value.
-   - Implement a setter that accepts a string value. If the new content is longer than 2200 characters, raise a `ValueError`. Otherwise, set `__content` to the new value.
+- Implement a getter method that returns the `_content` value.
 
-**`get_post_count(cls)`**: 
-   - Return the current value of `post_count`.
+**`tags(self)`**:
+- Implement a getter method that returns the `_tags` value.
 
-**`is_valid_tag(tag) -> bool`**: 
-   - Return `True` if the tag is alphanumeric and no more than 30 characters long.
-   - Return `False` otherwise.
+**`get_post_count(cls)`**:
+- Implement a class method that returns the current value of the `post_count` class attribute.
+
+**`is_valid_content(content) -> bool`**:
+- Implement a static method that returns `True` if the content is between 3 and 2200 characters long.
+- Return `False` if the content is shorter than 3 characters or longer than 2200 characters.
+
+**`is_valid_tag(tag) -> bool`**:
+- Implement a static method that returns `True` if the tag is alphanumeric and no more than 30 characters long.
+- Return `False` if the tag exceeds 30 characters or contains non-alphanumeric characters.
+
+**`add_tag(self, tag)`**:
+- Validate the tag using the `is_valid_tag` static method.
+- If the tag is valid, add it to `_tags`. If invalid, raise a `ValueError`.
+
+**`remove_tag(self, tag)`**:
+- Remove the specified tag from `_tags` if it exists. If the tag is not in the set, do nothing.
+- (Hint: The `discard` method of a set is appropriate for this operation, not `remove`, as it does not raise an error if the tag is absent.)
