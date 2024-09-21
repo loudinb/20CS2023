@@ -11,26 +11,53 @@ In this assignment, you will implement an Instagram-like application using **Obj
 
 ## OOP Concepts in the Assignment
 
-The assignment will require you to apply various OOP concepts to design and implement the Instagram-like application. Here are some key concepts that you will use:
+The assignment will require you to apply various OOP concepts to design and implement the Instagram-like application. Here are some key concepts and the corresponding Python syntax you will use:
 
-### Instance Attributes and Methods
+(pa1-instance-attributes)=
+### Instance Attributes 
 
 Instance attributes are specific to each object instance, and instance methods operate on those individual instances. Each object has its own copy of the instance attributes, and instance methods can modify those attributes.
 
 ```python
 class User:
-    def __init__(self, username: str, email: str):
+    def __init__(self, username, email):
         self.username = username  # Instance attribute
         self.email = email        # Instance attribute
+```
 
-    def create_post(self, content: str) -> None:  # Instance method
+(pa1-instance-methods)=
+### Instance Methods
+
+Instance methods are functions that operate on individual instances of a class. They can access and modify instance attributes, perform operations specific to an object, and interact with other objects.
+
+```python
+class User:
+
+    def create_post(self, content):  # Instance method
         # Create a post
         pass
 ```
 
-### Class Attributes and Class Methods
+(pa1-class-attributes)=
+### Class Attributes 
 
 Class attributes are shared among all instances of a class, meaning they maintain a single value across all objects. Class methods operate on the class itself and can modify class attributes but not instance attributes.
+
+```python
+class User:
+    user_count = 0  # Class attribute shared among all instances
+
+    def __init__(self, username, email):
+        self.username = username
+        self.email = email
+        User.user_count += 1   # Accessing class attribute
+```
+
+
+(pa1-class-methods)=
+### Class Methods
+
+Class methods operate on the class itself and can modify class attributes but not instance attributes.  Class methods are defined using the `@classmethod` decorator and take the class itself as the first argument (`cls` by convention).
 
 ```python
 class User:
@@ -41,9 +68,10 @@ class User:
         return cls.user_count
 ```
 
+(pa1-static-methods)=
 ### Static Methods
 
-Static methods are independent of the class state and do not modify class or instance attributes. They are typically utility functions that logically belong to the class but do not need to access or modify class/instance data.
+Static methods are independent of the class state and do not modify class or instance attributes. They are typically utility functions that logically belong to the class but do not need to access or modify class/instance data.  Static methods are defined using the `@staticmethod` decorator and do not take the class (e.g., `cls`) or instance (e.g., `self`) as the first argument.
 
 ```python
 class User:
@@ -53,6 +81,7 @@ class User:
         return len(username) > 2
 ```
 
+(pa1-properties)=
 ### Properties
 
 The `@property` decorator is used to define a method as a property, which allows access to an attribute through getter and setter methods. This provides control over how attributes are accessed and modified, enabling validation and constraints.
@@ -115,6 +144,7 @@ class Post:
 
 There are several Python features and syntax elements that you will use in this assignment to implement the Instagram-like application. We have not covered all of them in detail, so I will provide a brief overview of some key concepts:
 
+(pa1-regular-expressions)=
 ### Regular Expressions
 
 Regular expressions (regex) are powerful tools for pattern matching and string manipulation. They can be used to validate input, extract specific information, or perform complex text processing tasks.
@@ -129,6 +159,7 @@ def is_valid_email(email: str) -> bool:
     return re.match(pattern, email) is not None
 ```
 
+(pa1-date-time)=
 ### Date and Time Handling
 
 Python's `datetime` module provides classes for working with dates and times. You can use these classes to handle timestamps, time differences, and date formatting.
@@ -140,6 +171,7 @@ current_time = datetime.now()
 formatted_time = current_time.strftime("%Y-%m-%d %H:%M:%S")
 ```
 
+(pa1-value-error)=
 ### Raising a ValueError
 
 When validating input or enforcing constraints, you can raise a `ValueError` to indicate that the input is invalid. This allows you to handle errors and exceptions gracefully.

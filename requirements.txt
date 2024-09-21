@@ -5,3 +5,5 @@ numpy>=2.1,<2.2
 pandas>=2.2,<2.3
 pyyaml-include>=2.1,<2.2
 seaborn>=0.13.1
+sphinxcontrib-mermaid
+sphinxcontrib-plantuml

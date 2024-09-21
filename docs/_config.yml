@@ -9,6 +9,12 @@ exclude_patterns            : [_build, _build_slides, _wip, slides, Thumbs.db, .
 # Auto-exclude files not in the toc
 only_build_toc_files        : false
 
+sphinx:
+  extra_extensions:
+    - sphinxcontrib.mermaid
+    - sphinxcontrib.plantuml
+    - sphinx.ext.graphviz
+
 #######################################################################################
 # Execution settings
 execute:
