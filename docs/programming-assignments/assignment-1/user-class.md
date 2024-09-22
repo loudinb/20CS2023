@@ -8,17 +8,17 @@ Follow the specifications provided below to create a `User` class in the `user.p
 
 | Name               | Kind      | Access Level | Type                | Description                                    |
 |--------------------|-----------|--------------|---------------------|------------------------------------------------|
-| `_username`        | Instance  | Private      | `str`               | User's unique username                         |
-| `_email`           | Instance  | Private      | `str`               | User's email address                           |
-| `_bio`             | Instance  | Private      | `str`               | User's biography (max 150 characters)          |
-| `_joined_on`       | Instance  | Private      | `datetime`          | Date and time when the user joined             |
-| `_posts`           | Instance  | Private      | `list[Post]`        | List of user's posts                           |
-| `_liked_posts`     | Instance  | Private      | `list[Post]`        | List of posts liked by the user                |
-| `_comments`        | Instance  | Private      | `list[Comment]`     | List of comments made by the user              |
-| `_liked_comments`  | Instance  | Private      | `list[Comment]`     | List of comments liked by the user             |
+| `user_count`       | Class     | Public       | `int`               | Class attribute tracking total number of users |
+| `_username`        | Instance  | Protected      | `str`               | User's unique username                         |
+| `_email`           | Instance  | Protected      | `str`               | User's email address                           |
+| `_bio`             | Instance  | Protected      | `str`               | User's biography (max 150 characters)          |
+| `_joined_on`       | Instance  | Protected      | `datetime`          | Date and time when the user joined             |
+| `_posts`           | Instance  | Protected      | `list[Post]`        | List of user's posts                           |
+| `_liked_posts`     | Instance  | Protected      | `list[Post]`        | List of posts liked by the user                |
+| `_comments`        | Instance  | Protected      | `list[Comment]`     | List of comments made by the user              |
+| `_liked_comments`  | Instance  | Protected      | `list[Comment]`     | List of comments liked by the user             |
 | `following`        | Instance  | Public       | `list[User]`        | List of users this user is following           |
 | `followers`        | Instance  | Public       | `list[User]`        | List of users following this user              |
-| `user_count`       | Class     | Public       | `int`               | Class attribute tracking total number of users |
 
 ## Methods
 

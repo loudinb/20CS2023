@@ -68,26 +68,12 @@ parts:
         - glob: knowledge-checks/knowledge-check-*
     - file: programming-assignments
       sections:
-        - file: programming-assignments/pa-1/pa-1
+        - file: programming-assignments/assignment-1/assignment-1
           sections:
-            - file: programming-assignments/pa-1/step-1/step-1
-              sections:
-                - file: programming-assignments/pa-1/step-1/user-class
-                - file: programming-assignments/pa-1/step-1/post-class
-                - file: programming-assignments/pa-1/step-1/comment-class
-                - file: programming-assignments/pa-1/step-1/message-class
-            - file: programming-assignments/pa-1/step-2/step-2
-              sections:
-                - file: programming-assignments/pa-1/step-2/user-class
-                - file: programming-assignments/pa-1/step-2/post-class
-                - file: programming-assignments/pa-1/step-2/comment-class
-                - file: programming-assignments/pa-1/step-2/message-class
-                - file: programming-assignments/pa-1/step-2/testing
-            - file: programming-assignments/pa-1/step-3/step-3
-              sections:
-                - file: programming-assignments/pa-1/step-3/user-class
-                - file: programming-assignments/pa-1/step-3/post-class
-                - file: programming-assignments/pa-1/step-3/testing
+            - file: programming-assignments/assignment-1/user-class
+            - file: programming-assignments/assignment-1/post-class
+            - file: programming-assignments/assignment-1/comment-class
+            - file: programming-assignments/assignment-1/reference-code
   - caption: Other Resources
     chapters:
       - file: faqs
