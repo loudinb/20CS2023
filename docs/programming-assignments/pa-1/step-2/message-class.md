@@ -2,12 +2,7 @@
 
 Update the `Message` class in `message.py` to include the following methods and attributes:
 
-## Additional Instance Attributes:
 
-| Name       | Kind      | Access Level | Type         | Description                                                                |
-|------------|-----------|--------------|--------------|----------------------------------------------------------------------------|
-| `sender`   | Instance  | Public (+)   | `User`       | The `User` object representing the user who sent the message.               |
-| `recipient`| Instance  | Public (+)   | `User`       | The `User` object representing the user who is the recipient of the message.|
 
 ## Updated Instance Methods:
 

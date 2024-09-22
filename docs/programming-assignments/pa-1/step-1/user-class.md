@@ -1,84 +1,70 @@
 # `User` Class
 
-::::{grid}
-:gutter: 2
-
-::: {grid-item} 
-:columns: 8 
-The `User` class represents a user in an Instagram-like application. Each user has a unique username, email address, and a biography.
+The `User` class represents a user in an Instagram-like application. It includes attributes for user information, social connections, and content, as well as methods for user interactions.
 
 Follow the specifications provided below to create a `User` class in the `user.py` file.
 
-:::
-
-::: {grid-item}
-:columns: 4
-
-```{mermaid}
-classDiagram
-    class User {
-        +static int user_count
-        +str username
-        #datetime _joined_on
-        #str _email
-        #str _bio
-        +__init__(username, email)
-        +get_user_count()
-        +bio()
-        +bio(value)
-        +is_valid_username(username)
-        +is_valid_email(email)
-    }
-```
-
-:::
-
-::::
 
 ## Attributes
 
-The `User` class must have the following attributes:
-
-| Name            | Kind          | Access Level   | Type        | Description                                     |
-|-----------------|---------------|----------------|-------------|-------------------------------------------------|
-| `username`      | Instance      | Public (+)     | `str`       | The user's username.                            |
-| `_email`        | Instance      | Protected (#)  | `str`       | The user's email, for internal use only.        |
-| `_bio`          | Instance      | Protected (#)  | `str`       | The user's biography, for internal use only.    |
-| `_joined_on`    | Instance      | Protected (#)  | `datetime`  | The date and time when the user joined.         |
-| `user_count`    | Class         | Public (+)     | `int`       | Tracks the total number of users.               |
+| Name         | Kind      | Access Level | Type            | Description                                    |
+|--------------|-----------|--------------|-----------------|------------------------------------------------|
+| `_username`  | Instance  | Private      | `str`           | User's unique username                         |
+| `_email`     | Instance  | Private      | `str`           | User's email address                           |
+| `_bio`       | Instance  | Private      | `str`           | User's biography (max 150 characters)          |
+| `_joined_on` | Instance  | Private      | `datetime`      | Date and time when the user joined             |
+| `posts`      | Instance  | Public       | `list`          | List of user's posts                           |
+| `following`  | Instance  | Public       | `list[User]`    | List of users this user is following           |
+| `followers`  | Instance  | Public       | `list[User]`    | List of users following this user              |
+| `messages`   | Instance  | Public       | `list`          | List of messages received by the user          |
+| `user_count` | Class     | Public       | `int`           | Class attribute tracking total number of users |
 
 ## Methods
 
-The `User` class must implement the following methods:
-
-| Name                | Kind         | Return Type   | Parameters           | Description                                                                 |
-|---------------------|--------------|---------------|----------------------|-----------------------------------------------------------------------------|
-| `__init__(self, username, email)` | Instance | None          | `username: str`, `email: str`  | Initializes a new `User` object and increments the `user_count` attribute.  |
-| `get_user_count()`   | Class        | `int`         | None                 | Returns the total number of users.                                          |
-| `bio(self)`          | Property     | `str`         | None                 | Returns the user's biography.                                               |
-| `bio(self, value)`   | Property Setter | None       | `value: str`         | Sets the biography with a length restriction of 150 characters or less.     |
-| `is_valid_username(username)` | Static | `bool`       | `username: str`       | Returns `True` if the username is valid (3-30 characters, alphanumeric, `.` or `_` allowed). |
-| `is_valid_email(email)`  | Static  | `bool`         | `email: str`          | Returns `True` if the email is valid, following a standard email format.    |
-
-
+| Name                 | Kind     | Return Type | Parameters           | Description                                                        |
+|----------------------|----------|-------------|----------------------|--------------------------------------------------------------------|
+| `__init__`           | Instance | None        | `username: str, email: str` | Initialize a new User instance                                     |
+| `username`           | Property | `str`       | None                 | Get the user's username                                            |
+| `email`              | Property | `str`       | None                 | Get the user's email address                                       |
+| `bio`                | Property | `str`       | None                 | Get the user's biography                                           |
+| `bio` (setter)       | Property | None        | `new_bio: str`       | Set the user's biography (max 150 characters)                      |
+| `joined_on`          | Property | `datetime`  | None                 | Get the date and time when the user joined                         |
+| `follow`             | Instance | None        | `user: User`         | Add a user to the following list and add self to their followers   |
+| `unfollow`           | Instance | None        | `user: User`         | Remove a user from the following list and remove self from their followers |
+| `is_valid_username`  | Static   | `bool`      | `username: str`      | Check if a username is valid                                       |
+| `is_valid_email`     | Static   | `bool`      | `email: str`         | Check if an email is valid                                         |
+| `get_user_count`     | Class    | `int`       | None                 | Return the total number of User instances created                  |
+                                     |
 
 ### Implementation Details
 
 **`__init__(self, username, email)`**
 - The `__init__` method initializes a new instance of the `User` class. The `username` and `email` parameters are required.
-- Validate the `username` using the `is_valid_username` method. If the `username` is invalid, raise a `ValueError` with an appropriate error message. If valid, assign the `username` to the `username` attribute.
-- Validate the `email` using the `is_valid_email` method. If the `email` is invalid, raise a `ValueError` with an appropriate error message. If valid, assign the `email` to the `_email` attribute.
+- Validate the `username` using the `is_valid_username` method. If the `username` is invalid, raise a `ValueError` with the message "Invalid username.". 
+- Validate the `email` using the `is_valid_email` method. If the `email` is invalid, raise a `ValueError` with the message "Invalid email address.".
+- Set the `_username` attribute to the `username` parameter.
+- Set the `_email` attribute to the `email` parameter.
 - Set the `_bio` attribute to an empty string, as the user does not have a biography initially.
-- Set the `_joined_on` attribute to the current date and time, representing when the user was created.
+- Set the `_joined_on` attribute to the current date and time using `datetime.now()`, representing when the user was created.
+- Initialize `posts`, `following`, `followers`, and `messages` as empty lists.
 - Increment the `user_count` class attribute by 1 to keep track of the number of `User` instances created.
 
-**`bio(self)`**
-- Implement the getter method for `bio`, which should return the value of the `_bio` attribute. This provides access to the user's biography.
+**`username(self)`**
+- Implement the getter method for `_username`, which returns the value of the `_username` attribute. This provides read-only access to the user's username.
 
-**`bio(self, value)`**
-- Implement the setter method for `bio`. It accepts a string `value` as the new biography. 
-- If the `value` exceeds 150 characters, raise a `ValueError` indicating that the biography must be 150 characters or fewer. 
-- If the length is valid, update the `_bio` attribute with the new `value`.
+**`email(self)`**
+- Implement the getter method for `_email`, which returns the value of the `_email` attribute. This provides read-only access to the user's email address.
+
+**`bio(self)`**
+- Implement the getter method for `_bio`, which returns the value of the `_bio` attribute. This provides access to the user's biography.
+
+**`bio(self, new_bio)`**
+- Implement the setter method for `_bio`. It accepts a string `new_bio` as the new biography. 
+- If the `new_bio` exceeds 150 characters, raise a `ValueError` with the message "Bio must be 150 characters or less.". 
+- If the length is valid, update the `_bio` attribute with the new `new_bio`.
+
+**`joined_on(self)`**
+- Implement the getter method for `_joined_on`, which returns the value of the `_joined_on` attribute. This provides read-only access to the user's join date and time.
 
 **`get_user_count(cls)`**
 - Implement this method as a class method that returns the current value of the `user_count` class attribute.
@@ -86,65 +72,23 @@ The `User` class must implement the following methods:
 
 **`is_valid_username(username)`**
 - Implement this method as a static method to validate the `username`.
-- Return `True` if the `username` meets the following criteria:
-  - It is between 3 and 30 characters in length.
-  - It contains only alphanumeric characters (letters and numbers), periods (`.`), and underscores (`_`).
-- Return `False` if the `username` does not meet these criteria.
+- Return `False` if the `username` length is less than 3 or greater than 30 characters.
+- Iterate through each character in the `username`:
+  - If the character is not alphanumeric and not a period (`.`) or underscore (`_`), return `False`.
+- If all checks pass, return `True`.
 
 **`is_valid_email(email)`**
 - Implement this method as a static method to validate the `email`.
-- Return `True` if the `email` matches the following criteria:
-  - The `email` follows a valid format, which includes a username, the `@` symbol, a domain name, and a top-level domain (e.g., `.com`, `.org`, `.net`).
-  - Use the provided regular expression pattern to validate the `email` format: `r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'`.
-- Return `False` if the `email` does not match the valid format.
+- Use the regular expression pattern `r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"` to validate the `email` format.
+- Use `re.match(pattern, email)` to check if the email matches the pattern.
+- Return `True` if there's a match, `False` otherwise.
 
+**`follow(self, user)`**:
+- Check if the given user is not already in this user's `following` list.
+- If not, add the given user to this user's `following` list.
+- Add this user to the given user's `followers` list.
 
-## Testing
-
-### Manual Testing
-
-1. Open a terminal or command prompt.
-2. Run Python by typing `python` or `python3` (depending on your system).
-3. Import the `User` class:
-   ```python
-   from user import User
-   ```
-4. Create instances of the `User` class and test the methods:
-   ```python
-   user = User("testuser", "test@example.com")
-   print(user.username)  # Expected output: testuser
-   user.bio = "This is a test bio"
-   print(user.bio)  # Expected output: This is a test bio
-   print(User.get_user_count())  # Expected output: 1
-   ```
-5. Test invalid inputs to trigger validation errors:
-   ```python
-   User("a", "invalid-email")  # Expected: raises ValueError
-   ```
-
-### Running Unit Tests
-
-To run unit tests for the `User` class, follow these steps:
-
-1. Ensure that your `user.py` file and the corresponding test file (`test_user.py`) are in the same directory.
-2. Open a terminal or command prompt and navigate to that directory.
-3. To run all tests, use the following command:
-   ```bash
-   python -m unittest discover
-   ```
-   This command will discover and run all test files that start with `test_`.
-4. To run tests for a specific module, use:
-   ```bash
-   python -m unittest test_user.py
-   ```
-5. The test results will appear in the terminal, indicating which tests passed or failed.
-
-6. If all tests pass, you should see output like:
-   ```bash
-   ..........
-   ----------------------------------------------------------------------
-   Ran 10 tests in 0.002s
-   OK
-   ```
-
-7. If any tests fail, the output will provide detailed information on what failed and why, helping you debug and fix the issues.
+**`unfollow(self, user)`**:
+- Check if the given user is in this user's `following` list.
+- If present, remove the given user from this user's `following` list.
+- Remove this user from the given user's `followers` list.

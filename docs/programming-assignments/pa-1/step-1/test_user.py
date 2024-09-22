@@ -1,72 +1,92 @@
-# Updated test_user.py to cover all functionality and edge cases
-
 import unittest
-from user import User
 from datetime import datetime
+from user import User
 
 class TestUser(unittest.TestCase):
+    
     def setUp(self):
-        User.user_count = 0
-
-    def test_init_valid(self):
-        user = User("validuser", "valid@email.com")
-        self.assertEqual(user.username, "validuser")
-        self.assertEqual(user._email, "valid@email.com")
-        self.assertEqual(user.bio, "")
-        self.assertEqual(User.user_count, 1)
-        self.assertIsInstance(user._joined_on, datetime)  # Test if _joined_on is a datetime object
-
-    def test_init_invalid_username(self):
-        with self.assertRaises(ValueError):
-            User("in", "valid@email.com")  # Too short
-        with self.assertRaises(ValueError):
-            User("invalid username", "valid@email.com")  # Contains space
-        with self.assertRaises(ValueError):
-            User("a" * 31, "valid@email.com")  # Too long
+        """Set up basic users for testing"""
+        self.user1 = User(username="valid_user", email="user@example.com")
+        self.user2 = User(username="another_user", email="another@example.com")
     
-    def test_init_invalid_email(self):
+    def test_valid_user_creation(self):
+        """Test user creation with valid inputs"""
+        self.assertEqual(self.user1.username, "valid_user")
+        self.assertEqual(self.user1.email, "user@example.com")
+        self.assertEqual(self.user1.bio, "")
+        self.assertTrue(isinstance(self.user1.joined_on, datetime))
+        self.assertEqual(len(self.user1.posts), 0)
+        self.assertEqual(len(self.user1.following), 0)
+        self.assertEqual(len(self.user1.followers), 0)
+
+    def test_invalid_username(self):
+        """Test creation with invalid usernames"""
         with self.assertRaises(ValueError):
-            User("validuser", "invalid-email")
-
-    def test_bio_property(self):
-        user = User("testuser", "test@email.com")
-        self.assertEqual(user.bio, "")
-    
-    def test_bio_setter_valid(self):
-        user = User("testuser", "test@email.com")
-        user.bio = "This is a valid bio"
-        self.assertEqual(user.bio, "This is a valid bio")
-
-    def test_bio_setter_invalid(self):
-        user = User("testuser", "test@email.com")
+            User(username="x", email="test@example.com")  # too short
         with self.assertRaises(ValueError):
-            user.bio = "a" * 151  # Too long
+            User(username="a"*31, email="test@example.com")  # too long
+        with self.assertRaises(ValueError):
+            User(username="invalid@", email="test@example.com")  # invalid character
     
-    def test_bio_setter_edge_case(self):
-        user = User("testuser", "test@email.com")
-        bio_text = "a" * 150  # Exactly 150 characters
-        user.bio = bio_text
-        self.assertEqual(user.bio, bio_text)  # Should accept 150 characters without error
+    def test_invalid_email(self):
+        """Test creation with invalid emails"""
+        with self.assertRaises(ValueError):
+            User(username="validuser", email="invalid-email")  # no domain
+        with self.assertRaises(ValueError):
+            User(username="validuser", email="invalid@com")  # incomplete domain
+    
+    def test_bio_setter(self):
+        """Test bio setter with valid and invalid bios"""
+        self.user1.bio = "This is a valid bio."
+        self.assertEqual(self.user1.bio, "This is a valid bio.")
+        
+        # Bio with exactly 150 characters
+        valid_bio = "x" * 150
+        self.user1.bio = valid_bio
+        self.assertEqual(self.user1.bio, valid_bio)
+        
+        # Bio too long
+        with self.assertRaises(ValueError):
+            self.user1.bio = "x" * 151
+    
+    def test_follow_unfollow(self):
+        """Test following and unfollowing another user"""
+        self.user1.follow(self.user2)
+        self.assertIn(self.user2, self.user1.following)
+        self.assertIn(self.user1, self.user2.followers)
 
-    def test_get_user_count(self):
-        User("user1", "user1@email.com")
-        User("user2", "user2@email.com")
-        self.assertEqual(User.get_user_count(), 2)
+        self.user1.unfollow(self.user2)
+        self.assertNotIn(self.user2, self.user1.following)
+        self.assertNotIn(self.user1, self.user2.followers)
+    
+    def test_follow_edge_cases(self):
+        """Test following and unfollowing edge cases"""
+        # Following the same user multiple times
+        self.user1.follow(self.user2)
+        self.user1.follow(self.user2)  # Should not duplicate
+        self.assertEqual(len(self.user1.following), 1)
 
+        # Unfollowing without being followed
+        self.user1.unfollow(self.user2)  # Should not raise an error
+    
     def test_is_valid_username(self):
-        self.assertTrue(User.is_valid_username("valid_user"))
-        self.assertTrue(User.is_valid_username("valid.user"))
-        self.assertFalse(User.is_valid_username("in"))  # Too short
-        self.assertFalse(User.is_valid_username("invalid username"))  # Contains space
-        self.assertFalse(User.is_valid_username("a" * 31))  # Too long
-        self.assertTrue(User.is_valid_username("abc"))  # Exactly 3 characters
-        self.assertTrue(User.is_valid_username("a" * 30))  # Exactly 30 characters
-
+        """Test static method for valid usernames"""
+        self.assertTrue(User.is_valid_username("valid_name"))
+        self.assertFalse(User.is_valid_username("x"))  # too short
+        self.assertFalse(User.is_valid_username("a"*31))  # too long
+        self.assertFalse(User.is_valid_username("invalid@"))  # invalid char
+    
     def test_is_valid_email(self):
-        self.assertTrue(User.is_valid_email("valid@email.com"))
-        self.assertTrue(User.is_valid_email("valid.user+tag@email.co.uk"))
+        """Test static method for valid emails"""
+        self.assertTrue(User.is_valid_email("valid@example.com"))
         self.assertFalse(User.is_valid_email("invalid-email"))
-        self.assertFalse(User.is_valid_email("invalid@email"))
+        self.assertFalse(User.is_valid_email("invalid@com"))
+    
+    def test_user_count(self):
+        """Test that user count increments correctly"""
+        initial_count = User.get_user_count()
+        User(username="newuser", email="new@example.com")
+        self.assertEqual(User.get_user_count(), initial_count + 1)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

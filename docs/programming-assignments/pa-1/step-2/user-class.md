@@ -2,13 +2,6 @@
 
 Update the `User` class in `user.py` to include the following methods and attributes:
 
-## Additional Instance Attributes:
-
-| Name          | Kind      | Access Level | Type         | Description                                                                 |
-|---------------|-----------|--------------|--------------|-----------------------------------------------------------------------------|
-| `_posts`      | Instance  | Private (#)  | `list[Post]` | A private list of `Post` objects representing the posts created by the user. Initialize as an empty list in the constructor. |
-| `_followers`  | Instance  | Private (#)  | `list[User]` | A private list of `User` objects representing users following this user. Initialize as an empty list in the constructor. |
-| `_following`  | Instance  | Private (#)  | `list[User]` | A private list of `User` objects representing users this user is following. Initialize as an empty list in the constructor. |
 
 ## Additional Instance Methods:
 
@@ -30,10 +23,4 @@ Update the `User` class in `user.py` to include the following methods and attrib
 - Create a new `Comment` object with `self` as the author and the given content.
 - Add this comment to the specified post (assuming the `Post` class has a method for adding comments).
 
-### **`follow(self, user)`**:
-- Add the given user to this user's `_following` list if they are not already being followed.
-- Add this user to the given user's `_followers` list.
 
-### **`unfollow(self, user)`**:
-- Remove the given user from this user's `_following` list if they are present.
-- Remove this user from the given user's `_followers` list.
