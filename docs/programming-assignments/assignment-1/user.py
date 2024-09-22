@@ -1,7 +1,5 @@
 import re
 from datetime import datetime
-from post import Post
-from comment import Comment
 
 class User:
 
@@ -28,10 +26,6 @@ class User:
         User.user_count += 1
 
     @property
-    def posts(self):
-        return self._posts
-
-    @property
     def username(self):
         return self._username
     
@@ -53,16 +47,10 @@ class User:
     def joined_on(self):
         return self._joined_on
 
-    def follow(self, user):
-        if user is not self and user not in self.following:
-            self.following.append(user)
-            user.followers.append(self)
-
-    def unfollow(self, user):
-        if user in self.following:
-            self.following.remove(user)
-            user.followers.remove(self)
-
+    @property
+    def posts(self):
+        return self._posts
+    
     @staticmethod
     def is_valid_username(username):
         if not 3 <= len(username) <= 30:
@@ -83,41 +71,3 @@ class User:
     def get_user_count(cls):
         return cls.user_count
     
-    def create_post(self, content, tags=None):
-        post = Post(self, content, tags)
-        self._posts.append(post)
-
-    def delete_post(self, post):
-        if post in self._posts:
-            self._posts.remove(post)
-            Post.post_count -= 1
-
-    def like_post(self, post):
-        if post not in self._posts and post not in self._liked_posts:
-            self._liked_posts.append(post)
-            post.like(self)
-
-    def unlike_post(self, post):
-        if post in self._liked_posts:
-            self._liked_posts.remove(post)
-            post.unlike(self)
-
-    def comment_on_post(self, post, content, tags=None):
-        comment = post.add_comment(self, content, tags)
-        self._comments.append(comment)
-
-    def delete_comment_on_post(self, post, comment):
-        if comment in self._comments:
-            post.delete_comment(comment)
-            self._comments.remove(comment)
-
-    def like_comment(self, comment):
-        if comment not in self._comments and comment not in self._liked_comments:
-            self._liked_comments.append(comment)
-            comment.like(self)
-
-    def unlike_comment(self, comment):
-        if comment in self._liked_comments:
-            self._liked_comments.remove(comment)
-            comment.unlike(self)
-

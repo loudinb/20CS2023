@@ -1,6 +1,6 @@
 # `Post` Class
 
-The `Post` class represents a post in an Instagram-like application. It includes attributes for post content, author, tags, timestamp, and social interactions, as well as methods for managing post data.
+The `Post` class represents a post in an Instagram-like application. It includes attributes for post content, author, tags, time created, and social interactions, as well as methods for managing post data.
 
 Follow the specifications provided below to create a `Post` class in the `post.py` file.
 
@@ -11,7 +11,7 @@ Follow the specifications provided below to create a `Post` class in the `post.p
 | `post_count` | Class    | Public       | `int`           | Class attribute tracking total number of posts |
 | `_author`    | Instance | Protected    | `User`          | Author of the post                             |
 | `_content`   | Instance | Protected    | `str`           | Post content (3-2200 characters)               |
-| `_timestamp` | Instance | Protected    | `datetime`      | Date and time when the post was created        |
+| `_created_on` | Instance | Protected    | `datetime`      | Date and time when the post was created        |
 | `_tags`      | Instance | Protected    | `set`           | Set of tags associated with the post           |
 | `_liked_by`  | Instance | Protected    | `list[User]`    | List of users who have liked the post          |
 | `_comments`  | Instance | Protected    | `list[Comment]` | List of comments on the post                   |
@@ -22,18 +22,15 @@ Follow the specifications provided below to create a `Post` class in the `post.p
 |----------------------|----------|-------------|-------------------------------------------|-------------------------------------------------------|
 | `__init__`           | Instance | None        | `author: User, content: str, tags: set=None` | Initialize a new Post instance                        |
 | `content`            | Property | `str`       | None                                      | Get the post's content                                |
-| `timestamp`          | Property | `datetime`  | None                                      | Get the post's timestamp                              |
+| `created_on`          | Property | `datetime`  | None                                      | Get the post's created_on                              |
 | `tags`               | Property | `set`       | None                                      | Get the post's set of tags                            |
 | `liked_by`           | Property | `list`      | None                                      | Get the list of users who liked the post              |
 | `add_tag`            | Instance | None        | `tag: str`                                | Add a valid tag to the post                           |
 | `remove_tag`         | Instance | None        | `tag: str`                                | Remove a tag from the post's set of tags              |
-| `get_post_count`     | Class    | `int`       | None                                      | Return the total number of Post instances created     |
 | `is_valid_tag`       | Static   | `bool`      | `tag: str`                                | Check if a tag is valid                               |
 | `is_valid_content`   | Static   | `bool`      | `content: str`                            | Check if post content is valid                        |
-| `like`               | Instance | None        | `user: User`                              | Add a user to the list of users who liked the post    |
-| `unlike`             | Instance | None        | `user: User`                              | Remove a user from the list of users who liked the post |
-| `add_comment`        | Instance | `Comment`   | `user: User, content: str, tags: set=None`| Add a new comment to the post                         |
-| `delete_comment`     | Instance | None        | `comment: Comment`                        | Remove a comment from the post                        |
+| `get_post_count`     | Class    | `int`       | None                                      | Return the total number of Post instances created     |
+
 
 ### Implementation Details
 
@@ -44,15 +41,15 @@ Follow the specifications provided below to create a `Post` class in the `post.p
 - Set the `_content` attribute to the `content` parameter.
 - Initialize `_tags` as an empty set.
 - If `tags` are provided, validate each tag using the `is_valid_tag` method. If any tag is invalid, raise a `ValueError` with the message "Invalid tag.". Otherwise, add each valid tag to the `_tags` attribute.
-- Set the `_timestamp` attribute to the current date and time using `datetime.now()`.
+- Set the `_created_on` attribute to the current date and time using `datetime.now()`.
 - Initialize `_liked_by` and `_comments` as empty lists.
 - Increment the `post_count` class attribute by 1 to keep track of the number of `Post` instances created.
 
 **`content(self)`**
 - Implement the getter method for `_content`, which returns the value of the `_content` attribute. This provides read-only access to the post's content.
 
-**`timestamp(self)`**
-- Implement the getter method for `_timestamp`, which returns the value of the `_timestamp` attribute. This provides read-only access to the post's creation time.
+**`created_on(self)`**
+- Implement the getter method for `_created_on`, which returns the value of the `_created_on` attribute. This provides read-only access to the post's creation time.
 
 **`tags(self)`**
 - Implement the getter method for `_tags`, which returns the value of the `_tags` attribute. This provides read-only access to the post's set of tags.
@@ -68,10 +65,6 @@ Follow the specifications provided below to create a `Post` class in the `post.p
 - Remove the specified `tag` from `_tags` if it exists. If the tag is not in the set, do nothing.
 - Use the `discard` method of the set for this operation.
 
-**`get_post_count(cls)`**
-- Implement this method as a class method that returns the current value of the `post_count` class attribute.
-- This method provides a way to retrieve the total number of `Post` instances that have been created.
-
 **`is_valid_tag(tag)`**
 - Implement this method as a static method to validate the `tag`.
 - Return `True` if the `tag` is alphanumeric and no more than 30 characters long.
@@ -82,17 +75,6 @@ Follow the specifications provided below to create a `Post` class in the `post.p
 - Return `True` if the length of `content` is between 3 and 2200 characters (inclusive).
 - Return `False` if the `content` is shorter than 3 characters or longer than 2200 characters.
 
-**`like(self, user)`**
-- Add the `user` to the `_liked_by` list if they haven't already liked the post.
-
-**`unlike(self, user)`**
-- Remove the `user` from the `_liked_by` list if they have previously liked the post.
-
-**`add_comment(self, user, content, tags=None)`**
-- Create a new `Comment` instance with the given `user`, `content`, and `tags`.
-- Add the new comment to the `_comments` list.
-- Return the newly created `Comment` instance.
-
-**`delete_comment(self, comment)`**
-- Remove the specified `comment` from the `_comments` list if it exists.
-- Decrement the `Comment.comment_count` class attribute by 1.
+**`get_post_count(cls)`**
+- Implement this method as a class method that returns the current value of the `post_count` class attribute.
+- This method provides a way to retrieve the total number of `Post` instances that have been created.

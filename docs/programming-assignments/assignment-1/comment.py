@@ -19,22 +19,17 @@ class Comment:
                 self._tags.add(tag)
 
         self._liked_by = []
-        self._timestamp = datetime.now()
+        self._created_on = datetime.now()
 
         Comment.comment_count += 1
         
-
-    @classmethod
-    def get_comment_count(cls):
-        return cls.comment_count
-    
     @property
     def content(self):
         return self._content
     
     @property
-    def timestamp(self):
-        return self._timestamp
+    def created_on(self):
+        return self._created_on
     
     @property
     def tags(self):
@@ -56,10 +51,6 @@ class Comment:
     def is_valid_content(content):
         return 3 <= len(content) <= 2200
     
-    def like(self, user):
-        if user not in self._liked_by:
-            self._liked_by.append(user)
-
-    def unlike(self, user):
-        if user in self._liked_by:
-            self._liked_by.remove(user)
+    @classmethod
+    def get_comment_count(cls):
+        return cls.comment_count

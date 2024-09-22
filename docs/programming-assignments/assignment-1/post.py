@@ -1,5 +1,4 @@
 from datetime import datetime
-from comment import Comment
 
 class Post:
 
@@ -17,23 +16,19 @@ class Post:
                 if not self.is_valid_tag(tag):
                     raise ValueError("Invalid tag.")
                 self._tags.add(tag)
-        self._timestamp = datetime.now()
+        self._created_on = datetime.now()
         self._liked_by = []
         self._comments = []
 
         Post.post_count += 1
-
-    @classmethod
-    def get_post_count(cls):
-        return cls.post_count
-    
+   
     @property
     def content(self):
         return self._content
     
     @property
-    def timestamp(self):
-        return self._timestamp
+    def created_on(self):
+        return self._created_on
     
     @property
     def tags(self):
@@ -59,20 +54,6 @@ class Post:
     def is_valid_content(content):
         return 3 <= len(content) <= 2200
     
-    def like(self, user):
-        if user not in self._liked_by:
-            self._liked_by.append(user)
-
-    def unlike(self, user):
-        if user in self._liked_by:
-            self._liked_by.remove(user)
-
-    def add_comment(self, user, content, tags=None):
-        comment = Comment(user, content, tags)
-        self._comments.append(comment)
-        return comment
-    
-    def delete_comment(self, comment):
-        if comment in self._comments:
-            self._comments.remove(comment)
-            Comment.comment_count -= 1
+    @classmethod
+    def get_post_count(cls):
+        return cls.post_count
