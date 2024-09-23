@@ -1,0 +1,20 @@
+# Step 1: Initialize the local directory as a Git repository
+git init
+
+# Step 2: Stage all untracked and modified local changes
+git add .
+
+# Step 3: Commit the staged changes to the local repository
+git commit -m "Initial commit with local untracked changes"
+
+# Step 4: Add the remote repository (replace with your actual remote URL)
+git remote add origin github.com-loudinb:20CS2023-FS24/20CS2023-FS24.github.io.git
+
+# Step 5: Fetch the remote repository (this pulls down the remote branch data)
+git fetch origin
+
+# Step 6: Merge the remote branch, favoring your local changes over any remote changes
+git merge -s ours origin/main --allow-unrelated-histories
+
+# Step 7: Push your local changes (with the merged history) to the remote repository
+git push origin main
