@@ -73,7 +73,7 @@ parts:
             - file: programming-assignments/assignment-1/user-class
             - file: programming-assignments/assignment-1/post-class
             - file: programming-assignments/assignment-1/comment-class
-            - file: programming-assignments/assignment-1/reference-code
+            - file: programming-assignments/assignment-1/reference-material
   - caption: Other Resources
     chapters:
       - file: faqs

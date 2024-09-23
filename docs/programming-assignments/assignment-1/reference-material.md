@@ -1,4 +1,7 @@
-# Reference Code
+# Reference Material
+
+The following reference material provides syntax and examples for implementing the classes and various functionalities required for Assignment 1. You can refer to this material while working on the assignment.
+
 
 (pa1-instance-attributes)=
 ## Instance Attributes 
@@ -15,7 +18,7 @@ class User:
 (pa1-instance-methods)=
 ## Instance Methods
 
-Instance methods are functions that operate on individual instances of a class. They can access and modify instance attributes, perform operations specific to an object, and interact with other objects.
+Instance methods are functions that operate on individual instances of a class. They can access and modify both instance attributes and class attributes. They can access and modify instance attributes, perform operations specific to an object, and interact with other objects.
 
 ```python
 class User:
@@ -58,7 +61,7 @@ class User:
 (pa1-static-methods)=
 ## Static Methods
 
-Static methods are independent of the class state and do not modify class or instance attributes. They are typically utility functions that logically belong to the class but do not need to access or modify class/instance data.  Static methods are defined using the `@staticmethod` decorator and do not take the class (e.g., `cls`) or instance (e.g., `self`) as the first argument.
+Static methods are independent of the class state and do not modify class or instance attributes. They are typically used for utility functions that belong logically to the class but do not require access to class or instance data. They are typically utility functions that logically belong to the class but do not need to access or modify class/instance data.  Static methods are defined using the `@staticmethod` decorator and do not take the class (e.g., `cls`) or instance (e.g., `self`) as the first argument.
 
 ```python
 class User:
@@ -92,6 +95,7 @@ class User:
             raise ValueError("Bio cannot exceed 150 characters.")
 ```
 
+(pa1-data-encapsulation)=
 ## Data Encapsulation (Public, Protected, and Private Attributes)
 
 Encapsulation controls how attributes are accessed and modified, allowing for restricted access when necessary:
@@ -108,9 +112,10 @@ class User:
         self.__id = 123  # Private attribute: only accessible within this class
 ```
 
+(pa1-composition)=
 ## Composition (Classes Containing Instances of Other Classes)
 
-Composition is the practice of building complex objects by including instances of other classes as attributes. This allows you to model relationships where one object is "composed" of others.
+Composition is the practice of building complex objects by including instances of other classes as attributes. Unlike inheritance, where a class derives behavior from a parent class, composition models a 'has-a' relationship. It allows combining multiple objects to create more complex behavior. This allows you to model relationships where one object is "composed" of others.
 
 In this example, the `Post` class contains a `User` object as the author of the post. Each post is associated with its author and content.
 
@@ -140,6 +145,10 @@ import re
 def is_valid_email(email: str) -> bool:
     pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
     return re.match(pattern, email) is not None
+
+def is_valid_phone_number(phone: str) -> bool:
+    pattern = r"^\d{3}-\d{3}-\d{4}$"
+    return re.match(pattern, phone) is not None
 ```
 
 (pa1-date-time)=
@@ -157,7 +166,7 @@ formatted_time = current_time.strftime("%Y-%m-%d %H:%M:%S")
 (pa1-value-error)=
 ## Raising a ValueError
 
-When validating input or enforcing constraints, you can raise a `ValueError` to indicate that the input is invalid. This allows you to handle errors and exceptions gracefully.
+When validating input or enforcing constraints, you can raise a `ValueError` to indicate that the input is invalid.
 
 ```python
 def set_username(self, username: str) -> None:
@@ -165,4 +174,15 @@ def set_username(self, username: str) -> None:
         self.username = username
     else:
         raise ValueError("Username must be at least 3 characters long.")
+```
+
+```{information}
+Exceptions can then be caught using a `try-except` block for graceful error handling. You should not include this in your implementation, we will cover this more in the future.
+
+```python
+try:
+    user.set_username("Jo")
+except ValueError as e:
+    print(f"Error: {e}")
+```
 ```
