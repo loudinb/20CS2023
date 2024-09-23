@@ -1,0 +1,11 @@
+# Thursday, September 19, 2024
+
+## Agenda
+
+Today's lecture is part 3 of our series on object-oriented programming (OOP) in Python.  We will cover advanced topics in OOP, including static methods, inheritance, and polymorphism. We will continue to implement these concepts in our Instagram-like application to demonstrate their practical applications.
+
+{{< include ../topics/object-oriented-programming/6-static-methods.qmd >}}
+
+{{< include ../topics/object-oriented-programming/7-inheritance.qmd >}}
+
+{{< include ../topics/object-oriented-programming/8-polymorphism.qmd >}}

@@ -1,0 +1,123 @@
+
+# Inheritance in Python
+
+## What is Inheritance?
+
+- Inheritance allows one class (subclass) to inherit attributes and methods from another class (superclass).
+- Promotes code reuse and creates a hierarchical relationship between classes.
+- Subclasses can override or extend the functionality of the superclass.
+
+---
+
+## Defining a Subclass
+
+- In Python, we define a subclass by passing the superclass as a parameter to the subclass definition.
+
+```python
+class Superclass:
+    def __init__(self, name):
+        self.name = name
+
+    def greet(self):
+        return f"Hello, {self.name}"
+
+class Subclass(Superclass):
+    def greet(self):
+        return f"Hi, {self.name}, welcome!"
+```
+
+### Key Points:
+- `class Subclass(Superclass):` is how you create a subclass.
+- The subclass automatically inherits methods (`greet`) and attributes (`name`) from the superclass.
+- Subclass can override methods like `greet`.
+
+---
+
+## Overriding Methods
+
+- Subclasses can override methods in the superclass to provide new behavior.
+
+```python
+class Subclass(Superclass):
+    def greet(self):
+        return f"Hi, {self.name}, welcome!"
+```
+
+### Calling the Superclass Method:
+- You can still call the superclass's method using `super()`.
+
+```python
+class Subclass(Superclass):
+    def greet(self):
+        original_greet = super().greet()
+        return f"{original_greet} Welcome to our platform!"
+```
+
+---
+
+## Multiple Inheritance
+
+- Python supports multiple inheritance, where a class can inherit from more than one superclass.
+
+```python
+class Superclass1:
+    def method1(self):
+        return "Method 1 from Superclass1"
+
+class Superclass2:
+    def method2(self):
+        return "Method 2 from Superclass2"
+
+class Subclass(Superclass1, Superclass2):
+    pass
+```
+
+### Method Resolution Order (MRO):
+- Python follows a specific order (MRO) to resolve which method to call when there are multiple superclasses.
+- Use `Subclass.mro()` to check the method resolution order.
+
+---
+
+## Private Attributes and Inheritance
+
+- Private attributes (those starting with `__`) are not directly inherited by subclasses due to name mangling.
+
+```python
+class Superclass:
+    def __init__(self):
+        self.__private_attr = "Private"
+
+    def get_private(self):
+        return self.__private_attr
+
+class Subclass(Superclass):
+    pass
+```
+
+### Accessing Private Attributes:
+- While private attributes are not inherited directly, you can still access them through methods like `get_private()`.
+
+---
+
+## When to Use Inheritance vs Composition
+
+- **Inheritance** is useful when there is a clear "is-a" relationship between classes.
+- **Composition** should be considered when you need a "has-a" relationship.
+
+---
+
+## Best Practices
+
+- Avoid deep inheritance hierarchies; they can become hard to manage.
+- Use `super()` to maintain clean and maintainable code when overriding methods.
+- Consider composition as an alternative when appropriate.
+
+---
+
+## Summary
+
+- Inheritance helps to reuse code, create subclass-superclass relationships, and extend functionality.
+- Python supports both single and multiple inheritance.
+- Subclasses can override methods and use `super()` to reference parent class methods.
+- Always evaluate if inheritance or composition is more appropriate for your design.
+

@@ -9,33 +9,13 @@ Today's lecture is part 3 of our series on object-oriented programming (OOP) in 
 ```
 
 
-7. **Inheritance**
-   - Concept of inheritance and code reuse
-   - Creating subclasses
-   - Overriding methods
-   - Utilizing the `super()` function
+**Inheritance**
+- Concept of inheritance and code reuse
+- Creating subclasses
+- Overriding methods
+- Utilizing the `super()` function
 
-8. **Polymorphism**
-   - Understanding polymorphism in OOP
-   - Method overriding and dynamic typing in Python
-   - Polymorphic functions and methods
-
-9. **Abstraction**
-   - Concept of abstraction in OOP
-   - Abstract classes and methods using the `abc` module
-   - Importance of abstraction in large systems
-
-10. **Special Methods and Operator Overloading**
-    - Introduction to special methods like `__str__`, `__repr__`, `__eq__`, etc.
-    - How to overload operators
-    - Benefits of using special methods in custom classes
-
-11. **Advanced Topics**
-    - Dunder methods and their uses
-    - Interdependent attributes
-    - Bound vs. unbound methods
-
-12. **Life Cycle of Objects**
-    - Object creation and destruction
-    - Garbage collection in Python
-    - The `__del__` method and its uses
+**Polymorphism**
+- Understanding polymorphism in OOP
+- Method overriding and dynamic typing in Python
+- Polymorphic functions and methods
