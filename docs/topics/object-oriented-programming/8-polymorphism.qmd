@@ -59,7 +59,7 @@ Duck typing is central to Python’s dynamic nature. It enables objects to be us
 4. **Advantages**: Encourages flexibility and reusable code without requiring strict class hierarchies.
 :::
 
-### Hands-On: Duck Typing
+### Hands-On: Duck Typing {background-color="rgb(204, 255, 255)"}
 
 What happens?
 
@@ -98,7 +98,7 @@ _Note: In Python, methods are considered a type of attribute. When you try to ac
 
 **Method overriding** is a form of polymorphism that allows a subclass to provide a specific implementation of a method that is already defined in its superclass.
 
-::: {.smaller-90}
+::: {.smaller-80}
 For example, this child class redefines the `speak` method inherited from the parent class:
 
 ```python
@@ -128,7 +128,7 @@ TODO: Add notes
 :::
 
 
-### Hands-On: Method Overriding
+### Hands-On: Method Overriding {background-color="rgb(204, 255, 255)"}
 
 
 ```python
@@ -156,6 +156,7 @@ class Cat(Animal):
 
 **Operator Overloading** is a form of polymorphism that allows custom classes to define how built-in operators work with their objects.
 
+:::{.smaller-70}
 - Customizing how built-in operators work with user-defined classes
 - Implemented using special method names (dunder methods)
 
@@ -177,14 +178,27 @@ p3 = p1 + p2
 
 print(p3)  # Output: (4, 6)
 ```
+:::
 
 ::: {.notes}
 TODO: Add notes
 :::
 
-### Hands-On: Operator Overloading
+### Magic Methods {.hide}
 
-::: {.smaller-90}
+::: {.smaller-80}
+::: {.callout-note}
+Magic methods are the methods starting and ending with double underscores `__`. They are defined by built-in classes in Python and commonly used for operator overloading. They are also called Dunder methods, Dunder here means "Double Under (Underscores)".
+
+- The `__add__()` method is called to implement the arithmetic addition operation `+`.
+- The `__mul__()` method is called to implement the arithmetic multiplication operation `*`.
+- The `__str__()` method returns a human-readable, or informal, string representation of an object which is called by the built-in `print()`, `str()`, and `format()` functions.
+:::
+:::
+
+### Hands-On: Operator Overloading {background-color="rgb(204, 255, 255)"}
+
+::: {.smaller-80}
 ```python
 class Potion:
     def __init__(self, name, power_level):
@@ -199,15 +213,16 @@ class Potion:
             return Potion(combined_name, combined_power)
         raise ValueError("Can only mix with another Potion!")
 
-    def __repr__(self):
+    def __str__(self):
         return f"Potion: {self.name}, Power Level: {self.power_level}"
 
-# Create two potions
+# Create potions
 healing_potion = Potion("Healing", 50)
 strength_potion = Potion("Strength", 70)
 
 # Mix two potions using the overloaded * operator
 super_potion = healing_potion * strength_potion
+print(super_potion)
 ```
 :::
 

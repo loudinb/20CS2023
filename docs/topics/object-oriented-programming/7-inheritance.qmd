@@ -76,7 +76,7 @@ obj.method2()  # Method from Child
 TODO: Add notes
 :::
 
-### Hands-On: Animals
+### Hands-On: Animals {background-color="rgb(204, 255, 255)"}
 
 ```python
 class Animal:
@@ -87,6 +87,9 @@ class Dog(Animal):
 
    def speak(self):
       return f"{self.name} says Woof!"
+
+bowser = Dog("Bowser")
+bowser.speak()
 ```
 
 
@@ -159,6 +162,9 @@ class Dog(Animal):
 
    def speak(self):
       return f"{self.name} says Woof!"
+
+bowser = Dog("Bowser", "bulldog")
+bowser.speak()
 ```
 
 ::: {.notes}
@@ -166,7 +172,7 @@ TODO: Add notes
 :::
 
 
-### Hands-On: Extending Behavior
+### Hands-On: Extending Behavior {background-color="rgb(204, 255, 255)"}
 
 ```python
 class Parent:
@@ -243,7 +249,7 @@ class Child(Parent1, Parent2):
 TODO: Add notes
 :::
 
-### Hands-On: Multiple Inheritance
+### Hands-On: Multiple Inheritance {background-color="rgb(204, 255, 255)"}
 
 ```python
 class Flyer:
@@ -256,6 +262,10 @@ class Swimmer:
 
 class Duck(Flyer, Swimmer):
     pass
+
+donald = Duck()
+donald.fly()
+donald.swim()
 ```
 
 
@@ -322,45 +332,100 @@ class Child3(Parent):
 TODO: Add notes
 :::
 
+## Access Modifiers and Inheritance in Python
 
-## Access Modifiers and Inheritance
+### Public Attributes/Methods
 
-- **Public Attributes/Methods:** Inherited and can be accessed in both the parent and child classes.
-- **Private Attributes/Methods:** Defined by using a double underscore prefix (`__`) and are not accessible directly from the child class. However, Python uses name mangling to allow indirect access.
+- Inherited and accessible in both parent and child classes.
+- No special syntax; this is the default in Python.
 
 ```python
 class Parent:
-   def __init__(self):
-         self.__private_var = 42
-   
-   def __private_method(self):
-         print("This is a private method")
+    def __init__(self):
+        self.public_var = 42
+    
+    def public_method(self):
+        print("This is a public method")
 
 class Child(Parent):
-   def access_private(self):
-         # Cannot directly access __private_var or __private_method
-         # self.__private_var  # This will raise an AttributeError
-         pass
+    def access_public(self):
+        print(self.public_var)  # Accessing public attribute
+        self.public_method()    # Calling public method
 ```
 
-- **Protected Attributes/Methods:** By convention, attributes prefixed with a single underscore (`_`) are considered protected and should not be accessed directly outside the class, but can be accessed by subclasses.
+### Protected Attributes/Methods
+- By convention, prefixed with a single underscore (`_`).
+- Accessible within the class and its subclasses.
+- Not enforced by Python; it's a naming convention for developers.
 
 ```python
 class Parent:
-   def __init__(self):
-         self._protected_var = "Protected"
+    def __init__(self):
+        self._protected_var = "Protected"
+    
+    def _protected_method(self):
+        print("This is a protected method")
 
 class Child(Parent):
-   def access_protected(self):
-         print(self._protected_var)  # Accessing the protected attribute
+    def access_protected(self):
+        print(self._protected_var)      # Accessing protected attribute
+        self._protected_method()        # Calling protected method
+
+
+```
+
+### Private Attributes/Methods
+
+::: {.smaller-80}
+- Defined using a double underscore prefix (`__`).
+- Not directly accessible from outside the class, including child classes.
+- Python uses name mangling: `__attr` becomes `_ClassName__attr`.
+
+```python
+class Parent:
+    def __init__(self):
+        self.__private_var = 42
+    
+    def __private_method(self):
+        print("This is a private method")
+
+class Child(Parent):
+    def try_access_private(self):
+        # This will raise an AttributeError
+        print(self.__private_var)
+        self.__private_method()
+        
+        # Name mangling allows indirect access (not recommended)
+        print(self._Parent__private_var)
+        self._Parent__private_method()
+```
+:::
+
+### Hands-On: Private Attributes/Methods {background-color="rgb(204, 255, 255)"}
+
+```python
+class Parent:
+    def __init__(self):
+        self.__private_var = 42
+    
+    def __private_method(self):
+        print("This is a private method")
+
+class Child(Parent):
+    def try_access_private(self):
+        # This will raise an AttributeError
+        print(self.__private_var)
+        self.__private_method()
+
+child = Child()
+child.try_access_private()
 ```
 
 ::: {.notes}
-TODO: Add notes
+Python's philosophy is "we're all consenting adults here." These access modifiers are more about convention and intention than strict enforcement. Private attributes can still be accessed through name mangling, and protected attributes are just a convention.
 :::
 
-
-## `isinstance()` and `issubclass()`
+## `isinstance()` and `issubclass()` {.hide}
 
 - **`isinstance()`**: Used to check if an object is an instance of a class or a subclass of that class.
 
@@ -378,6 +443,40 @@ issubclass(ChildClass, ParentClass)  # Returns True if ChildClass is a subclass 
 TODO: Add notes
 :::
 
+## [Hands-On: `isinstance()` + `issubclass()`]{style="font-size:0.7em"} {background-color="rgb(204, 255, 255)"}
+
+::: {.smaller-60}
+```python
+class Animal:
+
+   def __init__(self, name):
+      self.name = name
+      
+class Dog(Animal):
+
+   def __init__(self, name, breed):
+      super().__init__(name)
+      self.breed = breed
+
+   def speak(self):
+      return f"{self.name} says Woof!"
+
+class Cat(Animal):
+
+   def speak(self):
+      return f"{self.name} says Meow!"
+
+bowser = Dog("Bowser", "bulldog")
+tom = Cat("Tom")
+
+print(isinstance(bowser, Dog))
+print(isinstance(bowser, Animal))
+print(isinstance(tom, Dog))
+
+print(issubclass(Dog, Dog))
+print(issubclass(Animal, Cat)) # notice order
+```
+:::
 
 ## Method Resolution Order (MRO)
 
@@ -408,7 +507,7 @@ TODO: Add notes
 :::
 
 
-### Hands-On: Inheritance and Composition
+### Hands-On: Inheritance and Composition {background-color="rgb(204, 255, 255)"}
 
 ```python
 # Inheritance
