@@ -50,7 +50,11 @@ Common phrases used to convey the relationship between the **child (subclass)** 
 ::::
 
 ::: {.notes}
-TODO: Add notes
+In object-oriented programming, inheritance is often described using specific phrases that highlight the relationship between classes. The "is-a" relationship is fundamental to inheritance. For example, when we say "A Dog is an Animal," we're expressing that the Dog class inherits from the Animal class. This means that Dogs have all the general characteristics of Animals, plus some specific characteristics of their own.
+
+The phrase "extends" is commonly used in many programming languages to denote inheritance. In Python, while we don't use the keyword "extends," the concept is the same - the Child class is extending the functionality of the Parent class.
+
+Lastly, the terms "subclass" and "superclass" are crucial. The subclass (child) inherits behavior from the superclass (parent). This inheritance allows for code reuse and the creation of a hierarchical structure in our code.
 :::
 
 
@@ -73,7 +77,11 @@ obj.method2()  # Method from Child
 ```
 
 ::: {.notes}
-TODO: Add notes
+Python's syntax for inheritance is straightforward but powerful. When defining a child class, we simply put the parent class name in parentheses after the child class name. This simple syntax allows the child class to inherit all attributes and methods from the parent class.
+
+In our example, the Child class inherits from the Parent class. As a result, an instance of the Child class can call method1(), which is defined in the Parent class. This demonstrates how inheritance promotes code reuse - we don't need to redefine method1() in the Child class.
+
+It's important to note that the Child class can also have its own methods, like method2() in our example. This shows how a child class can extend the functionality of its parent class, adding new behaviors while still inheriting the existing ones.
 :::
 
 ### Hands-On: Animals {background-color="rgb(204, 255, 255)"}
@@ -138,7 +146,11 @@ class Dog(Animal):
 ::::
 
 ::: {.notes}
-TODO: Add notes
+The __init__ method, often referred to as the constructor, plays a crucial role in inheritance. When a child class is instantiated, Python first looks for an __init__ method in the child class. If it finds one, it uses that. If not, it looks for an __init__ method in the parent class.
+
+This behavior allows for flexible object initialization. A child class can choose to use the parent's initialization method as-is, override it completely, or extend it by calling the parent's method and then adding its own initialization code.
+
+In our example on the right, the Dog class has its own __init__ method that takes an additional 'breed' parameter. This allows Dog objects to have a breed attribute in addition to the name attribute inherited from the Animal class.
 :::
 
 
@@ -168,7 +180,11 @@ bowser.speak()
 ```
 
 ::: {.notes}
-TODO: Add notes
+The super() function is a powerful tool in Python's inheritance model. It allows a child class to call methods from its parent class, which is particularly useful when you want to extend the functionality of a parent method rather than completely replace it.
+
+In our example, the Dog class uses super().__init__(name) to call the __init__ method of its parent class (Animal). This ensures that the initialization performed by the Animal class (setting the name attribute) still occurs, while allowing the Dog class to perform additional initialization (setting the breed attribute).
+
+Using super() promotes code reuse and helps maintain a clean inheritance hierarchy. It's especially useful in complex inheritance scenarios, including multiple inheritance, where it helps navigate the method resolution order correctly.
 :::
 
 
@@ -246,7 +262,12 @@ class Child(Parent1, Parent2):
 ::::
 
 ::: {.notes}
-TODO: Add notes
+Multiple inheritance is a feature in Python that allows a class to inherit from more than one parent class. This can be powerful but also complex, so it should be used judiciously.
+
+In our example, we have a Duck class that inherits from both Flyer and Swimmer classes. This means that a Duck object will have both the fly() method from the Flyer class and the swim() method from the Swimmer class.
+Multiple inheritance can lead to powerful and flexible designs, allowing a class to combine behaviors from multiple sources. However, it can also lead to complications, especially when dealing with method name conflicts or the diamond problem (when a class inherits from two classes that have a common ancestor).
+
+Python uses the C3 linearization algorithm to determine the method resolution order (MRO) in multiple inheritance scenarios, which helps resolve potential ambiguities.
 :::
 
 ### Hands-On: Multiple Inheritance {background-color="rgb(204, 255, 255)"}
@@ -334,6 +355,10 @@ TODO: Add notes
 
 ## Access Modifiers and Inheritance in Python
 
+::: {.notes}
+Python's approach to access control is somewhat unique compared to many other object-oriented languages. It follows the philosophy of "we're all consenting adults here," meaning it trusts developers to use language features responsibly rather than enforcing strict access controls.
+:::
+
 ### Public Attributes/Methods
 
 - Inherited and accessible in both parent and child classes.
@@ -353,6 +378,10 @@ class Child(Parent):
         self.public_method()    # Calling public method
 ```
 
+:::{.notes}
+Public attributes and methods are the default in Python. They are inherited and accessible both within the class and from outside.
+:::
+
 ### Protected Attributes/Methods
 - By convention, prefixed with a single underscore (`_`).
 - Accessible within the class and its subclasses.
@@ -370,9 +399,11 @@ class Child(Parent):
     def access_protected(self):
         print(self._protected_var)      # Accessing protected attribute
         self._protected_method()        # Calling protected method
-
-
 ```
+
+:::{.notes}
+Protected attributes and methods, denoted by a single underscore prefix, are a convention in Python. They can be accessed and inherited, but it's understood that they shouldn't be used outside the class and its subclasses without a good reason.
+:::
 
 ### Private Attributes/Methods
 
@@ -399,6 +430,10 @@ class Child(Parent):
         print(self._Parent__private_var)
         self._Parent__private_method()
 ```
+:::
+
+:::{.notes}
+Private attributes and methods, denoted by a double underscore prefix, undergo name mangling in Python. This makes them harder to access from outside the class, but not impossible. They are not directly inherited by subclasses.
 :::
 
 ### Hands-On: Private Attributes/Methods {background-color="rgb(204, 255, 255)"}
@@ -503,7 +538,14 @@ TODO: Add notes
 ![](/docs/topics/object-oriented-programming/inheritance-vs-composition.svg){fig-align="center"}
 
 ::: {.notes}
-TODO: Add notes
+While inheritance is a powerful feature in object-oriented programming, it's not always the best solution for every situation. Composition offers an alternative way to structure code and relationships between objects.
+Inheritance represents an "is-a" relationship. For example, a Dog is an Animal. This works well when you have a clear hierarchical relationship between classes.
+
+Composition, on the other hand, represents a "has-a" relationship. For example, a Car has an Engine. This allows for more flexible designs, as it's often easier to change the components of an object than to change its place in an inheritance hierarchy.
+
+In practice, many developers follow the principle of "favor composition over inheritance." This doesn't mean never use inheritance, but rather to consider composition first, and use inheritance when it truly represents the relationship between your classes.
+
+Both inheritance and composition have their places in good object-oriented design. The choice between them often depends on the specific requirements of your program and the relationships between your objects.
 :::
 
 

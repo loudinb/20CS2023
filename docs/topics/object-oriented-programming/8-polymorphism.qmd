@@ -9,7 +9,13 @@ Poly means many, and morph means forms. Polymorphism is a core concept in object
 - Enables code to work with objects of multiple classes
 
 ::: {.notes}
-TODO: Add notes
+Polymorphism is a fundamental concept in object-oriented programming that enhances code flexibility and reusability. It allows objects of different classes to be treated as objects of a common superclass. This enables more generic and abstract code, reducing dependencies on specific implementations. In practice, polymorphism manifests in several ways:
+
+- Method overriding: Subclasses can provide specific implementations of methods defined in their superclass.
+- Interface implementation: Different classes can implement the same interface, ensuring they have certain methods.
+- Duck typing: In languages like Python, objects are treated based on their behavior rather than their class.
+
+Polymorphism is crucial for creating extensible and maintainable code, as it allows new classes to be added with minimal changes to existing code.
 :::
 
 
@@ -50,13 +56,18 @@ make_speak(Duck())  # Output: Quack!
 :::
 
 ::: {.notes}
+Duck typing is a key aspect of Python's dynamic nature and a prime example of behavior-driven polymorphism. It focuses on an object's capabilities rather than its type. This approach offers several advantages:
 
-Duck typing is central to Python’s dynamic nature. It enables objects to be used based on their methods and behaviors without needing to belong to a specific class - this is a key aspect of polymorphism in Python.
+- Flexibility: Objects can be used interchangeably as long as they support the required methods.
+- Loose coupling: Code depends on object behavior, not specific types, reducing dependencies.
+- Extensibility: New classes can easily integrate with existing code by implementing the necessary methods.
 
-1. **Behavior over Type**: Objects are evaluated by what they can **do**, not what they **are**.
-2. **Polymorphism without Inheritance**: Unrelated classes like `Dog`, `Cat`, and `Duck` can all work with the same function as long as they provide the `speak()` method.
-3. **Runtime Flexibility**: Python checks if the required method exists at **runtime**, not at compile time.
-4. **Advantages**: Encourages flexibility and reusable code without requiring strict class hierarchies.
+However, duck typing also has potential drawbacks:
+
+- Runtime errors: Type mismatches are only caught at runtime, which can lead to unexpected errors.
+- Reduced clarity: It may not be immediately clear what methods an object should implement.
+
+Despite these challenges, duck typing is a powerful feature that enables more flexible and adaptable code designs in Python.
 :::
 
 ### Hands-On: Duck Typing {background-color="rgb(204, 255, 255)"}
@@ -124,7 +135,15 @@ class Cat(Animal):
 
 
 ::: {.notes}
-TODO: Add notes
+Method overriding is a crucial aspect of polymorphism in object-oriented programming. It allows a subclass to provide a specific implementation of a method that is already defined in its superclass. Key points to understand about method overriding include:
+
+- Inheritance relationship: Overriding occurs in a parent-child class relationship.
+- Same method signature: The overriding method in the subclass must have the same name and parameter list as the method in the superclass.
+- Runtime polymorphism: The decision about which method to call is made at runtime based on the actual type of the object.
+- Extensibility: It allows for extending or modifying the behavior of inherited methods without altering the superclass code.
+- Liskov Substitution Principle: Overridden methods should respect the contract established by the superclass method.
+
+Method overriding is essential for implementing polymorphic behavior and creating flexible, extensible class hierarchies.
 :::
 
 
@@ -181,7 +200,20 @@ print(p3)  # Output: (4, 6)
 :::
 
 ::: {.notes}
-TODO: Add notes
+Operator overloading is a powerful feature in Python that allows custom classes to define how built-in operators work with their objects. This concept is important for several reasons:
+
+- Intuitive syntax: It allows custom objects to use familiar operator syntax, making code more readable and intuitive.
+- Consistent behavior: Custom objects can behave similarly to built-in types, providing a consistent programming experience.
+- Expressive code: Complex operations can be expressed concisely using overloaded operators.
+
+Key points about operator overloading in Python:
+
+- Special methods: Implemented using dunder (double underscore) methods like add, mul, etc.
+- Type checking: It's important to include type checking to ensure operations are performed on compatible objects.
+- Returning new objects: Overloaded operators typically return new objects rather than modifying existing ones.
+- Consistency: Overloaded operators should behave consistently with their mathematical or logical counterparts.
+
+While powerful, operator overloading should be used judiciously to maintain code clarity and prevent unexpected behavior.
 :::
 
 ### Magic Methods {.hide}
@@ -195,6 +227,26 @@ Magic methods are the methods starting and ending with double underscores `__`. 
 - The `__str__()` method returns a human-readable, or informal, string representation of an object which is called by the built-in `print()`, `str()`, and `format()` functions.
 :::
 :::
+
+::: {.notes}
+Magic methods, also known as dunder methods, are special methods in Python that have double underscores before and after their names. They play a crucial role in defining the behavior of classes and objects. Key points about magic methods include:
+
+- Automatic invocation: These methods are called automatically in specific situations, such as when using operators or built-in functions.
+- Customization: They allow customization of object behavior, enabling objects to work seamlessly with Python's built-in operations and functions.
+Common magic methods:
+
+   - init: Constructor for initializing new objects
+   - str: Defines string representation of an object
+   - len: Allows objects to use the len() function
+   - getitem, setitem: Enable indexing and slicing operations
+
+
+- Operator overloading: Many magic methods are used for operator overloading, like add for '+', mul for '*', etc.
+- Best practices: While powerful, magic methods should be used judiciously and consistently to maintain code readability and avoid unexpected behavior.
+
+Understanding and properly implementing magic methods is crucial for creating Pythonic, intuitive, and powerful custom classes.
+:::
+
 
 ### Hands-On: Operator Overloading {background-color="rgb(204, 255, 255)"}
 
@@ -231,7 +283,6 @@ print(super_potion)
 
 Method overloading is a form of polymorphism that allows a class to define multiple methods with the same name but different parameter lists.
 
-
 ### Statically Typed Languages
 
 In statically typed languages like C and C++, method overloading is resolved at compile time based on the method signature -- multiple functions with the same name but different parameter lists:
@@ -266,14 +317,22 @@ print(calc.add(1, 2, 3))  # Output: 6
 ```
 
 ::: {.notes}
-This example demonstrates how method overloading can be achieved in Python using default arguments, allowing a single method to handle different numbers of parameters.
+Method overloading is a form of polymorphism that allows a class to have multiple methods with the same name but different parameter lists. While traditional method overloading (as seen in languages like Java or C++) is not supported in Python, similar functionality can be achieved through other means:
 
-Pythonic Approach:
-- This approach to method overloading aligns well with Python's philosophy of simplicity and flexibility.
+- Default arguments: Defining methods with default parameter values allows for flexible method calls with varying numbers of arguments.
+- Variable-length arguments: Using *args and **kwargs allows methods to accept any number of positional or keyword arguments.
+- Multiple dispatch: Third-party libraries like multipledispatch can be used to implement method overloading in Python.
+- Type checking: Manually checking argument types within a method can simulate overloading behavior.
 
+Advantages of Python's approach:
+
+- Simplicity: A single method can handle multiple cases, reducing code duplication.
+- Flexibility: Methods can easily adapt to different numbers and types of arguments.
 
 Considerations:
-- Can make the method's behavior less obvious at first glance.
-- Requires clear documentation to explain the different ways the method can be used.
-- For more complex cases, you might use separate methods with descriptive names.
+
+- Clarity: Complex logic within a single method can reduce code readability.
+Documentation: Clear documentation is crucial to explain the various ways a method can be called.
+
+While not traditional overloading, Python's approach aligns with its philosophy of simplicity and flexibility.
 :::

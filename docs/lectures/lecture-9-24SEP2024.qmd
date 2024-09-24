@@ -1,8 +1,16 @@
 # Tuesday, September 24, 2024
 
+## Announcements
+
+:::{.callout-note}
+- Knowledge check 3 has been manually reviewed and regraded as necessary.
+- Knowledge check 4 has been released, it is due by 11:59pm on Tuesday, October 1.
+- Programming Assignment 1 has been rewritten, it is due by 11:59pm on Thursday, October 3.
+:::
+
 ## Agenda
 
-Today's lecture is part 3 of our series on object-oriented programming (OOP) in Python.  We will cover advanced topics in OOP, including static methods, inheritance, and polymorphism. We will continue to implement these concepts in our Instagram-like application to demonstrate their practical applications.
+Today's lecture is part 3 of our series on object-oriented programming (OOP) in Python.  We will cover advanced topics in OOP, inheritance, and polymorphism.
 
 {{< include ../topics/object-oriented-programming/7-inheritance.qmd >}}
 
