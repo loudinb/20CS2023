@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="-180.5 679.5 401 241" width="401" height="241">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="Arrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="none" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="Canvas_1" fill-opacity="1" stroke="none" stroke-opacity="1" fill="none" stroke-dasharray="none">
+    <title>Canvas 1</title>
+    <g id="Canvas_1_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_64">
+        <rect x="-20" y="680" width="80" height="80" fill="white"/>
+        <rect x="-20" y="680" width="80" height="80" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(-15 710.776)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="29.816" y="15" xml:space="preserve">A</tspan>
+        </text>
+      </g>
+      <g id="Graphic_63">
+        <rect x="-20" y="840" width="80" height="80" fill="white"/>
+        <rect x="-20" y="840" width="80" height="80" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(-15 870.776)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="29.224" y="15" xml:space="preserve">C</tspan>
+        </text>
+      </g>
+      <g id="Line_61">
+        <line x1="20" y1="840" x2="20" y2="769.9" marker-end="url(#Arrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_65">
+        <rect x="140" y="840" width="80" height="80" fill="white"/>
+        <rect x="140" y="840" width="80" height="80" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(145 870.776)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="29.368" y="15" xml:space="preserve">D</tspan>
+        </text>
+      </g>
+      <g id="Graphic_66">
+        <rect x="-180" y="840" width="80" height="80" fill="white"/>
+        <rect x="-180" y="840" width="80" height="80" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(-175 870.776)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="29.52" y="15" xml:space="preserve">B</tspan>
+        </text>
+      </g>
+      <g id="Line_67">
+        <path d="M -140 840 L -140 800 L 20 800 L 20 760" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_68">
+        <path d="M 180 840 L 180 800 L 20 800 L 20 760" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>

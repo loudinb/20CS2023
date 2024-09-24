@@ -7,3 +7,9 @@ In today's lecture, we'll explore how Python provides a well-defined structure f
 ```{admonition} Lecture Slides
 [https://20cs2023-fs24.github.io/slides/docs/lectures/lecture-10-26SEP2024.html](https://20cs2023-fs24.github.io/slides/docs/lectures/lecture-10-26SEP2024.html)
 ```
+
+
+9. **Abstraction**
+   - Concept of abstraction in OOP
+   - Abstract classes and methods using the `abc` module
+   - Importance of abstraction in large systems

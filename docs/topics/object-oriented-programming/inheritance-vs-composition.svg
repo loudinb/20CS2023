@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="399.5 -80.5 481 241" width="481" height="241">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="Arrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="none" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledDiamond_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 4 -3 L 0 0 L 4 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="Canvas_1" fill-opacity="1" stroke="none" stroke-opacity="1" fill="none" stroke-dasharray="none">
+    <title>Canvas 1</title>
+    <g id="Canvas_1_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_69">
+        <rect x="400" y="-80" width="180" height="80" fill="white"/>
+        <rect x="400" y="-80" width="180" height="80" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(405 -49.224)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="55.96" y="15" xml:space="preserve">Building</tspan>
+        </text>
+      </g>
+      <g id="Graphic_70">
+        <rect x="400" y="80" width="180" height="80" fill="white"/>
+        <rect x="400" y="80" width="180" height="80" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(405 110.776)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="61.888" y="15" xml:space="preserve">House</tspan>
+        </text>
+      </g>
+      <g id="Graphic_71">
+        <rect x="700" y="80" width="180" height="80" fill="white"/>
+        <rect x="700" y="80" width="180" height="80" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(705 110.776)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="49.728" y="15" xml:space="preserve">Bathroom</tspan>
+        </text>
+      </g>
+      <g id="Line_72">
+        <line x1="490" y1="80" x2="490" y2="9.9" marker-end="url(#Arrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_73">
+        <line x1="700" y1="120" x2="589.25" y2="120" marker-end="url(#FilledDiamond_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_74">
+        <text transform="translate(405 31)" fill="black">
+          <tspan font-family="SF Mono" font-size="18" fill="black" x="0" y="17" xml:space="preserve">“is</tspan>
+          <tspan font-family="SF Mono" font-size="18" fill="black" y="17" xml:space="preserve"> </tspan>
+          <tspan font-family="SF Mono" font-size="18" fill="black" y="17" xml:space="preserve">a”</tspan>
+        </text>
+      </g>
+      <g id="Graphic_75">
+        <text transform="translate(601.05566 95)" fill="black">
+          <tspan font-family="SF Mono" font-size="18" fill="black" x="0" y="17" xml:space="preserve">“has a”</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
