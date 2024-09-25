@@ -1,0 +1,69 @@
+# Object Lifecycle
+
+- The **lifecycle of an object** in Python consists of key stages from creation to destruction.
+- Understanding these stages helps us manage resources efficiently and write robust code.
+- We will discuss the major stages in an object's lifecycle.
+
+## Lifecycle Stages
+
+The **main stages** in an object's lifecycle are:
+
+  1. **Creation**
+  2. **Initialization**
+  3. **Usage**
+  4. **Destruction**
+
+## Object Creation `__new__`
+
+- The **creation** stage is where an object is instantiated.
+- Python allocates memory and prepares the object for initialization.
+- This process is managed by the **`__new__`** method, but typically we don't need to override it unless special behavior is required.
+
+
+## Object Initialization `__init__`
+
+- After the object is created, it enters the **initialization** stage.
+- This is where the object's attributes are set up.
+- The **`__init__`** method is responsible for initializing the internal state of the object.
+
+
+## Object Usage
+
+- The **usage** stage is the main part of the object's lifecycle.
+- During this stage, we:
+  - Access and modify attributes.
+  - Call methods.
+  - Perform operations that involve the object.
+- Various magic methods (e.g., `__str__`, `__repr__`, `__getattr__`, etc.) are involved in this stage.
+
+## Object Destruction `__del__`
+
+- The **destruction** stage occurs when an object is no longer needed.
+- Python uses **automatic garbage collection** to free up memory by destroying objects that are no longer referenced.
+- The **`__del__`** method, if defined, is called right before the object is destroyed.
+  - It's typically used to release resources, like closing files or network connections.
+
+## Demonstration
+
+```python
+class SimpleClass:
+    def __new__(cls, *args, **kwargs):
+        print("Creating an instance...")
+        return super().__new__(cls)
+
+    def __init__(self, name):
+        print("Initializing the object...")
+        self.name = name
+
+    def greet(self):
+        print(f"Hello, my name is {self.name}")
+
+    def __del__(self):
+        print(f"Object with name {self.name} is being destroyed...")
+
+# Example usage
+obj = SimpleClass("Alice")
+obj.greet()
+del obj
+```
+

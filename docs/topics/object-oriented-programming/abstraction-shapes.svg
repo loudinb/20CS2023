@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="450 359 351 111" width="351" height="111">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="SharpArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-4 -3 7 6" markerWidth="7" markerHeight="6" color="black">
+      <g>
+        <path d="M -2.5 0 L 1.5 1.5 L 0 0 L 0 0 L 1.5 -1.5 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="Canvas_1" fill="none" fill-opacity="1" stroke-opacity="1" stroke-dasharray="none" stroke="none">
+    <title>Canvas 1</title>
+    <rect fill="white" x="450" y="359" width="351" height="111"/>
+    <g id="Canvas_1_Layer_1">
+      <title>Layer 1</title>
+      <g id="Line_5">
+        <path d="M 470 430 L 480 430 L 480 440" stroke="#7f8080" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g id="Line_3">
+        <path d="M 470 440 L 470 360 L 540 440 L 470 440" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_6">
+        <text transform="translate(455 390)" fill="black">
+          <tspan font-family="Times New Roman" font-style="italic" font-size="20" fill="black" x="0" y="18" xml:space="preserve">a</tspan>
+        </text>
+      </g>
+      <g id="Graphic_7">
+        <text transform="translate(495 441.42045)" fill="black">
+          <tspan font-family="Times New Roman" font-style="italic" font-size="20" fill="black" x="0" y="18" xml:space="preserve">b</tspan>
+        </text>
+      </g>
+      <g id="Graphic_8">
+        <text transform="translate(508.86364 381.13636)" fill="black">
+          <tspan font-family="Times New Roman" font-style="italic" font-size="20" fill="black" x="0" y="18" xml:space="preserve">c</tspan>
+        </text>
+      </g>
+      <g id="Graphic_10">
+        <rect x="600" y="360" width="60" height="80" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_12">
+        <text transform="translate(585 390)" fill="black">
+          <tspan font-family="Times New Roman" font-style="italic" font-size="20" fill="black" x="0" y="18" xml:space="preserve">a</tspan>
+        </text>
+      </g>
+      <g id="Graphic_13">
+        <text transform="translate(625 441.42045)" fill="black">
+          <tspan font-family="Times New Roman" font-style="italic" font-size="20" fill="black" x="0" y="18" xml:space="preserve">b</tspan>
+        </text>
+      </g>
+      <g id="Graphic_15">
+        <circle cx="760" cy="400" r="40.0000639160758" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_16">
+        <circle cx="760" cy="400" r="1.00000159790189" fill="black"/>
+        <circle cx="760" cy="400" r="1.00000159790189" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_20">
+        <line x1="731.3257" y1="424.0792" x2="760" y2="400" marker-start="url(#SharpArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g id="Graphic_21">
+        <text transform="translate(745.8798 405.5865)" fill="black">
+          <tspan font-family="Times New Roman" font-style="italic" font-size="20" fill="black" x="0" y="18" xml:space="preserve">r</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

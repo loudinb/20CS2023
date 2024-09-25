@@ -1,37 +1,58 @@
 # Abstraction
 
-## What is Abstraction?
-
-- Hiding complex implementation details
-- Presenting a simple, high-level interface
-- Focuses on what an object does rather than how it does it
-- A fundamental principle in object-oriented programming
+Abstraction focuses on **what** an object does, rather than **how** it does it.
+More formally, abstraction is the process of hiding complex details from the user and exposing only the essential parts.
 
 ::: {.notes}
-Abstraction is a core concept in object-oriented programming:
+Like the other OOP principles, the benefits of abstraction include:
 
-1. Definition: Abstraction involves hiding complex implementation details and providing a simple, high-level interface to interact with an object or system.
-
-2. Focus: It emphasizes what an object does (its behavior) rather than how it does it (its implementation).
-
-3. Simplification: Abstraction simplifies complex systems by breaking them down into manageable parts with clear interfaces.
-
-4. Encapsulation: While related to encapsulation, abstraction is more about simplifying interfaces rather than just hiding data.
-
-5. Real-world Analogy: Think of driving a car. You interact with a simple interface (steering wheel, pedals) without needing to understand the complex mechanics underneath.
-
-6. In Programming: Abstraction is achieved through abstract classes, interfaces, and well-defined public methods that hide internal complexities.
-
-Understanding abstraction is crucial for creating well-structured, maintainable, and user-friendly code in object-oriented Python.
+- Simplifies code readability.
+- Reduces complexity.
+- Enhances reusability.
+- Makes code more maintainable.
 :::
-
 
 ## Abstraction in Python
 
-- Implemented using abstract base classes (ABCs)
-- Uses the `abc` module
-- Defines abstract methods that must be implemented by subclasses
-- Can include concrete methods in abstract classes
+In Python, the `abc` module is used to create abstract classes. 
+
+- **Abstract Base Class (ABC)**: To create an abstract class, you just make it a child of the `ABC` class.
+  
+- **Abstract Method**: You use the `@abstractmethod` decorator to declare a method that has no body—basically, you're telling the subclasses, "...you need to fill in the blanks here."
+
+
+## Basic Syntax
+
+```python
+from abc import ABC, abstractmethod
+
+# Defining an abstract class
+class AbstractClassName(ABC):
+    
+    # Defining an abstract method
+    @abstractmethod
+    def abstract_method(self):
+        pass
+```
+
+::: {.notes}
+Creating an abstract class is like saying,  “Hey, I know what this thing should do, but I'll leave the *how* to someone else.”
+
+- The `@abstractmethod` decorator makes sure subclasses implement that method.
+- This setup is like giving instructions but not doing the actual work—your subclasses will have to roll up their sleeves and implement that method themselves.
+:::
+
+
+## Example: Geometric Shapes
+
+Let's see how abstraction works with a simple example of geometric shapes.  We'll define an abstract class `Shape` with the abstract method: `area()`. Then, we'll create two concrete subclasses: `Rectangle` and `Circle`.
+
+### Implementation {.hide}
+
+:::: {.columns .smaller-70}
+
+::: {.column width="50%"}
+**Abstract Class**
 
 ```python
 from abc import ABC, abstractmethod
@@ -40,421 +61,87 @@ class Shape(ABC):
     @abstractmethod
     def area(self):
         pass
+```
+:::
 
-    @abstractmethod
-    def perimeter(self):
-        pass
+::: {.column width="50%"}
+**Concrete Subclasses**
 
-    def describe(self):
-        return f"This shape has an area of {self.area()} and a perimeter of {self.perimeter()}"
+```python
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
 
 class Circle(Shape):
     def __init__(self, radius):
         self.radius = radius
 
     def area(self):
-        return 3.14 * self.radius ** 2
-
-    def perimeter(self):
-        return 2 * 3.14 * self.radius
-
-circle = Circle(5)
-print(circle.describe())
+        return 3.14 * (self.radius ** 2)
 ```
-
-::: {.notes}
-Python implements abstraction primarily through abstract base classes:
-
-1. ABC Module: Python's `abc` module provides infrastructure for defining abstract base classes.
-
-2. Abstract Base Class: The `ABC` class is used as a base for creating abstract classes.
-
-3. `@abstractmethod` Decorator: This decorator marks methods that must be implemented by concrete subclasses.
-
-4. Concrete Methods: Abstract classes can also include concrete (implemented) methods.
-
-5. In the Example:
-   - `Shape` is an abstract base class with two abstract methods: `area` and `perimeter`.
-   - It also includes a concrete method `describe` that uses the abstract methods.
-   - `Circle` is a concrete subclass that implements the abstract methods.
-
-6. Enforcing Implementation: Trying to instantiate a subclass that doesn't implement all abstract methods will raise an error.
-
-7. Benefits:
-   - Ensures that subclasses adhere to a common interface.
-   - Allows for shared functionality (like `describe`) in the abstract class.
-   - Provides a clear contract for what methods subclasses must implement.
-
-Abstraction through ABCs in Python provides a powerful way to define interfaces and create hierarchies of related classes with shared behavior.
 :::
 
+::::
 
-## Abstract Methods vs Concrete Methods
 
-- Abstract methods: Declared but not implemented in the abstract class
-- Concrete methods: Fully implemented in the abstract class
-- Subclasses must implement all abstract methods
-- Subclasses can use, override, or inherit concrete methods
+
+::: {.notes}
+
+**Abstract Class**:
+- `Shape` is an abstract class.
+- It contains the abstract method: `area()`.
+- The `@abstractmethod` decorator is used to indicate that the method must be implemented by subclasses.
+
+**Subclasses**:
+- `Rectangle` and `Circle` are concrete subclasses of `Shape`.
+- They must implement the `area()` method.
+:::
+
+### Creating Objects {.hide}
+
+We can create instances of these concrete classes and utilize their methods:
 
 ```python
-from abc import ABC, abstractmethod
+rectangle = Rectangle(5, 10)
+circle = Circle(7)
 
-class Animal(ABC):
-    @abstractmethod
-    def speak(self):
-        pass
-
-    def move(self):
-        return "Moving..."
-
-class Dog(Animal):
-    def speak(self):
-        return "Woof!"
-
-dog = Dog()
-print(dog.speak())  # Output: Woof!
-print(dog.move())   # Output: Moving...
+print(f"Rectangle Area: {rectangle.area()}")  # Rectangle Area: 50
+print(f"Circle Area: {circle.area()}")        # Circle Area: 153.86
 ```
 
 ::: {.notes}
-Understanding the difference between abstract and concrete methods in abstract classes is crucial:
-
-1. Abstract Methods:
-   - Declared using the `@abstractmethod` decorator.
-   - Have no implementation in the abstract class.
-   - Must be implemented by all non-abstract subclasses.
-   - Define the interface that subclasses must adhere to.
-
-2. Concrete Methods:
-   - Fully implemented in the abstract class.
-   - Can be used as-is, overridden, or inherited by subclasses.
-   - Provide shared functionality across subclasses.
-
-3. In the Example:
-   - `speak` is an abstract method that must be implemented by subclasses.
-   - `move` is a concrete method that provides a default implementation.
-
-4. Benefits of This Approach:
-   - Enforces a common interface (abstract methods) across all subclasses.
-   - Allows for code reuse through concrete methods.
-   - Provides flexibility for subclasses to use or override concrete methods as needed.
-
-5. Design Considerations:
-   - Use abstract methods for behaviors that must be customized by each subclass.
-   - Use concrete methods for common behaviors that can be shared across subclasses.
-
-This combination of abstract and concrete methods in abstract classes allows for powerful and flexible designs in object-oriented Python.
+Each shape object behaves differently based on its own implementation, but both adhere to the same abstract interface.
 :::
 
+### Hands-On: Geometric Shapes {.hide background-color="rgb(204, 255, 255)"}
 
-## Interfaces in Python
+::: {.smaller-70}
+1. Add an abstract method `perimeter()` in the `Shape` class.
+2. Implement a `Triangle` subclass that inherits from `Shape`.
+3. Ensure all shape subclasses implement the `area()` and `perimeter()` methods.
+4. Add a `__str__` method to the `Shape` class that returns a formatted string with the shape, area, and perimeter (e.g., `"Rectangle: Area=50, Perimeter=30"`).
 
-- Python doesn't have a separate 'interface' keyword
-- Interfaces are typically implemented as abstract base classes with only abstract methods
-- Used to define a contract for classes to follow
+::: {.smaller-60}
+| Calculation    | Right Triangle                  | Rectangle          | Circle                  |
+|----------------|---------------------------------|--------------------|-------------------------|
+| **Area**       | $\frac{1}{2} \times a \times b$ | $a \times b$       | $\pi \times r^2$        |
+| **Perimeter**  | $a + b + \sqrt{a^2 + b^2}$      | $2 \times (a + b)$ | $2 \times \pi \times r$ |
 
-```python
-from abc import ABC, abstractmethod
-
-class Drawable(ABC):
-    @abstractmethod
-    def draw(self):
-        pass
-
-class Resizable(ABC):
-    @abstractmethod
-    def resize(self, factor):
-        pass
-
-class Circle(Drawable, Resizable):
-    def draw(self):
-        return "Drawing a circle"
-
-    def resize(self, factor):
-        return f"Resizing circle by factor {factor}"
-
-circle = Circle()
-print(circle.draw())    # Output: Drawing a circle
-print(circle.resize(2)) # Output: Resizing circle by factor 2
-```
-
-::: {.notes}
-While Python doesn't have a specific 'interface' keyword, the concept is typically implemented using abstract base classes:
-
-1. Interface as ABC: An interface in Python is usually an abstract base class with only abstract methods.
-
-2. Multiple Inheritance: Python's multiple inheritance allows a class to implement multiple interfaces.
-
-3. Contract Definition: Interfaces define a contract that implementing classes must follow.
-
-4. In the Example:
-   - `Drawable` and `Resizable` are interfaces (abstract base classes with only abstract methods).
-   - `Circle` implements both interfaces by providing concrete implementations for all abstract methods.
-
-5. Benefits:
-   - Allows for clear definition of expected behaviors.
-   - Enables polymorphism across unrelated classes that implement the same interface.
-   - Supports better code organization and design.
-
-6. Design Considerations:
-   - Use interfaces to define behaviors that can be shared across unrelated classes.
-   - Interfaces should typically contain only method declarations, not properties or concrete methods.
-
-7. Python's Approach:
-   - This approach aligns with Python's "duck typing" philosophy while still providing a way to formally define interfaces.
-
-Understanding and using interfaces (via ABCs) in Python allows for creating more robust and flexible designs, especially in larger systems or when defining APIs.
+:::
 :::
 
+### The Abstraction Advantage {.hide}
 
-## Abstract Properties
+In our `Shape` example, abstraction provides the flexibility for adding new shapes (like `Triangle`), without modifying the existing code.
 
-- Abstract properties define abstract getter, setter, or deleter methods
-- Implemented using the `@property` decorator with `@abstractmethod`
-- Subclasses must provide implementations for abstract properties
-
-```python
-from abc import ABC, abstractmethod
-
-class AbstractUser(ABC):
-    @property
-    @abstractmethod
-    def name(self):
-        pass
-
-    @name.setter
-    @abstractmethod
-    def name(self, value):
-        pass
-
-class User(AbstractUser):
-    def __init__(self, name):
-        self._name = name
-
-    @property
-    def name(self):
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        if not value:
-            raise ValueError("Name cannot be empty")
-        self._name = value
-
-user = User("Alice")
-print(user.name)  # Output: Alice
-user.name = "Bob"
-print(user.name)  # Output: Bob
-```
+- The `Shape` class defines the "what" (calculate area, perimeter) without specifying the "how".
+- `Rectangle`, `Circle` and `Triangle` provide their own implementations of "how" to calculate the area.
+- Users can work with different shapes through a common interface.
 
 ::: {.notes}
-Abstract properties in Python allow you to define abstract getter, setter, or deleter methods:
-
-1. Implementation: Use the `@property` decorator in combination with `@abstractmethod`.
-
-2. Purpose: Define an interface for properties that subclasses must implement.
-
-3. Flexibility: Can define abstract getters, setters, and deleters independently.
-
-4. In the Example:
-   - `AbstractUser` defines an abstract property `name` with abstract getter and setter.
-   - `User` provides concrete implementations for the `name` property.
-
-5. Benefits:
-   - Ensures that subclasses properly implement properties.
-   - Allows for defining a consistent interface for attribute access across subclasses.
-   - Enables adding logic (like validation) in property implementations.
-
-6. Usage:
-   - Abstract properties are useful when you want to enforce that subclasses provide specific attribute behaviors.
-   - They're particularly helpful in creating frameworks or libraries where you want to ensure certain property behaviors in user-defined classes.
-
-7. Design Considerations:
-   - Use abstract properties when you need to enforce both the presence of an attribute and how it's accessed or modified.
-   - Consider whether a simple abstract method might suffice instead of a full property in some cases.
-
-Abstract properties provide a powerful way to define interfaces for attribute access and modification in abstract base classes, ensuring consistent behavior across subclasses.
-:::
-
-
-## Benefits of Abstraction
-
-- Simplifies complex systems
-- Enhances code maintainability
-- Facilitates code reuse
-- Supports scalability
-- Improves code organization
-
-::: {.notes}
-Abstraction offers several key benefits in software development:
-
-1. Simplification of Complex Systems:
-   - Hides intricate details behind simple interfaces.
-   - Makes it easier to understand and use complex functionalities.
-
-2. Enhanced Maintainability:
-   - Changes to implementation details don't affect the abstract interface.
-   - Easier to update or modify internal workings without affecting other parts of the system.
-
-3. Code Reuse:
-   - Abstract classes can provide shared functionality.
-   - Interfaces allow for consistent behavior across different implementations.
-
-4. Scalability:
-   - New functionalities can be added by implementing existing abstract interfaces.
-   - Easier to extend systems without modifying existing code.
-
-5. Improved Code Organization:
-   - Separates interface from implementation.
-   - Leads to cleaner, more modular code structure.
-
-6. Reduced Complexity:
-   - Users of a class only need to understand its interface, not its implementation.
-   - Simplifies debugging and testing.
-
-7. Flexibility in Design:
-   - Allows for changing implementations without affecting the code that uses the abstraction.
-   - Supports the Open/Closed principle: open for extension, closed for modification.
-
-8. Better Collaboration:
-   - Different team members can work on different levels of abstraction simultaneously.
-   - Facilitates division of work in large projects.
-
-Understanding and leveraging these benefits can lead to more robust, flexible, and maintainable Python code.
-:::
-
-
-## Abstraction vs Encapsulation
-
-- Abstraction: Simplifying complex reality by modeling classes appropriate to the problem
-- Encapsulation: Hiding the internal details of how an object does something
-- Abstraction focuses on the outside view; encapsulation on the inside view
-- Both work together to create well-structured object-oriented systems
-
-::: {.notes}
-While related, abstraction and encapsulation are distinct concepts in OOP:
-
-1. Abstraction:
-   - Focuses on what an object does.
-   - Presents a simplified view of an object's functionality.
-   - Deals with the object's behavior from the user's perspective.
-   - Example: A `Car` class with methods like `start()`, `drive()`, `stop()`.
-
-2. Encapsulation:
-   - Focuses on how an object does something.
-   - Hides the internal details of how methods are implemented.
-   - Deals with the internal workings and data of an object.
-   - Example: Private attributes and methods in the `Car` class that handle internal mechanics.
-
-3. Relationship:
-   - Abstraction defines the public interface.
-   - Encapsulation protects the implementation details.
-
-4. Purpose:
-   - Abstraction simplifies usage and understanding.
-   - Encapsulation protects integrity and controls access.
-
-5. Implementation in Python:
-   - Abstraction often uses abstract base classes and interfaces.
-   - Encapsulation uses access modifiers (like underscores for private attributes).
-
-6. Working Together:
-   - Abstraction decides what to expose.
-   - Encapsulation determines how to restrict access to the internals.
-
-Understanding the difference and relationship between abstraction and encapsulation is crucial for designing well-structured and maintainable object-oriented systems in Python.
-:::
-
-
-## Best Practices for Abstraction
-
-- Design clear and intuitive interfaces
-- Use abstract base classes to define interfaces
-- Keep abstraction at an appropriate level
-- Document the expected behavior of abstract methods
-- Use abstraction to separate concerns
-- Balance abstraction with practicality
-
-::: {.notes}
-Following these best practices ensures effective use of abstraction in Python:
-
-1. Clear and Intuitive Interfaces:
-   - Design interfaces that are easy to understand and use.
-   - Use descriptive method names that indicate the expected behavior.
-
-2. Use Abstract Base Classes:
-   - Leverage Python's ABC module to create formal interfaces.
-   - Use abstract methods to define the contract that subclasses must fulfill.
-
-3. Appropriate Level of Abstraction:
-   - Don't over-abstract; keep it practical and relevant to the problem domain.
-   - Ensure that the abstraction genuinely simplifies the usage of the system.
-
-4. Documentation:
-   - Clearly document the expected behavior of abstract methods.
-   - Provide examples or use cases in the documentation.
-
-5. Separation of Concerns:
-   - Use abstraction to separate different aspects of the system.
-   - Each abstract class or interface should have a single, well-defined purpose.
-
-6. Balance with Practicality:
-   - While abstraction is powerful, don't sacrifice clarity or efficiency for excessive abstraction.
-   - Consider the needs of the users of your code.
-
-7. Consistent Abstraction:
-   - Maintain a consistent level of abstraction within related parts of the system.
-   - Avoid mixing very high-level abstractions with low-level details in the same interface.
-
-8. Evolve Abstractions:
-   - Be prepared to refine your abstractions as the system grows and requirements change.
-   - Regularly review and refactor abstractions to ensure they remain relevant and effective.
-
-9. Test Abstract Classes:
-   - Write tests for abstract classes using concrete implementations.
-   - Ensure that the contract defined by abstract classes is sound and consistent.
-
-10. Use Composition with Abstraction:
-    - Consider using composition alongside inheritance to create flexible and maintainable abstractions.
-
-Following these practices leads to more maintainable, understandable, and robust use of abstraction in Python programs.
-:::
-
-
-## Summary
-
-- Abstraction simplifies complex systems by hiding implementation details
-- Python implements abstraction through abstract base classes (ABCs)
-- Abstract methods define interfaces that subclasses must implement
-- Interfaces in Python are typically ABCs with only abstract methods
-- Abstract properties allow for defining abstract attribute behaviors
-- Abstraction enhances maintainability, reusability, and organization of code
-- Best practices include clear interfaces, appropriate abstraction levels, and good documentation
-
-::: {.notes}
-This summary encapsulates the key points about abstraction in Python:
-
-1. Concept: It reinforces the core idea of abstraction as a way to simplify complex systems and focus on essential features.
-
-2. Implementation: It highlights Python's use of abstract base classes (ABCs) as the primary mechanism for implementing abstraction.
-
-3. Abstract Methods and Properties: The summary notes the role of abstract methods in defining interfaces and mentions abstract properties for attribute behaviors.
-
-4. Interfaces: It clarifies how interfaces are typically implemented in Python using ABCs.
-
-5. Benefits: The summary emphasizes the advantages of abstraction in terms of code maintainability, reusability, and organization.
-
-6. Best Practices: It reminds students of the importance of following best practices when implementing abstraction in Python.
-
-Understanding these concepts and techniques is crucial for writing well-structured, maintainable, and scalable object-oriented code in Python. Abstraction is a powerful tool that, when used effectively, can greatly enhance the design and functionality of Python programs.
-
-7. Distinction from Encapsulation: The summary should also highlight the difference between abstraction and encapsulation, emphasizing that while related, they serve different purposes in OOP.
-
-8. Practical Application: It's important to note that abstraction is not just a theoretical concept, but a practical tool for solving real-world programming problems and managing complexity in software systems.
-
-9. Flexibility and Extensibility: The summary should mention how abstraction contributes to creating flexible and extensible code, allowing for easier updates and additions to the system over time.
-
-10. Python-Specific Features: It's worth reiterating that while abstraction is a general OOP concept, Python has its own specific ways of implementing it, particularly through the use of the `abc` module and decorators.
-
-By mastering abstraction, developers can create more robust, flexible, and easier-to-maintain Python applications, setting a strong foundation for advanced software design and architecture.
+Standard methods provide a basic form of abstraction, OOP principles allow for more sophisticated and flexible abstractions. This can lead to more maintainable and extensible code, especially in larger and more complex systems.
 :::
