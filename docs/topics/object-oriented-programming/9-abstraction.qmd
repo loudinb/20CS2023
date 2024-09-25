@@ -134,14 +134,4 @@ Each shape object behaves differently based on its own implementation, but both 
 :::
 :::
 
-### The Abstraction Advantage {.hide}
-
-In our `Shape` example, abstraction provides the flexibility for adding new shapes (like `Triangle`), without modifying the existing code.
-
-- The `Shape` class defines the "what" (calculate area, perimeter) without specifying the "how".
-- `Rectangle`, `Circle` and `Triangle` provide their own implementations of "how" to calculate the area.
-- Users can work with different shapes through a common interface.
-
-::: {.notes}
-Standard methods provide a basic form of abstraction, OOP principles allow for more sophisticated and flexible abstractions. This can lead to more maintainable and extensible code, especially in larger and more complex systems.
-:::
+## Class 
