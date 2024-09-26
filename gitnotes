@@ -10,6 +10,8 @@ git commit -m "Initial commit with local untracked changes"
 # Step 4: Add the remote repository (replace with your actual remote URL)
 git remote add origin github.com-loudinb:20CS2023-FS24/20CS2023-FS24.github.io.git
 
+git remote add origin git@github.com:20CS2023-FS24/20CS2023-FS24.github.io.git
+
 # Step 5: Fetch the remote repository (this pulls down the remote branch data)
 git fetch origin
 
