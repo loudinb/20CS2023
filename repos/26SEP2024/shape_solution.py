@@ -29,7 +29,7 @@ class Circle(Shape):
         self.radius = radius
 
     def area(self):
-        return 3.14 * (self.radius ** 2)
+        return 3.14 * (self.radius**2)
     
     def perimeter(self):
         return 2 * 3.14 * self.radius
@@ -43,4 +43,4 @@ class Triangle(Shape):
         return 0.5*self.base*self.height
     
     def perimeter(self):
-        return self.base + self.height + math.sqrt(self.base^2 + self.height^2)
+        return self.base + self.height + math.sqrt(self.base**2 + self.height**2)

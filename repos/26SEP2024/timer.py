@@ -12,14 +12,11 @@ class Timer:
         # TODO: Calculate the elapsed time
         # TODO: Print the elapsed time to the screen
         # TODO: Return the result of the original function
-
         pass
 
+    
     
 # Example function to be timed
 @Timer
 def sum_of_n(n):
     return sum(range(1, n + 1))
-
-result = sum_of_n(1000000)
-print(result)
