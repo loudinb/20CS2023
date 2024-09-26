@@ -1,0 +1,221 @@
+# Magic Methods
+
+Magic methods (also known as **dunder methods** for "double underscore") are special methods with double underscores before and after their names (e.g., `__init__`). They allow customization of how objects behave in various contexts.
+
+## Object Construction and Initialization {.hide}
+
+::: {.smaller-70}
+**Object creation and initialization** are managed by two magic methods:
+
+- **`__new__(cls, *args, **kwargs)`**: Creates and returns a new instance of the class. It's called before `__init__`.
+- **`__init__(self, *args, **kwargs)`**: Initializes a new instance of a class. It's called after `__new__`.
+
+```python
+class MyClass:
+    def __new__(cls, *args, **kwargs):
+        print("Creating instance")
+        return super().__new__(cls)
+
+    def __init__(self, value):
+        print("Initializing instance")
+        self.value = value
+```
+
+::: {.callout-note}
+`__new__` is rarely overridden in practice. It's mainly used for implementing singletons or when subclassing immutable types.
+:::
+:::
+
+
+## Object Representation {.hide}
+
+::: {.smaller-70}
+**Object representation** methods:
+
+- **`__str__(self)`**: Returns a user-friendly string representation, used by `str()` and `print()`.
+- **`__repr__(self)`**: Returns a detailed string representation, used by `repr()`. Ideally, it should be an expression that recreates the object. (e.g., `eval(repr(obj)))`)
+
+```python
+class MyClass:
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return f"MyClass with value {self.value}"
+
+    def __repr__(self):
+        return f"MyClass(value={self.value!r})"
+```
+
+:::{.callout-note}
+Note the use of `!r`. `!r` is a flag in Python's string formatting syntax that calls repr() on the object it precedes. It ensures the object's `repr()` representation is used, which often includes proper quoting for strings and other appropriate formatting for different types of objects.
+:::
+:::
+
+::: {.notes}
+repr(): representation function
+:::
+
+## Comparison Magic Methods {.hide}
+
+::: {.smaller-70}
+**Comparison** magic methods:
+
+- **`__eq__(self, other)`**: Defines behavior for equality (`==`).
+- **`__ne__(self, other)`**: Defines behavior for inequality (`!=`). By default, it's the negation of `__eq__`.
+- **`__lt__(self, other)`**: Less than (`<`).
+- **`__le__(self, other)`**: Less than or equal to (`<=`).
+- **`__gt__(self, other)`**: Greater than (`>`).
+- **`__ge__(self, other)`**: Greater than or equal to (`>=`).
+
+:::
+
+::: {.notes}
+Python uses these methods to implement the `@total_ordering` decorator, The `@total_ordering` decorator is a tool in Python's functools module that simplifies the process of defining comparison methods for a class. It's particularly useful when you want to create a class that can be fully ordered (i.e., can be compared using all comparison operators).
+:::
+
+## Mathematical and Logical Operators {.hide}
+
+::: {.smaller-70}
+**Mathematical and logical operator** magic methods:
+
+- **`__add__(self, other)`**: Addition (`+`).
+- **`__sub__(self, other)`**: Subtraction (`-`).
+- **`__mul__(self, other)`**: Multiplication (`*`).
+- **`__truediv__(self, other)`**: True division (`/`).
+- **`__floordiv__(self, other)`**: Floor division (`//`).
+- **`__mod__(self, other)`**: Modulus (`%`).
+- **`__pow__(self, other, modulo=None)`**: Exponentiation (`**`).
+- **`__and__(self, other)`**: Bitwise AND (`&`).
+- **`__or__(self, other)`**: Bitwise OR (`|`).
+- **`__xor__(self, other)`**: Bitwise XOR (`^`).
+
+There are also reverse versions of these methods (e.g., `__radd__`) for when the left operand doesn't support the operation.
+
+::::
+
+## In-Place Operators {.hide}
+
+::: {.smaller-70}
+**In-place** operator magic methods:
+
+- **`__iadd__(self, other)`**: In-place addition (`+=`).
+- **`__isub__(self, other)`**: In-place subtraction (`-=`).
+- ... (similar methods for other operators)
+
+If these methods are not defined, Python falls back to the normal operators.
+
+:::
+
+
+## Attribute Access and Manipulation {.hide}
+
+::: {.smaller-70}
+**Attribute access and manipulation** magic methods:
+
+- **`__getattr__(self, name)`**: Called when an attribute lookup fails.
+- **`__getattribute__(self, name)`**: Called for every attribute lookup.
+- **`__setattr__(self, name, value)`**: Called when setting an attribute.
+- **`__delattr__(self, name)`**: Called when deleting an attribute.
+
+Be cautious when implementing `__getattribute__` and `__setattr__` to avoid infinite recursion.
+:::
+
+
+## Container and Sequence Protocols {.hide}
+
+::: {.smaller-70}
+**Container and sequence** magic methods:
+
+- **`__len__(self)`**: Defines behavior for `len()`.
+- **`__getitem__(self, key)`**: Called to implement evaluation of `self[key]`.
+- **`__setitem__(self, key, value)`**: Called to implement assignment to `self[key]`.
+- **`__delitem__(self, key)`**: Called to implement deletion of `self[key]`.
+- **`__contains__(self, item)`**: Called to implement membership test operators (`in` and `not in`).
+:::
+
+
+## Iteration and Iterable Protocols {.hide}
+
+::: {.smaller-70}
+Iteration magic methods:
+
+- **`__iter__(self)`**: Returns an iterator object.
+- **`__next__(self)`**: Returns the next item from the iterator. Should raise `StopIteration` when there are no more items.
+:::
+
+
+## Callable Objects {.hide}
+
+::: {.smaller-70}
+Callable magic method:
+
+- **`__call__(self, *args, **kwargs)`**: Allows an instance to be called like a function.
+
+```python
+class Multiplier:
+    def __init__(self, factor):
+        self.factor = factor
+
+    def __call__(self, x):
+        return x * self.factor
+
+double = Multiplier(2)
+print(double(10))  # Output: 20
+```
+:::
+
+
+## Context Management {.hide}
+
+::: {.smaller-70}
+Context management magic methods:
+
+- **`__enter__(self)`**: Called when entering a `with` block. Returns a value to be bound to the `as` variable, if specified.
+- **`__exit__(self, exc_type, exc_value, traceback)`**: Called when exiting a `with` block. Should return `True` if any exception was handled.
+
+```python
+class MyContext:
+    def __enter__(self):
+        print("Entering context")
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        print("Exiting context")
+        return False  # Don't suppress exceptions
+```
+:::
+
+
+## Copying and Hashing {.hide}
+
+::: {.smaller-70}
+Copying and hashing magic methods:
+
+- **`__copy__(self)`**: Defines behavior for `copy.copy()`.
+- **`__deepcopy__(self, memo)`**: Defines behavior for `copy.deepcopy()`.
+- **`__hash__(self)`**: Returns a hash value for the object. Should be consistent with `__eq__`.
+
+Objects that define `__eq__` should either define `__hash__` or set `__hash__ = None` to make them unhashable.
+:::
+
+
+## Object Deletion {.hide}
+
+::: {.smaller-70}
+Object deletion magic method:
+
+- **`__del__(self)`**: Called when an object is about to be destroyed. Not guaranteed to be called, and not a substitute for proper resource management.
+
+```python
+class MyClass:
+    def __del__(self):
+        print("Object is being garbage collected")
+```
+:::
+
+## Summary
+
+- Python magic methods enable powerful object-oriented behavior by allowing you to define how your objects behave in specific situations.
+- Understanding and using these methods helps you build more flexible and Pythonic classes.
+- Always refer to the official Python documentation for the most up-to-date and detailed information on magic methods.

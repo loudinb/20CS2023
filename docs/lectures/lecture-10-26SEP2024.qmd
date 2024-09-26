@@ -5,10 +5,11 @@
 Today's lecture is part 4 of our series on object-oriented programming (OOP) in Python.  We will cover advanced topics in OOP, including abstraction, special methods, operator overloading, the life cycle of objects, and more. We will continue to implement these concepts in our Instagram-like application to demonstrate their practical applications.
 
 
-{{< include ../topics/object-oriented-programming/9-abstraction.qmd >}}
 
-{{< include ../topics/object-oriented-programming/10-class-decorators.qmd >}}
+{{< include ../topics/object-oriented-programming/9-magic-methods.qmd >}}
 
-{{< include ../topics/object-oriented-programming/11-magic-methods.qmd >}}
+{{< include ../topics/object-oriented-programming/10-abstraction.qmd >}}
+
+{{< include ../topics/object-oriented-programming/11-class-decorators.qmd >}}
 
 {{< include ../topics/object-oriented-programming/12-object-lifecycle.qmd >}}
