@@ -26,7 +26,7 @@ This is our final lecture on OOP in Python, focusing on abstraction, classes as 
 - Garbage collection and memory management in Python
 
 **Files**
-- [shape.py](/docs/repos/26SEP2024/shape.py)
-- [memoize.py](/docs/repos/26SEP2024/memoize.py)
-- [timer.py](/docs/repos/26SEP2024/timer.py)
-- [lifecycle.py](/docs/repos/26SEP2024/lifecycle.py)
+- [shape.py](../repos/26SEP2024/shape.py)
+- [memoize.py](../repos/26SEP2024/memoize.py)
+- [timer.py](../repos/26SEP2024/timer.py)
+- [lifecycle.py](../repos/26SEP2024/lifecycle.py)
