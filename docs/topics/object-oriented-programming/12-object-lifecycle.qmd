@@ -1,8 +1,6 @@
 # Object Lifecycle
 
-- The **lifecycle of an object** in Python consists of key stages from creation to destruction.
-- Understanding these stages helps us manage resources efficiently and write robust code.
-- We will discuss the major stages in an object's lifecycle.
+The **lifecycle of an object** in Python consists of key stages from creation to destruction.  Understanding these stages helps us understand how objects are managed.
 
 ## Lifecycle Stages
 
@@ -16,15 +14,14 @@ The **main stages** in an object's lifecycle are:
 ## Object Creation `__new__`
 
 - The **creation** stage is where an object is instantiated.
-- Python allocates memory and prepares the object for initialization.
+- Python **allocates memory** and prepares the object for initialization.
 - This process is managed by the **`__new__`** method, but typically we don't need to override it unless special behavior is required.
 
 
 ## Object Initialization `__init__`
 
 - After the object is created, it enters the **initialization** stage.
-- This is where the object's attributes are set up.
-- The **`__init__`** method is responsible for initializing the internal state of the object.
+- The **`__init__`** method is responsible for initializing the internal state of the object (e.g., attributes).
 
 
 ## Object Usage
@@ -34,7 +31,6 @@ The **main stages** in an object's lifecycle are:
   - Access and modify attributes.
   - Call methods.
   - Perform operations that involve the object.
-- Various magic methods (e.g., `__str__`, `__repr__`, `__getattr__`, etc.) are involved in this stage.
 
 ## Object Destruction `__del__`
 
@@ -43,9 +39,11 @@ The **main stages** in an object's lifecycle are:
 - The **`__del__`** method, if defined, is called right before the object is destroyed.
   - It's typically used to release resources, like closing files or network connections.
 
-## Demonstration
+## Demonstration {.hide}
 
-```python
+::: {.smaller-75}
+**Class with Lifecycle Methods:**
+```{.python filename="lifecycle.py"}
 class SimpleClass:
     def __new__(cls, *args, **kwargs):
         print("Creating an instance...")
@@ -60,10 +58,19 @@ class SimpleClass:
 
     def __del__(self):
         print(f"Object with name {self.name} is being destroyed...")
-
-# Example usage
-obj = SimpleClass("Alice")
-obj.greet()
-del obj
 ```
+<br>
 
+**Usage:**
+```{.csh code-line-numbers="false"}
+>>> from lifecycle import SimpleClass
+>>> obj = SimpleClass("Alice")
+Creating an instance...
+Initializing the object...
+>>> obj.greet()
+Hello, my name is Alice
+>>> del obj
+Object with name Alice is being destroyed...
+>>>
+``` 
+:::

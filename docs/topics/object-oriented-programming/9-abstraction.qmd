@@ -133,5 +133,3 @@ Each shape object behaves differently based on its own implementation, but both 
 
 :::
 :::
-
-## Class 

@@ -7,8 +7,6 @@ Today's lecture is part 4 of our series on object-oriented programming (OOP) in 
 
 {{< include ../topics/object-oriented-programming/9-abstraction.qmd >}}
 
-{{< include ../topics/object-oriented-programming/10-object-lifecycle.qmd >}}
+{{< include ../topics/object-oriented-programming/10-class-decorators.qmd >}}
 
-{{< include ../topics/object-oriented-programming/11-special-methods-and-operator-overloading.qmd >}}
-
-{{< include ../topics/object-oriented-programming/12-class-decorators.qmd >}}
+{{< include ../topics/object-oriented-programming/12-object-lifecycle.qmd >}}

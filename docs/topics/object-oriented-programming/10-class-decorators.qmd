@@ -1,0 +1,216 @@
+# Classes as Decorators
+
+## Function-Based Decorators {.hide}
+
+::: {.smaller-80}
+**Function-Based Decorators** enable us to modify or extend the behavior of functions in Python:
+
+- A **decorator** is a function that takes another function as an argument.
+- It modifies or extends the behavior of that function without changing its code.
+
+:::: {.columns}
+
+::: {.column width="60%"}
+**Function-Based Decorator**
+```python
+def my_decorator(func):
+    def wrapper(*args, **kwargs):
+        print("Before")
+        result = func(*args, **kwargs)
+        print("After")
+        return result
+    return wrapper
+
+
+@my_decorator
+def say_hello():
+    print("Hello, World!")
+```
+:::
+
+::: {.column width="40%"}
+**Output:**
+```{.python code-line-numbers="false"}
+>>> say_hello()
+Before
+Hello, World!
+After
+>>> 
+```
+:::
+
+::::
+:::
+
+## Class-Based Decorators {.hide}
+
+**Class-Based Decorators** are a powerful alternative to function-based decorators: 
+
+- Enable **stateful behavior** (e.g., tracking function calls, caching, timing).
+- Facilitate **more complex logic** with additional methods and attributes.
+- Offer better structure and scalability for intricate functionality.
+
+::: {.notes}
+TODO: Add speaker notes.
+:::
+
+### Use Cases {.hide}
+
+**Use cases** where class-based decorators are found:
+
+- Memoization for performance optimization.
+- Call limiters to enforce restrictions on how many times a function can run.
+- Timing decorators for performance monitoring.
+- Authentication checks to enforce access control.
+- Retry mechanisms to handle transient errors and improve robustness.
+
+
+### How Class-Based Decorators Work {.hide}
+
+To create a class-based decorator, we have to be able to call an instance of the class like a function.  We can achieve this by defining a `__call__` method in the class.
+
+### The `__call__` Method {.hide}
+
+:::{.smaller-80}
+
+The `__call__` method in a class is implemented similarly to a function. When an instance of the class is invoked, the `__call__` method is executed.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Implementation:**
+```python
+class Multiplier:
+    def __init__(self, factor):
+        self.factor = factor
+
+    def __call__(self, number):
+        return number * self.factor
+          
+```
+:::
+
+::: {.column width="50%"}
+**Usage:**
+```{.python code-line-numbers="false"}
+>>> double = Multiplier(2)
+>>> triple = Multiplier(3)
+>>> double(5)
+10
+>>> triple(5)
+15
+>>>
+```
+:::
+
+::::
+:::
+
+### Example: Memoization {.hide}
+
+:::{.smaller-70}
+
+Memoization involves caching the results of expensive function calls and reusing them when the same inputs occur again.
+
+:::: {.columns}
+
+::: {.column width="65%"}
+**Class-based Decoractor**
+```{.python filename="memoize.py"}
+class Memoize:
+    def __init__(self, func):
+        self.func = func
+        self.cache = {}
+    
+    def __call__(self, *args):
+        if args in self.cache:
+            print(f"Using cached result for {args[0]}")
+            return self.cache[args]
+        print(f"Calculating for {args[0]}")
+        result = self.func(*args)
+        self.cache[args] = result
+        return result
+
+@Memoize
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    return n * factorial(n - 1)
+```
+:::
+
+::: {.column width="35%"}
+**Usage:**
+```{.csh code-line-numbers="false"}
+>>> from memoize import factorial
+>>> factorial(5)
+Calculating for 5
+Calculating for 4
+Calculating for 3
+Calculating for 2
+Calculating for 1
+120
+>>>
+>>> factorial(8)
+Calculating for 8
+Calculating for 7
+Calculating for 6
+Using cached result for 5
+40320
+>>>
+``` 
+:::
+
+::::
+:::
+
+### Hands-On: Class-Based Decorators {.hide background-color="rgb(204, 255, 255)"}
+
+:::{.smaller-70}
+
+Using the starter code, implement a class-based decorator that times the execution of a function and prints the duration to the console.
+
+:::: {.columns}
+
+::: {.column width="60%"}
+**Class-based Decoractor**
+```{.python filename="timer.py"}
+import time
+
+class Timer:
+    def __init__(self, func):
+        # TODO: Store func in an instance attribute
+        pass
+
+    def __call__(self, *args):
+        # TODO: Assign start time to a variable
+        # TODO: Call original function
+        # TODO: Assign end time to a variable
+        # TODO: Calculate the elapsed time
+        # TODO: Print elapsed time to screen
+        # TODO: Return original function's result
+
+        pass
+
+    
+# Function to be timed
+@Timer
+def sum_of_n(n):
+    return sum(range(1, n + 1))
+```
+:::
+
+::: {.column width="40%"}
+**Usage:**
+```{.csh code-line-numbers="false"}
+>>> from timer import sum_of_n
+>>> result = sum_of_n(100000)
+Function executed in 0.0030 seconds
+>>> print(result)
+5000050000
+>>>
+``` 
+:::
+
+::::
+:::
