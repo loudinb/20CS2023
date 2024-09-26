@@ -1,7 +1,6 @@
 # Abstraction
 
-Abstraction focuses on **what** an object does, rather than **how** it does it.
-More formally, abstraction is the process of hiding complex details from the user and exposing only the essential parts.
+Abstraction focuses on **what** an object does, rather than **how** it does it.  More formally, abstraction is the process of hiding complex details from the user and exposing only the essential parts.
 
 ::: {.notes}
 Like the other OOP principles, the benefits of abstraction include:
@@ -20,6 +19,12 @@ In Python, the `abc` module is used to create abstract classes.
   
 - **Abstract Method**: You use the `@abstractmethod` decorator to declare a method that has no body—basically, you're telling the subclasses, "...you need to fill in the blanks here."
 
+::: {.notes}
+- Abstraction in Python is implemented using the abc module
+- ABC stands for Abstract Base Class
+- Abstract methods must be implemented by concrete subclasses
+- Abstraction helps define a common interface for related classes
+:::
 
 ## Basic Syntax
 
@@ -38,8 +43,12 @@ class AbstractClassName(ABC):
 ::: {.notes}
 Creating an abstract class is like saying,  “Hey, I know what this thing should do, but I'll leave the *how* to someone else.”
 
-- The `@abstractmethod` decorator makes sure subclasses implement that method.
+- To create an abstract class, inherit from ABC
+- Abstract classes can't be instantiated directly
+- Use @abstractmethod decorator for methods without implementation
+- The `@abstractmethod` decorator makes sure subclasses implement that method. (a formal contract)
 - This setup is like giving instructions but not doing the actual work—your subclasses will have to roll up their sleeves and implement that method themselves.
+- It promotes code reuse and ensures consistent method signatures
 :::
 
 
@@ -117,19 +126,107 @@ print(f"Circle Area: {circle.area()}")        # Circle Area: 153.86
 Each shape object behaves differently based on its own implementation, but both adhere to the same abstract interface.
 :::
 
-### Hands-On: Geometric Shapes {.hide background-color="rgb(204, 255, 255)"}
-
-::: {.smaller-70}
-1. Add an abstract method `perimeter()` in the `Shape` class.
-2. Implement a `Triangle` subclass that inherits from `Shape`.
-3. Ensure all shape subclasses implement the `area()` and `perimeter()` methods.
-4. Add a `__str__` method to the `Shape` class that returns a formatted string with the shape, area, and perimeter (e.g., `"Rectangle: Area=50, Perimeter=30"`).
+### Hands-On: Shapes {.hide background-color="rgb(204, 255, 255)"}
 
 ::: {.smaller-60}
+
+:::: {.columns}
+
+::: {.column width="50%" filename="shape.py"}
+**Starter code:**
+```python
+from abc import ABC, abstractmethod
+import math
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+    #TODO: Implement abstract method for perimiter
+    #TODO: Implement __str__ method to print details
+   
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+    #TODO: implement perimeter method
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return 3.14 * (self.radius ** 2)
+
+    #TODO: implement perimeter method
+    
+
+#TODO: Implement Triangle class
+
+```
+:::
+
+::: {.column width=50%}
+**Usage:**
+```{.csh code-line-numbers="false"}
+>>> from shape import Rectangle, Circle, Triangle
+>>> rectangle = Rectangle(10,20)
+>>> print(rectangle)
+Rectangle: Area=200, Perimeter=60
+>>> circle = Circle(10)
+>>> print(circle)
+Circle: Area=314.0, Perimeter=62.800000000000004
+>>> triagle = Triangle(10,20)
+>>> print(triangle)
+Triangle: Area=100.0, Perimeter=35.47722557505166
+```
+:::
+
+::::
+
+
+:::
+
+### Hands-On: Geometric Forumlas {.hide background-color="rgb(204, 255, 255)"}
+
+::: {.smaller-90}
 | Calculation    | Right Triangle                  | Rectangle          | Circle                  |
 |----------------|---------------------------------|--------------------|-------------------------|
 | **Area**       | $\frac{1}{2} \times a \times b$ | $a \times b$       | $\pi \times r^2$        |
 | **Perimeter**  | $a + b + \sqrt{a^2 + b^2}$      | $2 \times (a + b)$ | $2 \times \pi \times r$ |
 
 :::
+
+## Summary
+
+::: {.smaller-80}
+**Abstraction** define common interfaces for related classes
+
+- **Implementation**: 
+  - Use `abc` module (Abstract Base Classes)
+  - Abstract Base Class: Inherit from `ABC`
+  - Abstract Methods: Use `@abstractmethod` decorator
+
+- **Usage**:
+  - Can't instantiate abstract classes directly
+  - Concrete subclasses must implement all abstract methods
+
+- **Benefits**:
+  - Ensures consistent interface across related classes
+  - Enhances code modularity and flexibility
+
+:::
+
+::: {.notes}
+- Abstraction is a fundamental OOP concept
+- ABC module provides tools for creating abstract classes
+- Abstract methods have no implementation in the base class
+- Subclasses are forced to provide implementations for abstract methods
+- This ensures a consistent interface across related classes
+- Abstraction helps in creating more modular and maintainable code
 :::

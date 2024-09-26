@@ -42,6 +42,16 @@ After
 ::::
 :::
 
+::: {.notes}
+- Function-Based Decorators modify or extend function behavior without changing its code
+- A decorator is a function that takes another function as an argument
+- Key components of a decorator:
+  1. Outer function (decorator) that takes the original function as argument
+  2. Inner function (wrapper) that adds functionality
+  3. Wrapper calls the original function and returns its result
+- Decorators are powerful for adding logging, timing, authentication, etc., to functions
+:::
+
 ## Class-Based Decorators {.hide}
 
 **Class-Based Decorators** are a powerful alternative to function-based decorators: 
@@ -51,7 +61,12 @@ After
 - Offer better structure and scalability for intricate functionality.
 
 ::: {.notes}
-TODO: Add speaker notes.
+- Class-Based Decorators are an alternative to function-based decorators
+- Key advantages:
+  1. Stateful behavior: Can maintain state across function calls
+  2. Complex logic: Allows for more sophisticated decoration patterns
+  3. Better structure: Organizes decorator code more cleanly
+- Generally more scalable (as complexity increases)
 :::
 
 ### Use Cases {.hide}
@@ -64,6 +79,35 @@ TODO: Add speaker notes.
 - Authentication checks to enforce access control.
 - Retry mechanisms to handle transient errors and improve robustness.
 
+::: {.notes}
+General benefits of class-based decorators for these use cases:
+
+- Maintain state and configuration across multiple function calls
+- Provide a clean separation of concerns
+- Allow for more complex logic and easier extensibility
+- Can be easily reused across different parts of a codebase
+
+- Memoization:
+  - Broadly applicable in computationally intensive tasks
+  - Can significantly improve performance in recursive algorithms or repeated calculations
+  - Balances memory usage with computation speed
+- Call limiters:
+  - Essential for resource management and fair usage policies
+  - Applicable in both client-side and server-side scenarios
+  - Can prevent abuse and ensure system stability
+- Timing decorators:
+  - Crucial for performance optimization and monitoring
+  - Helps identify bottlenecks across different parts of a system
+  - Useful in development, testing, and production environments
+- Authentication checks:
+  - Fundamental for security in multi-user or sensitive systems
+  - Can be applied at various levels: function, class, or module
+  - Enhances code security without cluttering core logic
+- Retry mechanisms:
+  - Improves system resilience and fault tolerance
+  - Particularly valuable in distributed systems or unreliable network environments
+  - Can be customized for different types of operations or error conditions
+:::
 
 ### How Class-Based Decorators Work {.hide}
 

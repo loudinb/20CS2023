@@ -1,26 +1,27 @@
 # Lecture 10, Sep 26, 2024
 
-
-In today's lecture, we'll explore how Python provides a well-defined structure for programming. We'll start by discussing namespaces and scope, which control the visibility of names like variables and functions within a program. Then, we'll look into techniques for organizing code into reusable modules and packages to enhance maintainability. We will look at the Python Standard Library and the Python Package Index (PyPI), a large repository of third-party packages that extend Python's capabilities. Finally, we'll cover best practices for structuring Python projects, including file organization, dependency management, and version control, to help you maintain clean and sustainable codebases.
-
+This is our final lecture on OOP in Python, focusing on abstraction, classes as decorators, magic methods, and the lifecycle of an object.
 
 ```{admonition} Lecture Slides
 [https://20cs2023-fs24.github.io/slides/docs/lectures/lecture-10-26SEP2024.html](https://20cs2023-fs24.github.io/slides/docs/lectures/lecture-10-26SEP2024.html)
 ```
 
+**Magic Methods**
+- Overview of special methods in Python
+- Common special methods like `__init__`, `__str__`, `__eq__`, etc.
+- Implementing custom special methods in classes
 
-9. **Abstraction**
-   - Concept of abstraction in OOP
-   - Abstract classes and methods using the `abc` module
-   - Importance of abstraction in large systems
+**Abstraction**
+- Concept of abstraction in OOP
+- Abstract classes and methods using the `abc` module
+- Importance of abstraction in large systems
 
-10. **Special Methods**
-    - Overview of special methods in Python
-    - Common special methods like `__init__`, `__str__`, `__eq__`, etc.
-    - Implementing custom special methods in classes
+**Classes as Decorators**
+- Maintaining state across function calls
+- More sophisticated decoration pattern
 
-11. **Object Lifecycle**
-    - Object creation, initialization, and destruction
-    - The `__new__`, `__init__`, and `__del__` special methods
-    - Garbage collection and memory management in Python
+**Object Lifecycle**
+- Object creation, initialization, and destruction
+- The `__new__`, `__init__`, and `__del__` special methods
+- Garbage collection and memory management in Python
 
