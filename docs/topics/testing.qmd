@@ -1,0 +1,280 @@
+# Testing
+
+## Why Test?
+
+::: {.incremental}
+- Verify code correctness
+- Prevent regression (bugs reappearing)
+- Document expected behavior
+- Improve code design
+- Enable refactoring with confidence
+:::
+
+::: {.notes}
+Testing is vital to ensure your code works correctly, remains stable, and performs as expected. Testing also helps other developers understand how the code should behave.
+:::
+
+
+## Types of Tests
+
+::: {.incremental}
+- **Unit tests**: Test individual components like functions or methods.
+- **Integration tests**: Check if components work together as expected.
+- **Functional tests**: Test the system’s functionality from the user's perspective.
+- **Regression tests**: Ensure bugs don’t reappear after code changes.
+:::
+
+::: {.notes}
+Different types of tests serve different purposes. Unit tests focus on isolated components, while integration and functional tests ensure the components interact properly.
+:::
+
+
+
+## The `unittest` Framework
+
+### Basic Structure
+
+```python
+import unittest
+
+def add(a, b):
+    return a + b
+
+class TestAddFunction(unittest.TestCase):
+    def test_add_positive_numbers(self):
+        self.assertEqual(add(2, 3), 5)
+    
+    def test_add_negative_numbers(self):
+        self.assertEqual(add(-1, -1), -2)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+::: {.notes}
+- **Test class**: Inherits from `unittest.TestCase`.
+- **Test methods**: Named starting with `test_`, contain assertions to check expected outcomes.
+- **Test runner**: `unittest.main()` runs all the test methods.
+:::
+
+
+
+### Test Methods
+
+- Start with `test_` to be automatically recognized.
+- Use **descriptive names** for clarity.
+- Test one **concept** per method.
+
+```python
+class TestStringMethods(unittest.TestCase):
+    def test_upper(self):
+        self.assertEqual('foo'.upper(), 'FOO')
+    
+    def test_isupper(self):
+        self.assertTrue('FOO'.isupper())
+        self.assertFalse('Foo'.isupper())
+```
+
+
+
+### Assertions
+
+Common assertion methods in `unittest`:
+
+```python
+self.assertEqual(a, b)       # Check a == b
+self.assertNotEqual(a, b)    # Check a != b
+self.assertTrue(x)           # Check if x is True
+self.assertFalse(x)          # Check if x is False
+self.assertIsNone(x)         # Check if x is None
+self.assertIn(a, b)          # Check if a is in b
+self.assertRaises(Exception, callable, *args)
+```
+
+#### Example
+
+```python
+class TestDivision(unittest.TestCase):
+    def test_divide_by_zero(self):
+        with self.assertRaises(ZeroDivisionError):
+            divide(10, 0)
+```
+
+
+
+### setUp and tearDown
+
+**setUp()** and **tearDown()** methods allow you to prepare resources before each test and clean them up after the test runs, ensuring test isolation.
+
+```python
+import unittest
+import tempfile
+import os
+
+class TestFileOperations(unittest.TestCase):
+    def setUp(self):
+        self.test_dir = tempfile.mkdtemp()
+        self.test_file = os.path.join(self.test_dir, 'test.txt')
+        with open(self.test_file, 'w') as f:
+            f.write('Hello, World!')
+    
+    def tearDown(self):
+        os.remove(self.test_file)
+        os.rmdir(self.test_dir)
+    
+    def test_read_file(self):
+        with open(self.test_file, 'r') as f:
+            content = f.read()
+        self.assertEqual(content, 'Hello, World!')
+```
+
+#### Key points:
+- **setUp**: Called **before** every test.
+- **tearDown**: Called **after** every test to clean up.
+
+
+
+## Advanced Testing Techniques
+
+### Parameterized Tests
+
+Run the same test logic with different inputs using parameterized tests. This reduces redundancy and makes your tests more scalable.
+
+#### Using the `parameterized` library:
+```python
+from parameterized import parameterized
+import unittest
+
+class TestMathFunctions(unittest.TestCase):
+    @parameterized.expand([
+        ("positive", 2, 3, 5),
+        ("negative", -1, -1, -2),
+        ("mixed", -1, 5, 4),
+    ])
+    def test_add(self, name, a, b, expected):
+        self.assertEqual(add(a, b), expected)
+```
+
+### Benefits:
+- Reduces code duplication.
+- Tests multiple cases with ease.
+
+
+
+### Mocking
+
+Use `unittest.mock` to simulate external dependencies and isolate your system under test.
+
+```python
+from unittest.mock import patch
+import requests
+
+def get_user_data(user_id):
+    response = requests.get(f"https://api.example.com/users/{user_id}")
+    return response.json()
+
+class TestUserData(unittest.TestCase):
+    @patch('requests.get')
+    def test_get_user_data(self, mock_get):
+        mock_response = mock_get.return_value
+        mock_response.json.return_value = {'id': 1, 'name': 'John Doe'}
+        
+        result = get_user_data(1)
+        
+        self.assertEqual(result, {'id': 1, 'name': 'John Doe'})
+        mock_get.assert_called_once_with("https://api.example.com/users/1")
+```
+
+#### Key points:
+- **Mocking** isolates external dependencies (e.g., APIs, databases).
+- Useful for testing systems that rely on external services.
+
+
+
+### Test Coverage
+
+Use `coverage.py` to measure how much of your code is covered by tests.
+
+#### Running coverage:
+```bash
+pip install coverage
+coverage run -m unittest discover
+coverage report -m
+```
+
+#### Benefits:
+- Ensures all parts of your code are tested.
+- Highlights untested code.
+- Helps achieve comprehensive test suites.
+
+
+
+## Performance Testing
+
+### Timing Code Execution with `timeit`
+
+The `timeit` module is useful for measuring the execution time of small code snippets.
+
+```python
+import timeit
+
+def factorial(n):
+    return 1 if n <= 1 else n * factorial(n - 1)
+
+execution_time = timeit.timeit('factorial(10)', 
+                               globals=globals(), 
+                               number=10000)
+print(f"Execution time: {execution_time:.6f} seconds")
+```
+
+#### Key points:
+- Measure performance of small code segments.
+- Helps identify slow-running sections of code.
+
+
+
+### Profiling with `cProfile`
+
+`cProfile` provides detailed performance profiling, showing how much time is spent in each function call.
+
+```python
+import cProfile
+
+def fibonacci(n):
+    if n <= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+cProfile.run('fibonacci(30)')
+```
+
+#### Interpretation:
+- Helps locate bottlenecks in the code.
+- Focus on optimizing performance-critical functions.
+
+
+
+## Best Practices
+
+::: {.incremental}
+- Write tests **before fixing bugs** to ensure the bug is correctly identified and fixed.
+- Keep tests **fast and independent**.
+- Use **descriptive test names** to clearly express the purpose of each test.
+- **Avoid test interdependence**. Each test should be self-contained.
+- **Regularly run** tests and keep them up-to-date with code changes.
+- Integrate tests into **CI/CD pipelines** to automate testing with every code change.
+:::
+
+
+
+## Summary
+
+::: {.incremental}
+- Testing is a **critical part** of software development.
+- The `unittest` framework provides a powerful, flexible system for writing tests.
+- Advanced techniques such as **mocking** and **parameterized tests** improve test quality and coverage.
+- **TDD** encourages modular, testable code.
+- Performance testing ensures efficiency in critical areas.
+- Following best practices results in maintainable, reliable test suites.
+:::
+

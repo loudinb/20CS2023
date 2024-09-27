@@ -1,0 +1,7 @@
+# Thursday, October 3, 2024
+
+## Agenda
+
+?
+
+{{< include ../topics/modules-and-packages.qmd >}}

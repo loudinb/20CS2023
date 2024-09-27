@@ -1,0 +1,10 @@
+# Tuesday, October 1, 2024
+
+## Agenda
+
+?
+
+{{< include ../topics/errors-exceptions-debugging.qmd >}}
+
+{{< include ../topics/testing.qmd >}}
+
