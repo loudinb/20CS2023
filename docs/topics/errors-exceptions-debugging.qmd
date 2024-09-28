@@ -2,76 +2,110 @@
 
 ## Errors
 
-### Types of Errors
+### Types of Errors {.hide}
 
-Errors in programming can be broadly categorized as:
+Errors in Python programming can be broadly categorized as:
 
-- **Syntax errors**: Detected during the parsing or compilation stage, preventing code execution.
-- **Logical errors**: Code runs but produces incorrect behavior due to flaws in logic or implementation.
-- **Runtime errors**: Occur during execution and disrupt the normal flow of the program, often referred to as exceptions.
+- **Syntax errors**: Detected during the parsing stage, preventing the code from running until they are corrected.
+- **Logical errors**: The code runs without crashing but produces incorrect results due to flaws in logic or incorrect implementation of algorithms.
+- **Runtime errors**: Occur while the program is executing and disrupt its normal flow. These generate exceptions that can be caught and handled.
 
-### Syntax Errors
+### Syntax Errors {.hide}
 
-Syntax errors occur when the code is not correctly structured according to Python's grammar rules. The program will not run if it contains syntax errors.
+::: {.smaller-80}
 
-**Examples** of common syntax errors:
-- Missing colons:
-  ```python
-  if condition  # Missing colon (:) here
-  ```
-- Incorrect indentation:
-  ```python
-  def function():
-  print("Incorrect indentation")
-  ```
-- Mismatched parentheses:
-  ```python
-  print((2 + 3  # Missing closing parenthesis
-  ```
+**Syntax errors** occur when the code is not correctly structured according to Python's grammar rules. The program will not run if it contains syntax errors.
 
-### Runtime Errors
-
-Runtime errors, or exceptions, occur during the execution of a program. They cause the program to halt unless handled.
-
-**Common runtime errors** include:
-- Division by zero (`ZeroDivisionError`)
-- Invalid input (`ValueError`)
-- File not found (`FileNotFoundError`)
-- Out of memory (`MemoryError`)
-
-### Logical Errors
-
-Logical errors are the most challenging to detect because the program runs without crashing but produces incorrect results due to flawed logic or faulty implementation.
-
-- **Faulty logic**: A flaw in the reasoning or approach to solving the problem.
-- **Faulty implementation**: The logic may be correct, but the way it’s coded is incorrect.
-- **Combination of both**: A mix of conceptual and coding mistakes.
-
-
-
-## Exceptions
-
-Exceptions are runtime errors that interrupt the normal flow of the program. 
-
-- **Exceptions**: Special conditions that occur during execution, requiring handling to prevent program termination.
-- **Python's `try/except` model**: Python provides a structure to handle exceptions gracefully using `try`, `except`, `else`, and `finally` blocks.
-
-### Raising Exceptions
-
-You can manually raise exceptions in your program using the `raise` keyword. This is helpful when you want to enforce certain constraints or handle exceptional cases in a controlled way.
-
-**Example**:
 ```python
-def validate_age(age):
-    if age < 0:
-        raise ValueError("Age cannot be negative")
-    return age
+# Missing colon (:) here
+if condition
 
-try:
-    validate_age(-5)
-except ValueError as e:
-    print(f"Validation error: {e}")
+# Incorrect indentation
+def function(): 
+print("Incorrect indentation")
+
+# Missing closing parenthesis
+print((2 + 3  
 ```
+
+::: {.callout-note}
+Static type checkers like mypy catch type-related issues to ensure consistency and prevent certain runtime errors, but they do not catch syntax errors. Linting tools like Pylint identify style issues and some syntax mistakes, but they are not as comprehensive as an interpreter in detecting all syntax errors. Many IDE's have integrated error checking.
+:::
+
+:::
+
+::: {.notes}
+This includes incorrect use of keywords, indentation, punctuation, or any other violation of Python's syntax. The Python interpreter must successfully parse the entire program before execution begins. If there are syntax errors at any point, including within nested code blocks, the interpreter will stop parsing and report the error. Thus, the program will not run until all syntax errors are corrected, regardless of how deeply nested the problematic code might be.
+:::
+
+### Logical Errors {.hide}
+
+::: {.smaller-80}
+
+**Logical errors** are difficult to detect because the program runs without crashing but produces incorrect results due to flawed logic or improper implementation.
+
+- **Faulty logic**: Incorrect reasoning or an unsuitable approach to solving the problem.
+- **Faulty implementation**: The logic is correct, but it is coded incorrectly.
+- **Combination of both**: A mix of flawed concepts and coding mistakes.
+
+::: {.callout-note}
+To effectively handle logical errors: follow the Single Responsibility Principle, write modular code, and test each component thoroughly, including full coverage and edge cases.
+:::
+
+:::
+
+### Runtime Errors {.hide}
+
+::: {.smaller-80}
+
+**Runtime errors** (exceptions) occur during program execution and can halt the program if not handled. Common Python runtime errors include:
+
+- **ZeroDivisionError**: Dividing by zero
+- **ValueError**: Function receives an inappropriate value (e.g., converting non-numeric string to integer)
+- **FileNotFoundError**: Attempting to open a non-existent file
+- **MemoryError**: Program runs out of memory
+- **KeyError**: Accessing a non-existent dictionary key
+- **TypeError**: Performing invalid operations between incompatible types
+
+
+::: {.callout-note}
+Runtime errors can be handled using Python's exception handling mechanism, which allows you to catch and manage exceptions gracefully.
+:::
+
+:::
+
+
+## Exceptions {.hide}
+
+::: {.smaller-80}
+
+**Exceptions** are runtime errors that interrupt the normal flow of a program. Unhandled exceptions will cause the program to terminate.  Handling exceptions allows a program to continue running or exit gracefully. Python's exception handling mechanism is the `try`/`except` model.
+
+- **`try` block**: Contains the code that might raise an exception.
+- **`except` block**: Contains the code to handle the exception if one occurs. You can specify the type of exception to handle it specifically.
+- **`else` block** (_optional_): Executes if no exception was raised in the `try` block.
+- **`finally` block** (_optional_): Always executes after the `try` and `except` blocks, regardless of whether an exception occurred. Useful for cleanup operations.
+
+:::
+
+### `try`/`except` Syntax
+
+
+```python
+try:
+    # Code that may raise an exception
+    result = 10 / 0
+except ZeroDivisionError:
+    # Handling a specific exception
+    print("Cannot divide by zero!")
+else:
+    # Executes if no exceptions were raised
+    print("Division successful:", result)
+finally:
+    # Executes no matter what
+    print("Execution complete.")
+```
+
 
 ### Catching Exceptions
 
@@ -118,6 +152,26 @@ process_data("10")
 process_data("0")
 process_data("abc")
 ```
+
+
+
+### Raising Exceptions
+
+You can manually raise exceptions in your program using the `raise` keyword. This is helpful when you want to enforce certain constraints or handle exceptional cases in a controlled way.
+
+**Example**:
+```python
+def validate_age(age):
+    if age < 0:
+        raise ValueError("Age cannot be negative")
+    return age
+
+try:
+    validate_age(-5)
+except ValueError as e:
+    print(f"Validation error: {e}")
+```
+
 
 ### User-Defined Exceptions
 
