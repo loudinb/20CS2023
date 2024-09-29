@@ -2,6 +2,12 @@
 
 **Exceptions** are runtime errors that interrupt the normal flow of a program. Unhandled exceptions will cause the program to terminate.  **Exception handling** allows a program to continue running or exit gracefully when an exception occurs. 
 
+## Python Documentation
+
+- [Built-in exceptions](https://docs.python.org/3/library/exceptions.html)
+- [Exception hierarchy](https://docs.python.org/3.12/library/exceptions.html#exception-hierarchy)
+- [Raising exceptions](https://docs.python.org/3/tutorial/errors.html#raising-exceptions)
+
 ## Exception Handling Mechanism {.hide}
 
 Python's exception handling mechanism is the `try`/`except` model.
@@ -206,6 +212,47 @@ Grouping exceptions can be useful when you need to handle multiple different exc
 :::
 
 
+### The `as` Keyword {.hide}
+
+:::{.smaller-80}
+
+The `as` keyword in exception handling allows you to capture the raised exception object, giving you access to its details.
+
+```python
+try:
+    # Some code that might raise an exception
+    result = 10 / 0
+except ZeroDivisionError as e:
+    print(f"Error occurred: {e}")
+    print(f"Error type: {type(e).__name__}")
+```
+
+**Key points:**
+
+- `as e` assigns the exception object to the variable `e` (can be any valid variable name, but `e` is commonly used)
+- Provide access to exception attributes like:
+  - `e.__class__`: The exception's class
+  - `str(e)`: The exception's message
+- Useful for:
+  - Logging detailed error information
+  - Conditional handling based on exception details
+  - Re-raising exceptions with additional context
+:::
+
+::: {.notes}
+```python
+try:
+    with open("nonexistent_file.txt", "r") as file:
+        content = file.read()
+except OSError as e:
+    print(f"Type: {type(e)}")
+    print(f"Args: {e.args}")
+    print(f"Errno: {e.errno}")
+    print(f"Strerror: {e.strerror}")
+    print(f"Filename: {e.filename}")
+```
+:::
+
 ### Precedence Rules for Return Statements {.hide}
 
 ::: {.smaller-85}
@@ -225,63 +272,34 @@ Precendence rules for return statements in exception handling blocks:
 
 :::
 
+
 ### Raising Exceptions {.hide}
 
-In Python, you can manually raise exceptions in your code using the `raise` keyword. This is particularly useful for enforcing specific conditions or handling exceptional situations directly in your code to ensure proper program behavior.
+:::{.smaller-90}
+You can manually raise exceptions using the `raise` keyword. This is useful for enforcing application-specific constraints or when detecting an error condition that Python's built-in checks don't cover.
 
-```{.python code-line-numbers="1-6"}
+```{.python}
 def validate_age(age):
+    if not isinstance(age, (int, float)):
+        raise TypeError("Age must be a number")
     if age < 0:
         raise ValueError("Age cannot be negative")
     return age
 
 try:
     validate_age(-5)
-except ValueError as e:
-    print(f"Validation error: {e}")
+except (ValueError, TypeError):
+    print(f"Validation error")
 ```
-
-::: {.fragment .fade-in-then-out .absolute width="100%"}
-**`raise` Keyword**
-
-- The `raise` statement is used to trigger an exception manually.
-- It’s generally used to enforce application-level constraints or when detecting an error condition that cannot be handled naturally by the standard flow.
-
-:::
-
-::: {.fragment .fade-in-then-out .absolute width="100%"}
-**Handling Raised Exceptions**
-
-- Raised exceptions can be caught using `try`/`except` blocks, just like any other exceptions.
-- This allows you to gracefully manage errors and provide meaningful feedback to the user.
-
-:::
-
-::: {.fragment .fade-in-then-out .absolute width="100%"}
-```{.python code-line-numbers="1-8"}
-def process_transaction(amount):
-    if amount <= 0:
-        raise ValueError("Transaction amount must be greater than zero.")
-    print("Transaction processed successfully.")
-
-try:
-    process_transaction(0)
-except ValueError as e:
-    print(f"Error: {e}")
-```
-
-- In the above example, if the `amount` is less than or equal to zero, a `ValueError` is raised.
-- The `try`/`except` block catches this and provides a meaningful error message.
-
 :::
 
 ### User-Defined Exceptions {.hide}
 
-Python allows you to create custom exceptions by subclassing the built-in `Exception` class. User-defined exceptions are beneficial when you need more specific error signaling that standard exceptions do not adequately cover.
+:::{.smaller-80}
+**User-defined exceptions** can be created by subclassing the built-in `Exception` class or its subclasses. These are beneficial when you need more specific error signaling that standard exceptions don't adequately cover.
 
-**Creating a Custom Exception**:
 
-```{.python code-line-numbers="1-6"}
+```python
 class InsufficientFundsError(Exception):
     def __init__(self, balance, amount):
         self.balance = balance
@@ -289,16 +307,19 @@ class InsufficientFundsError(Exception):
         super().__init__(f"Insufficient funds: balance {balance}, required {amount}")
 ```
 
-::: {.fragment .fade-in-then-out .absolute width="100%"}
-**`InsufficientFundsError` Class**
-
 - This class extends `Exception` to create a new type of error.
-- You can add custom attributes (`balance` and `amount`) to provide more context for the error.
+- The `super().__init__()` call ensures proper initialization of the base `Exception` class.
+- Custom attributes (`balance` and `amount`) provide more context for the error.
 
 :::
 
-::: {.fragment .fade-in-then-out .absolute width="100%"}
-```{.python code-line-numbers="7-15"}
+
+### Implementing and Handling Custom Exceptions
+
+:::{.smaller-70}
+**Example Usage:**
+
+```python
 def withdraw(balance, amount):
     if balance < amount:
         raise InsufficientFundsError(balance, amount)
@@ -308,90 +329,36 @@ try:
     withdraw(100, 150)
 except InsufficientFundsError as e:
     print(f"Transaction failed: {e}")
+    print(f"Current balance: {e.balance}")
+    print(f"Attempted withdrawal: {e.amount}")
 ```
 
-**`withdraw` Function**:
+**Best Practices:**
 
-- Attempts to withdraw an `amount` from the `balance`.
-- Raises `InsufficientFundsError` if the `amount` exceeds the available `balance`.
-- This custom exception gives more specific feedback, which can make error handling more informative and easier to manage.
+1. Derive custom exceptions from Python's built-in exceptions when appropriate (e.g., `ValueError`, `TypeError`).
+2. Use descriptive names for custom exceptions (e.g., `InsufficientFundsError` instead of `MyError`).
+3. Include relevant error information in the exception message and as attributes.
+4. Document your custom exceptions, especially if they're part of a library or API.
 
 :::
 
-::: {.fragment .fade-in-then-out .absolute width="100%"}
-**Why Use Custom Exceptions?**
-
-- Custom exceptions allow you to define error types that are directly meaningful within the context of your application.
-- This helps maintain readability, as different error conditions can be represented by distinct exception types, aiding in debugging and providing clearer error messages to users.
-
+:::{.notes}
+**Key Points:**
+- The `withdraw` function raises `InsufficientFundsError` if the amount exceeds the balance.
+- In the `except` block, we can access the custom attributes of our exception.
 :::
 
+### When to Use Custom Exceptions {.hide}
 
-## Best Practices
+:::{.smaller-85}
+::: {.callout-note}
+Built-in exceptions often suffice for most situations. Use custom exceptions sparingly, only when they significantly improve error handling, enhance code clarity, or provide crucial domain-specific information.
+:::
 
-### Be Specific in Catching Exceptions
+**When to Use Custom Exceptions?**
 
-It’s important to catch only the exceptions that you expect and know how to handle. Catching broad exceptions or using a bare `except` clause can mask unexpected errors, making debugging more difficult and possibly hiding bugs.
-
-**Bad** (Bare `except` clause):
-```python
-try:
-    # risky_function()
-    pass
-except:
-    pass  # Silently ignores all errors
-```
-
-**Good** (Catching specific exceptions):
-```python
-try:
-    value = int(input("Enter a number: "))
-    result = 10 / value
-except (ValueError, ZeroDivisionError) as e:
-    print(f"Invalid input: {e}")
-```
-
-**Explanation**:
-- Avoid catching all exceptions with a bare `except` clause. This can mask other issues in the code, making it difficult to identify the root cause of errors.
-- Instead, catch specific exceptions like `ValueError`, `ZeroDivisionError`, or others that you can properly handle.
-
-### Use the `else` Clause
-
-The `else` clause in a `try` block executes only if no exceptions are raised. It helps to separate the error-handling logic from the normal execution flow.
-
-**Example**:
-```python
-def perform_calculation(x, y):
-    return x / y
-
-try:
-    result = perform_calculation(10, 2)
-except ZeroDivisionError:
-    print("Cannot divide by zero")
-else:
-    print(f"Calculation successful. Result: {result}")
-finally:
-    print("Calculation attempt completed")
-```
-
-### Raise Exceptions at the Appropriate Level
-
-If a function cannot handle an exception, raise it at an appropriate level so that the calling function can handle it.
-
-**Example**:
-```python
-class DatabaseError(Exception):
-    pass
-
-def query_database():
-    try:
-        raise ConnectionError("Connection failed")
-    except (ConnectionError, TimeoutError) as e:
-        raise DatabaseError("Database operation failed") from e
-
-try:
-    query_database()
-except DatabaseError as e:
-    print(f"Database error: {e}")
-    print(f"Original error: {e.__cause__}")
-```
+- Improved specificity: Define error types directly meaningful to your application.
+- Enhanced readability: Distinct exception types aid in debugging and error handling.
+- Better context: Custom attributes can carry additional information about the error.
+- Clearer error messages: Provide more informative feedback to users or logging systems.
+:::

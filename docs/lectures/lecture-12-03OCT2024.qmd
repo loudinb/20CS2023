@@ -4,4 +4,7 @@
 
 ?
 
+{{< include ../topics/debugging.qmd >}}
+
+
 {{< include ../topics/modules-and-packages.qmd >}}
