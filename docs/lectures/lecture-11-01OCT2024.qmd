@@ -4,7 +4,9 @@
 
 ?
 
-{{< include ../topics/errors-exceptions-debugging.qmd >}}
+{{< include ../topics/errors.qmd >}}
 
-{{< include ../topics/testing.qmd >}}
+{{< include ../topics/exception-handling.qmd >}}
+
+{{< include ../topics/context-managers.qmd >}}
 

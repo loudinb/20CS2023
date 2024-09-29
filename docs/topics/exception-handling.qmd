@@ -1,0 +1,252 @@
+# Exception Handling
+
+**Exceptions** are runtime errors that interrupt the normal flow of a program. Unhandled exceptions will cause the program to terminate.  **Exception handling** allows a program to continue running or exit gracefully when an exception occurs. 
+
+## Exception Handling Mechanism {.hide}
+
+Python's exception handling mechanism is the `try`/`except` model.
+
+::: {.smaller-80}
+
+::: {.r-stack}
+```{.python}
+try:
+    pass
+except:
+    pass
+else:
+    pass
+finally:
+    pass
+```
+::: {.fragment .fade-in-then-out .absolute .top-0 .left-0 width="100%"}
+```{.python code-line-numbers="1-2"}
+try:
+    pass
+except:
+    pass
+else:
+    pass
+finally:
+    pass
+```
+**`try`: Block**
+
+- Contains the code that might raise an exception.
+- If an exception is raised within this block, control will immediately pass to the `except` block.
+:::
+
+::: {.fragment .fade-in-then-out .absolute .top-0 .left-0 width="100%"}
+```{.python code-line-numbers="3-4"}
+try:
+    pass
+except:
+    pass
+else:
+    pass
+finally:
+    pass
+```
+**`except:` Block**
+
+- Contains the code to handle the exception if one occurs.
+
+:::
+
+::: {.fragment .fade-in-then-out .absolute .top-0 .left-0 width="100%"}
+```{.python code-line-numbers="5-6"}
+try:
+    pass
+except:
+    pass
+else:
+    pass
+finally:
+    pass
+```
+**`else:` Block** (_optional_)
+
+- This block runs only if no exceptions are raised in the `try` block.
+- It allows you to execute code that should only happen when the `try` block was successful, allowing the `try` block to only contain the code that could raise an exception.
+:::
+
+::: {.fragment .fade-in-then-out .absolute .top-0 .left-0 width="100%"}
+```{.python code-line-numbers="7-8"}
+try:
+    pass
+except:
+    pass
+else:
+    pass
+finally:
+    pass
+```
+**`finally:` Block** (_optional_)
+
+- This block will always execute after the `try` and `except` blocks, regardless of whether an exception was raised or not.
+- It’s typically used for cleanup operations like closing files, releasing resources, or undoing partial changes.
+
+:::
+
+:::
+
+
+:::
+
+### Catching Exceptions
+
+Python's `try`, `except`, `else`, and `finally` blocks allow you to catch and handle exceptions.
+
+**Example**:
+```python
+def safe_divide(a, b):
+    try:
+        result = a / b
+    except ZeroDivisionError:
+        print("Cannot divide by zero")
+        return None
+    else:
+        print("Division successful")
+        return result
+    finally:
+        print("Division operation completed")
+
+print(safe_divide(10, 2))  # Correct division
+print(safe_divide(10, 0))  # Division by zero
+```
+
+### Catching Multiple Exceptions
+
+You can handle multiple exceptions by adding multiple `except` blocks or grouping related exceptions in a single block.
+
+**Example**:
+```python
+def process_data(data):
+    try:
+        value = int(data)
+        result = 100 / value
+    except ValueError:
+        print("Invalid data: cannot convert to integer")
+    except ZeroDivisionError:
+        print("Invalid data: cannot divide by zero")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+    else:
+        print(f"Result: {result}")
+
+process_data("10")
+process_data("0")
+process_data("abc")
+```
+
+
+
+### Raising Exceptions
+
+You can manually raise exceptions in your program using the `raise` keyword. This is helpful when you want to enforce certain constraints or handle exceptional cases in a controlled way.
+
+**Example**:
+```python
+def validate_age(age):
+    if age < 0:
+        raise ValueError("Age cannot be negative")
+    return age
+
+try:
+    validate_age(-5)
+except ValueError as e:
+    print(f"Validation error: {e}")
+```
+
+
+### User-Defined Exceptions
+
+You can create custom exceptions by subclassing the `Exception` class. This allows you to define more specific exceptions tailored to your program's needs.
+
+**Example**:
+```python
+class InsufficientFundsError(Exception):
+    def __init__(self, balance, amount):
+        self.balance = balance
+        self.amount = amount
+        super().__init__(f"Insufficient funds: balance {balance}, required {amount}")
+
+def withdraw(balance, amount):
+    if balance < amount:
+        raise InsufficientFundsError(balance, amount)
+    return balance - amount
+
+try:
+    withdraw(100, 150)
+except InsufficientFundsError as e:
+    print(f"Transaction failed: {e}")
+```
+
+## Best Practices
+
+### Be Specific in Catching Exceptions
+
+It’s important to catch only the exceptions that you expect and know how to handle. Catching broad exceptions or using a bare `except` clause can mask unexpected errors, making debugging more difficult and possibly hiding bugs.
+
+**Bad** (Bare `except` clause):
+```python
+try:
+    # risky_function()
+    pass
+except:
+    pass  # Silently ignores all errors
+```
+
+**Good** (Catching specific exceptions):
+```python
+try:
+    value = int(input("Enter a number: "))
+    result = 10 / value
+except (ValueError, ZeroDivisionError) as e:
+    print(f"Invalid input: {e}")
+```
+
+**Explanation**:
+- Avoid catching all exceptions with a bare `except` clause. This can mask other issues in the code, making it difficult to identify the root cause of errors.
+- Instead, catch specific exceptions like `ValueError`, `ZeroDivisionError`, or others that you can properly handle.
+
+### Use the `else` Clause
+
+The `else` clause in a `try` block executes only if no exceptions are raised. It helps to separate the error-handling logic from the normal execution flow.
+
+**Example**:
+```python
+def perform_calculation(x, y):
+    return x / y
+
+try:
+    result = perform_calculation(10, 2)
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+else:
+    print(f"Calculation successful. Result: {result}")
+finally:
+    print("Calculation attempt completed")
+```
+
+### Raise Exceptions at the Appropriate Level
+
+If a function cannot handle an exception, raise it at an appropriate level so that the calling function can handle it.
+
+**Example**:
+```python
+class DatabaseError(Exception):
+    pass
+
+def query_database():
+    try:
+        raise ConnectionError("Connection failed")
+    except (ConnectionError, TimeoutError) as e:
+        raise DatabaseError("Database operation failed") from e
+
+try:
+    query_database()
+except DatabaseError as e:
+    print(f"Database error: {e}")
+    print(f"Original error: {e.__cause__}")
+```
