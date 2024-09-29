@@ -1,19 +1,70 @@
 # Context Managers
 
-Context managers allow for the proper acquisition and release of resources, such as file handling, by ensuring resources are properly cleaned up (e.g., closing a file after use). 
+Context managers are powerful tools in Python that facilitate resource management, ensuring the acquisition and release of resources (like files, network connections, or locks) is properly handled. This is ensures your code is both safe and concise.
 
-## The `with` Statement
 
-The `with` statement is a Pythonic way to handle resources effectively.
+::: {.notes}
+Locks are a synchronization mechanism used in concurrent programming to control access to shared resources. They are crucial when multiple threads or processes need to access the same resource (such as a variable, file, or database) to prevent conflicts and ensure data consistency.
+:::
 
-**Example**:
+
+## Benefits of Context Managers {.hide}
+
+::: {.smaller-80}
+
+**Benefits of Context Managers**:
+
+- **Automatic Resource Management**: Automatically handles tasks like closing files or releasing network connections.
+- **Cleaner Code**: Reduces boilerplate, making the code more readable and less error-prone.
+- **Exception Safety**: Resources are cleaned up even if an error occurs within the block.
+
+::: {.callout-note}
+Context managers are a fundamental feature in Python, particularly relevant to our discussion on errors and exception handling. They play a crucial role in guaranteeing that resources are properly managed and released, even in the presence of exceptions, thus preventing resource leaks and ensuring robust code execution.
+:::
+:::
+
+
+## The `with` Statement {.hide}
+
+::: {.smaller-70}
+
+The `with` statement simplifies working with context managers by ensuring resources are correctly managed.
+
+In traditional resource handling, you must explicitly ensure that resources are released, even when an error occurs: 
+
+```python
+f = open('example.txt', 'w')
+try:
+    f.write('Hello, World!')
+finally:
+    f.close()  # Ensures the file is closed even if an error occurs
+```
+
+Using the `with` statement ensures resources are always managed correctly, with much less code:
+
 ```python
 with open('example.txt', 'w') as f:
     f.write('Hello, World!')
-# File is automatically closed after this block
+# The file is automatically closed after this block, even if an exception occurs
 ```
 
-For custom context managers, you can use the `contextlib` library:
+- **Automatic Resource Management**: The with statement guarantees that the file is closed properly, even if an exception is raised during the write operation.
+- **Cleaner and More Readable**: Reduces boilerplate code and makes the intention clear—handle the resource safely and efficiently.
+
+:::
+
+
+## Function-Based Context Managers {.hide}
+
+::: {.smaller-70}
+
+The `contextlib` module provides a simple way to create custom context managers using the `@contextmanager` decorator. This approach is perfect for creating lightweight, readable, and efficient context managers.
+
+**How It Works:**
+
+- The `@contextmanager` decorator converts a generator function into a context manager.
+- `yield`: The point where the resource is provided to the caller for use.
+- `finally`: Ensures that resource cleanup occurs automatically, even if an exception is raised during usage.
 
 ```python
 from contextlib import contextmanager
@@ -29,3 +80,75 @@ def file_manager(filename, mode):
 with file_manager('example.txt', 'w') as f:
     f.write('Hello, World!')
 ```
+
+:::
+
+::: {.notes}
+Common use cases of custom context managers include managing database connections, file operations when custom behavior beyond simple open/close is required, and handling locks for synchronization in multi-threaded applications.
+
+A generator function is a special type of iterator that generates values on-the-fly. It uses the `yield` keyword to return values one at a time, pausing execution and saving the state of the function between calls.  In this case, the generator function is used to create a context manager that provides a file object to the caller for use within the `with` block.
+:::
+
+
+## Class-Based Context Managers {.hide}
+
+::: {.smaller-70}
+
+For more complex needs, you can create custom context managers by defining a class that implements the `__enter__` and `__exit__` methods. 
+
+**How It Works:**
+
+- **`__enter__` Method**: This method is called when the `with` block starts. It initializes or acquires the resource and must return the resource that will be used within the block.
+- **`__exit__` Method**: This method is called when the `with` block ends, whether normally or due to an exception. It is responsible for cleaning up the resource and can also handle exceptions.
+
+
+**Key Benefits:**
+
+- **Fine-Grained Control**: Allows you to define complex behaviors during both the setup (`__enter__`) and teardown (`__exit__`) phases.
+- **Robust Error Handling**: The `__exit__` method receives exception details (`exc_type`, `exc_value`, `traceback`) if an error occurs.
+- **Flexibility**: Can include additional logic beyond what simple `contextlib` functions can provide.
+:::
+
+::: {.notes}
+
+- **Fine-Grained Control**: Allows you to define complex behaviors during both the setup (`__enter__`) and teardown (`__exit__`) phases, which can be helpful for managing multiple resources or handling intricate initialization logic.
+- **Robust Error Handling**: The `__exit__` method receives exception details (`exc_type`, `exc_value`, `traceback`) if an error occurs, allowing you to manage or log exceptions effectively.
+- **Flexibility**: Custom class-based context managers can include additional logic, such as conditional resource management or multiple resource handling, beyond what simple `contextlib` functions can provide.
+
+- This approach offers greater flexibility and is suitable for managing complex resources or multiple operations during setup and teardown.
+
+- Always remember to return `False` in `__exit__` if you want exceptions to be propagated to the caller, which is the typical behavior. Returning `True` would suppress any exceptions, which might be suitable in certain controlled situations.
+:::
+
+## Class-Based Context Manager Example {.hide}
+
+
+::: {.smaller-75}
+
+```python
+class FileManager:
+    def __init__(self, filename, mode):
+        self.filename = filename
+        self.mode = mode
+
+    def __enter__(self):
+        # Acquire the resource
+        self.file = open(self.filename, self.mode)
+        return self.file
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        # Release the resource
+        self.file.close()
+        # Optionally handle exceptions if needed
+        if exc_type:
+            print(f"An exception occurred: {exc_value}")
+        # Returning False propagates the exception, True would suppress it
+        return False
+
+# Usage:
+with FileManager('example.txt', 'w') as f:
+    f.write('Hello, World!')
+# The file is automatically closed when the block exits, even if an exception occurs
+```
+
+:::

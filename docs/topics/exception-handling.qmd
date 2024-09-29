@@ -214,7 +214,7 @@ Grouping exceptions can be useful when you need to handle multiple different exc
 
 ### The `as` Keyword {.hide}
 
-:::{.smaller-80}
+:::{.smaller-75}
 
 The `as` keyword in exception handling allows you to capture the raised exception object, giving you access to its details.
 
@@ -313,8 +313,17 @@ class InsufficientFundsError(Exception):
 
 :::
 
+::: {.notes}
 
-### Implementing and Handling Custom Exceptions
+best practices when creating custom exceptions:
+- Derive custom exceptions from Python's built-in exceptions when appropriate (e.g., `ValueError`, `TypeError`).
+- Use descriptive names for custom exceptions (e.g., `InsufficientFundsError` instead of `MyError`).
+- Include relevant error information in the exception message and as attributes.
+- Document your custom exceptions, especially if they're part of a library or API.
+:::
+
+
+### User-Defined Exceptions (cont.) {.hide}
 
 :::{.smaller-70}
 **Example Usage:**
@@ -333,32 +342,31 @@ except InsufficientFundsError as e:
     print(f"Attempted withdrawal: {e.amount}")
 ```
 
-**Best Practices:**
+**Key Points:**
 
-1. Derive custom exceptions from Python's built-in exceptions when appropriate (e.g., `ValueError`, `TypeError`).
-2. Use descriptive names for custom exceptions (e.g., `InsufficientFundsError` instead of `MyError`).
-3. Include relevant error information in the exception message and as attributes.
-4. Document your custom exceptions, especially if they're part of a library or API.
+- The `withdraw` function raises `InsufficientFundsError` if the amount exceeds the balance.
+- In the `except` block, we can access the custom attributes of our exception.
 
 :::
 
 :::{.notes}
-**Key Points:**
-- The `withdraw` function raises `InsufficientFundsError` if the amount exceeds the balance.
-- In the `except` block, we can access the custom attributes of our exception.
+
 :::
 
 ### When to Use Custom Exceptions {.hide}
 
 :::{.smaller-85}
+
+
+**Use custom exceptions to:**
+
+- Define error types that are **specific and meaningful** to your application's domain, improving code clarity and intent.
+- Facilitate **more effective debugging and targeted error handling** by distinguishing between different types of errors.
+- Enhance **clarity and informativeness** of error messages by including **custom attributes** that provide detailed context about the error.
+
+:::
+
 ::: {.callout-note}
 Built-in exceptions often suffice for most situations. Use custom exceptions sparingly, only when they significantly improve error handling, enhance code clarity, or provide crucial domain-specific information.
 :::
 
-**When to Use Custom Exceptions?**
-
-- Improved specificity: Define error types directly meaningful to your application.
-- Enhanced readability: Distinct exception types aid in debugging and error handling.
-- Better context: Custom attributes can carry additional information about the error.
-- Clearer error messages: Provide more informative feedback to users or logging systems.
-:::
