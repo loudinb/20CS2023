@@ -11,24 +11,24 @@ Python's exception handling mechanism is the `try`/`except` model.
 ::: {.r-stack}
 ```{.python}
 try:
-    pass
+    # some code
 except:
-    pass
+    # handle exception
 else:
-    pass
+    # execute if no exception
 finally:
-    pass
+    # cleanup code
 ```
 ::: {.fragment .fade-in-then-out .absolute .top-0 .left-0 width="100%"}
 ```{.python code-line-numbers="1-2"}
 try:
-    pass
+    # some code
 except:
-    pass
+    # handle exception
 else:
-    pass
+    # execute if no exception
 finally:
-    pass
+    # cleanup code
 ```
 **`try`: Block**
 
@@ -39,13 +39,13 @@ finally:
 ::: {.fragment .fade-in-then-out .absolute .top-0 .left-0 width="100%"}
 ```{.python code-line-numbers="3-4"}
 try:
-    pass
+    # some code
 except:
-    pass
+    # handle exception
 else:
-    pass
+    # execute if no exception
 finally:
-    pass
+    # cleanup code
 ```
 **`except:` Block**
 
@@ -56,13 +56,13 @@ finally:
 ::: {.fragment .fade-in-then-out .absolute .top-0 .left-0 width="100%"}
 ```{.python code-line-numbers="5-6"}
 try:
-    pass
+    # some code
 except:
-    pass
+    # handle exception
 else:
-    pass
+    # execute if no exception
 finally:
-    pass
+    # cleanup code
 ```
 **`else:` Block** (_optional_)
 
@@ -73,13 +73,13 @@ finally:
 ::: {.fragment .fade-in-then-out .absolute .top-0 .left-0 width="100%"}
 ```{.python code-line-numbers="7-8"}
 try:
-    pass
+    # some code
 except:
-    pass
+    # handle exception
 else:
-    pass
+    # execute if no exception
 finally:
-    pass
+    # cleanup code
 ```
 **`finally:` Block** (_optional_)
 
@@ -93,60 +93,143 @@ finally:
 
 :::
 
-### Catching Exceptions
+### Catching Exceptions {.hide}
 
-Python's `try`, `except`, `else`, and `finally` blocks allow you to catch and handle exceptions.
+The generic `except` block will catch all errors -- this is not recommended.  Always catch specific exceptions.
 
-**Example**:
-```python
-def safe_divide(a, b):
-    try:
-        result = a / b
-    except ZeroDivisionError:
-        print("Cannot divide by zero")
-        return None
-    else:
-        print("Division successful")
-        return result
-    finally:
-        print("Division operation completed")
+::: {.r-stack}
 
-print(safe_divide(10, 2))  # Correct division
-print(safe_divide(10, 0))  # Division by zero
+```{.python code-line-numbers="3-5"}
+try:
+    # some code
+except:
+    # handle exceptions
+    # even those you didn't expect -- this is bad practice
 ```
 
-### Catching Multiple Exceptions
+::: {.fragment .fade-in-then-out .absolute width="100%"}
+```{.python code-line-numbers="1-5"}
+try:
+    import math
+    math.sqrt(-1)
+except ValueError:
+    print("ValueError")
+```
+`ValueError`: Raised when a function receives an inappropriate value.
+:::
 
-You can handle multiple exceptions by adding multiple `except` blocks or grouping related exceptions in a single block.
+::: {.fragment .fade-in-then-out .absolute width="100%"}
+```{.python code-line-numbers="1-4"}
+try:
+    1 / 0
+except ZeroDivisionError:
+    print("ZeroDivisionError")
 
-**Example**:
-```python
+
+```
+`ZeroDivisionError`: Raised when dividing by zero.
+:::
+
+::: {.fragment .fade-in-then-out .absolute width="100%"}
+```{.python code-line-numbers="1-4"}
+try:
+    int("abc")
+except TypeError:
+    print("TypeError")
+
+
+```
+`TypeError`: Raised when performing invalid operations between incompatible types.
+:::
+
+::: {.fragment .fade-in-then-out .absolute width="100%"}
+```{.python code-line-numbers="1-5"}
+list = [1, 2, 3]
+try:
+    list[3]
+except IndexError:
+    print("IndexError")
+```
+`IndexError`: Raised when accessing an index that is out of range.
+:::
+
+::: {.fragment .fade-in-then-out .absolute width="100%"}
+```{.python code-line-numbers="1-5"}
+dict = {"name": "Jane"}
+try:
+    dict["email"]
+except KeyError:
+    print("KeyError")
+```
+`KeyError`: Raised when accessing a non-existent dictionary key.
+:::
+
+:::
+
+
+
+### Catching Multiple Exceptions {.hide}
+
+You can handle multiple exceptions by adding multiple `except`.
+
+```{.python code-line-numbers="6,9"}
 def process_data(data):
     try:
         value = int(data)
         result = 100 / value
+        return result
     except ValueError:
         print("Invalid data: cannot convert to integer")
+        return None
     except ZeroDivisionError:
         print("Invalid data: cannot divide by zero")
-    except Exception as e:
-        print(f"An unexpected error occurred: {e}")
-    else:
-        print(f"Result: {result}")
-
-process_data("10")
-process_data("0")
-process_data("abc")
+        return None
 ```
 
 
+### Grouping Exceptions {.hide}
 
-### Raising Exceptions
+You can group exceptions into a single `except` block using parentheses.  This is useful when you want to handle multiple exceptions in the same way.
 
-You can manually raise exceptions in your program using the `raise` keyword. This is helpful when you want to enforce certain constraints or handle exceptional cases in a controlled way.
+```{.python code-line-numbers="5"}
+def divide_numbers(a, b):
+    try:
+        result = a / b
+        return result
+    except (ValueError, TypeError, ZeroDivisionError):
+        print(f"An error occurred.")
+        return None
+```
 
-**Example**:
-```python
+::: {.notes}
+Grouping exceptions can be useful when you need to handle multiple different exceptions in the same way. It helps keep the code cleaner and reduces redundancy. An example where grouping exceptions makes sense is a mathemetical operation that involves type mismatches and mathematical operations that are invalid.
+:::
+
+
+### Precedence Rules for Return Statements {.hide}
+
+::: {.smaller-85}
+Precendence rules for return statements in exception handling blocks:
+:::
+
+::: {.smaller-60}
+
+| Block    | Execution Condition | Return Behavior | Notes |
+|----------|---------------------|-----------------|-------|
+| `try`     | Always attempts to execute | If it contains a `return` statement, this value is returned (unless overridden by `finally`) | |
+| `except`  | Executes if an exception occurs in `try` | If it contains a `return` statement, this value is returned (unless overridden by `finally`) | |
+| `else`    | Executes if `try` completes without an exception and without executing a `return` | If it contains a `return` statement, this value is returned (unless overridden by `finally`) | Does not execute if `try` has already executed a `return` statement |
+| `finally` | Always executes if present | **Overrides** all other `return` statements | Executes regardless of whether a `return` statement was encountered in other blocks. |
+
+: {tbl-colwidths="[15,25,30,30]"}
+
+:::
+
+### Raising Exceptions {.hide}
+
+In Python, you can manually raise exceptions in your code using the `raise` keyword. This is particularly useful for enforcing specific conditions or handling exceptional situations directly in your code to ensure proper program behavior.
+
+```{.python code-line-numbers="1-6"}
 def validate_age(age):
     if age < 0:
         raise ValueError("Age cannot be negative")
@@ -158,19 +241,64 @@ except ValueError as e:
     print(f"Validation error: {e}")
 ```
 
+::: {.fragment .fade-in-then-out .absolute width="100%"}
+**`raise` Keyword**
 
-### User-Defined Exceptions
+- The `raise` statement is used to trigger an exception manually.
+- It’s generally used to enforce application-level constraints or when detecting an error condition that cannot be handled naturally by the standard flow.
 
-You can create custom exceptions by subclassing the `Exception` class. This allows you to define more specific exceptions tailored to your program's needs.
+:::
 
-**Example**:
-```python
+::: {.fragment .fade-in-then-out .absolute width="100%"}
+**Handling Raised Exceptions**
+
+- Raised exceptions can be caught using `try`/`except` blocks, just like any other exceptions.
+- This allows you to gracefully manage errors and provide meaningful feedback to the user.
+
+:::
+
+::: {.fragment .fade-in-then-out .absolute width="100%"}
+```{.python code-line-numbers="1-8"}
+def process_transaction(amount):
+    if amount <= 0:
+        raise ValueError("Transaction amount must be greater than zero.")
+    print("Transaction processed successfully.")
+
+try:
+    process_transaction(0)
+except ValueError as e:
+    print(f"Error: {e}")
+```
+
+- In the above example, if the `amount` is less than or equal to zero, a `ValueError` is raised.
+- The `try`/`except` block catches this and provides a meaningful error message.
+
+:::
+
+### User-Defined Exceptions {.hide}
+
+Python allows you to create custom exceptions by subclassing the built-in `Exception` class. User-defined exceptions are beneficial when you need more specific error signaling that standard exceptions do not adequately cover.
+
+**Creating a Custom Exception**:
+
+```{.python code-line-numbers="1-6"}
 class InsufficientFundsError(Exception):
     def __init__(self, balance, amount):
         self.balance = balance
         self.amount = amount
         super().__init__(f"Insufficient funds: balance {balance}, required {amount}")
+```
 
+::: {.fragment .fade-in-then-out .absolute width="100%"}
+**`InsufficientFundsError` Class**
+
+- This class extends `Exception` to create a new type of error.
+- You can add custom attributes (`balance` and `amount`) to provide more context for the error.
+
+:::
+
+::: {.fragment .fade-in-then-out .absolute width="100%"}
+```{.python code-line-numbers="7-15"}
 def withdraw(balance, amount):
     if balance < amount:
         raise InsufficientFundsError(balance, amount)
@@ -181,6 +309,23 @@ try:
 except InsufficientFundsError as e:
     print(f"Transaction failed: {e}")
 ```
+
+**`withdraw` Function**:
+
+- Attempts to withdraw an `amount` from the `balance`.
+- Raises `InsufficientFundsError` if the `amount` exceeds the available `balance`.
+- This custom exception gives more specific feedback, which can make error handling more informative and easier to manage.
+
+:::
+
+::: {.fragment .fade-in-then-out .absolute width="100%"}
+**Why Use Custom Exceptions?**
+
+- Custom exceptions allow you to define error types that are directly meaningful within the context of your application.
+- This helps maintain readability, as different error conditions can be represented by distinct exception types, aiding in debugging and providing clearer error messages to users.
+
+:::
+
 
 ## Best Practices
 
