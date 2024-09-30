@@ -1,0 +1,296 @@
+# Logging
+
+Logging is the process of recording events that happen during the execution of a program. It is a crucial part of software development, allowing developers to track the behavior of their applications and diagnose issues. 
+
+## Logging Module
+
+::: {.smaller-85}
+The Python standard library includes a built-in `logging` module. It offers a wide range of features for logging messages to different destinations, setting log levels, and formatting log messages.
+
+```python
+import logging
+logging.basicConfig(level=logging.INFO)
+
+def hypotenuse(a, b):
+    """Compute the hypotenuse"""
+    return (a**2 + b**2)**0.5
+
+logging.info(
+    "Hypotenuse of {a}, {b} is {c}".format(
+        a=3, b=4, c=hypotenuse(3, 4)
+    )
+)
+```
+
+Output:
+```
+INFO:root:Hypotenuse of 3, 4 is 5.0
+```
+:::
+
+## Python Documentation
+
+- [Logging Module](https://docs.python.org/3/library/logging.html)
+- [Logging HOWTO](https://docs.python.org/3/howto/logging.html)
+- [Logging Cookbook](https://docs.python.org/3/howto/logging-cookbook.html)
+
+## `print()` {.hide}
+
+::: {.smaller-95}
+The **`print()`** function is commonly used to output information to the console, interacting with users in CLI (Command Line Interface) scripts, and during development for debugging purposes.  
+
+::: {.callout-important}
+`print()` statements added to code for debugging purposes should be removed before deploying the code to production.
+:::
+
+:::
+
+::: {.notes}
+`print()` serves a different purpose than `logging`. 
+
+Uses cases expanded:
+- Debugging: As mentioned, it's very useful for quickly outputting values during development to check program flow and variable contents.
+- CLI scripts: It's essential for creating command-line interface scripts, where you need to display information, results, or prompts to the user in the terminal.
+- Simple output: For small scripts or educational purposes, print is often used to show results or provide user feedback.
+- Prototyping: When quickly testing ideas or building proof-of-concept programs, print is often the go-to method for output.
+:::
+
+## print() vs. logging {.hide}
+
+Comparing `print()` and `logging` use cases:
+
+::: {.smaller-85}
+
+| Feature           | print()           | logging                         |
+|-------------------|-------------------|---------------------------------|
+| Primary Use       | Quick output for development and debugging | Structured event and error tracking        |
+| Flexibility       | Limited                                   | Highly configurable                        |
+| Severity Levels   | No                                        | Yes (debug, info, warning, error, critical) |
+| Output Control    | Always to console                         | Configurable (console, file, network, etc.) |
+| Production Ready  | No                                        | Yes                                        |
+
+: {tbl-colwidths="[30,35,35]"}
+
+:::
+
+## Advanced Benefits of `logging` {.hide}
+
+Key advantages of the `logging` module beyond basic functionality:
+
+::: {.smaller-70}
+- **Runtime control**: Enable/disable or change log levels without code modifications
+- **Performance**: Optimized for minimal impact when inactive
+- **Thread-safety**: Critical for multi-threaded applications
+- **Standardization**: Provides a consistent interface across your entire application
+- **Integration**: Works seamlessly with many Python libraries and frameworks
+- **Scalability**: Easily adapts as your application grows in complexity
+:::
+
+
+## The 5 Levels of Logging {.hide}
+
+::: {.smaller-90}
+
+| Level     | Numeric Value | Description                                      |
+|-----------|---------------|--------------------------------------------------|
+| DEBUG     | 10            | Detailed information for diagnosing problems     |
+| INFO      | 20            | Confirm things are working as expected           |
+| WARNING   | 30            | Something unexpected happened, but still working |
+| ERROR     | 40            | More serious problem, unable to perform some function |
+| CRITICAL  | 50            | Serious error, program may be unable to continue |
+
+: {tbl-colwidths="[20,30,50]"}
+
+:::
+
+::: {.notes}
+There's also a NOTSET (0) level, used in custom logging handlers.
+:::
+
+
+## Setting the Log Level {.hide}
+
+::: {.smaller-80}
+You can set the log level to control which messages are recorded using `logging.basicConfig(level=...)`:
+
+```python
+import logging
+logging.basicConfig(level=logging.DEBUG)
+logging.debug("This will get logged.")
+```
+
+- Can use constants, numeric values, or string values:
+  ```python
+  logging.basicConfig(level=logging.DEBUG)  # Using constant
+  logging.basicConfig(level=10)             # Using numeric value
+  logging.basicConfig(level="DEBUG")        # Using string value
+  ```
+- The set level is the lowest level at which logging information will be processed, all log messages at **this level and higher** will be recorded
+:::
+
+## Changing the Logging Format
+
+```python
+import logging
+logging.basicConfig(
+    level=logging.INFO, 
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    datefmt="%Y-%m-%d %H:%M"
+)
+logging.info("Formatted log message")
+```
+
+Output:
+```
+2024-07-22 11:40:38 - INFO - Formatted log message
+```
+
+## Displaying Variable Data
+
+```python
+import logging
+logging.basicConfig(level=logging.DEBUG)
+name = "Samara"
+logging.debug(f"{name=}")
+```
+
+Output:
+```
+2024-07-22 14:49 - DEBUG - name='Samara'
+```
+
+::: {.notes}
+Mention the use of %-style formatting for performance in low-level logging.
+:::
+
+## Capturing Stack Traces {.hide}
+
+::: {.smaller-80}
+A stack trace is a report showing the sequence of function calls that led to the current point in a program's execution, often used to pinpoint the source of an error and understand program flow.  You can **capture stack traces** in log messages using the `exc_info=True` parameter:
+
+```python
+import logging
+logging.basicConfig(level=logging.ERROR)
+try:
+    1 / 0
+except ZeroDivisionError:
+    logging.error("Division by zero", exc_info=True)
+```
+
+::: {.callout-important}
+`logging.exception()` is a shortcut for logging an ERROR message with the stack trace. It's equivalent to calling `logging.error(exc_info=True)`.  It is typically used within an exception handler (i.e., in a `try`/`except` block).
+:::
+:::
+
+## How to Log to a File
+
+```python
+import logging
+logging.basicConfig(
+    level=logging.INFO,
+    filename="app.log",
+    filemode="a",
+    encoding="utf-8"
+)
+```
+
+- Specify `filename` in `basicConfig()`
+- Set `filemode="a"` to append instead of overwrite
+- Remember to set the encoding
+
+## Creating a Custom Logger
+
+```python
+import logging
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+logger.warning("This is a warning from the custom logger")
+```
+
+- Use `logging.getLogger(__name__)` for module-specific loggers
+- Allows for more flexible configuration
+
+## Using Handlers
+
+```python
+import logging
+
+logger = logging.getLogger(__name__)
+console_handler = logging.StreamHandler()
+file_handler = logging.FileHandler("app.log")
+
+logger.addHandler(console_handler)
+logger.addHandler(file_handler)
+```
+
+- Handlers send logs to different destinations
+- Common types: StreamHandler, FileHandler, RotatingFileHandler
+
+## Adding Formatters to Handlers
+
+```python
+import logging
+
+logger = logging.getLogger(__name__)
+handler = logging.StreamHandler()
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+```
+
+- Formatters control the structure of log messages
+- Can be different for each handler
+
+## Setting Log Levels for Handlers
+
+```python
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.DEBUG)
+
+file_handler = logging.FileHandler("app.log")
+file_handler.setLevel(logging.ERROR)
+
+logger.addHandler(console_handler)
+logger.addHandler(file_handler)
+```
+
+- Set different levels for different handlers
+- Logger's level is the minimum for all handlers
+
+## Filtering Logs
+
+```python
+import logging
+
+def debug_only(record):
+    return record.levelno == logging.DEBUG
+
+logger = logging.getLogger(__name__)
+handler = logging.StreamHandler()
+handler.addFilter(debug_only)
+logger.addHandler(handler)
+```
+
+- Use filters to fine-tune which logs are processed
+- Can be based on any attribute of the LogRecord
+
+## Best Practices
+
+- Use `__name__` as the logger name
+- Configure logging at the start of your application
+- Use appropriate log levels
+- Include contextual information in log messages
+- Consider using JSON formatting for machine-readable logs
+
+## Conclusion
+
+- Logging is essential for tracking events and debugging
+- Python's logging module is flexible and powerful
+- Custom loggers with handlers and formatters offer great control
+- Proper use of log levels and filters can streamline debugging
+- Start incorporating logging in your projects today!

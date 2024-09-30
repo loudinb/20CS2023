@@ -2,7 +2,11 @@
     display: none;
 }
 
-​​ .smaller-90 {
+.smaller-95 {
+    font-size: .95em;
+}
+
+​​.smaller-90 {
     font-size: .90em;
 }
 
