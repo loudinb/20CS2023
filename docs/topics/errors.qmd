@@ -2,7 +2,7 @@
 
 ## Types of Errors {.hide}
 
-Errors in Python programming can be broadly categorized as:
+Errors can be categorized as:
 
 -   **Syntax errors**: Detected during the parsing stage, preventing the code from running until they are corrected.
 -   **Logical errors**: The code runs without crashing but produces incorrect results due to flaws in logic or incorrect implementation of algorithms.
@@ -11,11 +11,12 @@ Errors in Python programming can be broadly categorized as:
 ## Syntax Errors {.hide}
 
 :::: smaller-80
-**Syntax errors** occur when the code is not correctly structured according to Python's grammar rules. The program will not run if it contains syntax errors.
+**Syntax errors** syntax errors occur when the code does not follow Python's grammar rules properly (structure, misspellings). The program will not run if it contains syntax errors.
 
 ``` python
 # Missing colon (:) here
-if condition
+if True 
+    print("Missing colon")
 
 # Incorrect indentation
 def function(): 
@@ -34,6 +35,81 @@ Static type checkers like `mypy` catch type-related issues to ensure consistency
 This includes incorrect use of keywords, indentation, punctuation, or any other violation of Python's syntax. The Python interpreter must successfully parse the entire program before execution begins. If there are syntax errors at any point, including within nested code blocks, the interpreter will stop parsing and report the error. Thus, the program will not run until all syntax errors are corrected, regardless of how deeply nested the problematic code might be.
 :::
 
+## Hands-on: Syntax Error (1) {.exercise}
+
+```{.python filename="test.py"}
+result = (2 + 3 * (4 - 1)
+print(result)
+```
+
+<br>
+
+
+::: {.r-stack}
+
+::: {.absolute width="100%"} 
+```{.bash code-line-numbers="false"}
+$ python test.py
+
+
+
+
+```
+:::
+
+::: {.fragment .absolute width="100%"}
+```{.bash code-line-numbers="false"}
+$ python test.py
+  
+  File "test.py", line 1 
+    result = (2 + 3 * (4 - 1)
+             ^
+ SyntaxError: '(' was never closed
+```
+:::
+
+:::
+
+
+## Hands-on: Syntax Error (2) {.exercise}
+
+```{.python filename="test.py"}
+num = range(10)
+for i in num
+    print(i)
+```
+
+<br>
+
+
+::: {.r-stack}
+
+::: {.absolute width="100%"} 
+```{.bash code-line-numbers="false"}
+$ python test.py
+
+
+
+
+```
+:::
+
+::: {.fragment .absolute width="100%"}
+```{.bash code-line-numbers="false"}
+$ python test.py
+  
+  File "test.py", line 2
+    for i in num
+                ^
+ SyntaxError: expected ':'
+```
+:::
+
+:::
+
+
+
+
 ## Logical Errors {.hide}
 
 :::: smaller-80
@@ -44,9 +120,116 @@ This includes incorrect use of keywords, indentation, punctuation, or any other 
 -   **Combination of both**: A mix of flawed concepts and coding mistakes.
 
 ::: callout-note
-To effectively handle logical errors: follow the Single Responsibility Principle, write modular code, and test each component thoroughly, including full coverage and edge cases.
+To effectively handle logical errors: follow the Single Responsibility Principle, write modular code, and **test each component thoroughly**, including full coverage and edge cases.
 :::
 ::::
+
+
+## Hands-on: Logical Error {.exercise}
+
+```{.python filename="test.py"}
+def calculate_power(base, exponent):
+    result = base ^ exponent
+    return result
+
+# Test the function
+result = calculate_power(3, 2)
+print(f"3 to the power of 2 is: {result}")
+```
+
+<br>
+
+
+::: {.r-stack}
+
+::: {.absolute width="100%"} 
+```{.bash code-line-numbers="false"}
+$ python test.py
+  
+  
+
+```
+:::
+
+::: {.fragment .absolute width="100%"}
+```{.bash code-line-numbers="false"}
+$ python test.py
+
+ 3 to the power of 2 is: 1
+```
+:::
+
+:::
+
+<br>
+<br>
+
+::: {.fragment .smaller-70}
+But the output should be `9` instead of `1`.  The issue is with the operator used for exponentiation. The correct operator is `**` instead of `^`.
+:::
+
+
+## Testting for Logical Errors {.hide}
+
+::: {.smaller-60}
+
+```{.python filename="test.py"}
+import unittest
+
+# Correct implementation of calculate_power
+def calculate_power(base, exponent):
+    result = base ^ exponent
+    return result
+
+# Unit Test class for the calculate_power function
+class TestCalculatePower(unittest.TestCase):
+
+    def test_positive_numbers(self):
+        # Test 3^2 which should return 9
+        self.assertEqual(calculate_power(3, 2), 9)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+<br>
+
+
+::: {.r-stack}
+
+::: {.absolute width="100%"} 
+```{.bash code-line-numbers="false"}
+$ python test.py
+  
+  
+
+```
+:::
+
+::: {.fragment .absolute width="100%"}
+```{.bash code-line-numbers="false"}
+$ python test.py
+
+F
+======================================================================
+FAIL: test_positive_numbers (__main__.TestCalculatePower.test_positive_numbers)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspaces/20CS2023/syntax_error.py", line 13, in test_positive_numbers
+    self.assertEqual(calculate_power(3, 2), 9)
+AssertionError: 1 != 9
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)
+```
+:::
+
+:::
+
+:::
+
 
 ## Runtime Errors {.hide}
 

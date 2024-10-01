@@ -41,3 +41,15 @@
 .hide h3 {
     display: none;
 }
+
+.exercise {
+
+    h2 {
+        display: none;
+    }
+
+    .slide-background-content {
+        background-color: lightblue;
+    }
+
+}

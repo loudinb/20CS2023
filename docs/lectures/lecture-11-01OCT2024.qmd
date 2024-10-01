@@ -2,12 +2,10 @@
 
 ## Agenda
 
-?
+Today, our primary focus will be on **exception handling**. We'll begin by briefly outlining the different types of **errors** that can occur in a program, then shift our focus to Python's mechanisms for effectively managing exceptions (runtime errors). Finally, we'll explore **context managers**, a powerful feature for managing resources efficiently in Python.
 
 {{< include ../topics/errors.qmd >}}
 
 {{< include ../topics/exception-handling.qmd >}}
 
 {{< include ../topics/context-managers.qmd >}}
-
-
