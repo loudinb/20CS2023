@@ -2,11 +2,111 @@
 
 **Exceptions** are runtime errors that interrupt the normal flow of a program. Unhandled exceptions will cause the program to terminate.  **Exception handling** allows a program to continue running or exit gracefully when an exception occurs. 
 
-## Python Documentation
+## Python Documentation References {.hide}
+
+**Python Documentation References:**
 
 - [Built-in exceptions](https://docs.python.org/3/library/exceptions.html)
 - [Exception hierarchy](https://docs.python.org/3.12/library/exceptions.html#exception-hierarchy)
 - [Raising exceptions](https://docs.python.org/3/tutorial/errors.html#raising-exceptions)
+
+## Exception Types
+
+
+### Common Exceptions {.hide}
+
+
+::: {.r-stack}
+
+```{.python code-line-numbers="1-5"}
+try:
+    # some code
+except <ExceptionType>:
+    # handle specific exception
+
+
+```
+
+::: {.fragment .fade-in-then-out .absolute width="100%"}
+```{.python code-line-numbers="1-4"}
+try:
+    1 / 0
+except ZeroDivisionError:
+    print("ZeroDivisionError")
+
+
+```
+A `ZeroDivisionError` is raised when dividing by zero.
+:::
+
+::: {.fragment .fade-in-then-out .absolute width="100%"}
+```{.python code-line-numbers="1-4"}
+try:
+    int("abc")
+except TypeError:
+    print("TypeError")
+
+
+```
+A `TypeError` is raised when performing invalid operations between incompatible types.
+:::
+
+::: {.fragment .fade-in-then-out .absolute width="100%"}
+```{.python code-line-numbers="1-5"}
+list = [1, 2, 3]
+try:
+    list[3]
+except IndexError:
+    print("IndexError")
+```
+An `IndexError` is raised when accessing an index that is out of range.
+:::
+
+::: {.fragment .fade-in-then-out .absolute width="100%"}
+```{.python code-line-numbers="1-5"}
+dict = {"name": "Jane"}
+try:
+    dict["email"]
+except KeyError:
+    print("KeyError")
+```
+A `KeyError` is raised when accessing a non-existent dictionary key.
+:::
+
+:::
+
+### `ValueError` Exercise {.exercise}
+
+A `ValueError` is raised when a function receives an inappropriate value.
+
+::: {.r-stack}
+
+::: {.absolute width="100%"}
+```{.python filename="test.py"}
+import math
+math.sqrt(-1)
+```
+:::
+
+::: {.fragment .fade-in-then-out .absolute width="100%"}
+
+```{.python filename="test.py"}
+import math
+math.sqrt(-1)
+```
+<br>
+
+```{.bash code-line-numbers="false"}
+$ python test.py
+
+Traceback (most recent call last):
+  File "/workspaces/20CS2023/test.py", line 2, in <module>
+    math.sqrt(-1)
+ValueError: math domain error
+```
+:::
+
+:::
 
 ## Exception Handling Mechanism {.hide}
 
@@ -99,11 +199,15 @@ finally:
 
 :::
 
-### Catching Exceptions {.hide}
+## Catching and Handling Exceptions
 
-The generic `except` block will catch all errors -- this is not recommended.  Always catch specific exceptions.
+::: {.smaller-90}
+- **Catching an exception** means detecting an error when it occurs.
+- **Handling an exception** means deciding what to do after catching the error, like logging it, cleaning up, or providing a fallback.
+:::
 
-::: {.r-stack}
+
+### Catching All Exceptions {.hide}
 
 ```{.python code-line-numbers="3-5"}
 try:
@@ -112,67 +216,44 @@ except:
     # handle exceptions
     # even those you didn't expect -- this is bad practice
 ```
+The generic `except` block will catch **all** errors -- this is not recommended.  **You should always catch specific exceptions**.
 
-::: {.fragment .fade-in-then-out .absolute width="100%"}
-```{.python code-line-numbers="1-5"}
+
+### Handling a `ValueError` Exception {.exercise}
+
+Catch the `ValueError` exception:
+
+::: {.r-stack}
+
+::: {.absolute width="100%"}
+```{.python filename="test.py"}
 try:
     import math
     math.sqrt(-1)
 except ValueError:
     print("ValueError")
 ```
-`ValueError`: Raised when a function receives an inappropriate value.
 :::
 
 ::: {.fragment .fade-in-then-out .absolute width="100%"}
-```{.python code-line-numbers="1-4"}
+
+```{.python filename="test.py"}
 try:
-    1 / 0
-except ZeroDivisionError:
-    print("ZeroDivisionError")
-
-
+    import math
+    math.sqrt(-1)
+except ValueError:
+    print("ValueError")
 ```
-`ZeroDivisionError`: Raised when dividing by zero.
-:::
+<br>
 
-::: {.fragment .fade-in-then-out .absolute width="100%"}
-```{.python code-line-numbers="1-4"}
-try:
-    int("abc")
-except TypeError:
-    print("TypeError")
+```{.bash code-line-numbers="false"}
+$ python test.py
 
-
+ValueError
 ```
-`TypeError`: Raised when performing invalid operations between incompatible types.
-:::
-
-::: {.fragment .fade-in-then-out .absolute width="100%"}
-```{.python code-line-numbers="1-5"}
-list = [1, 2, 3]
-try:
-    list[3]
-except IndexError:
-    print("IndexError")
-```
-`IndexError`: Raised when accessing an index that is out of range.
-:::
-
-::: {.fragment .fade-in-then-out .absolute width="100%"}
-```{.python code-line-numbers="1-5"}
-dict = {"name": "Jane"}
-try:
-    dict["email"]
-except KeyError:
-    print("KeyError")
-```
-`KeyError`: Raised when accessing a non-existent dictionary key.
 :::
 
 :::
-
-
 
 ### Catching Multiple Exceptions {.hide}
 
@@ -193,7 +274,7 @@ def process_data(data):
 ```
 
 
-### Grouping Exceptions {.hide}
+### Catching Groups of Exceptions {.hide}
 
 You can group exceptions into a single `except` block using parentheses.  This is useful when you want to handle multiple exceptions in the same way.
 
@@ -212,9 +293,9 @@ Grouping exceptions can be useful when you need to handle multiple different exc
 :::
 
 
-### The `as` Keyword {.hide}
+## The `as` Keyword {.hide}
 
-:::{.smaller-75}
+:::{.smaller-70}
 
 The `as` keyword in exception handling allows you to capture the raised exception object, giving you access to its details.
 
@@ -240,40 +321,48 @@ except ZeroDivisionError as e:
 :::
 
 ::: {.notes}
-```python
+The `as` keyword in exception handling allows you to capture the raised exception object, giving you access to its details  -- this is dependent on the exception object's attributes.
+:::
+
+### `as` Keyword Exercise {.exercise}
+
+::: {.r-stack}
+
+::: {.absolute width="100%"}
+```{.python filename="test.py"}
 try:
-    with open("nonexistent_file.txt", "r") as file:
-        content = file.read()
-except OSError as e:
-    print(f"Type: {type(e)}")
-    print(f"Args: {e.args}")
-    print(f"Errno: {e.errno}")
-    print(f"Strerror: {e.strerror}")
-    print(f"Filename: {e.filename}")
+    import math
+    math.sqrt(-1)
+except ValueError as e:
+    print(f"Error occurred: {e}")
+    print(f"Error type: {type(e).__name__}")
 ```
 :::
 
-### Precedence Rules for Return Statements {.hide}
+::: {.fragment .fade-in-then-out .absolute width="100%"}
 
-::: {.smaller-85}
-Precendence rules for return statements in exception handling blocks:
+```{.python filename="test.py"}
+try:
+    import math
+    math.sqrt(-1)
+except ValueError as e:
+    print(f"Error occurred: {e}")
+    print(f"Error type: {type(e).__name__}")
+```
+<br>
+
+```{.bash code-line-numbers="false"}
+$ python test.py
+
+Error occurred: math domain error
+Error type: ValueError
+```
 :::
 
-::: {.smaller-60}
-
-| Block    | Execution Condition | Return Behavior | Notes |
-|----------|---------------------|-----------------|-------|
-| `try`     | Always attempts to execute | If it contains a `return` statement, this value is returned (unless overridden by `finally`) | |
-| `except`  | Executes if an exception occurs in `try` | If it contains a `return` statement, this value is returned (unless overridden by `finally`) | |
-| `else`    | Executes if `try` completes without an exception and without executing a `return` | If it contains a `return` statement, this value is returned (unless overridden by `finally`) | Does not execute if `try` has already executed a `return` statement |
-| `finally` | Always executes if present | **Overrides** all other `return` statements | Executes regardless of whether a `return` statement was encountered in other blocks. |
-
-: {tbl-colwidths="[15,25,30,30]"}
-
 :::
 
 
-### Raising Exceptions {.hide}
+## Raising Exceptions {.hide}
 
 :::{.smaller-90}
 You can manually raise exceptions using the `raise` keyword. This is useful for enforcing application-specific constraints or when detecting an error condition that Python's built-in checks don't cover.
@@ -293,7 +382,60 @@ except (ValueError, TypeError):
 ```
 :::
 
-### User-Defined Exceptions {.hide}
+## Precedence Rules for Return Statements {.hide}
+
+::: {.smaller-85}
+Precendence rules for return statements in exception handling blocks:
+:::
+
+::: {.smaller-60}
+
+| Block    | Execution Condition | Return Behavior | Notes |
+|----------|---------------------|-----------------|-------|
+| `try`     | Always attempts to execute | If it contains a `return` statement, this value is returned (unless overridden by `finally`) | |
+| `except`  | Executes if an exception occurs in `try` | If it contains a `return` statement, this value is returned (unless overridden by `finally`) | |
+| `else`    | Executes if `try` completes without an exception and without executing a `return` | If it contains a `return` statement, this value is returned (unless overridden by `finally`) | Does not execute if `try` has already executed a `return` statement |
+| `finally` | Always executes if present | **Overrides** all other `return` statements | Executes regardless of whether a `return` statement was encountered in other blocks. |
+
+: {tbl-colwidths="[15,25,30,30]"}
+
+:::
+
+### Precedence Rules Exercise {.exercise}
+
+::: {.smaller-80}
+**Observe the output to verify the precedence rules.:**
+
+::: {.smaller-85}
+1. Run the code below as is.
+2. Replace `return "From finally block"` with `pass` and run again
+3. Remove `return "From try block"` and run again
+:::
+
+```{.python}
+def test_function(value):
+    try:
+        if value == 0:
+            raise ValueError("An error occurred!")
+        return "From try block"
+    except ValueError:
+        return "From except block"
+    else:
+        return "From else block"
+    finally:
+        return "From finally block"
+
+# Test different inputs:
+print(test_function(1))  # Test with value = 1
+print(test_function(0))  # Test with value = 0
+```
+
+:::
+
+
+## Custom Exceptions
+
+### Sublcassing `Exception` Class {.hide}
 
 :::{.smaller-80}
 **User-defined exceptions** can be created by subclassing the built-in `Exception` class or its subclasses. These are beneficial when you need more specific error signaling that standard exceptions don't adequately cover.
@@ -323,12 +465,17 @@ best practices when creating custom exceptions:
 :::
 
 
-### User-Defined Exceptions (cont.) {.hide}
+### Custom-Exception Example {.exercise}
 
-:::{.smaller-70}
-**Example Usage:**
+:::{.smaller-75}
 
 ```python
+class InsufficientFundsError(Exception):
+    def __init__(self, balance, amount):
+        self.balance = balance
+        self.amount = amount
+        super().__init__(f"Insufficient funds: balance {balance}, required {amount}")
+
 def withdraw(balance, amount):
     if balance < amount:
         raise InsufficientFundsError(balance, amount)
@@ -342,14 +489,41 @@ except InsufficientFundsError as e:
     print(f"Attempted withdrawal: {e.amount}")
 ```
 
-**Key Points:**
+<br>
 
-- The `withdraw` function raises `InsufficientFundsError` if the amount exceeds the balance.
-- In the `except` block, we can access the custom attributes of our exception.
+::: {.r-stack}
+
+::: {.fragment .fade-in-then-out .absolute width="100%"}
+
+```{.bash code-line-numbers="false"}
+$ python test.py
+
+```
+
+:::
+
+::: {.fragment .fade-in .absolute width="100%"}
+
+```{.bash code-line-numbers="false"}
+$ python test.py
+
+Transaction failed: Insufficient funds: balance 100, required 150
+Current balance: 100
+Attempted withdrawal: 150
+```
+
+:::
+
+:::
+
 
 :::
 
 :::{.notes}
+**Key Points:**
+
+- The `withdraw` function raises `InsufficientFundsError` if the amount exceeds the balance.
+- In the `except` block, we can access the custom attributes of our exception.
 
 :::
 
@@ -367,6 +541,6 @@ except InsufficientFundsError as e:
 :::
 
 ::: {.callout-note}
-Built-in exceptions often suffice for most situations. Use custom exceptions sparingly, only when they significantly improve error handling, enhance code clarity, or provide crucial domain-specific information.
+Use custom exceptions only when they significantly improve error handling, enhance code clarity, or provide crucial domain-specific information.
 :::
 

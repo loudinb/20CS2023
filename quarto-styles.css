@@ -48,6 +48,10 @@
         display: none;
     }
 
+    h3 {
+        display: none;
+    }
+
     .slide-background-content {
         background-color: lightblue;
     }

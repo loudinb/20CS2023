@@ -1,11 +1,46 @@
-from syntax_error import Person
+def test_function_1(value):
+    try:
+        if value == 0:
+            raise ValueError("An error occurred!")
+        return "From try block"
+    except ValueError:
+        return "From except block"
+    else:
+        return "From else block"
+    finally:
+        return "From finally block"
 
 
-print("hello")
+def test_function_2(value):
+    try:
+        if value == 0:
+            raise ValueError("An error occurred!")
+        return "From try block"
+    except ValueError:
+        return "From except block"
+    else:
+        return "From else block"
+    finally:
+        pass
 
-try:
-    b = Person("brian")
-except Exception as e:
-    print(f"error: {e.__class__.__name__} {e}")
+def test_function_3(value):
+    try:
+        if value == 0:
+            raise ValueError("An error occurred!")
+    except ValueError:
+        return "From except block"
+    else:
+        return "From else block"
+    finally:
+        pass
+    
 
-print("goodye")
+# Test different inputs:
+print(test_function_1(1))  # Test with value = 1
+print(test_function_1(0))  # Test with value = 0
+
+print(test_function_2(1))  # Test with value = 1
+print(test_function_2(0))  # Test with value = 0
+
+print(test_function_3(1))  # Test with value = 1
+print(test_function_3(0))  # Test with value = 0

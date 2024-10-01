@@ -113,7 +113,7 @@ $ python test.py
 ## Logical Errors {.hide}
 
 :::: smaller-80
-**Logical errors** are difficult to detect because the program runs without crashing but produces incorrect results due to flawed logic or improper implementation.
+**Logical errors** produce incorrect results due to flawed logic or improper implementation, they are difficult to detect because the program runs without crashing.
 
 -   **Faulty logic**: Incorrect reasoning or an unsuitable approach to solving the problem.
 -   **Faulty implementation**: The logic is correct, but it is coded incorrectly.
