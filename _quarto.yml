@@ -1,6 +1,8 @@
 project:
   title: "Python Programming (CS2023)"
   output-dir: docs/_build/html/slides
+  render:
+    - "*.qmd"
 resources:
   - "docs/_static/*"
 format: 

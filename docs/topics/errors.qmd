@@ -169,7 +169,7 @@ But the output should be `9` instead of `1`.  The issue is with the operator use
 :::
 
 
-## Testting for Logical Errors {.hide}
+## Testing for Logical Errors {.exercise}
 
 ::: {.smaller-60}
 

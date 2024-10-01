@@ -10,29 +10,92 @@
 - [Exception hierarchy](https://docs.python.org/3.12/library/exceptions.html#exception-hierarchy)
 - [Raising exceptions](https://docs.python.org/3/tutorial/errors.html#raising-exceptions)
 
-## Exception Types
+## Exception Hierarchy {.hide}
+
+**Exception Hierarchy:** (scroll to view all)
+
+These are simplistic representations of the exceptions, should be used as a quick reference only.
+
+::: {.scroll-container .smaller-60 style="overflow-y: scroll; height: 700px;"}
+- BaseException
+    - BaseExceptionGroup
+    - GeneratorExit: Raised when a generator or coroutine is closed.
+    - KeyboardInterrupt: Raised when the user hits the interrupt key (Ctrl+C).
+    - SystemExit: Raised by sys.exit() to exit the program.
+    - Exception
+        - ArithmeticError
+            - FloatingPointError: Raised when a floating point operation fails.
+            - OverflowError: Raised when an arithmetic operation exceeds the limits.
+            - ZeroDivisionError: Raised when dividing by zero.
+        - AssertionError: Raised when an assert statement fails.
+        - AttributeError: Raised when attribute reference or assignment fails.
+        - BufferError: Raised for errors related to buffer operations.
+        - EOFError: Raised when input() hits end-of-file condition.
+        - ExceptionGroup [BaseExceptionGroup]: Wraps multiple exceptions.
+        - ImportError: Raised when an import statement fails.
+            - ModuleNotFoundError: Raised when a module cannot be found.
+        - LookupError
+            - IndexError: Raised when a sequence index is out of range.
+            - KeyError: Raised when a dictionary key is not found.
+        - MemoryError: Raised when an operation runs out of memory.
+        - NameError: Raised when a local or global name is not found.
+            - UnboundLocalError: Raised when a local variable is referenced before assignment.
+        - OSError: Raised for operating system-related errors.
+            - BlockingIOError: Raised when an operation would block on non-blocking object.
+            - ChildProcessError: Raised when an operation on a child process failed.
+            - ConnectionError
+                - BrokenPipeError: Raised when writing on a closed pipe.
+                - ConnectionAbortedError: Raised when a connection attempt is aborted.
+                - ConnectionRefusedError: Raised when a connection attempt is refused.
+                - ConnectionResetError: Raised when a connection is reset by peer.
+            - FileExistsError: Raised when creating a file or directory that exists.
+            - FileNotFoundError: Raised when a requested file or directory is not found.
+            - InterruptedError: Raised when a system call is interrupted.
+            - IsADirectoryError: Raised when a file operation is requested on a directory.
+            - NotADirectoryError: Raised when a directory operation is requested on a non-directory.
+            - PermissionError: Raised when trying to run an operation without adequate access rights.
+            - ProcessLookupError: Raised when a given process doesn't exist.
+            - TimeoutError: Raised when a system function times out.
+        - ReferenceError: Raised when a weak reference proxy is used incorrectly.
+        - RuntimeError: Raised when an error doesn't fall in any other category.
+            - NotImplementedError: Raised by abstract methods or unfinished code.
+            - RecursionError: Raised when maximum recursion depth is exceeded.
+        - StopAsyncIteration: Raised by an async iterator to stop iteration.
+        - StopIteration: Raised by next() to signal end of iteration.
+        - SyntaxError: Raised when the parser encounters invalid syntax.
+            - IndentationError: Raised for improper indentation.
+                - TabError: Raised for inconsistent use of tabs and spaces.
+        - SystemError: Raised for internal errors in the Python interpreter.
+        - TypeError: Raised when an operation is applied to an incorrect type.
+        - ValueError: Raised when a function receives an argument of correct type but inappropriate value.
+            - UnicodeError
+                - UnicodeDecodeError: Raised when decoding Unicode fails.
+                - UnicodeEncodeError: Raised when encoding Unicode fails.
+                - UnicodeTranslateError: Raised when translating Unicode fails.
+        - Warning
+            - BytesWarning: Warning related to bytes and bytearray operations.
+            - DeprecationWarning: Warning about deprecated features.
+            - EncodingWarning: Warning related to encoding/decoding operations.
+            - FutureWarning: Warning about constructs that will change semantically in the future.
+            - ImportWarning: Warning about possible mistakes in module imports.
+            - PendingDeprecationWarning: Warning about features that will be deprecated in the future.
+            - ResourceWarning: Warning related to resource usage.
+            - RuntimeWarning: Warning about dubious runtime behavior.
+            - SyntaxWarning: Warning about dubious syntax.
+            - UnicodeWarning: Warning related to Unicode.
+            - UserWarning: Base class for user-defined warnings.
+:::
 
 
-### Common Exceptions {.hide}
+## Common Exceptions {.hide}
 
+### Zero, Type, Index, Key {.hide}
 
 ::: {.r-stack}
 
-```{.python code-line-numbers="1-5"}
-try:
-    # some code
-except <ExceptionType>:
-    # handle specific exception
-
-
-```
-
 ::: {.fragment .fade-in-then-out .absolute width="100%"}
 ```{.python code-line-numbers="1-4"}
-try:
-    1 / 0
-except ZeroDivisionError:
-    print("ZeroDivisionError")
+1 / 0
 
 
 ```
@@ -41,23 +104,17 @@ A `ZeroDivisionError` is raised when dividing by zero.
 
 ::: {.fragment .fade-in-then-out .absolute width="100%"}
 ```{.python code-line-numbers="1-4"}
-try:
-    int("abc")
-except TypeError:
-    print("TypeError")
+int("abc")
 
 
 ```
-A `TypeError` is raised when performing invalid operations between incompatible types.
+A `ValueError` is raised when the right type is used, but a wrong value.
 :::
 
 ::: {.fragment .fade-in-then-out .absolute width="100%"}
 ```{.python code-line-numbers="1-5"}
 list = [1, 2, 3]
-try:
-    list[3]
-except IndexError:
-    print("IndexError")
+list[3]
 ```
 An `IndexError` is raised when accessing an index that is out of range.
 :::
@@ -65,10 +122,7 @@ An `IndexError` is raised when accessing an index that is out of range.
 ::: {.fragment .fade-in-then-out .absolute width="100%"}
 ```{.python code-line-numbers="1-5"}
 dict = {"name": "Jane"}
-try:
-    dict["email"]
-except KeyError:
-    print("KeyError")
+dict["email"]
 ```
 A `KeyError` is raised when accessing a non-existent dictionary key.
 :::
