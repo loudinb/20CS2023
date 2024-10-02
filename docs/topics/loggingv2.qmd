@@ -1,0 +1,169 @@
+# Logging
+
+The `logging` module in Python provides a flexible and powerful framework for recording log messages in applications.
+
+
+## Key Features of the `logging` Module {.hide}
+
+**Key features** of Python's `logging` module:
+
+- **Flexible Logging Levels**: Multiple levels (DEBUG, INFO, WARNING, ERROR, CRITICAL) to categorize message importance.
+
+- **Configurable Handlers**: Supports various outputs (e.g., StreamHandler, FileHandler, SMTPHandler) for directing log messages.
+
+- **Format Customization**: Allows customization of log message formats for improved readability and traceability.
+
+- **Hierarchical Logger Management**: Supports logger hierarchies for fine-grained control in complex applications.
+
+- **Log Propagation**: Enables propagation of messages up the logger hierarchy for centralized configuration.
+
+- **Exception Handling**: Built-in support for logging exceptions and stack traces to aid debugging.
+
+- **Filtering and Log Routing**: Provides mechanisms to route messages based on specific criteria (e.g., levels, content).
+
+## Components of the Logging Module
+
+The Python `logging` module consists of the following main **components**:
+
+- **Loggers**: Generate log records and pass them to handlers as configured by the developer.
+- **Handlers**: Dispatch log records to specified destinations (e.g., console, files, or remote servers).
+- **Filters**: Provide fine-grained control, determining which log records get processed based on specified criteria.
+- **Formatters**: Define the format and content of log messages, such as timestamps, log levels, and message structure.
+
+::: {.notes}
+1. Loggers are the entry point for the logging system. They create log records based on method calls like logger.info() or logger.error() in your code, and route these records to the appropriate handlers.
+
+2. Handlers process log records and send them to defined destinations. This could be a file, the console, a network socket, or an email, depending on the handler type. Multiple handlers can be attached to a single logger.
+
+3. Filters provide fine-grained control over which log records are passed from logger to handler. They can be attached to both loggers and handlers to filter based on specific criteria.
+
+4. Formatters specify the layout of log messages. They define how the information in a log record is presented in the final output, including elements like timestamps, log levels, and custom fields.
+:::
+
+
+## Logger
+
+### The "root" Logger
+
+When you import the `logging` module, it automatically creates a **root** logger that serves as the base of the logger hierarchy. You can use this root logger directly through module-level functions without additional configuration.
+
+```python
+import logging
+logging.warning("This is a warning message")
+```
+
+The default message format is `level:logger name:message`.  The default logger createdis named "root", and its default level is `WARNING`.
+
+### Accessing the 'root' Logger Explicitly
+
+When you call a module-level function like `logging.warning()`, it internally delegates the call to the `root` logger.  This is more of an implicit way of using the root logger.  
+
+You can access the root logger explicitly using the following methods:
+
+- `logging.getLogger()`: When called without arguments, this function returns the root logger.
+- `logging.root`: This is a direct reference to the root logger object.
+
+```python
+import logging
+
+# Indirectly using the root logger
+logging.warning("This is a warning message")
+
+# Directly using the `logging` modules reference to the root logger
+logging.root.warning("This is a warning message")
+
+# Directly using the `getLogger` method to get the root logger object
+logger = logging.getLogger()
+logger.warning("This is a warning message")
+```
+
+::: {.notes}
+
+This is important because it can drive confusion when you see different ways of accessing the root logger -- but they are all equivalent:
+
+- `logging.warning()`: Indirectly uses the root logger through convenience functions provided by the logging module.
+- `logging.root.warning()`: Direct reference and usage of the root logger.
+- `logging.getLogger()`: Fetches the root logger, and the logger object is used explicitly.
+:::
+
+### More Than One Logger
+
+In practice, applications often use multiple loggers, each dedicated to a specific component or module. This approach allows for more granular control over logging behavior. A common pattern is to create a logger for each Python module using the __name__ variable. For example:
+
+```python
+import logging
+logger = logging.getLogger(__name__)
+logger.warning("This is a warning from the custom logger")
+```
+
+Here __name__ is a special variable that Python sets in each module. It contains the module's name, which is typically the full module path.  If you are running a script directly, __name__ will be set to "__main__"
+
+
+### Getting a Logger
+
+When you import the `logging` module, the default logger ("root") is created for you.  When you call a module-level function like `logging.warning()`, it internally delegates the call to the `root` logger.  Alternatively, you can create a `Logger` object for the `root` logger using `logging.getLogger()`.
+
+```python
+import logging
+logger = logging.getLogger()
+logger.warning("This is a warning from the custom logger")
+```
+
+
+
+
+## Formatter
+
+Formatters are used to specify the layout of log messages. You can include elements like timestamps, log levels, and custom fields.
+
+```python
+import logging
+logging.basicConfig(format='%(asctime)s %(levelname)s:%(name)s:%(message)s')
+logging.warning("This is a warning message")
+```
+
+## Handler
+
+Handlers process log records and send them to defined destinations. This could be a file, the console, or a network socket, depending on the handler type.
+
+The default handler is a `StreamHandler`, which sends log messages to the console. 
+
+```python
+import logging
+console_handler = logging.StreamHandler()
+logging.addHandler(console_handler)
+logging.warning("This is a warning message")
+```
+
+
+```python
+import logging
+
+file_handler = logging.FileHandler("app.log")
+logger.addHandler(file_handler)
+
+logger.warning("This is a warning message")
+```
+
+
+## Filters
+
+Filters provide fine-grained control over which log records are passed from logger to handler. They can be attached to both loggers and handlers to filter based on specific criteria.
+
+```python
+import logging
+
+class CustomFilter(logging.Filter):
+    def filter(self, record):
+        return record.levelno == logging.WARNING
+
+logger = logging.getLogger(__name__)
+logger.addFilter(CustomFilter())
+
+logger.warning("This is a warning message")
+logger.info("This is an info message")
+```
+
+
+
+
