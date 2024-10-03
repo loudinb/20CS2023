@@ -1,5 +1,9 @@
 import logging
 
+logging.basicConfig(
+    level=logging.WARN, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    )
+
 root_logger = logging.getLogger()
 module_logger = logging.getLogger(__name__)
 app_logger = logging.getLogger('app')

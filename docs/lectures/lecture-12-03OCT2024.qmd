@@ -2,10 +2,14 @@
 
 ## Agenda
 
-TODO: Add agenda
+Logging, and app layout if time permits.
 
 {{< include ../topics/logging/logging.qmd >}}
 
 {{< include ../topics/logging/loggers.qmd >}}
 
 {{< include ../topics/logging/handlers.qmd >}}
+
+{{< include ../topics/logging/filters.qmd >}} 
+
+{{< include ../topics/logging/formatters.qmd >}}

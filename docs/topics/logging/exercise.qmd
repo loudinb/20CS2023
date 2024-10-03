@@ -1,0 +1,12 @@
+## Hands-on: Using `FileHandler` {.exercise}
+
+Create a Python script that logs messages to a file using a `FileHandler`.  
+
+- Create a `Logger` named "app" using the `getLogger` method.
+- Create a `FileHandler` that logs messages to a file named "app.log" using the `logging.FileHandler` class.
+- Create a `CustomFilter` class that adds a custom attribute to the log record. You must inherit from the `logging.Filter` class and implement the `filter` method.
+- Create a `Formatter` that includes the custom attribute in the log message.
+- Add the `FileHandler` to the logger using the `addHandler` method (e.g., `logger.addHandler(file_handler)`).
+
+- Log a warning message to the `app` logger.
+- Run the script and verify that the warning message is logged to the file.

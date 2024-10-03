@@ -1,17 +1,194 @@
-## Filters
+# Filters
 
 Filters provide fine-grained control over which log records are passed from logger to handler. They can be attached to both loggers and handlers to filter based on specific criteria.
+
+
+## Use Cases {.hide}
+
+**Use Cases** for filters include:
+
+- Filter based on log content (e.g., log level, message content).
+- Adding additional context to log records (e.g., add user information to log records).
+- Control the flow of log records based on custom criteria.
+
+
+## The `Filter` Class {.hide}
+
+The **`Filter` class** is the base class for all filters.  To create a custom filter:
+
+- Create a custom class that subclasses the `Filter` class.
+- Implement the `filter` method. The `filter` method should return `True` if the record should be processed, and `False` if it should be ignored.
+
+
+::: {.notes}
+Attaching filters to loggers:
+
+- Filters log messages early in the logging process.
+- Affects all handlers attached to that logger.
+- Useful for application-wide filtering policies.
+- Can improve performance by reducing the number of log records processed downstream.
+
+
+Attaching filters to handlers:
+
+- Allows for more specific filtering based on how logs are being output.
+- Different handlers can have different filtering rules.
+- Useful when you want different levels of detail in different outputs (e.g., more verbose logs in a file, less verbose in console).
+:::
+
+## Basic Structure {.hide}
+
+The **basic structure** of a custom filter is as follows:
 
 ```python
 import logging
 
 class CustomFilter(logging.Filter):
     def filter(self, record):
-        return record.levelno == logging.WARNING
+        # Implement custom filtering logic here
+        return True
+```
+
+The filter() method:
+
+- Takes a `LogRecord` object as an argument
+- Returns `True` to allow the record, `False` to discard it.
+
+## Example: Level-Based Filter {.hide}
+
+The following example demonstrates a custom filter that only allows log records with a level of `WARNING` to pass through.
+
+```python
+import logging
+
+class MyLevelFilter(logging.Filter):
+
+    def __init__(self, level):
+        self.level = level
+
+    def filter(self, level):
+        return record.levelno <= self.level
+```
+
+## Example: Adding Additional Context {.hide}
+
+You can modify the `LogRecord` object in the `filter` method to add additional context to the log record.  The object behaves like a dictionary, so you can add custom attributes to it.
+
+This example demonstrates a custom filter that adds additional context to log records.
+
+```python
+import logging
+
+class MyContextFilter(logging.Filter):
+    
+        def filter(self, record):
+            record.custom_attribute = "value"
+            return True
+```
+
+
+## Attaching Filters {.hide}
+
+::: {.smaller-70}
+To attach a filter to a `logger` or `handler`, use the `addFilter` method.
+
+
+::: {.columns}
+
+::: {.column width="50%"}
+```{.python filename="tesy.py" code-line-numbers=13}
+import logging
+
+class MyContextFilter(logging.Filter):
+    
+    def __init__(self, user):
+        self.user = user
+
+    def filter(self, record):
+        record.user = self.user
+        return True
 
 logger = logging.getLogger(__name__)
-logger.addFilter(CustomFilter())
+logger.addFilter(MyContextFilter)
+logger.warning("This is a warning message")
+```
+:::
+
+
+::: {.column width="50%"}
+```{.python filename="tesy.py" code-line-numbers=13}
+import logging
+
+class MyContextFilter(logging.Filter):
+
+    def __init__(self, user):
+        self.user = user
+
+    def filter(self, record):
+        record.user = self.user
+        return True
+
+handler = logging.FileHandler("app.log")
+handler.addFilter(MyContextFilter("Alice"))
+
+logger = logging.getLogger(__name__)
+logger.addHandler(handler)
 
 logger.warning("This is a warning message")
-logger.info("This is an info message")
 ```
+:::
+
+
+:::
+
+
+:::
+
+## Hands-on: Creating a Custom Filter {.exercise}
+
+::: {.smaller-70}
+Create a logger that has two handlers: one that logs messages to the console and another that logs messages to a file.  Create a custom filter that only allows log records with a level of `WARNING` or higher to be processed by the file handler.
+
+
+```{.python filename="tesy.py"}
+import logging
+
+# TODO-1: Create LevelFilter Class.  Implement the filter method
+#  that only allows log records with a level of WARNING (logging.WARNING) or higher to be processed.
+class LevelFilter(logging.Filter):
+    pass
+
+# TODO-2: Create a Logger named app and assign it to the logger variable
+logger = pass
+
+logger.setLevel(logging.INFO) # Set the logger level to INFO
+
+# TODO-3: Create a StreamHandler and assign it to the console_handler variable
+console_handler = pass
+
+# TODO-4: Create a FileHandler and assign it to the file_handler variable
+file_handler = pass
+
+# TODO-5: Add the LevelFilter to the file_handler using the addFilter method
+
+# TODO-6: Add the console_handler logger using the addHandler method
+
+# TODO-7: Add the file_handler logger using the addHandler method
+
+
+logger.critical("This is a critical message")
+logger.error("This is an error message")
+logger.warning("This is a warning message")
+logger.info("This is an info message")
+logger.debug("This is a debug message")
+
+```
+
+<br />
+
+```{.bash code-line-numbers="false"}
+$ python test.py
+   
+
+```
+:::

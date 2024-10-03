@@ -1,9 +1,82 @@
-## Formatter
+## Formatters
 
 Formatters are used to specify the layout of log messages. You can include elements like timestamps, log levels, and custom fields.
 
+
+## Reference Documentation {.hide}
+
+- [Formatter class](https://docs.python.org/3/library/logging.html#formatter-objects)
+- [LogRecord attributes](https://docs.python.org/3/library/logging.html#logrecord-attributes)
+
+## Creating a Formatter {.hide}
+
+You can use the `logging.Formatter`.
+
 ```python
 import logging
-logging.basicConfig(format='%(asctime)s %(levelname)s:%(name)s:%(message)s')
-logging.warning("This is a warning message")
+
+formatter = logging.Formatter('%(asctime)s %(levelname)s:%(name)s:%(message)s')
 ```
+
+## Common Formatter Attributes {.hide}
+
+**Common format attributes** include:
+
+- **%(levelname)s**: The log level (DEBUG, INFO, etc.)
+- **%(message)s**: The log message
+- **%(asctime)s**: Timestamp
+- **%(name)s**: Logger name
+- **%(filename)s**: Source file name
+- **%(lineno)d**: Line number in source file
+
+## Formatters and Multiple Handlers
+
+:::{.smaller-60}
+
+You can use the same formatter with multiple handlers, or use different formatters for different handlers.
+
+
+::: {.columns}
+
+::: {.column width="50%"}
+```python
+import logging
+
+formatter = logging.Formatter(
+    '%(asctime)s %(levelname)s:%(name)s:%(message)s'
+    )
+
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(formatter)
+
+file_handler = logging.FileHandler('app.log')
+file_handler.setFormatter(formatter)
+```
+:::
+
+::: {.column width="50%"}
+```python
+import logging
+
+
+console_formatter = logging.Formatter(
+    '%(asctime)s %(levelname)s:%(message)s'
+    )
+
+file_formatter = logging.Formatter(
+    '%(asctime)s %(message)s'
+    )
+
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(console_formatter)
+
+file_handler = logging.FileHandler('app.log')
+file_handler.setFormatter(file_formatter)
+```
+:::
+
+:::
+
+:::
+
+

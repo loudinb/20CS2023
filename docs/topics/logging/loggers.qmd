@@ -54,7 +54,29 @@ This is important because it can drive confusion when you see different ways of 
 - `logging.getLogger()`: Fetches the root logger, and the logger object is used explicitly.
 :::
 
-## Creating a Logger {.hide}
+### `basicConfig` Method {.hide}
+
+::: {.smaller-80}
+You can configure the `root` logger using the **`basicConfig`** method.  This method allows you to set the logging level, format, and other properties.
+
+```{.python filename="test.py"}
+import logging
+
+# Configure the root logger
+logging.basicConfig(
+    level=logging.WARN, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    )
+# Log a message
+logging.debug("This is a debug message")
+```
+
+::: {.callout-note}
+The `basicConfig` method is a convenience method that configures the `root` logger only.  If you want to configure a different logger, you need to create a logger object and configure it separately.
+:::
+:::
+
+
+## Custom Logger {.hide}
 
 ::: {.smaller-80}
 It is common to use multiple loggers, each dedicated to a specific component or module, allowing for more granular control.  You can create a logger using the `getLogger` method and passing a name to it.
@@ -74,8 +96,6 @@ logger.warning("This is a warning.")
 ```
 :::
 
-
-
 ::: {.column width="50%"}
 ```{.python filename="test.py"}
 import logging
@@ -92,21 +112,32 @@ logger.warning("This is a warning.")
 The `__name__` variable is a special variable in Python that contains the module's name. If you are running a script directly, `__name__` will be set to `__main__`. This is useful for creating loggers that are specific to a module.
 :::
 
-## Hands-on: Creating Loggers {.exercise}
+### Hands-on: Creating Loggers {.exercise}
 
 
-::: {.smaller-70}
+::: {.smaller-60}
 
 ```{.python filename="test.py"}
 import logging
 
-# Create three loggers
 
-# TODO-1: create `root` logger
+# TODO-1: create format string that includes timestamp (%(asctime)s), 
+#         logger name (%(name)s), log level (%(levelname)s), 
+#         and message (%(message)s)
+
+format = pass
+
+# Configure the root logger
+logging.basicConfig(
+    level=logging.WARN, format=format
+    )
+
+# Create three loggers
+# TODO-2: create `root` logger
 root_logger = pass
-# TODO-2: Create logger using __name__ variable
+# TODO-3: Create logger using __name__ variable
 module_logger = pass
-# TODO-3: Create logger named "app"
+# TODO-4: Create logger named "app"
 app_logger = pass
 
 
@@ -114,9 +145,9 @@ def main():
 
     # Log warning message to the loggers
 
-    # TODO-4: Log "warning logged to root logger" using root_logger
-    # TODO-5: Log "warning logged to module logger" using module_logger
-    # TODO-6: Log "warning logged to app logger" using app_logger
+    # TODO-5: Log "warning logged to root logger" using root_logger
+    # TODO-6: Log "warning logged to module logger" using module_logger
+    # TODO-7: Log "warning logged to app logger" using app_logger
 
 
 if __name__ == "__main__":
@@ -135,7 +166,7 @@ $ python test.py
 
 :::
 
-## Child Loggers {.hide}
+### Child Loggers {.hide}
 
 ::: {.smaller-80}
 Loggers can be organized in a hierarchical structure, where a logger can have child loggers.  Loggers are organized in a hierarchical namespace based on the logger names, which are separated by dots (.).
@@ -193,3 +224,39 @@ $ python test.py
 ```
 
 :::
+
+
+### Setting Level {.hide}
+
+::: {.smaller-80}
+You can set the logging level for a custom logger using the `setLevel` method.  The logging level determines which messages are processed by the logger.  Any message with a level **less than the logger's level will be ignored**. 
+
+
+```{.python filename="test.py" code-line-numbers="10"}
+import logging
+
+# Create a logger
+logger = logging.getLogger(__name__)
+
+# Create a stream handler
+console_handler = logging.StreamHandler()
+
+# Set logger attributes
+logger.setLevel(logging.INFO)
+logger.addHandler(console_handler)
+
+# Log a message
+logger.info("This is an info message")
+logger.debug("This is a debug message")
+```
+:::
+
+
+## Loggers are Singletons {.hide}
+
+::: {.callout-tip}
+The `logging.getLogger(name)` function uses a singleton pattern. This means that for any given name, it will always return the same logger object.  So by using the same name, you can share the same logger object across multiple modules.
+:::
+
+
+
