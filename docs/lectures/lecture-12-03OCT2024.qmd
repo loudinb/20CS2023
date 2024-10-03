@@ -2,10 +2,10 @@
 
 ## Agenda
 
-?
+TODO: Add agenda
 
-{{< include ../topics/logging.qmd >}}
+{{< include ../topics/logging/logging.qmd >}}
 
-{{< include ../topics/debugging.qmd >}}
+{{< include ../topics/logging/loggers.qmd >}}
 
-{{< include ../topics/modules-and-packages.qmd >}}
+{{< include ../topics/logging/handlers.qmd >}}

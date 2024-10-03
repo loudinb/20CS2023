@@ -1,0 +1,60 @@
+# Logging
+
+The `logging` module in Python provides a flexible and powerful framework for recording log messages in applications.
+
+## Components of the Logging Module {.hide}
+
+![](/docs/topics/logging/logging_flow.svg){fig-align="center"}
+
+:::{.smaller-80}
+- **Loggers**: Generate log records and pass them to handlers as configured by the developer.
+- **Handlers**: Dispatch log records to specified destinations (e.g., console, files, or remote servers).
+- **Filters**: Provide fine-grained control, determining which log records get processed based on specified criteria.
+- **Formatters**: Define the format and content of log messages, such as timestamps, log levels, and message structure.
+:::
+
+::: {.notes}
+
+The Python `logging` module consists of the following main **components**:
+
+1. Loggers are the entry point for the logging system. They create log records based on method calls like logger.info() or logger.error() in your code, and route these records to the appropriate handlers.
+
+2. Handlers process log records and send them to defined destinations. This could be a file, the console, a network socket, or an email, depending on the handler type. Multiple handlers can be attached to a single logger.
+
+3. Filters provide fine-grained control over which log records are passed from logger to handler. They can be attached to both loggers and handlers to filter based on specific criteria.
+
+4. Formatters specify the layout of log messages. They define how the information in a log record is presented in the final output, including elements like timestamps, log levels, and custom fields.
+:::
+
+
+## Key Features of the `logging` Module {.hide}
+
+:::{.smaller-70}
+**Key features** of Python's `logging` module:
+
+- **Flexible Logging Levels**: Multiple levels (DEBUG, INFO, WARNING, ERROR, CRITICAL) to categorize message importance.
+- **Configurable Handlers**: Supports various outputs (e.g., StreamHandler, FileHandler, SMTPHandler) for directing log messages.
+- **Format Customization**: Allows customization of log message formats for improved readability and traceability.
+- **Hierarchical Logger Management**: Supports logger hierarchies for fine-grained control in complex applications.
+- **Log Propagation**: Enables propagation of messages up the logger hierarchy for centralized configuration.
+- **Exception Handling**: Built-in support for logging exceptions and stack traces to aid debugging.
+- **Filtering and Log Routing**: Provides mechanisms to route messages based on specific criteria (e.g., levels, content).
+- **Thread Safety**: Designed to be thread-safe, ensuring that log messages are handled correctly in multi-threaded applications.
+:::
+
+## Logging Levels {.hide}
+
+:::{.smaller-75}
+The `logging` module defines the following **logging levels**:
+
+| Level    | Value | Description                                |
+|----------|-------|----------------------------------|
+| CRITICAL | 50              | A serious error that may cause the program to crash.           |
+| ERROR    | 40              | Indication of a serious problem that requires attention but does not cause the program to crash.             |
+| WARNING  | 30              | Indication that something unexpected happened (negative event), also used to indicate deprecated API. |
+| INFO     | 20              | General information about the program's operation.                   |
+| DEBUG    | 10              | Detailed information, typically useful for debugging.                |
+
+: {tbl-colwidths="[20,20,60]"}
+
+:::

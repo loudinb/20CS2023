@@ -1,0 +1,176 @@
+# Handlers
+
+Handlers are responsible for sending log records to the appropriate destination.  This could be a file, the console, or a network socket, depending on the handler type.
+
+## Reference Documentation {.hide}
+
+Refer to the Python documentation for more information on handlers:
+
+- [Handler class](https://docs.python.org/3/library/logging.handlers.html#handler-objects)
+
+
+## `StreamHandler` Type {.hide}
+
+::: {.smaller-85}
+The default handler is a [`StreamHandler`](https://docs.python.org/3/library/logging.handlers.html#streamhandler), which sends log messages to the console. You can add a `StreamHandler` to a logger to send log messages to the console.
+
+```python
+import logging
+
+console_handler = logging.StreamHandler()
+logging.addHandler(console_handler)
+
+logging.warning("This is a warning message")
+```
+
+::: {.callout-note}
+This is redundant because the root logger already has a `StreamHandler` attached to it by default.  We are adding another `StreamHandler` to the root logger in this example to demonstrate how to add a handler to a logger.
+:::
+
+:::
+
+## `FileHandler` Type {.hide}
+
+The [`FileHandler`](https://docs.python.org/3/library/logging.handlers.html#filehandler) type sends log messages to a file.  You can add a `FileHandler` to a logger to send log messages to a file.  This will create a new file if it does not already exist.
+
+```python
+import logging
+
+file_handler = logging.FileHandler("app.log")
+logger.addHandler(file_handler)
+logger.warning("This is a warning message")
+```
+
+## Hands-on: Using `FileHandler` {.exercise}
+
+Create a Python script that logs messages to a file using a `FileHandler`.  
+
+- Create a `Logger` named `app`.
+- Add a `FileHandler` to the `app` logger that logs messages to a file named `app.log`.
+- Log a warning message to the `app` logger.
+- Run the script and verify that the warning message is logged to the file.
+
+
+## `RotatingFileHandler` Type {.hide}
+
+The [`RotatingFileHandler`](https://docs.python.org/3/library/logging.handlers.html#rotatingfilehandler) type sends log messages to a file, but it will rotate the log file when it reaches a certain size.
+
+```python
+import logging
+from logging.handlers import RotatingFileHandler
+
+file_handler = RotatingFileHandler(
+    "app.log", maxBytes=10000, backupCount=5
+    )
+
+logger = logging.getLogger()
+logger.addHandler(file_handler)
+logger.warning("This is a warning message")
+```
+
+## `TimedRotatingFileHandler` Type {.hide}
+
+The [`TimedRotatingFileHandler`](https://docs.python.org/3/library/logging.handlers.html#timedrotatingfilehandler) type sends log messages to a file, but it will rotate the log file at a specified time interval.
+
+```python
+import logging
+from logging.handlers import TimedRotatingFileHandler
+
+file_handler = TimedRotatingFileHandler(
+    "app.log", when="midnight", interval=1, backupCount=5
+    )
+
+logger = logging.getLogger()
+logger.addHandler(timed_rotating_file_handler)
+logger.warning("This is a warning message")
+```
+
+## `SysLogHandler` Type {.hide}
+
+The [`SysLogHandler`](https://docs.python.org/3/library/logging.handlers.html#sysloghandler) type sends log messages to the system log.  This is useful for logging messages on Unix systems.
+
+```python
+import logging
+from logging.handlers import SysLogHandler
+
+syslog_handler = SysLogHandler()
+logger.addHandler(syslog_handler)
+logger.warning("This is a warning message")
+```
+
+
+## `SMTPHandler` Type {.hide}
+
+The `SMTPHandler` type sends log messages to an email address.  This requires an SMTP server to send the email.
+
+```python
+import logging
+from logging.handlers import SMTPHandler
+
+smtp_handler = SMTPHandler(
+    mailhost="smtp.example.com",
+    fromaddr="do-not-reply@example.com"
+    toaddrs=["admin@example.com"],
+    subject="Application Error"
+    )
+
+logger = logging.getLogger()
+logger.addHandler(smtp_handler)
+logger.warning("This is a warning message")
+```
+
+
+## `SocketHandler` Type {.hide}
+
+The [`SocketHandler`](https://docs.python.org/3/library/logging.handlers.html#sockethandler) type sends log messages to a network socket.  This is useful for logging messages to a remote server.
+
+```python
+import logging
+from logging.handlers import SocketHandler
+
+socket_handler = SocketHandler("localhost", logging.handlers.DEFAULT_TCP_LOGGING_PORT)
+logger.addHandler(socket_handler)
+logger.warning("This is a warning message")
+```
+
+
+## Other Handler Types {.hide}
+
+There are many other handler types available in the Python standard library.  You can also create your own custom handler by subclassing the `Handler` class.  Here are a few other handler types:
+
+- [`HTTPHandler`](https://docs.python.org/3/library/logging.handlers.html#httphandler): Sends log messages to an HTTP server.
+- [`NTEventLogHandler`](https://docs.python.org/3/library/logging.handlers.html#nteventloghandler): Sends log messages to the Windows Event Log.
+- [`SysLogHandler`](https://docs.python.org/3/library/logging.handlers.html#sysloghandler): Sends log messages to the system log on Unix systems.
+- [`WatchedFileHandler`](https://docs.python.org/3/library/logging.handlers.html#watchedfilehandler): Sends log messages to a file, but will reopen the file if it is moved or deleted.
+
+
+## Custom Handlers {.hide}
+
+::: {.smaller-70}
+You can create your own custom handler by subclassing any of the built-in handler types and implementing the `emit` method.  For example, you can create a custom handler that sends log messages to a Slack channel by subclassing the `Handler` class and implementing the `emit` method.
+
+```python
+import logging
+import requests
+
+class SlackHandler(logging.Handler):
+    def __init__(self, webhook_url):
+        super().__init__()
+        self.webhook_url = webhook_url
+
+    def emit(self, record):
+        try:
+            message = self.format(record)
+            payload = {"text": message}
+            response = requests.post(self.webhook_url, json=payload, timeout=5)
+            response.raise_for_status()
+        except Exception:
+            self.handleError(record)  # this method is from the Handler class
+
+slack_handler = SlackHandler("https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX")
+
+logger = logging.getLogger()
+logger.addHandler(slack_handler)
+logger.warning("This is a warning message")
+```
+:::

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" viewBox="19.5 -.5 1341 141" width="1341" height="141">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="SharpArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-4 -4 9 8" markerWidth="9" markerHeight="8" color="black">
+      <g>
+        <path d="M 3.6 0 L -2.16 -2.16 L 0 0 L 0 0 L -2.16 2.16 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="Canvas_1" stroke="none" fill-opacity="1" stroke-opacity="1" stroke-dasharray="none" fill="none">
+    <title>Canvas 1</title>
+    <rect fill="white" x="19.5" y="-.5" width="1341" height="141"/>
+    <g id="Canvas_1_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_2">
+        <path d="M 30 0 L 150 0 C 155.52285 33817688e-23 160 4.4771525 160 10 L 160 130 C 160 135.52285 155.52285 140 150 140 L 30 140 C 24.477153 140 20 135.52285 20 130 L 20 10 C 20 4.4771525 24.477153 -33817688e-23 30 0 Z" fill="#b3d7ff"/>
+        <path d="M 30 0 L 150 0 C 155.52285 33817688e-23 160 4.4771525 160 10 L 160 130 C 160 135.52285 155.52285 140 150 140 L 30 140 C 24.477153 140 20 135.52285 20 130 L 20 10 C 20 4.4771525 24.477153 -33817688e-23 30 0 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(25 44)" fill="black">
+          <tspan font-family="SF Pro Text" font-size="22" fill="black" x="27.461426" y="21" xml:space="preserve">Python</tspan>
+          <tspan font-family="SF Pro Text" font-size="22" fill="black" x="37.10791" y="47" xml:space="preserve">Code</tspan>
+        </text>
+      </g>
+      <g id="Graphic_3">
+        <path d="M 510 0 L 630 0 C 635.52285 33817688e-23 640 4.4771525 640 10 L 640 130 C 640 135.52285 635.52285 140 630 140 L 510 140 C 504.47715 140 500 135.52285 500 130 L 500 10 C 500 4.4771525 504.47715 -33817688e-23 510 0 Z" fill="#ffffc0"/>
+        <path d="M 510 0 L 630 0 C 635.52285 33817688e-23 640 4.4771525 640 10 L 640 130 C 640 135.52285 635.52285 140 630 140 L 510 140 C 504.47715 140 500 135.52285 500 130 L 500 10 C 500 4.4771525 504.47715 -33817688e-23 510 0 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(505 57)" fill="black">
+          <tspan font-family="SF Pro Text" font-size="22" fill="black" x="23.20752" y="21" xml:space="preserve">Handler</tspan>
+        </text>
+      </g>
+      <g id="Graphic_4">
+        <path d="M 270 0 L 390 0 C 395.52285 33817688e-23 400 4.4771525 400 10 L 400 130 C 400 135.52285 395.52285 140 390 140 L 270 140 C 264.47715 140 260 135.52285 260 130 L 260 10 C 260 4.4771525 264.47715 -33817688e-23 270 0 Z" fill="#ffffc0"/>
+        <path d="M 270 0 L 390 0 C 395.52285 33817688e-23 400 4.4771525 400 10 L 400 130 C 400 135.52285 395.52285 140 390 140 L 270 140 C 264.47715 140 260 135.52285 260 130 L 260 10 C 260 4.4771525 264.47715 -33817688e-23 270 0 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(265 57)" fill="black">
+          <tspan font-family="SF Pro Text" font-size="22" fill="black" x="27.810547" y="21" xml:space="preserve">Logger</tspan>
+        </text>
+      </g>
+      <g id="Graphic_5">
+        <path d="M 750 0 L 870 0 C 875.5228 33817688e-23 880 4.4771525 880 10 L 880 130 C 880 135.52285 875.5228 140 870 140 L 750 140 C 744.47715 140 740 135.52285 740 130 L 740 10 C 740 4.4771525 744.47715 -33817688e-23 750 0 Z" fill="#ffffc0"/>
+        <path d="M 750 0 L 870 0 C 875.5228 33817688e-23 880 4.4771525 880 10 L 880 130 C 880 135.52285 875.5228 140 870 140 L 750 140 C 744.47715 140 740 135.52285 740 130 L 740 10 C 740 4.4771525 744.47715 -33817688e-23 750 0 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(745 57)" fill="black">
+          <tspan font-family="SF Pro Text" font-size="22" fill="black" x="37.84375" y="21" xml:space="preserve">Filter</tspan>
+        </text>
+      </g>
+      <g id="Graphic_7">
+        <path d="M 1230 0 L 1350 0 C 1355.5228 33817688e-23 1360 4.4771525 1360 10 L 1360 130 C 1360 135.52285 1355.5228 140 1350 140 L 1230 140 C 1224.4772 140 1220 135.52285 1220 130 L 1220 10 C 1220 4.4771525 1224.4772 -33817688e-23 1230 0 Z" fill="#b3d7ff"/>
+        <path d="M 1230 0 L 1350 0 C 1355.5228 33817688e-23 1360 4.4771525 1360 10 L 1360 130 C 1360 135.52285 1355.5228 140 1350 140 L 1230 140 C 1224.4772 140 1220 135.52285 1220 130 L 1220 10 C 1220 4.4771525 1224.4772 -33817688e-23 1230 0 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1225 57)" fill="black">
+          <tspan font-family="SF Pro Text" font-size="22" fill="black" x="28.036133" y="21" xml:space="preserve">Output</tspan>
+        </text>
+      </g>
+      <g id="Line_9">
+        <line x1="160" y1="70" x2="249.5" y2="70" marker-end="url(#SharpArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_10">
+        <line x1="400" y1="70" x2="489.5" y2="70" marker-end="url(#SharpArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_11">
+        <line x1="640" y1="70" x2="729.5" y2="70" marker-end="url(#SharpArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_12">
+        <line x1="880" y1="70" x2="969.5" y2="70" marker-end="url(#SharpArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_13">
+        <path d="M 990 0 L 1110 0 C 1115.5228 33817688e-23 1120 4.4771525 1120 10 L 1120 130 C 1120 135.52285 1115.5228 140 1110 140 L 990 140 C 984.4772 140 980 135.52285 980 130 L 980 10 C 980 4.4771525 984.4772 -33817688e-23 990 0 Z" fill="#ffffc0"/>
+        <path d="M 990 0 L 1110 0 C 1115.5228 33817688e-23 1120 4.4771525 1120 10 L 1120 130 C 1120 135.52285 1115.5228 140 1110 140 L 990 140 C 984.4772 140 980 135.52285 980 130 L 980 10 C 980 4.4771525 984.4772 -33817688e-23 990 0 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(985 57)" fill="black">
+          <tspan font-family="SF Pro Text" font-size="22" fill="black" x="12.320312" y="21" xml:space="preserve">Formatter</tspan>
+        </text>
+      </g>
+      <g id="Line_14">
+        <line x1="1120" y1="70" x2="1209.5" y2="70" marker-end="url(#SharpArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+    </g>
+  </g>
+</svg>

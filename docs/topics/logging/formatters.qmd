@@ -1,0 +1,9 @@
+## Formatter
+
+Formatters are used to specify the layout of log messages. You can include elements like timestamps, log levels, and custom fields.
+
+```python
+import logging
+logging.basicConfig(format='%(asctime)s %(levelname)s:%(name)s:%(message)s')
+logging.warning("This is a warning message")
+```
