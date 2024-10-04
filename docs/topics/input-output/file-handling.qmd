@@ -1,0 +1,285 @@
+## Introduction to File Handling in Python
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### What is File Handling?
+- Process of working with files
+- Reading from and writing to files
+- Managing file systems
+:::
+
+::: {.column width="50%"}
+### Importance
+- Data persistence
+- Configuration management
+- Log processing
+- Data analysis and reporting
+:::
+
+::::
+
+---
+
+## Python's File Handling Capabilities
+
+- Built-in functions and methods
+- Support for various file types
+- Context managers for safe operations
+- Extensive standard library support
+
+---
+
+## Core Concepts: Understanding File Types
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Text Files
+- Human-readable content
+- Examples: `.txt`, `.csv`, `.log`
+- Encoding considerations:
+  - UTF-8
+  - ASCII
+:::
+
+::: {.column width="50%"}
+### Binary Files
+- Machine-readable content
+- Examples: 
+  - Images
+  - Executables
+  - Databases
+- Require specific handling
+:::
+
+::::
+
+---
+
+## File Modes and Access Types
+
+| Mode | Description | Use Case |
+|------|-------------|----------|
+| `'r'` | Read (default) | Reading existing files |
+| `'w'` | Write (overwrites) | Creating new or overwriting files |
+| `'a'` | Append | Adding to existing files |
+| `'b'` | Binary mode | Working with non-text files |
+| `'+'` | Read and write | Updating existing files |
+| `'t'` | Text mode (default) | Working with text files |
+
+---
+
+## Basic File Operations: Opening and Closing
+
+```python
+# Using open() function
+file = open('example.txt', 'r')
+content = file.read()
+file.close()
+
+# Using context manager (recommended)
+with open('example.txt', 'r') as file:
+    content = file.read()
+# File is automatically closed after the block
+```
+
+---
+
+## Reading from Files
+
+```python
+# Read entire file
+with open('example.txt', 'r') as file:
+    content = file.read()
+
+# Read line by line
+with open('example.txt', 'r') as file:
+    for line in file:
+        print(line.strip())
+
+# Read specific number of characters
+with open('example.txt', 'r') as file:
+    chunk = file.read(100)  # Read 100 characters
+```
+
+---
+
+## Writing to Files
+
+```python
+# Write string to file
+with open('output.txt', 'w') as file:
+    file.write("Hello, World!")
+
+# Write multiple lines
+lines = ["Line 1", "Line 2", "Line 3"]
+with open('output.txt', 'w') as file:
+    file.writelines(line + '\n' for line in lines)
+
+# Append to file
+with open('log.txt', 'a') as file:
+    file.write("New log entry\n")
+```
+
+---
+
+## File Pointer Operations
+
+```python
+with open('example.txt', 'r') as file:
+    # Get current position
+    position = file.tell()
+    print(f"Current position: {position}")
+
+    # Move to specific position
+    file.seek(10)
+    
+    # Read from new position
+    content = file.read(20)
+    print(f"Content: {content}")
+```
+
+---
+
+## File System Operations with `os` Module
+
+```python
+import os
+
+# Check if file exists
+if os.path.exists('example.txt'):
+    print("File exists")
+
+# Get file size
+size = os.path.getsize('example.txt')
+
+# Rename file
+os.rename('old_name.txt', 'new_name.txt')
+
+# Delete file
+os.remove('unnecessary_file.txt')
+
+# List directory contents
+print(os.listdir('.'))
+```
+
+---
+
+## Handling Paths with `pathlib`
+
+```python
+from pathlib import Path
+
+# Create Path object
+file_path = Path('documents/report.txt')
+
+# Check if file exists
+if file_path.exists():
+    print("File exists")
+
+# Get file name and extension
+print(file_path.name)
+print(file_path.suffix)
+
+# Join paths
+new_path = Path('documents').joinpath('new_report.txt')
+
+# Create directory
+Path('new_directory').mkdir(exist_ok=True)
+```
+
+---
+
+## Error Handling: Common Exceptions
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### `FileNotFoundError`
+```python
+try:
+    with open('non_existent.txt', 'r') as file:
+        content = file.read()
+except FileNotFoundError:
+    print("File not found!")
+```
+:::
+
+::: {.column width="50%"}
+### `PermissionError`
+```python
+try:
+    with open('/root/secret.txt', 'w') as file:
+        file.write("Hello")
+except PermissionError:
+    print("Permission denied!")
+```
+:::
+
+::::
+
+---
+
+## Handling Multiple Exceptions
+
+```python
+try:
+    with open('example.txt', 'r') as file:
+        content = file.read()
+except FileNotFoundError:
+    print("File not found!")
+except PermissionError:
+    print("Permission denied!")
+except IOError as e:
+    print(f"An I/O error occurred: {e}")
+finally:
+    print("File operation attempted.")
+```
+
+---
+
+## Using `with` for Resource Management
+
+```python
+# Without 'with' (not recommended)
+file = open('example.txt', 'r')
+try:
+    content = file.read()
+finally:
+    file.close()
+
+# With 'with' statement (recommended)
+with open('example.txt', 'r') as file:
+    content = file.read()
+# File is automatically closed, even if an exception occurs
+```
+
+---
+
+## Logging File Handling Errors
+
+```python
+import logging
+
+logging.basicConfig(filename='app.log', level=logging.ERROR)
+
+try:
+    with open('non_existent.txt', 'r') as file:
+        content = file.read()
+except FileNotFoundError:
+    logging.error("Attempted to read non-existent file")
+    print("File not found. Check app.log for details.")
+```
+
+---
+
+## Best Practices for Error Handling
+
+1. Always use `with` statements for file operations
+2. Check file existence before operations
+3. Use absolute paths when possible
+4. Validate input data before writing
+5. Implement proper logging for debugging
+6. Handle specific exceptions before general ones
+7. Avoid file operations on untrusted input

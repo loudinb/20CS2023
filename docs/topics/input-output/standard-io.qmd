@@ -1,0 +1,157 @@
+# Standard Input/Output in Python
+
+## Introduction
+
+Standard Input/Output (I/O) in Python refers to the default methods of getting input from the user and displaying output to the console. While we've already covered printing to the console, this lecture will focus more on input operations and some advanced aspects of standard I/O.
+
+## Standard Input
+
+### The `input()` Function
+
+The primary way to get user input in Python is through the `input()` function. 
+
+#### Basic Usage
+
+```python
+name = input("What's your name? ")
+print(f"Hello, {name}!")
+```
+
+When this code runs, it prompts the user with "What's your name? " and waits for the user to type something and press Enter. The entered value is then stored in the `name` variable.
+
+#### Important Notes:
+1. `input()` always returns a string.
+2. If you need a number, you must convert the input.
+
+Example:
+```python
+age = int(input("How old are you? "))
+print(f"Next year, you'll be {age + 1} years old.")
+```
+
+### Multiple Inputs
+
+To get multiple inputs, you can use `input()` multiple times or split a single input:
+
+```python
+# Multiple input() calls
+first_name = input("Enter your first name: ")
+last_name = input("Enter your last name: ")
+
+# Splitting a single input
+full_name = input("Enter your full name: ").split()
+first_name, last_name = full_name
+```
+
+### Input Validation
+
+Always validate user input to ensure it meets your expectations:
+
+```python
+while True:
+    try:
+        age = int(input("Enter your age: "))
+        if 0 <= age <= 120:
+            break
+        else:
+            print("Please enter a valid age between 0 and 120.")
+    except ValueError:
+        print("Please enter a valid integer for age.")
+```
+
+## Advanced Standard I/O
+
+### Using `sys.stdin` and `sys.stdout`
+
+For more control over input and output, you can use `sys.stdin` and `sys.stdout`:
+
+```python
+import sys
+
+# Reading a line from standard input
+line = sys.stdin.readline()
+
+# Writing to standard output
+sys.stdout.write("This is a line of text.\n")
+```
+
+### Reading Multiple Lines
+
+To read multiple lines until EOF (End of File), you can use:
+
+```python
+import sys
+
+for line in sys.stdin:
+    print(f"You entered: {line.strip()}")
+```
+
+This will continue reading lines until the user sends an EOF signal (Ctrl+D on Unix-like systems, Ctrl+Z on Windows).
+
+### Redirecting Standard Input
+
+You can redirect input from a file instead of the keyboard:
+
+```python
+import sys
+
+# Redirect stdin to read from a file
+sys.stdin = open('input.txt', 'r')
+
+# Now input() will read from the file
+data = input()
+```
+
+### Handling Passwords
+
+For sensitive input like passwords, you can use the `getpass` module:
+
+```python
+import getpass
+
+password = getpass.getpass("Enter your password: ")
+```
+
+This will not display the password as it's being typed.
+
+## Practical Example: A Simple Quiz Game
+
+Let's put it all together with a simple quiz game:
+
+```python
+import sys
+
+def get_answer(prompt, options):
+    while True:
+        sys.stdout.write(prompt + " " + "/".join(options) + ": ")
+        sys.stdout.flush()
+        answer = sys.stdin.readline().strip().lower()
+        if answer in options:
+            return answer
+        print("Invalid option. Please try again.")
+
+questions = [
+    ("What's the capital of France?", "paris"),
+    ("What's 2 + 2?", "4"),
+    ("Who wrote 'Romeo and Juliet'?", "shakespeare")
+]
+
+score = 0
+for question, correct_answer in questions:
+    user_answer = get_answer(question, ["skip"])
+    if user_answer == "skip":
+        continue
+    if user_answer == correct_answer:
+        print("Correct!")
+        score += 1
+    else:
+        print(f"Sorry, the correct answer was {correct_answer}.")
+
+print(f"\nYou got {score} out of {len(questions)} questions correct.")
+```
+
+This example demonstrates:
+- Custom input function with validation
+- Using `sys.stdout.write()` and `sys.stdout.flush()` for prompt display
+- Using `sys.stdin.readline()` for input
+- Basic game logic with score tracking
