@@ -1,157 +1,186 @@
-# Standard Input/Output in Python
+# Standard Input/Output
 
 ## Introduction
 
-Standard Input/Output (I/O) in Python refers to the default methods of getting input from the user and displaying output to the console. While we've already covered printing to the console, this lecture will focus more on input operations and some advanced aspects of standard I/O.
+Standard Input/Output (I/O) in Python refers to the default methods of getting input from the user (keyboard) and displaying output to the console (screen).
+
+## Reference Documentation {.hide}
+
+The following resources from the official Python documentation provide more information on standard input/output:
+
+- [`print()` Function](https://docs.python.org/3/library/functions.html#print)
+- [`input()` Function](https://docs.python.org/3/library/functions.html#input)
+- [`sys.stdin`](https://docs.python.org/3/library/sys.html#sys.stdin)
+- [`sys.stdout`](https://docs.python.org/3/library/sys.html#sys.stdout)
+
+## Standard Output
+
+The primary way to display output in Python is through the `print()` function.
+
+### The `print()` Function {.hide}
+
+When you run this code, it displays "Hello, World!" on the console.
+
+```{.python style="margin: 1em"}
+print("Hello, World!")      # Hello, World!
+```
+
+
+### The `print()` Function (cont.) {.hide}
+
+
+The `print()` function signature is:
+
+```python
+print(*objects, sep=' ', end='\n', file=None, flush=False)
+```
+
+::: {.r-stack}
+
+::: {.fragment .fade-in-then-out .absolute top=150}
+Notice that the `*objects` parameter accepts a variable (`*`) number of arguments at once.
+
+
+```{.python style="margin: 1em"}
+print("Hello", "World")     # Hello World
+print(1, 2, 3)              # 1 2 3
+print("Hello", 42, True)    # Hello 42 True
+```
+:::
+
+::: {.fragment .fade-in-then-out .absolute top=150}
+When it comes to printing multiple objects, the `sep` parameter (which by default is a space) is used to separate them. You can change this by setting the `sep` parameter:
+
+
+```{.python style="margin: 1em"}
+print("Hello", "World")               # Hello World
+print("Hello", "World", sep=', ')     # Hello, World
+
+print(1, 2, 3, sep=' | ')             # 1 | 2 | 3
+print("Hello", 42, True, sep=' - ')   # Hello - 42 - True
+```
+:::
+
+::: {.fragment .fade-in-then-out .absolute top=150 .smaller-80}
+- The `end` parameter (which by default is a newline character `'\n'`) is used to specify the string that should be printed at the end of the output.
+- The `file` parameter can be used to pass a file object, which will write the output to that file instead of the console.
+- The `flush` parameter, when set to `True`, forces the output to be written to the stream immediately. By default (`flush=False`), Python uses buffering, which may delay the actual writing of the output.
+
+::: {.callout-note .smaller-70}
+By default, the `print()` function uses line buffering when writing to consoles (interactive devices) and block buffering when writing to files or pipes. The `flush` parameter can be used to override this behavior. For more detailed information on buffering, you can refer to the Python documentation on I/O operations.
+:::
+
+:::
+
+:::
 
 ## Standard Input
 
-### The `input()` Function
-
 The primary way to get user input in Python is through the `input()` function. 
 
-#### Basic Usage
+### The `input()` Function
 
-```python
+```{.python style="margin: 1em"}
 name = input("What's your name? ")
 print(f"Hello, {name}!")
 ```
 
 When this code runs, it prompts the user with "What's your name? " and waits for the user to type something and press Enter. The entered value is then stored in the `name` variable.
 
-#### Important Notes:
-1. `input()` always returns a string.
-2. If you need a number, you must convert the input.
+::: {.callout-important}
+`input()` always returns a string.  You must convert the input to the required type (e.g., `int()`, `float()`).
+:::
 
-Example:
-```python
-age = int(input("How old are you? "))
-print(f"Next year, you'll be {age + 1} years old.")
-```
 
-### Multiple Inputs
+### Get Multiple Inputs {.hide}
 
-To get multiple inputs, you can use `input()` multiple times or split a single input:
+To get **multiple inputs**, you use `input()` multiple times:
 
-```python
+```{.python style="margin: 1em"}
 # Multiple input() calls
 first_name = input("Enter your first name: ")
 last_name = input("Enter your last name: ")
-
-# Splitting a single input
-full_name = input("Enter your full name: ").split()
-first_name, last_name = full_name
 ```
 
-### Input Validation
+or split a single string input:
 
-Always validate user input to ensure it meets your expectations:
+```{.python style="margin: 1em"}
+# Splitting a single input
+first_name, last_name = input("Enter your full name: ").split()
+```
 
-```python
+
+### Input Validation {.hide}
+
+As `input()` always returns a string, you must validate and convert the input to the expected type.  The general pattern is to wrap the overall input process in a `while` loop and use a `try`/`except` block to catch exceptions.
+
+
+::: {.smaller-85}
+```{.python style="margin: 1em"}
 while True:
     try:
         age = int(input("Enter your age: "))
-        if 0 <= age <= 120:
+        if 18 <= age <= 120:
             break
         else:
-            print("Please enter a valid age between 0 and 120.")
+            print("Please enter a valid age between 18 and 120.")
     except ValueError:
         print("Please enter a valid integer for age.")
 ```
+:::
+
 
 ## Advanced Standard I/O
 
-### Using `sys.stdin` and `sys.stdout`
+::: {.smaller-80}
 
-For more control over input and output, you can use `sys.stdin` and `sys.stdout`:
+`input()` and `print()` are convenient for most use cases. For more advanced scenarios, you can use the `sys` module to interact with standard I/O streams directly, in a platform-independent manner.  The `input()` and `print()` functions are built on top of `sys.stdin` and `sys.stdout` respectively.
 
-```python
-import sys
+- `input()`: Reads from `sys.stdin`, which by default is the standard input stream.
+- `print()`: Writes to `sys.stdout`, which by default is the standard output stream.
 
-# Reading a line from standard input
-line = sys.stdin.readline()
+:::
 
-# Writing to standard output
-sys.stdout.write("This is a line of text.\n")
+## Hands-On: Multiplication Quiz  {.exercise}
+
+::: {.smaller-80}
+Write a simple quiz that asks the user to multiply two numbers, each between 1 and 10 (inclusive). The program should display a question and prompt the user for an answer. If the user answers correctly, the program should print "Correct!" and proceed to a new question. If the user answers incorrectly, the program should print "Incorrect!" and display the correct answer. The program should continue until the user either answers 10 questions correctly or types "exit" to quit.
+::: 
+
+::: {.smaller-75}
+```{.python filename="mutliplication_quiz.py"}
+import random
+
+
+# TODO: Implement the 1-10 Times Quiz
+
+
+if correct_answers == 10:
+    print("Congratulations! You've answered 10 questions correctly.")
+else:
+    print("Remember, practice makes perfect! Goodbye!")
 ```
+:::
 
-### Reading Multiple Lines
 
-To read multiple lines until EOF (End of File), you can use:
+### Hands-On: Implementation Details {.exercise}
 
-```python
-import sys
+::: {.smaller-60}
 
-for line in sys.stdin:
-    print(f"You entered: {line.strip()}")
-```
+**Implementation details**:
 
-This will continue reading lines until the user sends an EOF signal (Ctrl+D on Unix-like systems, Ctrl+Z on Windows).
-
-### Redirecting Standard Input
-
-You can redirect input from a file instead of the keyboard:
-
-```python
-import sys
-
-# Redirect stdin to read from a file
-sys.stdin = open('input.txt', 'r')
-
-# Now input() will read from the file
-data = input()
-```
-
-### Handling Passwords
-
-For sensitive input like passwords, you can use the `getpass` module:
-
-```python
-import getpass
-
-password = getpass.getpass("Enter your password: ")
-```
-
-This will not display the password as it's being typed.
-
-## Practical Example: A Simple Quiz Game
-
-Let's put it all together with a simple quiz game:
-
-```python
-import sys
-
-def get_answer(prompt, options):
-    while True:
-        sys.stdout.write(prompt + " " + "/".join(options) + ": ")
-        sys.stdout.flush()
-        answer = sys.stdin.readline().strip().lower()
-        if answer in options:
-            return answer
-        print("Invalid option. Please try again.")
-
-questions = [
-    ("What's the capital of France?", "paris"),
-    ("What's 2 + 2?", "4"),
-    ("Who wrote 'Romeo and Juliet'?", "shakespeare")
-]
-
-score = 0
-for question, correct_answer in questions:
-    user_answer = get_answer(question, ["skip"])
-    if user_answer == "skip":
-        continue
-    if user_answer == correct_answer:
-        print("Correct!")
-        score += 1
-    else:
-        print(f"Sorry, the correct answer was {correct_answer}.")
-
-print(f"\nYou got {score} out of {len(questions)} questions correct.")
-```
-
-This example demonstrates:
-- Custom input function with validation
-- Using `sys.stdout.write()` and `sys.stdout.flush()` for prompt display
-- Using `sys.stdin.readline()` for input
-- Basic game logic with score tracking
+- Use a counter named `correct_answers` to track of the number of correct answers.
+- Use a `while` loop to keep asking questions until they answer 10 questions correctly or type "exit".
+    - Create two variables, each assigned a random number between 1 and 10 using `random.randint(1, 10)`
+    - Create a variable that stores the correct answer.
+    - Prompt (`input`) the user with a question like "What is 3 x 4?".
+    - Check if the user typed "exit" and exit loop by using the `break` statement.
+    - Use a `try`/`except` block to catch invalid input (e.g., non-integer input).
+        - `try` block, should only convert the user's input to an integer.
+        - `except` block, should catch a `ValueError` exception only. 
+            - Should print the message "Please enter a valid integer or 'exit' to quit."
+            - Use the `continue` statement to skip the rest of the loop.
+    - Check if the user's answer is correct.
+        - If correct, print "Correct!" and increment the `correct_answers` counter.
+        - If incorrect, print "Incorrect! The correct answer is {correct_answer}".
+:::
