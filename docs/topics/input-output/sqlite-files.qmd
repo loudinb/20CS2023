@@ -1,0 +1,80 @@
+# SQLite in Python
+
+## What is SQLite?
+
+- **SQLite** is an embedded, serverless SQL database.
+- Ideal for small applications, prototyping, and storing moderate amounts of data.
+- Python provides the `sqlite3` module to interact with SQLite databases.
+
+## Connecting to an SQLite Database
+
+- Connect to an existing SQLite database or create a new one if it doesn't exist.
+
+```python
+import sqlite3
+
+# Connect to SQLite database (creates `example.db` if it doesn't exist)
+connection = sqlite3.connect("example.db")
+```
+
+## Creating a Table
+
+- SQL commands can be used to create tables within the database.
+
+```python
+cursor = connection.cursor()
+
+# Create a table called `users`
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL,
+        age INTEGER,
+        city TEXT
+    )
+''')
+
+# Commit changes
+connection.commit()
+```
+
+## Inserting Data
+
+- Insert data using `execute()` or `executemany()` for bulk insertions.
+
+```python
+# Insert a single user
+cursor.execute('''
+    INSERT INTO users (name, age, city) VALUES (?, ?, ?)
+''', ("Alice", 25, "Wonderland"))
+
+# Commit changes
+connection.commit()
+```
+
+## Querying Data
+
+- Retrieve data using standard SQL queries.
+
+```python
+# Fetch all users from the table
+cursor.execute('SELECT * FROM users')
+rows = cursor.fetchall()
+
+for row in rows:
+    print(row)
+```
+
+## Closing the Connection
+
+- Always close the connection to the database when done.
+
+```python
+connection.close()
+```
+
+## Advantages of SQLite
+
+- Lightweight, requires no server.
+- Easy to set up and use with Python's built-in library.
+- Suitable for prototyping or small-scale applications.

@@ -1,0 +1,91 @@
+# Files and File Paths
+
+## Files and File Paths
+
+- **Files**: Containers to store data, text, or binary information.
+- **File Paths**: The address of a file in the file system.
+  - **Absolute Paths**: Start from the root directory (e.g., `/home/user/file.txt`).
+  - **Relative Paths**: Start from the current directory (e.g., `./file.txt`).
+
+## Using the `pathlib` Module
+
+- The `pathlib` module is Python's modern way of handling file system paths.
+- Provides an easy-to-use, object-oriented interface for working with paths.
+
+```python
+from pathlib import Path
+
+# Create a Path object
+path = Path("example_directory/file.txt")
+```
+
+## Why `pathlib`?
+
+- More readable and powerful compared to older modules like `os`.
+- Supports methods for path manipulation, file handling, and more.
+
+# Directory Management
+
+## Getting the Current Working Directory
+
+- The **current working directory** is where your Python script runs.
+
+```python
+from pathlib import Path
+
+# Get current working directory
+cwd = Path.cwd()
+print(cwd)
+```
+
+## Absolute vs Relative Paths
+
+- **Absolute Path**: `/home/user/project/file.txt`
+  - Use for a fixed reference in the filesystem.
+- **Relative Path**: `../file.txt`
+  - Use when referencing files relative to the current location.
+
+## Creating a Directory
+
+- You can create new directories using `pathlib`.
+
+```python
+# Create a new directory
+new_dir = Path("new_directory")
+new_dir.mkdir(exist_ok=True)  # 'exist_ok=True' prevents errors if it already exists
+```
+
+## Changing the Current Working Directory
+
+- Changing the current working directory allows the script to work in a different location.
+
+```python
+import os
+
+# Change to a new directory
+os.chdir("new_directory")
+print(Path.cwd())
+```
+
+## Deleting Files and Directories
+
+- Remove files or directories using `unlink()` or `rmdir()`.
+
+```python
+# Deleting a file
+file = Path("example.txt")
+file.unlink()  # Removes the file
+
+# Deleting a directory
+dir = Path("example_directory")
+dir.rmdir()  # Removes the directory (must be empty)
+```
+
+## Listing Files and Directories
+
+- List all files and sub-directories in a given path.
+
+```python
+for item in Path(".").iterdir():
+    print(item)
+```

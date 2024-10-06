@@ -1,0 +1,36 @@
+# shelve in Python
+
+## What is shelve?
+
+- **shelve**: A module in Python that allows for easy persistent storage of Python objects.
+- Essentially a **dictionary** where the data is saved to a file.
+
+## Using shelve to Store Data
+
+- `shelve.open()` opens a persistent dictionary-like object.
+
+```python
+import shelve
+
+# Store data in a shelve
+with shelve.open("my_shelf") as db:
+    db["name"] = "Alice"
+    db["age"] = 25
+
+# Retrieve data
+with shelve.open("my_shelf") as db:
+    print(db["name"])
+    print(db["age"])
+```
+
+## Advantages of shelve
+
+- Stores complex data types like dictionaries and lists easily.
+- No need to manually serialize or deserialize data.
+
+## Limitations of shelve
+
+- Python-specific and not compatible across other languages.
+- Requires caution when updating mutable data (changes might not persist properly).
+
+

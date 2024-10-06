@@ -1,0 +1,65 @@
+# Introduction to Data Storage in Python
+
+## Overview
+
+In this lecture, we will explore:
+
+- JSON: Handling lightweight data interchange
+- SQLite: A lightweight SQL database integrated with Python
+- shelve: Persistent storage for Python objects
+
+## Why These Formats?
+
+- **JSON**: Widely used for web APIs and data interchange.
+- **SQLite**: Lightweight, serverless SQL database, ideal for small to mid-size projects.
+- **shelve**: Python-specific way to persistently store complex data structures.
+
+# Comparing JSON, SQLite, and shelve
+
+## Comparison Table
+
+| Feature          | JSON                | SQLite               | shelve                    |
+|------------------|---------------------|----------------------|---------------------------|
+| **Format**       | Text-based, compact | SQL Database (file)  | Binary                    |
+| **Use Case**     | Data interchange    | Small-scale DB       | Persistent Python storage |
+| **Readability**  | High                | Medium               | Not directly human-readable|
+| **Python Support** | `json` module      | `sqlite3` module     | `shelve` module           |
+| **Compatibility**| Cross-language      | SQL-standard         | Python-only               |
+
+## Choosing the Right Tool
+
+- **Use JSON** if you need lightweight data exchange across different platforms.
+- **Use SQLite** if you need structured, queryable data storage without setting up a full database server.
+- **Use shelve** if you need to store Python objects for later retrieval within Python scripts.
+
+# Best Practices
+
+## JSON Best Practices
+
+- Use `indent` in `json.dump()` for readability when writing to files.
+- Always **validate** JSON from external sources to avoid security issues.
+
+## SQLite Best Practices
+
+- **Use parameterized queries** to prevent SQL injection attacks.
+
+```python
+# Safe way to insert data
+cursor.execute('INSERT INTO users (name, age, city) VALUES (?, ?, ?)', ("Bob", 30, "Builderland"))
+```
+
+- **Commit often** to save changes to the database and prevent data loss.
+
+## shelve Best Practices
+
+- Always **close** shelve files or use `with` to prevent corruption.
+- Avoid updating mutable objects directly; reassign them after modification.
+
+```python
+# Correct way to update shelve with a list
+with shelve.open("my_shelf") as db:
+    data = db.get("my_list", [])
+    data.append("new item")
+    db["my_list"] = data  # Reassign to update properly
+```
+

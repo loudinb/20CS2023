@@ -1,0 +1,210 @@
+# Introduction to argparse
+
+## What is argparse?
+
+- **argparse** is a built-in Python module used for **command-line argument parsing**.
+- It allows your scripts to accept input arguments and options from the command line, enabling flexible and reusable code.
+
+## Why Use argparse?
+
+- **User-friendly**: Create scripts that can take inputs from users.
+- **Reusable**: Helps avoid hard-coding values by allowing users to input arguments.
+- **Automatic help messages**: Provides `--help` for a better user experience.
+
+## Basics of argparse
+
+### Importing argparse
+
+- To use `argparse`, you must first import the module.
+
+```python
+import argparse
+```
+
+- Create an `ArgumentParser` object to handle the command-line arguments.
+
+```python
+parser = argparse.ArgumentParser(description="A simple argument parser example")
+```
+
+### Adding Arguments
+
+- Add arguments that your script accepts using `add_argument()`.
+
+```python
+parser.add_argument("name", help="Your name")
+parser.add_argument("--age", type=int, help="Your age")
+```
+
+- **Positional Arguments**: Required arguments, like `name`.
+- **Optional Arguments**: Arguments prefixed with `--` or `-`, like `--age`.
+
+## Parsing Arguments
+
+### Parse and Use Arguments
+
+- Once arguments are added, use `parse_args()` to retrieve the values.
+
+```python
+args = parser.parse_args()
+print(f"Hello, {args.name}!")
+if args.age:
+    print(f"You are {args.age} years old.")
+```
+
+- **Access arguments** using `args.argument_name`.
+
+## Example: Running the Script
+
+- Save the following code in a script named `greet.py`:
+
+```python
+import argparse
+
+parser = argparse.ArgumentParser(description="Greet the user")
+parser.add_argument("name", help="Your name")
+parser.add_argument("--age", type=int, help="Your age")
+
+args = parser.parse_args()
+print(f"Hello, {args.name}!")
+if args.age:
+    print(f"You are {args.age} years old.")
+```
+
+- Run from the command line:
+
+```sh
+$ python greet.py Alice --age 30
+```
+
+- Output:
+
+```
+Hello, Alice!
+You are 30 years old.
+```
+
+## Argument Types and Default Values
+
+### Specifying Types for Arguments
+
+- You can specify the **type** of an argument to automatically convert it.
+
+```python
+parser.add_argument("number", type=int, help="A number to double")
+```
+
+- If an incorrect type is provided, `argparse` will throw an error.
+
+### Default Values for Arguments
+
+- Use the `default` parameter to provide a default value.
+
+```python
+parser.add_argument("--color", default="blue", help="Favorite color (default: blue)")
+```
+
+- Example:
+
+```sh
+$ python greet.py Bob
+Hello, Bob!
+```
+
+- `--color` is optional; it will use `"blue"` if not provided.
+
+## Flags and Boolean Arguments
+
+### Adding Boolean Flags
+
+- Flags are useful to turn features on/off without needing explicit values.
+
+```python
+parser.add_argument("--verbose", action="store_true", help="Enable verbose output")
+```
+
+- If the flag is present, `args.verbose` will be `True`.
+
+### Example with a Flag
+
+- Run from the command line:
+
+```sh
+$ python greet.py Alice --verbose
+```
+
+- Output:
+
+```
+Hello, Alice!
+Verbose mode enabled.
+```
+
+## Help and Usage Messages
+
+### Automatic Help Message
+
+- `argparse` generates a help message when `--help` or `-h` is used.
+
+```sh
+$ python greet.py --help
+```
+
+- Example output:
+
+```
+usage: greet.py [-h] [--age AGE] name
+
+Greet the user
+
+positional arguments:
+  name        Your name
+
+optional arguments:
+  -h, --help  show this help message and exit
+  --age AGE   Your age
+```
+
+### Customizing Help Messages
+
+- Add descriptions for arguments for better documentation.
+
+```python
+parser = argparse.ArgumentParser(description="A program to greet the user.")
+parser.add_argument("name", help="The name of the user.")
+parser.add_argument("--age", type=int, help="The user's age.")
+```
+
+- This makes your scripts self-explanatory to the end user.
+
+## Argument Parsing Patterns
+
+### Required Optional Arguments
+
+- You can make an optional argument **required** using `required=True`.
+
+```python
+parser.add_argument("--country", required=True, help="Country of residence")
+```
+
+- Run from the command line:
+
+```sh
+$ python greet.py Alice --country USA
+```
+
+### Using Choices for Arguments
+
+- Restrict values using `choices` for fixed options.
+
+```python
+parser.add_argument("--mood", choices=["happy", "sad", "excited"], help="Your current mood")
+```
+
+- Example:
+
+```sh
+$ python greet.py Alice --mood happy
+```
+
+- If an invalid value is provided, `argparse` will print an error.

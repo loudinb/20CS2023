@@ -1,0 +1,47 @@
+# JSON in Python
+
+## What is JSON?
+
+- **JSON (JavaScript Object Notation)**:
+  - A lightweight data format commonly used to transmit data.
+  - Uses key-value pairs similar to Python dictionaries.
+
+## JSON Basics in Python
+
+- Python's `json` module allows easy reading and writing of JSON data.
+
+```python
+import json
+
+# Example Python dictionary
+data = {"name": "Alice", "age": 25, "city": "Wonderland"}
+
+# Convert dictionary to JSON string
+json_string = json.dumps(data)
+print(json_string)
+```
+
+## Reading JSON from a File
+
+- JSON data can be loaded from a file using `json.load()`.
+
+```python
+with open("data.json", "r") as file:
+    data = json.load(file)
+    print(data)
+```
+
+## Writing JSON to a File
+
+- Save data to a JSON file using `json.dump()`.
+
+```python
+with open("data.json", "w") as file:
+    json.dump(data, file, indent=4)
+```
+
+## Advantages of JSON
+
+- Human-readable and compact.
+- Easily used across different programming languages.
+- Native support in Python with the `json` module.

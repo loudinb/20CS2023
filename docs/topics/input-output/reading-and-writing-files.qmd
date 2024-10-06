@@ -1,0 +1,181 @@
+# Reading and Writing to Files in Python
+
+## Opening a File
+
+- The `open()` function is used to open files in Python.
+- Syntax: `open(file, mode)`, where `file` is the name of the file, and `mode` specifies how to open the file.
+
+```python
+file = open("example.txt", "r")  # Open for reading
+```
+
+## Closing a File
+
+- Always close a file after you are done.
+- Use `file.close()` to free up system resources.
+
+```python
+file = open("example.txt", "r")
+# Do some operations
+file.close()
+```
+
+## Problems Without Closing
+
+- Not closing a file can lead to:
+  - Resource leaks.
+  - Issues with data not being written correctly.
+  
+## Using `with` for Safer File Handling
+
+- **Best Practice**: Use `with` to open files.
+- **Why?** The `with` statement handles closing the file automatically, even if an error occurs.
+
+```python
+with open("example.txt", "r") as file:
+    data = file.read()  # File automatically closed after this block
+```
+
+::: {.notes}
+- Automatic cleanup of resources.
+- Cleaner, more readable code.
+:::
+
+## File Modes
+
+- Modes define the purpose for which a file is opened.
+- **Common Modes**:
+  - `'r'` : Read (default).
+  - `'w'` : Write (overwrites the file).
+  - `'a'` : Append (adds to the file).
+  - `'r+'`: Read and write.
+
+```python
+# Read mode (default)
+with open("example.txt", "r") as file:
+    content = file.read()
+```
+
+## Reading from Files
+
+- **`read()`**: Reads the entire file.
+- **`readline()`**: Reads one line at a time.
+- **`readlines()`**: Reads all lines into a list.
+
+## Examples
+
+```python
+# Read the entire file
+with open("example.txt", "r") as file:
+    data = file.read()
+    print(data)
+
+# Read file line by line
+with open("example.txt", "r") as file:
+    line = file.readline()
+    while line:
+        print(line.strip())
+        line = file.readline()
+
+# Read all lines into a list
+with open("example.txt", "r") as file:
+    lines = file.readlines()
+    for line in lines:
+        print(line.strip())
+```
+
+## Writing to Files
+
+- **`write()`**: Writes a string to a file. Note that it **overwrites** by default if the file already exists.
+
+```python
+# Write to a file (overwriting it)
+with open("example.txt", "w") as file:
+    file.write("This is a new line of text.")
+```
+
+## Appending Data to Files
+
+- Use `'a'` mode to append instead of overwriting.
+
+```python
+# Append to the existing file
+with open("example.txt", "a") as file:
+    file.write("\nThis text is appended.")
+```
+
+# Handling File Exceptions
+
+## Handling Errors Gracefully
+
+- File operations may fail due to reasons like:
+  - The file doesn't exist.
+  - Insufficient permissions.
+
+## Example: Handling File Not Found
+
+```python
+try:
+    with open("nonexistent.txt", "r") as file:
+        data = file.read()
+except FileNotFoundError:
+    print("Error: The file was not found.")
+```
+
+## Using `try...except` for Robust Code
+
+- **Best Practice**: Use exception handling to manage potential errors.
+- Helps provide meaningful error messages to users.
+
+```python
+try:
+    with open("example.txt", "r") as file:
+        data = file.read()
+except FileNotFoundError:
+    print("File does not exist.")
+except IOError:
+    print("An error occurred while accessing the file.")
+```
+
+## Best Practices for File Handling
+
+1. **Use `with` Statement**:
+   - Always use `with` to open files, ensuring proper cleanup.
+
+2. **Use Appropriate File Modes**:
+   - Choose `'r'`, `'w'`, `'a'` based on your intention—avoid unintended overwrites.
+
+3. **Handle Exceptions Gracefully**:
+   - Use `try...except` to handle common errors, such as missing files.
+
+## Avoid Hardcoding File Paths
+
+- Hardcoding paths may cause compatibility issues across different systems.
+- Instead, use environment variables or configuration files to determine file locations.
+
+## Flushing the Write Buffer
+
+- **`flush()` Method**: Forces the buffer to write data to disk.
+  - Typically used when dealing with critical data that should be written immediately.
+
+```python
+with open("important_log.txt", "w") as file:
+    file.write("Critical log entry")
+    file.flush()  # Force data to be written immediately
+```
+
+## File Pointer Operations
+
+```python
+with open('example.txt', 'r') as file:
+    # Get current position
+    position = file.tell()
+    print(f"Current position: {position}")
+
+    # Move to specific position
+    file.seek(10)
+    
+    # Read from new position
+    content = file.read(20)
+    print(f"Content: {content}")
+```
