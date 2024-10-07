@@ -1,0 +1,310 @@
+## Question 1 {.question}
+
+True or False: In Python, functions are treated as first-class objects, meaning they can be assigned to variables, passed as arguments, and returned from other functions.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+::: {.explanation}
+Functions in Python are first-class objects, which means they can be used like any other object. They can be assigned to variables, passed to other functions, and returned as results from other functions.
+:::
+
+:::
+
+:::
+
+
+
+## Question 2 {.question}
+
+Which of the following is the correct way to define a function that returns the square of a number using `lambda`?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `lambda x: x * x`
+- [ ] `lambda x: return x ** 2`
+- [ ] `def lambda(x): x ** 2`
+- [ ] `square = (lambda x: x ** 2)`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `lambda x: x * x`
+- [ ] `lambda x: return x ** 2`
+- [ ] `def lambda(x): x ** 2`
+- [x] `square = (lambda x: x ** 2)`
+
+::: {.explanation}
+Lambda functions are defined using the `lambda` keyword followed by parameters and a single expression. `lambda x: x * x` or `square = (lambda x: x ** 2)` are correct ways to create a lambda function to compute the square of a number.
+:::
+
+:::
+
+:::
+
+
+
+## Question 3 {.question}
+
+What will be the output of the following code?
+
+```python
+def add_item(item, lst=[]):
+    lst.append(item)
+    return lst
+
+print(add_item(1))  ## Output 1
+print(add_item(2))  ## Output 2
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `[1]` and `[2]`
+- [ ] `[1]` and `[1, 2]`
+- [ ] `[1, 2]` and `[1, 2, 2]`
+- [ ] `Error`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `[1]` and `[2]`
+- [x] `[1]` and `[1, 2]`
+- [ ] `[1, 2]` and `[1, 2, 2]`
+- [ ] `Error`
+
+::: {.explanation}
+The default mutable argument (`lst=[]`) is shared across multiple calls to the function. Therefore, `lst` retains the values from previous calls, leading to `[1]` and `[1, 2]` being printed.
+:::
+
+:::
+
+:::
+
+
+
+## Question 4 {.question}
+
+Which of the following keywords is used to access global variables from within a function?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `global`
+- [ ] `local`
+- [ ] `return`
+- [ ] `access`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `global`
+- [ ] `local`
+- [ ] `return`
+- [ ] `access`
+
+::: {.explanation}
+The `global` keyword is used to indicate that a variable inside a function is a global variable, allowing you to modify it directly within the function.
+:::
+
+:::
+
+:::
+
+
+
+## Question 5 {.question}
+
+What will happen if you try to modify a local variable defined inside a function from outside the function?
+
+```python
+def local_example():
+    x = 10
+    print(f"Inside function: x = {x}")
+
+local_example()
+print(f"Outside function: x = {x}")
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] It will print `10` inside the function and `10` outside the function.
+- [ ] It will raise a `NameError` because `x` is not defined in the global scope.
+- [ ] It will create a new global variable `x` with the value `10`.
+- [ ] It will print `None`.
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] It will print `10` inside the function and `10` outside the function.
+- [x] It will raise a `NameError` because `x` is not defined in the global scope.
+- [ ] It will create a new global variable `x` with the value `10`.
+- [ ] It will print `None`.
+
+::: {.explanation}
+The variable `x` is defined locally within the function, and it is not accessible outside the function. Attempting to access `x` outside of its scope will raise a `NameError`.
+:::
+
+:::
+
+:::
+
+
+
+## Question 1 {.question}
+
+True or False: In Python, the expression `5 < x < 15` is equivalent to `(5 < x) and (x < 15)`.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+::: {.explanation}
+Python allows chaining multiple comparisons together. The expression `5 < x < 15` is equivalent to evaluating both `(5 < x)` and `(x < 15)`, which makes the chained comparison concise and readable.
+:::
+
+:::
+
+:::
+
+
+
+## Question 2 {.question}
+
+Which of the following values will evaluate to `False` in a Boolean context?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `0.0`
+- [ ] `None`
+- [ ] `[]` (empty list)
+- [ ] `{}` (empty dictionary)
+- [ ] All of the above
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `0.0`
+- [ ] `None`
+- [ ] `[]` (empty list)
+- [ ] `{}` (empty dictionary)
+- [x] All of the above
+
+::: {.explanation}
+The values `0.0`, `None`, `[]` (empty list), and `{}` (empty dictionary) are all considered `False` in a Boolean context in Python. Any non-zero number or non-empty collection is considered `True`.
+:::
+
+:::
+
+:::
+
+
+
+## Question 3 {.question}
+
+What will be the result of the following expression?
+
+```python
+not (5 > 10) or (3 > 1)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `True`
+- [ ] `False`
+- [ ] `None`
+- [ ] `Error`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `True`
+- [ ] `False`
+- [ ] `None`
+- [ ] `Error`
+
+::: {.explanation}
+The expression evaluates as follows: `not (5 > 10)` is `not False`, which results in `True`. The `or` operator then checks `(3 > 1)`, which is also `True`. Therefore, the entire expression is `True`.
+:::
+
+:::
+
+:::
+
+
+
+## Question 4 {.question}
+
+Which of the following logical operators is used for short-circuit evaluation to return `True` if **at least one operand** is `True`?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `and`
+- [ ] `or`
+- [ ] `not`
+- [ ] `==`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `and`
+- [x] `or`
+- [ ] `not`
+- [ ] `==`
+
+::: {.explanation}
+The `or` operator in Python returns `True` if at least one of the operands is `True`. It also uses short-circuit evaluation, meaning that if the first operand is `True`, the second operand is not evaluated.
+:::
+
+:::
+
+:::
+
+
+
+## Question 5 {.question}
+
+What will be the output of the following code?
+
+```python
+a = 5
+b = 10
+result = (a > 3) and (b < 20) and (a == b)
+print(result)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `True`
+- [ ] `False`
+- [ ] `Error`
+- [ ] `None`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `True`
+- [x] `False`
+- [ ] `Error`
+- [ ] `None`
+
+::: {.explanation}
+The expression `(a > 3)` evaluates to `True`, and `(b < 20)` also evaluates to `True`. However, `(a == b)` evaluates to `False`, which makes the entire `and` chain evaluate to `False`.
+:::
+
+:::
+
+:::

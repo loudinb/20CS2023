@@ -1,0 +1,311 @@
+## Question 1 {.question}
+
+True or False: Tuples in Python are immutable, meaning their contents cannot be changed after they are created.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+::: {.explanation}
+Tuples are immutable data structures, meaning once they are created, their elements cannot be modified. This makes them useful for storing data that should not be changed.
+:::
+
+:::
+
+:::
+
+
+
+## Question 2 {.question}
+
+Which of the following is the correct way to create a tuple with a single element?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `(5)`
+- [ ] `(5,)`
+- [ ] `[5]`
+- [ ] `{5}`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `(5)`
+- [x] `(5,)`
+- [ ] `[5]`
+- [ ] `{5}`
+
+::: {.explanation}
+A tuple with a single element must include a trailing comma to distinguish it from a value in parentheses. Therefore, `(5,)` is the correct way to create a single-element tuple.
+:::
+
+:::
+
+:::
+
+
+
+## Question 3 {.question}
+
+What will happen if you attempt to modify an element of a tuple?
+
+```python
+my_tuple = (1, 2, 3)
+my_tuple[0] = 10
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] The value at index `0` will be changed to `10`.
+- [ ] The tuple will automatically convert to a list.
+- [ ] A `TypeError` will be raised.
+- [ ] The code will run without any errors, but the change will not be applied.
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] The value at index `0` will be changed to `10`.
+- [ ] The tuple will automatically convert to a list.
+- [x] A `TypeError` will be raised.
+- [ ] The code will run without any errors, but the change will not be applied.
+
+::: {.explanation}
+Tuples are immutable, meaning their elements cannot be modified. Attempting to change an element will result in a `TypeError`.
+:::
+
+:::
+
+:::
+
+
+
+## Question 4 {.question}
+
+Which statement is true about slicing a tuple in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Slicing a tuple modifies it in place.
+- [ ] Slicing creates a new tuple containing the specified subset of elements.
+- [ ] Slicing a tuple results in a list, not a tuple.
+- [ ] Tuples do not support slicing.
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Slicing a tuple modifies it in place.
+- [x] Slicing creates a new tuple containing the specified subset of elements.
+- [ ] Slicing a tuple results in a list, not a tuple.
+- [ ] Tuples do not support slicing.
+
+::: {.explanation}
+Slicing a tuple creates a new tuple containing the specified subset of elements without modifying the original tuple.
+:::
+
+:::
+
+:::
+
+
+
+## Question 5 {.question}
+
+What will be the result of the following code?
+
+```python
+numbers = (0, 1, 2, 3, 4, 5, 6)
+print(numbers[2:5])
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `(0, 1, 2)`
+- [ ] `(2, 3, 4)`
+- [ ] `(3, 4, 5)`
+- [ ] `(2, 3, 4, 5)`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `(0, 1, 2)`
+- [x] `(2, 3, 4)`
+- [ ] `(3, 4, 5)`
+- [ ] `(2, 3, 4, 5)`
+
+::: {.explanation}
+The slice `numbers[2:5]` includes elements at indices 2, 3, and 4, resulting in the tuple `(2, 3, 4)`.
+:::
+
+:::
+
+:::
+
+
+
+## Question 1 {.question}
+
+True or False: Packing is the process of combining multiple values into a single tuple or list in Python.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+::: {.explanation}
+Packing in Python is indeed the process of combining multiple values into a single data structure like a tuple or list.
+:::
+
+:::
+
+:::
+
+
+
+## Question 2 {.question}
+
+What will be the output of the following code?
+
+```python
+numbers = [10, 20, 30, 40, 50]
+first, *middle, last = numbers
+print(middle)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `[10, 20, 30]`
+- [ ] `[20, 30, 40]`
+- [ ] `[10, 20, 30, 40]`
+- [ ] `[30, 40, 50]`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `[10, 20, 30]`
+- [x] `[20, 30, 40]`
+- [ ] `[10, 20, 30, 40]`
+- [ ] `[30, 40, 50]`
+
+::: {.explanation}
+The `*middle` syntax in unpacking is used to capture all intermediate values between `first` and `last`, which are `20, 30, 40` in this example.
+:::
+
+:::
+
+:::
+
+
+
+## Question 3 {.question}
+
+Which operator is used to perform both packing and unpacking in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `@`
+- [ ] `*`
+- [ ] `&`
+- [ ] `##`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `@`
+- [x] `*`
+- [ ] `&`
+- [ ] `##`
+
+::: {.explanation}
+The `*` operator is used for both packing arguments into a tuple or list and for unpacking elements from a data structure in Python.
+:::
+
+:::
+
+:::
+
+
+
+## Question 4 {.question}
+
+How would you use unpacking to pass the elements of a tuple as arguments to a function?
+
+Consider the function:
+
+```python
+def multiply(a, b, c):
+    return a * b * c
+```
+
+How would you call this function using a tuple `values = (2, 3, 4)`?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `multiply(values)`
+- [ ] `multiply(*values)`
+- [ ] `multiply(**values)`
+- [ ] `multiply(values[0], values[1], values[2])`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `multiply(values)`
+- [x] `multiply(*values)`
+- [ ] `multiply(**values)`
+- [ ] `multiply(values[0], values[1], values[2])`
+
+::: {.explanation}
+To pass the elements of a tuple as individual arguments, you use the `*` operator for unpacking: `multiply(*values)`.
+:::
+
+:::
+
+:::
+
+
+
+## Question 5 {.question}
+
+What will be the output of the following code snippet?
+
+```python
+coordinates = (1, 2, 3, 4, 5)
+start, *middle, end = coordinates
+print(start, middle, end)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `1 [2, 3, 4] 5`
+- [ ] `1 (2, 3, 4) 5`
+- [ ] `1 2 3`
+- [ ] `[1, 2, 3, 4, 5]`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `1 [2, 3, 4] 5`
+- [ ] `1 (2, 3, 4) 5`
+- [ ] `1 2 3`
+- [ ] `[1, 2, 3, 4, 5]`
+
+::: {.explanation}
+Using unpacking syntax `start, *middle, end`, `start` gets the first value (`1`), `end` gets the last value (`5`), and `middle` gets the remaining values (`[2, 3, 4]`).
+:::
+
+:::
+
+:::
+

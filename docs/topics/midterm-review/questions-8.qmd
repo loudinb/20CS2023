@@ -1,0 +1,332 @@
+## Question 1 {.question}
+
+True or False: In Python, the `__init__` method is called automatically when a new object of the class is created.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+::: {.explanation}
+The `__init__` method in Python is the constructor for a class, and it is called automatically to initialize a new instance of the class.
+:::
+
+:::
+
+:::
+
+
+
+## Question 2 {.question}
+
+Which of the following is an **attribute** of the `User` class as defined below?
+
+```python
+class User:
+    def __init__(self, username, email):
+        self.username = username
+        self.email = email
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `username`
+- [ ] `display_info()`
+- [ ] `User`
+- [ ] `__init__()`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `username`
+- [ ] `display_info()`
+- [ ] `User`
+- [ ] `__init__()`
+
+::: {.explanation}
+`username` is an attribute of the `User` class, which is a variable associated with each instance. The `__init__()` method initializes this attribute.
+:::
+
+:::
+
+:::
+
+
+
+## Question 3 {.question}
+
+What will be the output of the following code?
+
+```python
+user1 = User("alice", "alice@example.com")
+print(user1.username)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `alice@example.com`
+- [ ] `user1`
+- [ ] `alice`
+- [ ] `None`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `alice@example.com`
+- [ ] `user1`
+- [x] `alice`
+- [ ] `None`
+
+::: {.explanation}
+The `username` attribute of `user1` is set to `"alice"` in the `__init__` method, and `print(user1.username)` outputs `"alice"`.
+:::
+
+:::
+
+:::
+
+
+
+## Question 4 {.question}
+
+Which of the following best describes **encapsulation** in object-oriented programming?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Creating new classes from existing ones.
+- [ ] Defining multiple methods with the same name.
+- [ ] Bundling data and methods that operate on the data into a single unit.
+- [ ] Writing functions to solve individual problems.
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Creating new classes from existing ones.
+- [ ] Defining multiple methods with the same name.
+- [x] Bundling data and methods that operate on the data into a single unit.
+- [ ] Writing functions to solve individual problems.
+
+::: {.explanation}
+Encapsulation refers to bundling data (attributes) and the methods that operate on the data into a single unit, usually represented by a class.
+:::
+
+:::
+
+:::
+
+
+
+## Question 5 {.question}
+
+What will be the output of the following code?
+
+```python
+class User:
+    def __init__(self, username, email):
+        self.username = username
+        self.email = email
+
+    def add_post(self, content):
+        self.posts = []
+        self.posts.append(content)
+        return f"Post added: {content}"
+
+user1 = User("bob", "bob@example.com")
+result = user1.add_post("Hello, world!")
+print(user1.posts)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `['Hello, world!']`
+- [ ] `[]`
+- [ ] `"Post added: Hello, world!"`
+- [ ] `Error`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `['Hello, world!']`
+
+::: {.explanation}
+The `add_post()` method creates a new list for `posts` and appends the content `"Hello, world!"` to it. Therefore, `print(user1.posts)` outputs `['Hello, world!']`.
+:::
+
+:::
+
+:::
+
+
+
+## Question 1 {.question}
+
+True or False: The `@property` decorator in Python is used to implement getters and setters while still allowing attribute-like access to the values.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+::: {.explanation}
+The `@property` decorator allows you to define methods that can be accessed like attributes, providing controlled access to get or set values.
+:::
+
+:::
+
+:::
+
+
+
+## Question 2 {.question}
+
+Which of the following correctly defines a class attribute in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `self.name = "John"`
+- [ ] `library_name = "City Library"`
+- [ ] `@staticmethod`
+- [ ] `def __init__(self, title):`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `self.name = "John"`
+- [x] `library_name = "City Library"`
+- [ ] `@staticmethod`
+- [ ] `def __init__(self, title):`
+
+::: {.explanation}
+`library_name = "City Library"` is a class attribute because it is defined directly in the class body and shared across all instances of the class.
+:::
+
+:::
+
+:::
+
+
+
+## Question 3 {.question}
+
+What will be the result of the following code?
+
+```python
+class Book:
+    library_name = "City Library"  ## Class attribute
+    
+    def __init__(self, title):
+        self.title = title  ## Instance attribute
+
+book1 = Book("1984")
+book2 = Book("To Kill a Mockingbird")
+
+print(book1.library_name)
+print(book2.library_name)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `"1984"` and `"To Kill a Mockingbird"`
+- [ ] `"City Library"` and `"City Library"`
+- [ ] `None` and `"City Library"`
+- [ ] `"City Library"` and `None`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `"1984"` and `"To Kill a Mockingbird"`
+- [x] `"City Library"` and `"City Library"`
+- [ ] `None` and `"City Library"`
+- [ ] `"City Library"` and `None`
+
+::: {.explanation}
+Class attributes are shared among all instances of a class, so both `book1` and `book2` access the same value for `library_name`, which is `"City Library"`.
+:::
+
+:::
+
+:::
+
+
+
+## Question 4 {.question}
+
+Which of the following is **not** true regarding `@staticmethod` in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] It is used for methods that do not access class or instance data.
+- [ ] It does not take `self` or `cls` as the first parameter.
+- [ ] It can be called using either a class or an instance.
+- [ ] It modifies the class-level attributes.
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] It is used for methods that do not access class or instance data.
+- [ ] It does not take `self` or `cls` as the first parameter.
+- [ ] It can be called using either a class or an instance.
+- [x] It modifies the class-level attributes.
+
+::: {.explanation}
+`@staticmethod` is used for utility functions that do not access class or instance data, and it does not modify class-level attributes. Instead, it behaves as a simple function bound to the class.
+:::
+
+:::
+
+:::
+
+
+
+## Question 5 {.question}
+
+What will be the output of the following code?
+
+```python
+class User:
+    def __init__(self, username, password):
+        self.username = username
+        self.__password = password  ## Private attribute
+
+user = User("alice", "secret123")
+print(user.username)
+try:
+    print(user.__password)
+except AttributeError:
+    print("AttributeError: Cannot access private attribute.")
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `"alice"` followed by `"secret123"`
+- [ ] `"alice"` followed by an `AttributeError`
+- [ ] `"alice"` followed by `"Cannot access private attribute"`
+- [ ] `"alice"` followed by `None`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `"alice"` followed by `"secret123"`
+- [x] `"alice"` followed by an `AttributeError`
+- [ ] `"alice"` followed by `"Cannot access private attribute"`
+- [ ] `"alice"` followed by `None`
+
+::: {.explanation}
+The `__password` attribute is private, indicated by the double underscores. Attempting to access it directly will raise an `AttributeError`.
+:::
+
+:::
+
+:::

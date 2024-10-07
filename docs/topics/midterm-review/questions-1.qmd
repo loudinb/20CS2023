@@ -1,0 +1,268 @@
+## Question 1 {.question}
+
+True or False: In Python, variables are dynamically typed, meaning their type is determined at runtime based on the value assigned.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+::: {.explanation}
+Python uses dynamic typing, which means the type of a variable is automatically determined by the value assigned to it.
+:::
+
+:::
+
+:::
+
+
+## Question 2 {.question}
+
+Select all valid Python variable names:
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `2score`
+- [ ] `_private_variable`
+- [ ] `user`
+- [ ] `total_score`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `2score`
+- [x] `_private_variable`
+- [x] `user`
+- [x] `total_score`
+
+::: {.explanation}
+Python variable names must start with a letter or an underscore and can contain letters, numbers, and underscores. `2score` is invalid as it starts with a number.
+:::
+
+:::
+
+:::
+
+
+
+## Question 3 {.question}
+
+Which of the following is **not** a data type in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `int`
+- [ ] `float`
+- [ ] `char`
+- [ ] `str`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `int`
+- [ ] `float`
+- [x] `char`
+- [ ] `str`
+
+::: {.explanation}
+`char` is not a data type in Python; in Python, single characters are represented as a `string` of lenght 1.
+:::
+
+:::
+
+:::
+
+
+
+## Question 4 {.question}
+
+Which function would you use to determine the type of a variable `x`?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `get_type(x)`
+- [ ] `typeof(x)`
+- [ ] `type(x)`
+- [ ] `check_type(x)`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `get_type(x)`
+- [ ] `typeof(x)`
+- [x] `type(x)`
+- [ ] `check_type(x)`
+
+::: {.explanation}
+The built-in `type()` function is used in Python to determine the type of a variable.
+:::
+
+:::
+
+:::
+
+
+
+## Question 5 {.question}
+
+True or False: In Python, constants are explicitly enforced by the language and cannot be changed after their initial assignment.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [x] False
+
+::: {.explanation}
+Python does not enforce constant values by language constructs. However, by convention, uppercase names are used to indicate that a variable should be treated as a constant.
+:::
+
+:::
+
+:::
+
+
+
+## Question 6 {.question}
+
+Fill in the blank: The Python keyword used to define a variable that can hold a value is `____`.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `let`
+- [ ] `var`
+- [ ] `define`
+- [ ] `None of the above`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `let`
+- [ ] `var`
+- [ ] `define`
+- [x] `None of the above`
+
+::: {.explanation}
+In Python, there is no specific keyword for declaring variables. You simply assign a value to a name, and Python automatically defines the variable.
+:::
+
+:::
+
+:::
+
+
+
+## Question 7 {.question}
+
+True or False: You can convert an integer to a string in Python using the `str()` function.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+::: {.explanation}
+The `str()` function is used to convert an integer or any other data type into a string in Python.
+:::
+
+:::
+
+:::
+
+
+
+## Question 8 {.question}
+
+True or False: Python's `int` type can represent numbers of arbitrary size without any defined limit.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+::: {.explanation}
+Python's `int` type has unlimited precision, meaning it can represent arbitrarily large numbers.
+:::
+
+:::
+
+:::
+
+## Question 9 {.question}
+
+Which statement best describes the behavior of floating-point arithmetic in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Floating-point arithmetic is always precise.
+- [ ] Floating-point arithmetic can lead to rounding errors due to representation limits.
+- [ ] Floating-point numbers can only be positive.
+- [ ] Python does not support floating-point arithmetic.
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Floating-point arithmetic is always precise.
+- [x] Floating-point arithmetic can lead to rounding errors due to representation limits.
+- [ ] Floating-point numbers can only be positive.
+- [ ] Python does not support floating-point arithmetic.
+
+::: {.explanation}
+Floating-point arithmetic can sometimes lead to rounding errors due to the way numbers are represented internally, which limits their precision.
+:::
+
+:::
+
+:::
+
+
+## Question 10 {.question}
+
+Which of the following Python expressions would **not** evaluate to a finite value?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `float('inf')`
+- [ ] `-float('inf')`
+- [ ] `float('nan')`
+- [ ] `3.14`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `float('inf')`
+- [ ] `-float('inf')`
+- [x] `float('nan')`
+- [ ] `3.14`
+
+::: {.explanation}
+The `float('nan')` value represents "Not a Number," which is neither finite nor comparable to any numerical value, unlike positive or negative infinity, which are both defined as special floating-point values.
+:::
+
+:::
+
+:::
+
