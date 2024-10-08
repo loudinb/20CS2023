@@ -1,141 +1,5 @@
 ### Question 131 {.question}
 
-Which of the following will remove the element `3` from the list?
-
-```python
-numbers = [1, 2, 3, 4, 5]
-```
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `numbers.pop(3)`
-- [ ] `numbers.remove(3)`
-- [ ] `del numbers[3]`
-- [ ] `numbers.clear()`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `numbers.pop(3)`
-- [x] `numbers.remove(3)`
-- [ ] `del numbers[3]`
-- [ ] `numbers.clear()`
-
-
-::: {.explanation}
-The `remove(3)` method will remove the first occurrence of the value `3` from the list. `pop()` and `del` remove elements by index, not value, and `clear()` removes all elements.
-:::
-:::
-:::
-
-### Question 132 {.question}
-
-In Python, a dictionary element has both a __________ and __________.
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Key, Value
-- [ ] Index, Value
-- [ ] Key, Index
-- [ ] Name, Value
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] Key, Value
-- [ ] Index, Value
-- [ ] Key, Index
-- [ ] Name, Value
-
-
-::: {.explanation}
-In Python, dictionary elements are stored as key-value pairs. The key is used to access the associated value.
-:::
-:::
-:::
-
-### Question 133 {.question}
-
-::: {.smaller-75}
-Match the programming paradigm to the description:
-
-- Procedural Programming
-- Functional Programming
-- Object-Oriented Programming
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Step-by-step instructions; Functions to solve problems; Objects with data and methods
-- [ ] Objects with data and methods; Functions to solve problems; Step-by-step instructions
-- [ ] Functions to solve problems; Objects with data and methods; Step-by-step instructions
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] Step-by-step instructions; Functions to solve problems; Objects with data and methods
-- [ ] Objects with data and methods; Functions to solve problems; Step-by-step instructions
-- [ ] Functions to solve problems; Objects with data and methods; Step-by-step instructions
-
-
-::: {.explanation}
-Procedural programming follows step-by-step instructions, functional programming uses functions to solve problems, and OOP organizes code using objects that contain both data and methods.
-:::
-:::
-:::
-:::
-
-### Question 134 {.question}
-
-::: {.smaller-80}
-Objects are used to represent entities with both characteristics and behaviors. Which of the following statements most accurately describes the relationship between attributes and data?
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Attributes are external variables that are passed to the object’s methods.
-- [ ] Attributes are synonymous with class methods and cannot store data.
-- [ ] Attributes are the data stored within the object, representing its state or characteristics.
-- [ ] Attributes are the methods that operate on the object’s data.
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Attributes are external variables that are passed to the object’s methods.
-- [ ] Attributes are synonymous with class methods and cannot store data.
-- [x] Attributes are the data stored within the object, representing its state or characteristics.
-- [ ] Attributes are the methods that operate on the object’s data.
-
-
-::: {.explanation}
-Attributes are data members of an object that store information about the object's state or characteristics.
-:::
-:::
-:::
-:::
-
-### Question 135 {.question}
-
-If you modify an immutable object in either the original or the copied list, the change will be reflected in both lists.
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] True
-- [ ] False
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] True
-- [x] False
-
-
-::: {.explanation}
-Immutable objects cannot be modified after creation. When an immutable object (like a tuple or a string) is copied, changes are not reflected in both lists.
-:::
-:::
-:::
-
-### Question 136 {.question}
-
 What will be the result of the following code?
 
 ```python
@@ -165,98 +29,238 @@ The `capitalize()` method capitalizes the first character of the string, so `"he
 :::
 :::
 
-### Question 137 {.question}
+### Question 132 {.question}
 
-The memory addresses for two list objects are shown below. No modifications to the list were made after the copy operation. Was the copy operation a deep copy or shallow copy?
+What will be the result of the following code?
+
+```python
+text = "  Python  "
+print(text.strip())
+```
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Deep
-- [ ] Shallow
+- [ ] `"  Python  "`
+- [ ] `"Python"`
+- [ ] `"  Python"`
+- [ ] `"Python  "`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Deep
-- [x] Shallow
+- [ ] `"  Python  "`
+- [x] `"Python"`
+- [ ] `"  Python"`
+- [ ] `"Python  "`
 
 
 ::: {.explanation}
-The copy operation was a shallow copy. A shallow copy copies the references to objects rather than the objects themselves.
+The `strip()` method removes leading and trailing whitespace, so `"  Python  "` becomes `"Python"`.
+:::
+:::
+:::
+
+### Question 133 {.question}
+
+What will be the result of the following code?
+
+```python
+numbers = [1, 2, 3, 4, 5]
+print(sum(numbers))
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `5`
+- [ ] `10`
+- [ ] `15`
+- [ ] `None`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `5`
+- [ ] `10`
+- [x] `15`
+- [ ] `None`
+
+
+::: {.explanation}
+The `sum()` function calculates the sum of all elements in the list `[1, 2, 3, 4, 5]`, resulting in `15`.
+:::
+:::
+:::
+
+### Question 134 {.question}
+
+What is the term for a function that retains access to variables from its surrounding scope, even after that scope has finished executing?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Closure
+- [ ] Partial function
+- [ ] Static function
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Closure
+- [ ] Partial function
+- [ ] Static function
+
+
+::: {.explanation}
+A closure is a function that remembers the variables from its enclosing scope even after that scope has finished executing.
+:::
+:::
+:::
+
+### Question 135 {.question}
+
+When calling a function, what term is used to describe the values passed to the function when it is called?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Arguments
+- [ ] Parameters
+- [ ] Inputs
+- [ ] Values
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Arguments
+- [ ] Parameters
+- [ ] Inputs
+- [ ] Values
+
+
+::: {.explanation}
+Arguments are the actual values passed into the function when it is called. Parameters are the placeholders used in the function definition.
+:::
+:::
+:::
+
+### Question 136 {.question}
+
+The function `___________()` can be used to call methods from the superclass.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `super()`
+- [ ] `base()`
+- [ ] `parent()`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `super()`
+- [ ] `base()`
+- [ ] `parent()`
+
+
+::: {.explanation}
+The `super()` function allows you to call methods from the superclass, enabling access to inherited methods and attributes.
+:::
+:::
+:::
+
+### Question 137 {.question}
+
+What keyword is used as the short version of `else if`?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `elif`
+- [ ] `elseif`
+- [ ] `ifelse`
+- [ ] `else`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `elif`
+- [ ] `elseif`
+- [ ] `ifelse`
+- [ ] `else`
+
+
+::: {.explanation}
+The `elif` keyword in Python is used as a shorthand for `else if`, allowing multiple conditions in conditional statements.
 :::
 :::
 :::
 
 ### Question 138 {.question}
 
-Two lists can be concatenated using what operator?
+Which of the following are true regarding objects? (Select all that apply)
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `+`
-- [ ] `-`
-- [ ] `*`
-- [ ] `/`
+- [ ] An object is an instance of a class
+- [ ] An object can have its unique set of attribute values
+- [ ] An object can only have one function
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `+`
-- [ ] `-`
-- [ ] `*`
-- [ ] `/`
+- [x] An object is an instance of a class
+- [x] An object can have its unique set of attribute values
+- [ ] An object can only have one function
 
 
 ::: {.explanation}
-In Python, the `+` operator is used to concatenate two lists, combining them into one.
+Objects in Python are instances of classes, and they can have unique attribute values. An object can have multiple methods (functions).
 :::
 :::
 :::
 
 ### Question 139 {.question}
 
-__________ is a core concept of OOP about hiding complex details.
+Anonymous functions in Python are defined with what keyword?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Encapsulation
-- [ ] Inheritance
-- [ ] Polymorphism
+- [ ] `def`
+- [ ] `anon`
+- [ ] `lambda`
+- [ ] `fun`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] Encapsulation
-- [ ] Inheritance
-- [ ] Polymorphism
+- [ ] `def`
+- [ ] `anon`
+- [x] `lambda`
+- [ ] `fun`
 
 
 ::: {.explanation}
-Encapsulation hides the internal details of how an object works and exposes only necessary interfaces.
+In Python, anonymous functions are created using the `lambda` keyword.
 :::
 :::
 :::
 
 ### Question 140 {.question}
 
-For instance methods, what is always the first parameter?
+If an object cannot be modified, which of the following describes it?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `self`
-- [ ] `cls`
-- [ ] `instance`
+- [ ] Mutable
+- [ ] Immutable
+- [ ] Static
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `self`
-- [ ] `cls`
-- [ ] `instance`
+- [ ] Mutable
+- [x] Immutable
+- [ ] Static
 
 
 ::: {.explanation}
-The first parameter for instance methods in Python must always be `self`, which refers to the current instance of the class.
+An object that cannot be modified is considered "immutable". Examples of immutable types in Python include tuples and strings.
 :::
 :::
 :::

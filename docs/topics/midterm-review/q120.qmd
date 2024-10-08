@@ -1,60 +1,50 @@
 ### Question 121 {.question}
 
-What is the result of the following code?
-
-```python
-name = "Alice"
-print(name.lower())
-```
+The `@property` decorator in Python is used to:
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `ALICE`
-- [ ] `Alice`
-- [ ] `alice`
-- [ ] `Error`
+- [ ] To make methods private and inaccessible from outside the class
+- [ ] To allow methods to be called without parentheses, as if they were attributes
+- [ ] To automatically convert the return values of methods to properties of the class
+- [ ] To enable method chaining for these particular methods
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `ALICE`
-- [ ] `Alice`
-- [x] `alice`
-- [ ] `Error`
+- [ ] To make methods private and inaccessible from outside the class
+- [x] To allow methods to be called without parentheses, as if they were attributes
+- [ ] To automatically convert the return values of methods to properties of the class
+- [ ] To enable method chaining for these particular methods
 
 
 ::: {.explanation}
-The `.lower()` method converts all characters in the string to lowercase, so `"Alice"` becomes `"alice"`.
+The `@property` decorator allows a method to be accessed like an attribute, without needing parentheses, simplifying syntax.
 :::
 :::
 :::
 
 ### Question 122 {.question}
 
-::: {.smaller-80}
-Match the operator to the description:
-
-- `<=`
-- `!=`
-- `==`
-- `>`
+::: {.smaller-70}
+Consider the following statement about list copying in Python: You modify a mutable object (sometimes referred to as a shared object) within either the original list or a copied list, and the change was not reflected in the other list. Which statement explains this correctly?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Less than or equal to; Not equal to; Equal to; Greater than
-- [ ] Not equal to; Less than or equal to; Equal to; Greater than
-- [ ] Equal to; Greater than; Less than or equal to; Not equal to
+- [ ] Deep copying creates new objects for all nested elements, preventing changes from affecting both lists
+- [ ] Shallow copying creates new objects for the top-level elements, but nested mutable objects still share references
+- [ ] Both the original and copied lists reference the same memory addresses for all elements
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] Less than or equal to; Not equal to; Equal to; Greater than
-- [ ] Not equal to; Less than or equal to; Equal to; Greater than
-- [ ] Equal to; Greater than; Less than or equal to; Not equal to
+- [ ] Deep copying creates new objects for all nested elements, preventing changes from affecting both lists
+- [x] Shallow copying creates new objects for the top-level elements, but nested mutable objects still share references
+- [ ] Both the original and copied lists reference the same memory addresses for all elements
 
 
 ::: {.explanation}
-The correct matching is: `<=` means "less than or equal to", `!=` means "not equal to", `==` means "equal to", and `>` means "greater than".
+In a shallow copy, only the references to the top-level elements are copied, meaning any changes to nested mutable objects will affect both lists.
 :::
 :::
 :::
@@ -62,31 +52,177 @@ The correct matching is: `<=` means "less than or equal to", `!=` means "not equ
 
 ### Question 123 {.question}
 
-Which of the following are true about class attributes? (Select all that apply)
+Which of the following is **not** a valid variable name in Python?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Attributes are shared by all instances of a class.
-- [ ] They are always accessed with `get()`.
-- [ ] They are defined with the methods of the class.
-- [ ] They are defined within the class construction but outside of any method definitions.
+- [ ] `2score`
+- [ ] `_score`
+- [ ] `total_score`
+- [ ] `score2`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] Attributes are shared by all instances of a class.
-- [ ] They are always accessed with `get()`.
-- [ ] They are defined with the methods of the class.
-- [x] They are defined within the class construction but outside of any method definitions.
+- [x] `2score`
+- [ ] `_score`
+- [ ] `total_score`
+- [ ] `score2`
 
 
 ::: {.explanation}
-Class attributes are shared by all instances of a class and are defined within the class but outside of any methods.
+Variable names in Python cannot begin with a number, so `2score` is invalid. All other options are valid variable names.
 :::
 :::
 :::
 
 ### Question 124 {.question}
+
+The Python interpreter executes code line by line, rather than compiling the entire program at once.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+Python is an interpreted language, meaning the interpreter reads and executes code line by line, as opposed to compiled languages that translate the entire program into machine code before execution.
+:::
+:::
+:::
+
+### Question 125 {.question}
+
+Which method would you use to find the position of a substring within a string?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `search()`
+- [ ] `find()`
+- [ ] `index()`
+- [ ] `position()`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `search()`
+- [x] `find()`
+- [ ] `index()`
+- [ ] `position()`
+
+
+::: {.explanation}
+The `find()` method returns the lowest index of the substring if it is found in the string; otherwise, it returns `-1`.
+:::
+:::
+:::
+
+### Question 126 {.question}
+
+We use exceptions by raising them with `raise` and catching them with `______` statements
+
+::: {.r-stack}
+::: {.absolute .left-0 .top-0 width=100%}
+Answer: 
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+Answer: `try/except`
+
+::: {.explanation}
+Exceptions in Python are raised using the `raise` keyword and are caught using `try/except` statements. The full structure typically includes `try`, `except`, and optionally `else` and `finally` blocks.
+:::
+:::
+:::
+
+### Question 127 {.question}
+
+What is the type resulting from this conversion of a dictionary to a collection?
+
+```python
+my_dict = {'a': 1, 'b': 2}
+my_set = set(my_dict)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] List
+- [ ] Set
+- [ ] Tuple
+- [ ] Array
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] List
+- [x] Set
+- [ ] Tuple
+- [ ] Array
+
+
+::: {.explanation}
+Converting a dictionary to a set returns a set containing only the keys of the dictionary.
+:::
+:::
+:::
+
+### Question 128 {.question}
+
+What do we call the function inside a decorator called?
+
+The ________ function.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Inner
+- [ ] Decorated
+- [ ] Wrapper
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Inner
+- [ ] Decorated
+- [x] Wrapper
+
+::: {.explanation}
+The function inside a decorator is called the "wrapper" function because it wraps around the original function to add extra functionality.
+:::
+:::
+:::
+
+### Question 129 {.question}
+
+We use a logger in Python to do which of the following?
+
+::: {.r-stack}
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Debugging
+- [ ] Program monitoring
+- [ ] Hyperthreading
+- [ ] Parallelism
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Debugging
+- [x] Program monitoring
+- [ ] Hyperthreading
+- [ ] Parallelism
+
+::: {.explanation}
+Loggers in Python are primarily used for debugging and program monitoring. They allow you to track the flow of your program and record important information, errors, or warnings. Hyperthreading and parallelism are not related to logging.
+:::
+:::
+:::
+
+### Question 130 {.question}
 
 What is a `.pyc` file?
 
@@ -106,178 +242,6 @@ What is a `.pyc` file?
 
 ::: {.explanation}
 A `.pyc` file is a bytecode-compiled version of a Python script, which allows the interpreter to execute the code faster by skipping the compilation step in subsequent runs.
-:::
-:::
-:::
-
-### Question 125 {.question}
-
-All keyword arguments are not needed as long as those omitted arguments have default values in the function definition.
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] True
-- [ ] False
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] True
-- [ ] False
-
-
-::: {.explanation}
-As long as omitted arguments have default values defined in the function, they are not required when calling the function.
-:::
-:::
-:::
-
-### Question 126 {.question}
-
-::: {.smaller-80}
-Which statement correctly squares `my_investments` resulting in the output `rich = [250000, 1, 40000, 22090000]`?
-
-```python
-money_in_stocks = [500, 1, 200, 4700]
-stock_tickers = ['TSLA', 'ME', 'ADBE']
-combined = list(zip(money_in_stocks, stock_tickers))
-```
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `rich = [i[0]**2 for i in combined]`
-- [ ] `rich = [i**2 for x[0] in combined]`
-- [ ] `rich = [i[0]^2 for i in combined]`
-- [ ] `rich = [i^2 for x[0] in combined]`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `rich = [i[0]**2 for i in combined]`
-- [ ] `rich = [i**2 for x[0] in combined]`
-- [ ] `rich = [i[0]^2 for i in combined]`
-- [ ] `rich = [i^2 for x[0] in combined]`
-
-
-::: {.explanation}
-The correct list comprehension is `rich = [i[0]**2 for i in combined]`, which squares the first element (stock prices) of each tuple in `combined`.
-:::
-:::
-:::
-:::
-
-### Question 127 {.question}
-
-What is the result of the following code?
-
-```python
-numbers = [1, 2, 3, 4, 5]
-del numbers[1:4]
-print(numbers)
-```
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `[1, 2, 3, 4, 5]`
-- [ ] `[1, 4, 5]`
-- [ ] `[1, 5]`
-- [ ] `[]`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `[1, 2, 3, 4, 5]`
-- [ ] `[1, 4, 5]`
-- [x] `[1, 5]`
-- [ ] `[]`
-
-
-::: {.explanation}
-The `del` statement removes the elements from index 1 to 3 (excluding index 4), so `numbers` becomes `[1, 5]`.
-:::
-:::
-:::
-
-### Question 128 {.question}
-
-What is the documentation called when it is below a function and denoted with triple quotes (`"""`)?
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Multiline comment
-- [ ] Docstring
-- [ ] Inline comment
-- [ ] Block comment
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Multiline comment
-- [x] Docstring
-- [ ] Inline comment
-- [ ] Block comment
-
-
-::: {.explanation}
-In Python, a `docstring` is a string literal that appears right after the definition of a function, method, class, or module, used for documentation.
-:::
-:::
-:::
-
-### Question 129 {.question}
-
-What error does this return?
-
-```python
-def define_local(number):
-    local_variable = 7
-    return local_variable
-
-print(local_variable)
-```
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `SyntaxError`
-- [ ] `NameError`
-- [ ] `TypeError`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `SyntaxError`
-- [x] `NameError`
-- [ ] `TypeError`
-
-
-::: {.explanation}
-A `NameError` occurs because `local_variable` is defined inside the function and is not accessible outside its scope.
-:::
-:::
-:::
-
-### Question 130 {.question}
-
-Which of the following are considered `False` in Python?
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `0`
-- [ ] `set()`
-- [ ] `1`
-- [ ] `None`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `0`
-- [x] `set()`
-- [ ] `1`
-- [x] `None`
-
-
-::: {.explanation}
-In Python, `0`, `set()`, and `None` are considered `False` in boolean contexts, while `1` is `True`.
 :::
 :::
 :::

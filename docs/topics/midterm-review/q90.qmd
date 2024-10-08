@@ -1,142 +1,24 @@
 ### Question 91 {.question}
 
-Which of the following statements is true about comments in Python?
+The Python keyword `assert` raises what exception?
 
 ::: {.r-stack}
-
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Comments begin with the characters `//`
-- [ ] Comments begin with a `#` symbol
-- [ ] Comments are only allowed on their own line, not after code on the same line
-- [ ] Python does not support comments
+Answer: 
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Comments begin with the characters `//`
-- [x] Comments begin with a `#` symbol
-- [ ] Comments are only allowed on their own line, not after code on the same line
-- [ ] Python does not support comments
-
+Answer: `AssertionError`
 
 ::: {.explanation}
-Comments in Python start with the `#` symbol and can be placed either on their own line or at the end of a line of code.
+The `assert` keyword in Python is used to test if a condition is true. If the condition is false, it raises an `AssertionError`. This is often used for debugging and testing purposes.
 :::
 :::
 :::
 
 ### Question 92 {.question}
 
-This is an example of passing arguments by __________.
-
-```python
-def mess(name, message):
-    print(f"To {name}, {message}")
-
-mess(message="Happy Fall", name="You")
-```
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Position
-- [ ] Keyword
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Position
-- [x] Keyword
-
-
-::: {.explanation}
-In this example, arguments are passed by keyword (e.g., `message="Happy Fall"`, `name="You"`).
-:::
-:::
-:::
-
-### Question 93 {.question}
-
-Which of the following is a key benefit of using setter methods in object-oriented programming?
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] They automatically optimize the performance of attribute access.
-- [ ] They allow for data validation, preventing invalid states.
-- [ ] They enable automatic synchronization with external databases.
-- [ ] They provide built-in encryption for sensitive attributes.
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] They automatically optimize the performance of attribute access.
-- [x] They allow for data validation, preventing invalid states.
-- [ ] They enable automatic synchronization with external databases.
-- [ ] They provide built-in encryption for sensitive attributes.
-
-
-::: {.explanation}
-Setter methods allow for data validation, ensuring that attributes are set to valid values and preventing invalid states in an object.
-:::
-:::
-:::
-
-### Question 94 {.question}
-
-What is the result of the following code?
-
-```python
-numbers = [1, 2, 3, 4, 5]
-print(numbers[1:4])
-```
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `[1, 2, 3]`
-- [ ] `[2, 3, 4]`
-- [ ] `[2, 3]`
-- [ ] `[1, 2, 3, 4]`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `[1, 2, 3]`
-- [x] `[2, 3, 4]`
-- [ ] `[2, 3]`
-- [ ] `[1, 2, 3, 4]`
-
-
-::: {.explanation}
-The slice `numbers[1:4]` extracts elements from index 1 to 3 (excluding 4), resulting in `[2, 3, 4]`.
-:::
-:::
-:::
-
-### Question 95 {.question}
-
-The function `___________()` can be used to call methods from the superclass.
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `super()`
-- [ ] `base()`
-- [ ] `parent()`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `super()`
-- [ ] `base()`
-- [ ] `parent()`
-
-
-::: {.explanation}
-The `super()` function allows you to call methods from the superclass, enabling access to inherited methods and attributes.
-:::
-:::
-:::
-
-### Question 96 {.question}
-
-The `if-elif-else` statement is an extension of the `if-else` statement that allows you to evaluate multiple conditions.
+Global variables should be avoided because they can make code harder to maintain.
 
 ::: {.r-stack}
 
@@ -151,14 +33,64 @@ The `if-elif-else` statement is an extension of the `if-else` statement that all
 
 
 ::: {.explanation}
-The `if-elif-else` statement allows you to test multiple conditions and execute different blocks of code based on which condition is `True`.
+Global variables can make code harder to maintain and debug because their values can be changed from anywhere in the program, leading to unpredictable behavior.
 :::
 :::
 :::
 
-### Question 97 {.question}
+### Question 93 {.question}
 
-You can only instantiate a class object once.
+Which of the following is a mutable data type in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `tuple`
+- [ ] `str`
+- [ ] `list`
+- [ ] `int`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `tuple`
+- [ ] `str`
+- [x] `list`
+- [ ] `int`
+
+
+::: {.explanation}
+The `list` data type is mutable, meaning its elements can be changed after the list is created. Other types like `tuple` and `str` are immutable.
+:::
+:::
+:::
+
+### Question 94 {.question}
+
+Which of the following includes a syntax error?
+
+::: {.r-stack}
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `result = (2 + 3 * (4 - 1)`
+- [ ] `if True`
+- [ ] `result = base ^ exponent`
+- [ ] `int("abc")`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `result = (2 + 3 * (4 - 1)`
+- [x] `if True`
+- [ ] `result = base ^ exponent`
+- [ ] `int("abc")`
+
+::: {.explanation}
+The first option has a missing closing parenthesis, and the second option is missing a colon after the if statement.
+:::
+:::
+:::
+
+### Question 95 {.question}
+
+A class method is only called on an instance of a class.
 
 ::: {.r-stack}
 
@@ -173,91 +105,129 @@ You can only instantiate a class object once.
 
 
 ::: {.explanation}
-A class can be instantiated multiple times to create different objects with different states.
+Class methods can be called on both the class itself and its instances, making them more versatile than instance methods.
+:::
+:::
+:::
+
+### Question 96 {.question}
+
+Which of the following expressions will return `True`?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `5 == "5"`
+- [ ] `"Hello" == "hello"`
+- [ ] `5 != 6`
+- [ ] `3 >= 5`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `5 == "5"`
+- [ ] `"Hello" == "hello"`
+- [x] `5 != 6`
+- [ ] `3 >= 5`
+
+
+::: {.explanation}
+The expression `5 != 6` is `True` because 5 is not equal to 6. All other expressions are `False` due to case sensitivity or mismatched types.
+:::
+:::
+:::
+
+### Question 97 {.question}
+
+::: {.smaller-80}
+What is the primary difference between the Python shell and IPython shell?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Python shell is faster than IPython
+- [ ] Python shell has better syntax highlighting
+- [ ] There is no difference; they are just different names for the same thing
+- [ ] IPython offers more features like tab completion and magic commands
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Python shell is faster than IPython
+- [ ] Python shell has better syntax highlighting
+- [ ] There is no difference; they are just different names for the same thing
+- [x] IPython offers more features like tab completion and magic commands
+
+
+::: {.explanation}
+IPython provides additional features such as enhanced introspection, tab completion, magic commands, and more, making it a more powerful interactive shell compared to the standard Python shell.
+:::
 :::
 :::
 :::
 
 ### Question 98 {.question}
 
-Complete this statement regarding mutability: Lists are ____________ while tuples are ____________.
+Are dictionaries in Python accessed by index or key?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] mutable, mutable
-- [ ] mutable, immutable
-- [ ] immutable, mutable
-- [ ] immutable, immutable
+- [ ] Index
+- [ ] Key
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] mutable, mutable
-- [x] mutable, immutable
-- [ ] immutable, mutable
-- [ ] immutable, immutable
+- [ ] Index
+- [x] Key
 
 
 ::: {.explanation}
-Lists in Python are mutable, meaning their elements can be changed, added, or removed. Tuples, on the other hand, are immutable and cannot be altered after their creation.
+Dictionaries in Python are accessed using keys, which are used to retrieve the associated values.
 :::
 :::
 :::
 
 ### Question 99 {.question}
 
-Fill in the missing parameter in the method definition.
-
-```python
-class Fungi:
-    def add_fungus(_______, fungus_species):
-        self.favorite_fungi[fungus_species] = "added"
-```
+Is a class method or static method intended to be essentially a utility function?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `fungi`
-- [ ] `self`
-- [ ] `cls`
+- [ ] Class method
+- [ ] Static method
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `fungi`
-- [x] `self`
-- [ ] `cls`
+- [ ] Class method
+- [x] Static method
 
 
 ::: {.explanation}
-The first parameter of instance methods must be `self`, which refers to the current instance of the class.
+Static methods are utility functions that don’t operate on class or instance data but are called in a class’s namespace.
 :::
 :::
 :::
 
 ### Question 100 {.question}
 
-Which of the following are true about the bolded line of code? (Select all that apply)
-
-```python
-instance_of_Fungi_class = Fungi("Agaricus", "bisporus")
-```
+Give one example of a higher-order function that takes other functions as arguments.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] This is object instantiation
-- [ ] The `__init__` function is invoked
-- [ ] You forgot to explicitly pass `self`. It should be `tasty_fungus = Fungi(self, "Agaricus", "bisporus")`
+- [ ] `map()`
+- [ ] `max()`
+- [ ] `print()`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] This is object instantiation
-- [x] The `__init__` function is invoked
-- [ ] You forgot to explicitly pass `self`. It should be `tasty_fungus = Fungi(self, "Agaricus", "bisporus")`
+- [x] `map()`
+- [ ] `max()`
+- [ ] `print()`
 
 
 ::: {.explanation}
-The bolded line of code creates a new instance of the `Fungi` class, invoking the `__init__` method. There is no need to pass `self` explicitly, as it is automatically handled by Python.
+The `map()` function is a higher-order function that takes another function as an argument and applies it to all items in an iterable.
 :::
 :::
 :::

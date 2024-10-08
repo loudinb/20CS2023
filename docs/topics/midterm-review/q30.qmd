@@ -1,134 +1,120 @@
 ### Question 31 {.question}
 
-Which of the following is **not** a native type in Python?
+A class can inherit from multiple parent classes.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Matrix
-- [ ] Float
-- [ ] Bool
-- [ ] Dict
+- [ ] True
+- [ ] False
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] Matrix
-- [ ] Float
-- [ ] Bool
-- [ ] Dict
+- [x] True
+- [ ] False
 
 
 ::: {.explanation}
-Python does not have a native "Matrix" type. However, libraries like NumPy provide a matrix or array type. Float, Bool, and Dict are native types.
+Python supports multiple inheritance, allowing a class to inherit from more than one parent class.
 :::
 :::
 :::
 
 ### Question 32 {.question}
 
-::: {.smaller-80}
-What is the primary difference between the Python shell and IPython shell?
+We _________ objects from a class to create concrete instances with specific attribute values.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Python shell is faster than IPython
-- [ ] Python shell has better syntax highlighting
-- [ ] There is no difference; they are just different names for the same thing
-- [ ] IPython offers more features like tab completion and magic commands
+- [ ] instantiate
+- [ ] concatenate
+- [ ] interpret
+- [ ] syscall
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Python shell is faster than IPython
-- [ ] Python shell has better syntax highlighting
-- [ ] There is no difference; they are just different names for the same thing
-- [x] IPython offers more features like tab completion and magic commands
+- [x] instantiate
+- [ ] concatenate
+- [ ] interpret
+- [ ] syscall
 
 
 ::: {.explanation}
-IPython provides additional features such as enhanced introspection, tab completion, magic commands, and more, making it a more powerful interactive shell compared to the standard Python shell.
-:::
+To create a concrete instance of a class, we instantiate the class, assigning specific values to the object's attributes.
 :::
 :::
 :::
 
 ### Question 33 {.question}
 
-In Python, TAB characters and 4 spaces can be used interchangeably for indentation.
+You can manually raise exceptions using the `_______` keyword.
 
 ::: {.r-stack}
-
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] True
-- [ ] False
+Answer:
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] True
-- [x] False
-
+Answer: `raise`
 
 ::: {.explanation}
-Tabs and spaces should not be used interchangeably in Python. PEP 8 recommends using 4 spaces per indentation level to maintain consistency and avoid indentation errors.
+The `raise` keyword is used to manually raise exceptions in Python. For example: `raise ValueError("Invalid input")`
 :::
 :::
 :::
 
 ### Question 34 {.question}
 
-You can access the docstring of a function using the __________ attribute.
+What keyword is preferred to be used when we open files?
 
 ::: {.r-stack}
-
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `__help__`
-- [ ] `__doc__`
-- [ ] `__info__`
-- [ ] `__desc__`
+- [ ] with
+- [ ] try
+- [ ] close
+- [ ] unzip
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `__help__`
-- [x] `__doc__`
-- [ ] `__info__`
-- [ ] `__desc__`
-
+- [x] with
+- [ ] try
+- [ ] close
+- [ ] unzip
 
 ::: {.explanation}
-In Python, the `__doc__` attribute holds the docstring of a function, class, or module, providing an explanation of its purpose.
+The `with` keyword is preferred when opening files in Python. It ensures that the file is properly closed after we're done with it, even if an exception occurs. This is known as the context manager protocol.
 :::
 :::
 :::
 
 ### Question 35 {.question}
 
-Which of the following methods is used to remove whitespace from both the beginning and end of a string?
+Attributes specified in the class declaration are called ______ attributes.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `strip()`
-- [ ] `split()`
-- [ ] `remove()`
-- [ ] `replace()`
+- [ ] Instance
+- [ ] Local
+- [ ] Class
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `strip()`
-- [ ] `split()`
-- [ ] `remove()`
-- [ ] `replace()`
+- [ ] Instance
+- [ ] Local
+- [x] Class
 
 
 ::: {.explanation}
-The `strip()` method removes leading and trailing whitespace from a string, while `split()` divides a string into parts, and `replace()` replaces substrings.
+Attributes defined within a class but outside of any methods are known as class attributes. These attributes are shared across all instances of the class.
 :::
 :::
 :::
 
 ### Question 36 {.question}
 
-A class method is only called on an instance of a class.
+A closure is formed when an inner function is defined within an outer function. True or False?
 
 ::: {.r-stack}
 
@@ -138,119 +124,117 @@ A class method is only called on an instance of a class.
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] True
-- [x] False
+- [x] True
+- [ ] False
 
 
 ::: {.explanation}
-Class methods can be called on both the class itself and its instances, making them more versatile than instance methods.
+In Python, a closure occurs when an inner function is defined inside an outer function and the inner function retains access to the variables in the outer function's scope.
 :::
 :::
 :::
 
 ### Question 37 {.question}
 
-Dictionaries are unordered sets of pairs. You access dictionary data by what?
+When defining a function, the input variables are called the __________ of the function.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Key
-- [ ] Index
-- [ ] Cell
+- [ ] Arguments
+- [ ] Parameters
+- [ ] Inputs
+- [ ] Variables
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] Key
-- [ ] Index
-- [ ] Cell
+- [ ] Arguments
+- [x] Parameters
+- [ ] Inputs
+- [ ] Variables
 
 
 ::: {.explanation}
-In Python, dictionary values are accessed by their keys, which are unique identifiers for each value in the dictionary.
+Parameters are the input variables defined in the function signature, while arguments are the actual values passed to the function when it is called.
 :::
 :::
 :::
 
 ### Question 38 {.question}
 
-Which of the following are benefits of OOP? (Select all that apply)
+Do static methods have a standard first parameter like instance and class methods? If so, which of the following?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Modularity
-- [ ] Maintainability
-- [ ] Complexity
+- [ ] No parameters are passed to static methods.
+- [ ] `self`
+- [ ] `cls`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] Modularity
-- [x] Maintainability
-- [ ] Complexity
+- [x] No parameters are passed to static methods.
+- [ ] `self`
+- [ ] `cls`
 
 
 ::: {.explanation}
-OOP improves modularity by organizing code into objects and classes, which also enhances maintainability by making the code easier to understand and manage.
+Static methods do not require parameters like `self` or `cls` since they don’t operate on instance or class data.
 :::
 :::
 :::
 
 ### Question 39 {.question}
 
-What is the result of the following code?
-
-```python
-numbers = [1, 2, 3, 4, 5]
-print(numbers[2:])
-```
+Which of the following functions returns the largest value from a list of numbers?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `[1, 2]`
-- [ ] `[3, 4, 5]`
-- [ ] `[1, 2, 3, 4, 5]`
-- [ ] `[2, 3, 4, 5]`
+- [ ] `sum()`
+- [ ] `max()`
+- [ ] `largest()`
+- [ ] `greater()`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `[1, 2]`
-- [x] `[3, 4, 5]`
-- [ ] `[1, 2, 3, 4, 5]`
-- [ ] `[2, 3, 4, 5]`
+- [ ] `sum()`
+- [x] `max()`
+- [ ] `largest()`
+- [ ] `greater()`
 
 
 ::: {.explanation}
-The slice `numbers[2:]` returns a new list starting from index 2 to the end, which includes `[3, 4, 5]`.
+The `max()` function returns the largest value in a list or any iterable. The other options do not exist or serve a different purpose in Python.
 :::
 :::
 :::
 
 ### Question 40 {.question}
 
-Which of the following are iterable objects?
+This is an example of passing arguments by __________.
+
+```python
+def mess(name, message):
+    print(f"To {name}, {message}")
+
+mess(message="Happy Fall", name="You")
+```
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Lists
-- [ ] Tuples
-- [ ] Strings
-- [ ] Dictionaries
-- [ ] All of the above
+- [ ] Position
+- [ ] Keyword
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Lists
-- [ ] Tuples
-- [ ] Strings
-- [ ] Dictionaries
-- [x] All of the above
+- [ ] Position
+- [x] Keyword
 
 
 ::: {.explanation}
-Lists, tuples, strings, and dictionaries are all iterable objects in Python.
+In this example, arguments are passed by keyword (e.g., `message="Happy Fall"`, `name="You"`).
 :::
 :::
 :::

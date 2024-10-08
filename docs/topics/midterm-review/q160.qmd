@@ -1,139 +1,80 @@
 ### Question 161 {.question}
 
-::: {.smaller-70}
-Consider the following statement about list copying in Python: You modify a mutable object (sometimes referred to as a shared object) within either the original list or a copied list, and the change was not reflected in the other list. Which statement explains this correctly?
+If a function has no return statement, it returns what?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Deep copying creates new objects for all nested elements, preventing changes from affecting both lists
-- [ ] Shallow copying creates new objects for the top-level elements, but nested mutable objects still share references
-- [ ] Both the original and copied lists reference the same memory addresses for all elements
+- [ ] None
+- [ ] 0
+- [ ] NaN
+- [ ] null
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Deep copying creates new objects for all nested elements, preventing changes from affecting both lists
-- [x] Shallow copying creates new objects for the top-level elements, but nested mutable objects still share references
-- [ ] Both the original and copied lists reference the same memory addresses for all elements
+- [x] None
+- [ ] 0
+- [ ] NaN
+- [ ] null
 
 
 ::: {.explanation}
-In a shallow copy, only the references to the top-level elements are copied, meaning any changes to nested mutable objects will affect both lists.
-:::
+If a Python function does not explicitly return a value, it returns `None` by default.
 :::
 :::
 :::
 
 ### Question 162 {.question}
 
-For the code below, we call the variables `genus` and `species` _____________ of the instance `instance_of_Fungi_class`.
-
-```python
-class Dog:
-    def __init__(self, name, breed):
-        self.name = name
-        self.breed = breed
-```
+In Python, functions are __________.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Methods
-- [ ] Attributes
-- [ ] Parameters
+- [ ] Objects
+- [ ] Articles
+- [ ] Things
+- [ ] Items
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Methods
-- [x] Attributes
-- [ ] Parameters
+- [x] Objects
+- [ ] Articles
+- [ ] Things
+- [ ] Items
 
 
 ::: {.explanation}
-The `genus` and `species` in the class `Fungi` would be considered attributes of the instance `instance_of_Fungi_class`.
+In Python, functions are first-class objects, meaning they can be passed as arguments, returned from other functions, and assigned to variables.
 :::
 :::
 :::
 
 ### Question 163 {.question}
 
-According to Google’s Python Style Guide, which of the following is the correct way to name a function in Python?
+Which handler is used to save logging information to a .log file?
 
 ::: {.r-stack}
-
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] camelCase
-- [ ] snake_case
-- [ ] PascalCase
-- [ ] UPPERCASE
+- [ ] FileHandler('file.log')
+- [ ] StreamHandler()
+- [ ] LogHandler('file.log')
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] camelCase
-- [x] snake_case
-- [ ] PascalCase
-- [ ] UPPERCASE
-
+- [x] FileHandler('file.log')
+- [ ] StreamHandler()
+- [ ] LogHandler('file.log')
 
 ::: {.explanation}
-Google's Python Style Guide (and PEP 8) recommend using `snake_case` for function names, which is lowercase letters separated by underscores. This style improves readability.
+The `FileHandler` is used to save logging information to a file. In this case, `FileHandler('file.log')` would create a handler that writes log messages to a file named 'file.log'.
 :::
 :::
 :::
 
 ### Question 164 {.question}
 
-A best practice for inheritance is to use _______ _______ classes to define interfaces. (2 words)
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Template-based
-- [ ] Abstract base
-- [ ] Super-parent
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Template-based
-- [x] Abstract base
-- [ ] Super-parent
-
-
-::: {.explanation}
-Abstract base classes define interfaces that subclasses are required to implement, promoting consistency in the class hierarchy.
-:::
-:::
-:::
-
-### Question 165 {.question}
-
-Which of the following methods can be used to add an element to the end of a list?
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `insert()`
-- [ ] `append()`
-- [ ] `extend()`
-- [ ] `push()`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `insert()`
-- [x] `append()`
-- [ ] `extend()`
-- [ ] `push()`
-
-
-::: {.explanation}
-The `append()` method adds a single element to the end of a list. The `extend()` method adds all elements from an iterable, while `insert()` inserts an element at a specific index.
-:::
-:::
-:::
-
-### Question 166 {.question}
-
-When using the `@property` decorator to create a getter method in Python, you are always required to also implement a corresponding setter method.
+You can only instantiate a class object once.
 
 ::: {.r-stack}
 
@@ -148,112 +89,140 @@ When using the `@property` decorator to create a getter method in Python, you ar
 
 
 ::: {.explanation}
-The `@property` decorator can be used to create a getter method without the need for a corresponding setter method unless you need to control or validate the setting of the attribute.
+A class can be instantiated multiple times to create different objects with different states.
+:::
+:::
+:::
+
+### Question 165 {.question}
+
+Which of the following would result in a `SyntaxError`?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `print("Hello, world!")`
+- [ ] `my_variable = 10`
+- [ ] `if True print("Yes")`
+- [ ] `a = 5 + 3`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `print("Hello, world!")`
+- [ ] `my_variable = 10`
+- [x] `if True print("Yes")`
+- [ ] `a = 5 + 3`
+
+
+::: {.explanation}
+The line `if True print("Yes")` is missing a colon `:` after `True`, which results in a `SyntaxError`.
+:::
+:::
+:::
+
+### Question 166 {.question}
+
+Changes in the program and in particular in its structure that do not affect its functionality are called code ____________.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+Answer: 
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+Answer: `refactoring`
+
+::: {.explanation}
+Code refactoring is the process of restructuring existing computer code without changing its external behavior. It's done to improve non-functional attributes of the software such as readability, complexity, maintainability, or performance.
 :::
 :::
 :::
 
 ### Question 167 {.question}
 
-Which of the following are valid iterator tools?
+In Python, TAB characters and 4 spaces can be used interchangeably for indentation.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `enumerate`
-- [ ] `reversed`
-- [ ] `parse`
-- [ ] `split`
+- [ ] True
+- [ ] False
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `enumerate`
-- [x] `reversed`
-- [ ] `parse`
-- [ ] `split`
+- [ ] True
+- [x] False
 
 
 ::: {.explanation}
-The `enumerate` and `reversed` functions are iterator tools. `parse` and `split` are not valid iterator tools in this context.
+Tabs and spaces should not be used interchangeably in Python. PEP 8 recommends using 4 spaces per indentation level to maintain consistency and avoid indentation errors.
 :::
 :::
 :::
 
 ### Question 168 {.question}
 
-Which of the following is the correct syntax to open a file for reading in Python?
+What is the special method that is automatically called when a new instance of a class is created, allowing you to initialize the attributes of the class?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `open('file.txt', 'w')`
-- [ ] `open('file.txt', 'r')`
-- [ ] `open('file.txt', 'rw')`
-- [ ] `open('file.txt', 'a')`
+- [ ] `__str__`
+- [ ] `__call__`
+- [ ] `__init__`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `open('file.txt', 'w')`
-- [x] `open('file.txt', 'r')`
-- [ ] `open('file.txt', 'rw')`
-- [ ] `open('file.txt', 'a')`
+- [ ] `__str__`
+- [ ] `__call__`
+- [x] `__init__`
 
 
 ::: {.explanation}
-To open a file for reading, the correct mode is `'r'`. The `'w'` mode is for writing, and `'a'` is for appending. The `'rw'` mode does not exist.
+The `__init__` method is the constructor method in Python, used to initialize the attributes of a class when an object is created.
 :::
 :::
 :::
 
 ### Question 169 {.question}
 
-Will the variable `x` have different memory addresses before and after modification in the following scenario?
-
-```python
-x = 5
-print(id(x))
-x = x + 1
-print(id(x))
-```
+What keyword in exception handling allows you to capture the raised exception object, giving you access to its details?
 
 ::: {.r-stack}
-
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Yes
-- [ ] No
+Answer:
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] Yes
-- [ ] No
-
+Answer: `as`
 
 ::: {.explanation}
-When you assign a new value to `x`, the memory address changes because integers are immutable in Python. Reassigning a variable creates a new object.
+The `as` keyword is used to capture the exception object, allowing access to its details. For example: `except ExceptionType as e:`
 :::
 :::
 :::
 
 ### Question 170 {.question}
 
-Which of the following are limitations of static methods? (Select all that apply)
+Which of the following is an example of assigning a default value to a parameter in a function?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] They don’t have access to `self` and `cls`
-- [ ] Race conditions are of primary concern
-- [ ] They are detrimental to namespace organization
+- [ ] `x1, x2=0`
+- [ ] `x1:0, x2`
+- [ ] `x1, x2`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] They don’t have access to `self` and `cls`
-- [ ] Race conditions are of primary concern
-- [ ] They are detrimental to namespace organization
+- [x] `x1, x2=0`
+- [ ] `x1:0, x2`
+- [ ] `x1, x2`
 
 
 ::: {.explanation}
-Static methods have the limitation of not being able to access `self` (instance data) or `cls` (class data), but they are not typically related to race conditions or namespace organization.
+In Python, default values are assigned in function definitions like `x2=0`, meaning `x2` will take the value `0` if no argument is passed.
 :::
 :::
 :::

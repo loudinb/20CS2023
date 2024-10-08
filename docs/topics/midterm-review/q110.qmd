@@ -1,220 +1,202 @@
 ### Question 111 {.question}
 
-What is the output of the following code?
-
-```python
-x = 10
-y = 3
-print(f"{x/y:.2f}")
-```
+The generic `except` block will catch **all** errors, this is not recommended, you should always catch specific exceptions.
 
 ::: {.r-stack}
-
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `3.3333333333`
-- [ ] `3.33`
-- [ ] `3.34`
+- [ ] True
+- [ ] False
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `3.3333333333`
-- [x] `3.33`
-- [ ] `3.34`
-
+- [x] True
+- [ ] False
 
 ::: {.explanation}
-The format `:.2f` rounds the division result to two decimal places, giving an output of `3.33`.
+It's best practice to catch specific exceptions rather than using a generic `except` block. This allows for more precise error handling and helps prevent masking unexpected errors.
 :::
 :::
 :::
 
 ### Question 112 {.question}
 
-Is a class method or static method intended to be essentially a utility function?
+::: {.smaller-80}
+Which of the following are true about Jupyter notebooks? (Select all that apply)
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Class method
-- [ ] Static method
+- [ ] They allow for mixing code, text, and visualizations in a single document
+- [ ] They support multiple programming languages, not just Python
+- [ ] They can be run in a web browser
+- [ ] They require a powerful dedicated server to run
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Class method
-- [x] Static method
+- [x] They allow for mixing code, text, and visualizations in a single document
+- [x] They support multiple programming languages, not just Python
+- [x] They can be run in a web browser
+- [ ] They require a powerful dedicated server to run
 
 
 ::: {.explanation}
-Static methods are utility functions that don’t operate on class or instance data but are called in a class’s namespace.
+Jupyter notebooks allow for mixing code, text (with Markdown), and visualizations. They are flexible and support multiple languages through different kernels. They can run locally on a personal machine via a web browser, so a powerful dedicated server is not required.
+:::
 :::
 :::
 :::
 
 ### Question 113 {.question}
 
-__________ is a core concept of OOP about creating new classes from existing ones.
+Fill in the blank: The average time complexity for dictionary operations (insert, delete, lookup) is O(___).
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Polymorphism
-- [ ] Abstraction
-- [ ] Inheritance
+- [ ] O(1)
+- [ ] O(log n)
+- [ ] O(n)
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Polymorphism
-- [ ] Abstraction
-- [x] Inheritance
+- [x] O(1)
+- [ ] O(log n)
+- [ ] O(n)
 
 
 ::: {.explanation}
-Inheritance allows a new class to be created from an existing class, inheriting its attributes and methods.
+Dictionary operations like insert, delete, and lookup generally have an average time complexity of O(1) due to the underlying hash table implementation.
 :::
 :::
 :::
 
 ### Question 114 {.question}
 
-What keyword is used as the short version of `else if`?
+Static methods behave like regular functions but belong to the class namespace.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `elif`
-- [ ] `elseif`
-- [ ] `ifelse`
-- [ ] `else`
+- [ ] True
+- [ ] False
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `elif`
-- [ ] `elseif`
-- [ ] `ifelse`
-- [ ] `else`
+- [x] True
+- [ ] False
 
 
 ::: {.explanation}
-The `elif` keyword in Python is used as a shorthand for `else if`, allowing multiple conditions in conditional statements.
+Static methods behave like regular functions, but they belong to the class namespace and are accessed through the class.
 :::
 :::
 :::
 
 ### Question 115 {.question}
 
-F-strings can include expressions and function calls.
+A(n) ___________ in the logger module allows you to send logs to different destinations like a file or the console.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] True
-- [ ] False
+Answer: 
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] True
-- [ ] False
-
+Answer: `handler`
 
 ::: {.explanation}
-F-strings allow you to embed expressions and function calls inside curly braces, making them a flexible way to format strings in Python.
+In the logging module, a handler determines where the log messages are sent. Different types of handlers can send logs to files, console output, email, or other destinations.
 :::
 :::
 :::
 
 ### Question 116 {.question}
 
-If I do a shallow copy of `og_list`, which of the following have different addresses?
-
-```python
-og_list = ['c', 'b', [53, 21], 40, 'a']
-copied = og_list.copy()
-```
+What logical comparison operator do you use to compare two values?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] List objects
-- [ ] Element 3: `[53, 21]`
-- [ ] Element 3, inner 1 and 2: `53` and `21`
-- [ ] Element 4: `40`
+- [ ] `==`
+- [ ] `>`
+- [ ] `<`
+- [ ] `!=`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] List objects
-- [ ] Element 3: `[53, 21]`
-- [ ] Element 3, inner 1 and 2: `53` and `21`
-- [ ] Element 4: `40`
+- [x] `==`
+- [ ] `>`
+- [ ] `<`
+- [ ] `!=`
 
 
 ::: {.explanation}
-In a shallow copy, the list objects themselves have different addresses, but the elements within the inner lists share the same references.
+The `==` operator is used to compare two values for equality.
 :::
 :::
 :::
 
 ### Question 117 {.question}
 
-::: {.smaller-75}
-What will be the result of the following code?
+What is the result of the following code?
 
 ```python
-text = "Python Programming"
-print(text.split())
+numbers = [1, 2, 3, 4, 5]
+print(numbers[2:])
 ```
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `['Python', 'Programming']`
-- [ ] `['P', 'y', 't', 'h', 'o', 'n', 'P', 'r', 'o', 'g', 'r', 'a', 'm', 'm', 'i', 'n', 'g']`
-- [ ] `'Python' 'Programming'`
-- [ ] `['PythonProgramming']`
+- [ ] `[1, 2]`
+- [ ] `[3, 4, 5]`
+- [ ] `[1, 2, 3, 4, 5]`
+- [ ] `[2, 3, 4, 5]`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `['Python', 'Programming']`
-- [ ] `['P', 'y', 't', 'h', 'o', 'n', 'P', 'r', 'o', 'g', 'r', 'a', 'm', 'm', 'i', 'n', 'g']`
-- [ ] `'Python' 'Programming'`
-- [ ] `['PythonProgramming']`
+- [ ] `[1, 2]`
+- [x] `[3, 4, 5]`
+- [ ] `[1, 2, 3, 4, 5]`
+- [ ] `[2, 3, 4, 5]`
 
 
 ::: {.explanation}
-The `split()` method splits a string by whitespace by default, so `"Python Programming"` becomes `['Python', 'Programming']`.
-:::
+The slice `numbers[2:]` returns a new list starting from index 2 to the end, which includes `[3, 4, 5]`.
 :::
 :::
 :::
 
 ### Question 118 {.question}
 
-Which of the following would result in a `SyntaxError`?
+When performing comparisons in Python using operators like `==`, `>=`, `>`, `!=`, `<`, and `<=`, the result of the evaluation is always of what type?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `print("Hello, world!")`
-- [ ] `my_variable = 10`
-- [ ] `if True print("Yes")`
-- [ ] `a = 5 + 3`
+- [ ] `int`
+- [ ] `float`
+- [ ] `bool`
+- [ ] `str`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `print("Hello, world!")`
-- [ ] `my_variable = 10`
-- [x] `if True print("Yes")`
-- [ ] `a = 5 + 3`
+- [ ] `int`
+- [ ] `float`
+- [x] `bool`
+- [ ] `str`
 
 
 ::: {.explanation}
-The line `if True print("Yes")` is missing a colon `:` after `True`, which results in a `SyntaxError`.
+Logical comparisons in Python always return a boolean value: `True` or `False`.
 :::
 :::
 :::
 
 ### Question 119 {.question}
 
-All methods and attributes of the parent class are inherited by the subclasses as long as they are not overridden.
+All keyword arguments are not needed as long as those omitted arguments have default values in the function definition.
 
 ::: {.r-stack}
 
@@ -229,38 +211,33 @@ All methods and attributes of the parent class are inherited by the subclasses a
 
 
 ::: {.explanation}
-Subclasses inherit all methods and attributes from the parent class unless they are explicitly overridden in the subclass.
+As long as omitted arguments have default values defined in the function, they are not required when calling the function.
 :::
 :::
 :::
 
 ### Question 120 {.question}
 
-What is the result of the following code?
-
-```python
-text = "Python Programming"
-print(text[7:])
-```
+Which of the following is a key benefit of using setter methods in object-oriented programming?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `Python`
-- [ ] `Programming`
-- [ ] `thon Programming`
-- [ ] `Py`
+- [ ] They automatically optimize the performance of attribute access.
+- [ ] They allow for data validation, preventing invalid states.
+- [ ] They enable automatic synchronization with external databases.
+- [ ] They provide built-in encryption for sensitive attributes.
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `Python`
-- [x] `Programming`
-- [ ] `thon Programming`
-- [ ] `Py`
+- [ ] They automatically optimize the performance of attribute access.
+- [x] They allow for data validation, preventing invalid states.
+- [ ] They enable automatic synchronization with external databases.
+- [ ] They provide built-in encryption for sensitive attributes.
 
 
 ::: {.explanation}
-The slice `text[7:]` returns the substring starting from index 7 to the end, which results in `"Programming"`.
+Setter methods allow for data validation, ensuring that attributes are set to valid values and preventing invalid states in an object.
 :::
 :::
 :::

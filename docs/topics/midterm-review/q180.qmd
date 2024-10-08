@@ -1,224 +1,181 @@
 ### Question 181 {.question}
 
-In inheritance, the new class (subclass) inherits attributes and methods from the existing class, called the _________.
+What error does this return?
+
+```python
+def define_local(number):
+    local_variable = 7
+    return local_variable
+
+print(local_variable)
+```
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] superclass
-- [ ] submethod
-- [ ] metaclass
+- [ ] `SyntaxError`
+- [ ] `NameError`
+- [ ] `TypeError`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] superclass
-- [ ] submethod
-- [ ] metaclass
+- [ ] `SyntaxError`
+- [x] `NameError`
+- [ ] `TypeError`
 
 
 ::: {.explanation}
-The superclass (also known as the parent class) provides the attributes and methods that the subclass inherits.
+A `NameError` occurs because `local_variable` is defined inside the function and is not accessible outside its scope.
 :::
 :::
 :::
 
 ### Question 182 {.question}
 
-What is the term for a function that retains access to variables from its surrounding scope, even after that scope has finished executing?
+Which of the following are limitations of static methods? (Select all that apply)
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Closure
-- [ ] Partial function
-- [ ] Static function
+- [ ] They don’t have access to `self` and `cls`
+- [ ] Race conditions are of primary concern
+- [ ] They are detrimental to namespace organization
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] Closure
-- [ ] Partial function
-- [ ] Static function
+- [x] They don’t have access to `self` and `cls`
+- [ ] Race conditions are of primary concern
+- [ ] They are detrimental to namespace organization
 
 
 ::: {.explanation}
-A closure is a function that remembers the variables from its enclosing scope even after that scope has finished executing.
+Static methods have the limitation of not being able to access `self` (instance data) or `cls` (class data), but they are not typically related to race conditions or namespace organization.
 :::
 :::
 :::
 
 ### Question 183 {.question}
 
-What is the result of the following code?
+The below code checks if `x` is ________.
 
 ```python
-text = "Python Programming"
-print(text.find("Prog"))
+x % 2 == 0
 ```
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `0`
-- [ ] `7`
-- [ ] `-1`
-- [ ] `None`
+- [ ] Odd
+- [ ] Even
+- [ ] Prime
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `0`
-- [x] `7`
-- [ ] `-1`
-- [ ] `None`
+- [ ] Odd
+- [x] Even
+- [ ] Prime
 
 
 ::: {.explanation}
-The `find()` method returns the index of the first occurrence of the substring `"Prog"` in `"Python Programming"`, which starts at index 7.
+The code `x % 2 == 0` checks if a number `x` is divisible by 2, which means it is even.
 :::
 :::
 :::
 
 ### Question 184 {.question}
 
-::: {.smaller-80}
-You don’t know how many people will attend your club meeting, but you want to make a record of who attended by passing names through your function. Fill in the blank to unpack the arguments.
+What is the result of the following code?
 
 ```python
-def record_attendance(meeting_date, *__________):
-    print(f"Meeting date: {meeting_date}")
-    print("People who attended:", __________)
+numbers = [1, 2, 3, 4, 5]
+del numbers[1:4]
+print(numbers)
 ```
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `names`
-- [ ] `args`
-- [ ] `kwargs`
-- [ ] `participants`
+- [ ] `[1, 2, 3, 4, 5]`
+- [ ] `[1, 4, 5]`
+- [ ] `[1, 5]`
+- [ ] `[]`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `names`
-- [x] `args`
-- [ ] `kwargs`
-- [ ] `participants`
+- [ ] `[1, 2, 3, 4, 5]`
+- [ ] `[1, 4, 5]`
+- [x] `[1, 5]`
+- [ ] `[]`
 
 
 ::: {.explanation}
-The `*args` syntax allows you to pass a variable number of positional arguments to the function. The variable `args` will hold all the passed names.
-:::
+The `del` statement removes the elements from index 1 to 3 (excluding index 4), so `numbers` becomes `[1, 5]`.
 :::
 :::
 :::
 
 ### Question 185 {.question}
 
-Is “vacuous” a key or value in the following dictionary?
-
-```python
-dictionary = {
-    "vacuous": "having or showing a lack of thought or intelligence; mindless",
-    "apocryphal": "of doubtful authenticity",
-    "Machiavellian": "devious"
-}
-```
-
+Testing and debugging are mutually exclusive
 ::: {.r-stack}
-
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Key
-- [ ] Value
+- [ ] True
+- [ ] False
 :::
-
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] Key
-- [ ] Value
-
-
+- [ ] True
+- [x] False
 ::: {.explanation}
-In this dictionary, `"vacuous"` is the key, and its definition is the value associated with it.
+This statement is false. Testing and debugging are complementary processes in software development. Testing helps identify the presence of bugs, while debugging helps locate and fix those bugs. They often work hand in hand in the development process.
 :::
 :::
 :::
 
 ### Question 186 {.question}
 
-Are there duplicates when you union two sets?
-
-Example:
-```python
-A = {1, 2, 3}
-B = {2, 3, 4}
-A.union(B)
-```
+The `zip()` function takes two or more lists and merges them. The return type of the function is what?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Yes
-- [ ] No
+- [ ] list
+- [ ] tuple
+- [ ] set
+- [ ] zip object
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Yes
-- [x] No
+- [ ] list
+- [ ] tuple
+- [ ] set
+- [x] zip object
 
 
 ::: {.explanation}
-When you perform a union operation on two sets, the result contains only unique elements, meaning there are no duplicates.
+The `zip()` function returns an iterator of tuples, which is a `zip` object. It can be converted to other types like lists if needed.
 :::
 :::
 :::
 
 ### Question 187 {.question}
 
-Which keyword negates a boolean value?
+Instead of making print statements to debug your code, we should use what Python module to monitor the status of your program?
 
 ::: {.r-stack}
-
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `not`
-- [ ] `no`
-- [ ] `negate`
-- [ ] `inverse`
+Answer: 
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `not`
-- [ ] `no`
-- [ ] `negate`
-- [ ] `inverse`
-
+Answer: `logging`
 
 ::: {.explanation}
-The `not` keyword is used to negate a boolean value in Python. For example, `not True` evaluates to `False`.
+The `logging` module in Python is a more robust and flexible way to monitor the status of your program compared to using print statements. It allows for different levels of logging, can write to files, and can be configured to provide more detailed information.
 :::
 :::
 :::
 
 ### Question 188 {.question}
-
-A class can inherit from multiple superclasses.
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] True
-- [ ] False
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] True
-- [ ] False
-
-
-::: {.explanation}
-Python supports multiple inheritance, allowing a class to inherit from more than one superclass.
-:::
-:::
-:::
-
-### Question 189 {.question}
 
 Static methods can access or modify class state.
 
@@ -240,27 +197,50 @@ Static methods cannot access or modify class or instance state since they do not
 :::
 :::
 
-### Question 190 {.question}
+### Question 189 {.question}
 
-Which of the following are benefits of using a consistent style guide? (Select all that apply)
+Sets in Python can contain all kinds of immutable objects (numeric objects, strings, and Booleans).
 
-::: {.r-stack .smaller-80}
+::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] It improves code readability
-- [ ] It makes collaboration easier
-- [ ] It maintains consistency across projects
-- [ ] It prevents certain classes of errors
+- [ ] True
+- [ ] False
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] It improves code readability
-- [x] It makes collaboration easier
-- [x] It maintains consistency across projects
-- [ ] It prevents certain classes of errors
+- [x] True
+- [ ] False
+
 
 ::: {.explanation}
-Using a consistent style guide like PEP 8 improves code readability, enhances collaboration, and maintains consistency across multiple projects, though it does not inherently prevent errors.
+Sets in Python can contain immutable objects such as numbers, strings, and Booleans. However, they cannot contain mutable objects like lists.
+:::
+:::
+:::
+
+### Question 190 {.question}
+
+What function creates a new object and recursively inserts copies into it of the objects found in the original?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `shallowcopy()`
+- [ ] `deepcopy()`
+- [ ] `copy()`
+- [ ] `clone()`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `shallowcopy()`
+- [x] `deepcopy()`
+- [ ] `copy()`
+- [ ] `clone()`
+
+
+::: {.explanation}
+The `deepcopy()` function creates a new object and recursively copies all objects found in the original. A shallow copy only copies the references to the original objects.
 :::
 :::
 :::

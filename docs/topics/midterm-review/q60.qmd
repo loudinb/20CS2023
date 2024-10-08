@@ -1,76 +1,235 @@
 ### Question 61 {.question}
 
-Fill in the blank: The average time complexity for dictionary operations (insert, delete, lookup) is O(___).
+Which of the following is NOT a way to run Python code?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] O(1)
-- [ ] O(log n)
-- [ ] O(n)
+- [ ] Using the interactive shell
+- [ ] Running a `.py` file from the command line
+- [ ] Using an Integrated Development Environment (IDE)
+- [ ] Compiling Python code into a standalone executable
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] O(1)
-- [ ] O(log n)
-- [ ] O(n)
+- [ ] Using the interactive shell
+- [ ] Running a `.py` file from the command line
+- [ ] Using an Integrated Development Environment (IDE)
+- [x] Compiling Python code into a standalone executable
 
 
 ::: {.explanation}
-Dictionary operations like insert, delete, and lookup generally have an average time complexity of O(1) due to the underlying hash table implementation.
+Python is an interpreted language, and it is not typically compiled into standalone executables. Instead, Python scripts are executed directly by the interpreter.
 :::
 :::
 :::
 
 ### Question 62 {.question}
 
-Give one example of a higher-order function that takes other functions as arguments.
+True or False: `True` and `False` are subclasses of `int` in Python.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `map()`
-- [ ] `max()`
-- [ ] `print()`
+- [ ] True
+- [ ] False
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `map()`
-- [ ] `max()`
-- [ ] `print()`
+- [x] True
+- [ ] False
 
 
 ::: {.explanation}
-The `map()` function is a higher-order function that takes another function as an argument and applies it to all items in an iterable.
+In Python, `True` and `False` are actually instances of `int`, where `True` is equivalent to `1` and `False` is equivalent to `0`.
 :::
 :::
 :::
 
 ### Question 63 {.question}
 
-Which of the following is an example of assigning a default value to a parameter in a function?
+You can access the docstring of a function using the __________ attribute.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `x1, x2=0`
-- [ ] `x1:0, x2`
-- [ ] `x1, x2`
+- [ ] `__help__`
+- [ ] `__doc__`
+- [ ] `__info__`
+- [ ] `__desc__`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `x1, x2=0`
-- [ ] `x1:0, x2`
-- [ ] `x1, x2`
+- [ ] `__help__`
+- [x] `__doc__`
+- [ ] `__info__`
+- [ ] `__desc__`
 
 
 ::: {.explanation}
-In Python, default values are assigned in function definitions like `x2=0`, meaning `x2` will take the value `0` if no argument is passed.
+In Python, the `__doc__` attribute holds the docstring of a function, class, or module, providing an explanation of its purpose.
 :::
 :::
 :::
 
 ### Question 64 {.question}
+
+Which of the following methods can be used to add an element to the end of a list?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `insert()`
+- [ ] `append()`
+- [ ] `extend()`
+- [ ] `push()`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `insert()`
+- [x] `append()`
+- [ ] `extend()`
+- [ ] `push()`
+
+
+::: {.explanation}
+The `append()` method adds a single element to the end of a list. The `extend()` method adds all elements from an iterable, while `insert()` inserts an element at a specific index.
+:::
+:::
+:::
+
+### Question 65 {.question}
+
+Are there duplicates when you union two sets?
+
+Example:
+```python
+A = {1, 2, 3}
+B = {2, 3, 4}
+A.union(B)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Yes
+- [ ] No
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Yes
+- [x] No
+
+
+::: {.explanation}
+When you perform a union operation on two sets, the result contains only unique elements, meaning there are no duplicates.
+:::
+:::
+:::
+
+### Question 66 {.question}
+
+Arguments can be passed only by position.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [x] False
+
+
+::: {.explanation}
+In Python, arguments can be passed either by position or by keyword.
+:::
+:::
+:::
+
+### Question 67 {.question}
+
+What is the output of the following code?
+
+```python
+x = 10
+y = 3
+print(f"{x/y:.2f}")
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `3.3333333333`
+- [ ] `3.33`
+- [ ] `3.34`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `3.3333333333`
+- [x] `3.33`
+- [ ] `3.34`
+
+
+::: {.explanation}
+The format `:.2f` rounds the division result to two decimal places, giving an output of `3.33`.
+:::
+:::
+:::
+
+### Question 68 {.question}
+
+Which of the following methods is used to remove whitespace from both the beginning and end of a string?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `strip()`
+- [ ] `split()`
+- [ ] `remove()`
+- [ ] `replace()`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `strip()`
+- [ ] `split()`
+- [ ] `remove()`
+- [ ] `replace()`
+
+
+::: {.explanation}
+The `strip()` method removes leading and trailing whitespace from a string, while `split()` divides a string into parts, and `replace()` replaces substrings.
+:::
+:::
+:::
+
+### Question 69 {.question}
+
+What type of loop can be used to repeat a code block until a condition is fulfilled?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `for` loop
+- [ ] `while` loop
+- [ ] `do-while` loop
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `for` loop
+- [x] `while` loop
+- [ ] `do-while` loop
+
+
+::: {.explanation}
+The `while` loop repeats the execution of a code block until a specific condition evaluates to `False`.
+:::
+:::
+:::
+
+### Question 70 {.question}
 
 When recursion continues until all available memory is used, the Python interpreter can crash without further exception. True or False?
 
@@ -88,168 +247,6 @@ When recursion continues until all available memory is used, the Python interpre
 
 ::: {.explanation}
 When recursion continues beyond the system's memory limit, the Python interpreter can crash due to a stack overflow error.
-:::
-:::
-:::
-
-### Question 65 {.question}
-
-Which of the following is a mutable data type in Python?
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `tuple`
-- [ ] `str`
-- [ ] `list`
-- [ ] `int`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `tuple`
-- [ ] `str`
-- [x] `list`
-- [ ] `int`
-
-
-::: {.explanation}
-The `list` data type is mutable, meaning its elements can be changed after the list is created. Other types like `tuple` and `str` are immutable.
-:::
-:::
-:::
-
-### Question 66 {.question}
-
-What will be the result of the following code?
-
-```python
-numbers = [5, 3, 8, 1]
-numbers.sort()
-print(numbers)
-```
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `[5, 3, 8, 1]`
-- [ ] `[8, 5, 3, 1]`
-- [ ] `[1, 3, 5, 8]`
-- [ ] `[3, 5, 8, 1]`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `[5, 3, 8, 1]`
-- [ ] `[8, 5, 3, 1]`
-- [x] `[1, 3, 5, 8]`
-- [ ] `[3, 5, 8, 1]`
-
-
-::: {.explanation}
-The `sort()` method sorts the list in ascending order, so the list becomes `[1, 3, 5, 8]`.
-:::
-:::
-:::
-
-### Question 67 {.question}
-
-If a function has no return statement, it returns what?
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] None
-- [ ] 0
-- [ ] NaN
-- [ ] null
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] None
-- [ ] 0
-- [ ] NaN
-- [ ] null
-
-
-::: {.explanation}
-If a Python function does not explicitly return a value, it returns `None` by default.
-:::
-:::
-:::
-
-### Question 68 {.question}
-
-Which of the following functions returns the largest value from a list of numbers?
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `sum()`
-- [ ] `max()`
-- [ ] `largest()`
-- [ ] `greater()`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `sum()`
-- [x] `max()`
-- [ ] `largest()`
-- [ ] `greater()`
-
-
-::: {.explanation}
-The `max()` function returns the largest value in a list or any iterable. The other options do not exist or serve a different purpose in Python.
-:::
-:::
-:::
-
-### Question 69 {.question}
-
-When defining a function, the input variables are called the __________ of the function.
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Arguments
-- [ ] Parameters
-- [ ] Inputs
-- [ ] Variables
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Arguments
-- [x] Parameters
-- [ ] Inputs
-- [ ] Variables
-
-
-::: {.explanation}
-Parameters are the input variables defined in the function signature, while arguments are the actual values passed to the function when it is called.
-:::
-:::
-:::
-
-### Question 70 {.question}
-
-What operator is used to unpack a list or tuple?
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `&`
-- [ ] `*`
-- [ ] `@`
-- [ ] `#`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `&`
-- [x] `*`
-- [ ] `@`
-- [ ] `#`
-
-
-::: {.explanation}
-The `*` operator is used to unpack lists or tuples in Python, for example, `*args` for unpacking arguments.
 :::
 :::
 :::

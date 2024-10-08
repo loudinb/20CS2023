@@ -1,124 +1,165 @@
 ### Question 81 {.question}
 
-What is the type resulting from this conversion of a dictionary to a collection?
+Fill in the indices that will return the first element of the third row from the following matrix:
 
 ```python
-my_dict = {'a': 1, 'b': 2}
-my_set = set(my_dict)
+matrix = [[9, 0, 1], [3, 3, 2], [7, 8, 3]]
 ```
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] List
-- [ ] Set
-- [ ] Tuple
-- [ ] Array
+- [ ] `matrix[2][0]`
+- [ ] `matrix[0][2]`
+- [ ] `matrix[1][0]`
+- [ ] `matrix[0][0]`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] List
-- [x] Set
-- [ ] Tuple
-- [ ] Array
+- [x] `matrix[2][0]`
+- [ ] `matrix[0][2]`
+- [ ] `matrix[1][0]`
+- [ ] `matrix[0][0]`
 
 
 ::: {.explanation}
-Converting a dictionary to a set returns a set containing only the keys of the dictionary.
+To access the first element of the third row (`[7, 8, 3]`), you use `matrix[2][0]`, which returns `7`.
 :::
 :::
 :::
 
 ### Question 82 {.question}
 
-Which of the following is a class attribute in the following code?
-
-```python
-class Book:
-    book_count = 0
-    def __init__(self, title):
-        self.title = title
-        Book.book_count += 1
-```
+What keyword is used to indicate we are defining a function?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `book_count`
-- [ ] `title`
-- [ ] `Book`
-- [ ] `init`
+- [ ] `fun`
+- [ ] `function`
+- [ ] `define`
+- [ ] `def`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `book_count`
-- [ ] `title`
-- [ ] `Book`
-- [ ] `init`
+- [ ] `fun`
+- [ ] `function`
+- [ ] `define`
+- [x] `def`
 
 
 ::: {.explanation}
-`book_count` is a class attribute because it is defined directly on the class and shared across all instances.
+The `def` keyword is used in Python to define a function.
 :::
 :::
 :::
 
 ### Question 83 {.question}
 
-::: {.smaller-80}
-Match the following to their purpose:
-
-- `*args`
-- `**kwargs`
-
+A(n) ___________ test checks whether the functionality is correct.
 ::: {.r-stack}
-
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Collects keyword arguments; Collects positional arguments
-- [ ] Collects positional arguments; Collects keyword arguments
-- [ ] Collects arguments; Ignores arguments
-- [ ] Ignores all arguments; Collects arguments
+Answer: 
 :::
-
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Collects keyword arguments; Collects positional arguments
-- [x] Collects positional arguments; Collects keyword arguments
-- [ ] Collects arguments; Ignores arguments
-- [ ] Ignores all arguments; Collects arguments
-
-
+Answer: `functional`
 ::: {.explanation}
-In Python, `*args` collects a variable number of positional arguments, while `**kwargs` collects keyword arguments.
-:::
+A functional test checks whether the functionality of a piece of software is correct. It focuses on testing the software against the functional requirements or specifications.
 :::
 :::
 :::
 
 ### Question 84 {.question}
 
-Which of the following are included in the base Python installation? (Select all that apply)
+::: {.smaller-70}
+Which line of code raises the exception?
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    def say_hi(self):
+        res = f"Hi, {self.name}"
+        return res
+try:
+    actual_person2 = Person("Jonathan", 25)
+    print(actual_person2.say_hi())
+    actual_person3 = Person("Jonathan", 25, "NYC")
+    print(actual_person3.say_hi())
+except Exception as e:
+    print(f"Ah! Error: {e}")
+```
+
+::: {.r-stack}
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `actual_person3 = Person("Jonathan", 25, "NYC")`
+- [ ] `actual_person2 = Person("Jonathan", 25)`
+- [ ] `def __init__(self, name, age):`
+- [ ] `print(actual_person2.say_hi())`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `actual_person3 = Person("Jonathan", 25, "NYC")`
+- [ ] `actual_person2 = Person("Jonathan", 25)`
+- [ ] `def __init__(self, name, age):`
+- [ ] `print(actual_person2.say_hi())`
+
+::: {.explanation}
+The `Person` class is defined with two parameters (`name` and `age`), but `actual_person3` is created with three arguments, causing a `TypeError`.
+:::
+:::
+:::
+
+:::
+
+### Question 85 {.question}
+
+A `KeyError` is raised when accessing a non-existent **list** item.
+
+::: {.r-stack}
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [x] False
+
+::: {.explanation}
+A `KeyError` is raised when accessing a non-existent key in a dictionary, not a list. Lists use index numbers, not keys.
+:::
+:::
+:::
+
+### Question 86 {.question}
+
+Two lists can be concatenated using what operator?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Jupyter Notebook
-- [ ] IPython
-- [ ] Python shell
+- [ ] `+`
+- [ ] `-`
+- [ ] `*`
+- [ ] `/`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Jupyter Notebook
-- [ ] IPython
-- [x] Python shell
+- [x] `+`
+- [ ] `-`
+- [ ] `*`
+- [ ] `/`
 
 
 ::: {.explanation}
-The base Python installation includes the standard Python shell but not IPython or Jupyter Notebook. These tools need to be installed separately.
+In Python, the `+` operator is used to concatenate two lists, combining them into one.
 :::
 :::
 :::
 
-### Question 85 {.question}
+### Question 87 {.question}
 
 You can pass functions as arguments, rename them, or delete them. 
 
@@ -140,41 +181,31 @@ In Python, functions are first-class objects, meaning they can be passed as argu
 :::
 :::
 
-### Question 86 {.question}
+### Question 88 {.question}
 
-What is the result of the following code?
-
-```python
-x = 10
-x += 5
-print(x)
-```
+The `%` operator is the preferred way to format strings in Python.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `5`
-- [ ] `10`
-- [ ] `15`
-- [ ] `None`
+- [ ] True
+- [ ] False
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `5`
-- [ ] `10`
-- [x] `15`
-- [ ] `None`
+- [ ] True
+- [x] False
 
 
 ::: {.explanation}
-The expression `x += 5` increments the value of `x` by 5, so the value of `x` becomes 15.
+The preferred way to format strings in modern Python is to use f-strings or the `format()` method. The `%` operator is considered outdated and less flexible.
 :::
 :::
 :::
 
-### Question 87 {.question}
+### Question 89 {.question}
 
-The `match` statement can be used to replace complex if-elif-else chains.
+OOP is a programming approach that organizes code around objects.
 
 ::: {.r-stack}
 
@@ -189,81 +220,29 @@ The `match` statement can be used to replace complex if-elif-else chains.
 
 
 ::: {.explanation}
-The `match` statement, introduced in Python 3.10, allows for pattern matching, making it a good replacement for complex if-elif-else chains.
-:::
-:::
-:::
-
-### Question 88 {.question}
-
-Which of the following functions can be used to get the length of a list in Python?
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `count()`
-- [ ] `size()`
-- [ ] `length()`
-- [ ] `len()`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `count()`
-- [ ] `size()`
-- [ ] `length()`
-- [x] `len()`
-
-
-::: {.explanation}
-The built-in `len()` function returns the number of items in a list or any iterable in Python.
-:::
-:::
-:::
-
-### Question 89 {.question}
-
-A function that calls itself is called a(n) __________ function.
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Looping
-- [ ] Anonymous
-- [ ] Recursive
-- [ ] Inline
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Looping
-- [ ] Anonymous
-- [x] Recursive
-- [ ] Inline
-
-
-::: {.explanation}
-A recursive function is one that calls itself to solve smaller instances of a problem.
+Object-Oriented Programming (OOP) focuses on organizing code by creating objects that represent both data and behavior.
 :::
 :::
 :::
 
 ### Question 90 {.question}
 
-Can you access a tuple element by index?
+Are list slices deep or shallow?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Yes
-- [ ] No
+- [ ] Deep
+- [ ] Shallow
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] Yes
-- [ ] No
+- [ ] Deep
+- [x] Shallow
 
 
 ::: {.explanation}
-Yes, tuple elements can be accessed by index in the same way as list elements.
+List slices in Python are shallow copies, meaning they copy the references to the objects in the list, not the objects themselves.
 :::
 :::
 :::

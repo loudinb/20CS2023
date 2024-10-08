@@ -1,0 +1,26 @@
+# Tuesday, October 8, 2024
+
+## Agenda
+
+Review for midterm
+
+{{< include ../topics/midterm-review/q0.qmd >}}
+{{< include ../topics/midterm-review/q10.qmd >}}
+{{< include ../topics/midterm-review/q20.qmd >}}
+{{< include ../topics/midterm-review/q30.qmd >}}
+{{< include ../topics/midterm-review/q40.qmd >}}
+{{< include ../topics/midterm-review/q50.qmd >}}
+{{< include ../topics/midterm-review/q60.qmd >}}
+{{< include ../topics/midterm-review/q70.qmd >}}
+{{< include ../topics/midterm-review/q80.qmd >}}
+{{< include ../topics/midterm-review/q90.qmd >}}
+{{< include ../topics/midterm-review/q100.qmd >}}
+{{< include ../topics/midterm-review/q110.qmd >}}
+{{< include ../topics/midterm-review/q120.qmd >}}
+{{< include ../topics/midterm-review/q130.qmd >}}
+{{< include ../topics/midterm-review/q140.qmd >}}
+{{< include ../topics/midterm-review/q150.qmd >}}
+{{< include ../topics/midterm-review/q160.qmd >}}
+{{< include ../topics/midterm-review/q170.qmd >}}
+{{< include ../topics/midterm-review/q180.qmd >}}
+{{< include ../topics/midterm-review/q190.qmd >}}

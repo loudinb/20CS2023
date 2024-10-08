@@ -1,32 +1,78 @@
 ### Question 1 {.question}
 
-Which of the following is a correct way to iterate through a list in Python?
+The number of levels passed by the execution of a recursive function is called the __________ __________.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `for i in range(list):`
-- [ ] `for i in len(list):`
-- [ ] `for i in list:`
-- [ ] `while i in list:`
+- [ ] Call stack
+- [ ] Depth level
+- [ ] Execution count
+- [ ] Recursion depth
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `for i in range(list):`
-- [ ] `for i in len(list):`
-- [x] `for i in list:`
-- [ ] `while i in list:`
+- [ ] Call stack
+- [ ] Depth level
+- [ ] Execution count
+- [x] Recursion depth
 
 
 ::: {.explanation}
-The correct syntax for iterating through each element in a list is `for i in list:` where `i` will represent each element of the list in each iteration.
+Recursion depth refers to how deep the function calls go during the execution of a recursive function.
 :::
 :::
 :::
 
 ### Question 2 {.question}
 
-Raw strings are useful when your string is a file path that contains backslashes.
+What is the built-in base class that non-system-exiting exceptions are derived from?
+
+::: {.r-stack}
+::: {.absolute .left-0 .top-0 width=100%}
+Answer:
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+Answer: `Exception`
+
+::: {.explanation}
+In Python, most built-in, non-system-exiting exceptions are derived from the `Exception` class. This serves as the base class for creating custom exceptions as well.
+:::
+:::
+:::
+
+### Question 3 {.question}
+
+::: {.smaller-80}
+Which of the following is true about lambda functions?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Lambda functions must use the `def` keyword.
+- [ ] Lambda functions are always used as decorators.
+- [ ] Lambda functions are single-expression functions.
+- [ ] Lambda functions cannot be assigned to variables.
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Lambda functions must use the `def` keyword.
+- [ ] Lambda functions are always used as decorators.
+- [x] Lambda functions are single-expression functions.
+- [ ] Lambda functions cannot be assigned to variables.
+
+
+::: {.explanation}
+Lambda functions are anonymous, single-expression functions defined using the `lambda` keyword. They can be assigned to variables or used as arguments.
+:::
+:::
+:::
+:::
+
+### Question 4 {.question}
+
+The `if-elif-else` statement is an extension of the `if-else` statement that allows you to evaluate multiple conditions.
 
 ::: {.r-stack}
 
@@ -41,12 +87,128 @@ Raw strings are useful when your string is a file path that contains backslashes
 
 
 ::: {.explanation}
-Raw strings treat backslashes as literal characters rather than escape characters, which is useful when working with file paths that contain backslashes.
+The `if-elif-else` statement allows you to test multiple conditions and execute different blocks of code based on which condition is `True`.
 :::
 :::
 :::
 
-### Question 3 {.question}
+### Question 5 {.question}
+
+Which of the following is **not** a valid Python data type?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `int`
+- [ ] `string`
+- [ ] `float`
+- [ ] `list`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `int`
+- [x] `string`
+- [ ] `float`
+- [ ] `list`
+
+
+::: {.explanation}
+In Python, `string` is not a built-in data type. The correct name is `str`. The other options (`int`, `float`, and `list`) are valid Python data types.
+:::
+:::
+:::
+
+### Question 6 {.question}
+
+A(n) _______ trace lets you track the sequence of functions called up to a given point.
+
+::: {.r-stack}
+::: {.absolute .left-0 .top-0 width=100%}
+Answer: 
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+Answer: `stack`
+
+::: {.explanation}
+A stack trace (also called a stack backtrace or call stack) is a report of the active stack frames at a certain point in time during the execution of a program. It shows the sequence of function calls that led to the current point of execution.
+:::
+:::
+:::
+
+### Question 7 {.question}
+
+When using the `@property` decorator to create a getter method in Python, you are always required to also implement a corresponding setter method.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [x] False
+
+
+::: {.explanation}
+The `@property` decorator can be used to create a getter method without the need for a corresponding setter method unless you need to control or validate the setting of the attribute.
+:::
+:::
+:::
+
+### Question 8 {.question}
+
+__________ is a core concept of OOP about creating new classes from existing ones.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Polymorphism
+- [ ] Abstraction
+- [ ] Inheritance
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Polymorphism
+- [ ] Abstraction
+- [x] Inheritance
+
+
+::: {.explanation}
+Inheritance allows a new class to be created from an existing class, inheriting its attributes and methods.
+:::
+:::
+:::
+
+### Question 9 {.question}
+
+Which of the following are true about class methods? (Select all that apply)
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] They operate on the class itself.
+- [ ] They are defined using `@classmethod`.
+- [ ] The first parameter is `cls`.
+- [ ] The first parameter is `self`.
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] They operate on the class itself.
+- [x] They are defined using `@classmethod`.
+- [x] The first parameter is `cls`.
+- [ ] The first parameter is `self`.
+
+
+::: {.explanation}
+Class methods are defined with the `@classmethod` decorator, and the first parameter is `cls`, representing the class.
+:::
+:::
+:::
+
+### Question 10 {.question}
 
 Lists can store elements of only one type. True or False?
 
@@ -64,174 +226,6 @@ Lists can store elements of only one type. True or False?
 
 ::: {.explanation}
 Lists in Python can store elements of different types, including numbers, strings, and even other lists.
-:::
-:::
-:::
-
-### Question 4 {.question}
-
-You can only define a method once in a subclass that already exists in the superclass.
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] True
-- [ ] False
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] True
-- [x] False
-
-
-::: {.explanation}
-A method in a subclass can override the one defined in the superclass, allowing customization of inherited behavior.
-:::
-:::
-:::
-
-### Question 5 {.question}
-
-Global variables should be avoided because they can make code harder to maintain.
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] True
-- [ ] False
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] True
-- [ ] False
-
-
-::: {.explanation}
-Global variables can make code harder to maintain and debug because their values can be changed from anywhere in the program, leading to unpredictable behavior.
-:::
-:::
-:::
-
-### Question 6 {.question}
-
-True or false: Functions can be used as arguments just like other objects.
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] True
-- [ ] False
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] True
-- [ ] False
-
-
-::: {.explanation}
-In Python, functions are first-class objects, so they can be passed as arguments to other functions, returned from functions, and assigned to variables.
-:::
-:::
-:::
-
-### Question 7 {.question}
-
-What logical comparison operator do you use to compare two values?
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `==`
-- [ ] `>`
-- [ ] `<`
-- [ ] `!=`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `==`
-- [ ] `>`
-- [ ] `<`
-- [ ] `!=`
-
-
-::: {.explanation}
-The `==` operator is used to compare two values for equality.
-:::
-:::
-:::
-
-### Question 8 {.question}
-
-To access an element of a vector, we need one index, while an element of a matrix is addressed by two indexes.
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] True
-- [ ] False
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] True
-- [ ] False
-
-
-::: {.explanation}
-In a vector (1D list), a single index is used, while a matrix (2D list) requires two indices: one for the row and one for the column.
-:::
-:::
-:::
-
-### Question 9 {.question}
-
-Fill in the blank with the correct argument(s) to have the `Bike` class inherit from `Transportation`.
-
-```python
-class Bike(__________):
-    def does(self):
-        return f"{self.action} cycles"
-```
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `object`
-- [ ] `Vehicle`
-- [ ] `Transportation`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `object`
-- [ ] `Vehicle`
-- [x] `Transportation`
-
-
-::: {.explanation}
-The class `Bike` inherits from `Transportation`, which provides the `action` attribute or method that is referenced in the subclass.
-:::
-:::
-:::
-
-### Question 10 {.question}
-
-Which of the following are reasons to use a class method? (Select all that apply)
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] When you want the method to be able to modify the class state
-- [ ] When the method is creating instances (factory method)
-- [ ] When defining instance attributes
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] When you want the method to be able to modify the class state
-- [x] When the method is creating instances (factory method)
-- [ ] When defining instance attributes
-
-
-::: {.explanation}
-Class methods are useful when you need to modify class state or create new instances (factory methods), but they are not typically used for defining instance attributes.
 :::
 :::
 :::

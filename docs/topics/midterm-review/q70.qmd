@@ -1,206 +1,209 @@
 ### Question 71 {.question}
 
-Which of the following expressions will return `True`?
+What operator is used to unpack a list or tuple?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `5 == "5"`
-- [ ] `"Hello" == "hello"`
-- [ ] `5 != 6`
-- [ ] `3 >= 5`
+- [ ] `&`
+- [ ] `*`
+- [ ] `@`
+- [ ] `#`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `5 == "5"`
-- [ ] `"Hello" == "hello"`
-- [x] `5 != 6`
-- [ ] `3 >= 5`
+- [ ] `&`
+- [x] `*`
+- [ ] `@`
+- [ ] `#`
 
 
 ::: {.explanation}
-The expression `5 != 6` is `True` because 5 is not equal to 6. All other expressions are `False` due to case sensitivity or mismatched types.
+The `*` operator is used to unpack lists or tuples in Python, for example, `*args` for unpacking arguments.
 :::
 :::
 :::
 
 ### Question 72 {.question}
 
-What type of loop can be used to repeat a code block until a condition is fulfilled?
+Passing mutable input arguments to a function and changing them inside the function can change them outside the function too.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `for` loop
-- [ ] `while` loop
-- [ ] `do-while` loop
+- [ ] True
+- [ ] False
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `for` loop
-- [x] `while` loop
-- [ ] `do-while` loop
+- [x] True
+- [ ] False
 
 
 ::: {.explanation}
-The `while` loop repeats the execution of a code block until a specific condition evaluates to `False`.
+When mutable objects like lists or dictionaries are passed to a function, modifications inside the function can affect the object outside the function.
 :::
 :::
 :::
 
 ### Question 73 {.question}
 
-The `@property` decorator in Python is used to:
+::: {.smaller-80}
+Match the term to the type of relationship:
+
+**Term**:
+
+- Inheritance
+- Composition
+
+**Meaning**:
+
+- is-a
+- has-a
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] To make methods private and inaccessible from outside the class
-- [ ] To allow methods to be called without parentheses, as if they were attributes
-- [ ] To automatically convert the return values of methods to properties of the class
-- [ ] To enable method chaining for these particular methods
+- [ ] Inheritance: has-a, Composition: is-a
+- [ ] Inheritance: is-a, Composition: has-a
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] To make methods private and inaccessible from outside the class
-- [x] To allow methods to be called without parentheses, as if they were attributes
-- [ ] To automatically convert the return values of methods to properties of the class
-- [ ] To enable method chaining for these particular methods
+- [ ] Inheritance: has-a, Composition: is-a
+- [x] Inheritance: is-a, Composition: has-a
 
 
 ::: {.explanation}
-The `@property` decorator allows a method to be accessed like an attribute, without needing parentheses, simplifying syntax.
+Inheritance defines an "is-a" relationship, where the subclass is a type of the superclass. Composition defines a "has-a" relationship, where a class contains objects from other classes.
+:::
 :::
 :::
 :::
 
 ### Question 74 {.question}
 
-Which of the following are mutable?
+Class definitions always require `__init__`.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Strings
-- [ ] Dictionaries
-- [ ] Numbers
-- [ ] Tuples
+- [ ] True
+- [ ] False
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Strings
-- [x] Dictionaries
-- [ ] Numbers
-- [ ] Tuples
+- [ ] True
+- [x] False
 
 
 ::: {.explanation}
-Dictionaries are mutable, meaning they can be changed after creation. Strings, numbers, and tuples are immutable.
+The `__init__` method is not required.
 :::
 :::
 :::
 
 ### Question 75 {.question}
 
-You can create your own iterator by using the keyword ______ .
+What is the value of `x` before the break condition occurs in the following code?
+
+```python
+for x in range(10):
+    if x >= 3:
+        break
+```
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `yield`
-- [ ] `def`
-- [ ] `return`
+- [ ] 0
+- [ ] 2
+- [ ] 3
+- [ ] 4
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `yield`
-- [ ] `def`
-- [ ] `return`
+- [ ] 0
+- [ ] 2
+- [x] 3
+- [ ] 4
 
 
 ::: {.explanation}
-You can create your own iterator in Python by defining a generator function that uses the `yield` keyword to return values one at a time.
+The loop runs until `x` is equal to 3, at which point the `break` statement is triggered, stopping the loop.
 :::
 :::
 :::
 
 ### Question 76 {.question}
 
-Which method would you use to find the position of a substring within a string?
+What is the index variable here?
+
+```python
+x = [4, 5, 6]
+for k, element in enumerate(x):
+    print(k, element)
+```
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `search()`
-- [ ] `find()`
-- [ ] `index()`
-- [ ] `position()`
+- [ ] `element`
+- [ ] `k`
+- [ ] `x`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `search()`
-- [x] `find()`
-- [ ] `index()`
-- [ ] `position()`
+- [ ] `element`
+- [x] `k`
+- [ ] `x`
 
 
 ::: {.explanation}
-The `find()` method returns the lowest index of the substring if it is found in the string; otherwise, it returns `-1`.
+In `enumerate(x)`, `k` is the index variable that represents the current position in the list, and `element` is the value at that position.
 :::
 :::
 :::
 
 ### Question 77 {.question}
 
-What will be the result of the following code?
-
-```python
-text = "  Python  "
-print(text.strip())
-```
+Can you access a tuple element by index?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `"  Python  "`
-- [ ] `"Python"`
-- [ ] `"  Python"`
-- [ ] `"Python  "`
+- [ ] Yes
+- [ ] No
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `"  Python  "`
-- [x] `"Python"`
-- [ ] `"  Python"`
-- [ ] `"Python  "`
+- [x] Yes
+- [ ] No
 
 
 ::: {.explanation}
-The `strip()` method removes leading and trailing whitespace, so `"  Python  "` becomes `"Python"`.
+Yes, tuple elements can be accessed by index in the same way as list elements.
 :::
 :::
 :::
 
 ### Question 78 {.question}
 
-Which of the following is **not** a purpose of Python decorators?
+True or False: In Python, the maximum recursion depth can be modified using the `sys` module.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Add functionality
-- [ ] Increase readability
-- [ ] Make my program pretty
+- [ ] True
+- [ ] False
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Add functionality
-- [ ] Increase readability
-- [x] Make my program pretty
+- [x] True
+- [ ] False
 
 
 ::: {.explanation}
-Decorators in Python are used to add functionality to existing functions or methods without modifying their code. They do not impact the appearance of your program.
+The `sys` module provides a function `sys.setrecursionlimit()` which allows you to change the maximum recursion depth.
 :::
 :::
 :::
@@ -239,26 +242,24 @@ The `insert(2, 10)` method inserts `10` at index 2, shifting the elements, so th
 
 ### Question 80 {.question}
 
-Choose all that apply: Which of the following can be used as dictionary keys?
+You can create your own iterator by using the keyword ______ .
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Integers
-- [ ] Strings
-- [ ] Tuples
-- [ ] Lists
+- [ ] `yield`
+- [ ] `def`
+- [ ] `return`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] Integers
-- [x] Strings
-- [x] Tuples
-- [ ] Lists
+- [x] `yield`
+- [ ] `def`
+- [ ] `return`
 
 
 ::: {.explanation}
-Dictionaries require immutable objects as keys. Integers, strings, and tuples are immutable, while lists are mutable and cannot be used as keys.
+You can create your own iterator in Python by defining a generator function that uses the `yield` keyword to return values one at a time.
 :::
 :::
 :::

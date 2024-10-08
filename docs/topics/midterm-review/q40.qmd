@@ -1,32 +1,113 @@
 ### Question 41 {.question}
 
-::: {.smaller-80}
-Which of the following is true about lambda functions?
+Which of the following are true about class attributes? (Select all that apply)
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Lambda functions must use the `def` keyword.
-- [ ] Lambda functions are always used as decorators.
-- [ ] Lambda functions are single-expression functions.
-- [ ] Lambda functions cannot be assigned to variables.
+- [ ] Attributes are shared by all instances of a class.
+- [ ] They are always accessed with `get()`.
+- [ ] They are defined with the methods of the class.
+- [ ] They are defined within the class construction but outside of any method definitions.
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Lambda functions must use the `def` keyword.
-- [ ] Lambda functions are always used as decorators.
-- [x] Lambda functions are single-expression functions.
-- [ ] Lambda functions cannot be assigned to variables.
+- [x] Attributes are shared by all instances of a class.
+- [ ] They are always accessed with `get()`.
+- [ ] They are defined with the methods of the class.
+- [x] They are defined within the class construction but outside of any method definitions.
 
 
 ::: {.explanation}
-Lambda functions are anonymous, single-expression functions defined using the `lambda` keyword. They can be assigned to variables or used as arguments.
-:::
+Class attributes are shared by all instances of a class and are defined within the class but outside of any methods.
 :::
 :::
 :::
 
 ### Question 42 {.question}
+
+A class is named `Dog`. We want to access the value of the attribute `name` (after instantiation). Which option is correct to do this?
+
+```python
+res = Dog("Sunday")
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `res.name`
+- [ ] `Dog.name`
+- [ ] `res(Dog).name`
+- [ ] `name(Dog)`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `res.name`
+- [ ] `Dog.name`
+- [ ] `res(Dog).name`
+- [ ] `name(Dog)`
+
+
+::: {.explanation}
+You can access the `name` attribute of the `res` object using dot notation, as `res.name`.
+:::
+:::
+:::
+
+### Question 43 {.question}
+
+::: {.smaller-80}
+Match the following to their purpose:
+
+- `*args`
+- `**kwargs`
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Collects keyword arguments; Collects positional arguments
+- [ ] Collects positional arguments; Collects keyword arguments
+- [ ] Collects arguments; Ignores arguments
+- [ ] Ignores all arguments; Collects arguments
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Collects keyword arguments; Collects positional arguments
+- [x] Collects positional arguments; Collects keyword arguments
+- [ ] Collects arguments; Ignores arguments
+- [ ] Ignores all arguments; Collects arguments
+
+
+::: {.explanation}
+In Python, `*args` collects a variable number of positional arguments, while `**kwargs` collects keyword arguments.
+:::
+:::
+:::
+:::
+
+### Question 44 {.question}
+
+The `if-else` statement is an extension of the `if` statement that allows you to execute one block of code if the condition is `True` and another block if it is `False`.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+The `if-else` statement adds an alternative block of code that will run if the `if` condition evaluates to `False`.
+:::
+:::
+:::
+
+### Question 45 {.question}
 
 ::: {.smaller-80}
 Select the correct statement regarding class methods:
@@ -53,213 +134,124 @@ Class methods are bound to the class, meaning they can be called on both the cla
 :::
 :::
 
-### Question 43 {.question}
-
-True or False: In Python, the maximum recursion depth can be modified using the `sys` module.
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] True
-- [ ] False
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] True
-- [ ] False
-
-
-::: {.explanation}
-The `sys` module provides a function `sys.setrecursionlimit()` which allows you to change the maximum recursion depth.
-:::
-:::
-:::
-
-### Question 44 {.question}
-
-What function do you use on an iterable to keep the index for each element when iterating through it?
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `zip()`
-- [ ] `enumerate()`
-- [ ] `map()`
-- [ ] `iter()`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `zip()`
-- [x] `enumerate()`
-- [ ] `map()`
-- [ ] `iter()`
-
-
-::: {.explanation}
-The `enumerate()` function allows you to loop over an iterable and have an automatic counter (index) with each element.
-:::
-:::
-:::
-
-### Question 45 {.question}
-
-In Python, functions are __________.
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Objects
-- [ ] Articles
-- [ ] Things
-- [ ] Items
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] Objects
-- [ ] Articles
-- [ ] Things
-- [ ] Items
-
-
-::: {.explanation}
-In Python, functions are first-class objects, meaning they can be passed as arguments, returned from other functions, and assigned to variables.
-:::
-:::
-:::
-
 ### Question 46 {.question}
 
-When the function `calculate_letter_grade` is called, every parameter is replaced by an argument. True or False?
+A best practice for inheritance is to use _______ _______ classes to define interfaces. (2 words)
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] True
-- [ ] False
+- [ ] Template-based
+- [ ] Abstract base
+- [ ] Super-parent
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] True
-- [ ] False
+- [ ] Template-based
+- [x] Abstract base
+- [ ] Super-parent
 
 
 ::: {.explanation}
-True. When a function is called, every parameter defined in the function is replaced by the corresponding argument provided during the function call.
+Abstract base classes define interfaces that subclasses are required to implement, promoting consistency in the class hierarchy.
 :::
 :::
 :::
 
 ### Question 47 {.question}
 
-::: {.smaller-70}
-Consider the following code:
-
-```python
-coffee = ['pumpkin spice', 'pistachio', 'decaf']
-```
-
-Match the results of the index to the output:
-
-- `coffee[-1]`
-- `coffee[0]`
-- `coffee[:0]`
-- `coffee[:-2]`
+Which of the following methods is not available for frozen sets?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] decaf, pumpkin spice, [], ['pumpkin spice', 'pistachio']
-- [ ] decaf, pistachio, ['pumpkin spice'], []
-- [ ] pistachio, decaf, ['pistachio'], ['pumpkin spice', 'decaf']
-- [ ] pumpkin spice, decaf, ['decaf'], ['pistachio']
+- [ ] `intersection()`
+- [ ] `union()`
+- [ ] `add()`
+- [ ] `is_subset()`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] decaf, pumpkin spice, [], ['pumpkin spice', 'pistachio']
-- [ ] decaf, pistachio, ['pumpkin spice'], []
-- [ ] pistachio, decaf, ['pistachio'], ['pumpkin spice', 'decaf']
-- [ ] pumpkin spice, decaf, ['decaf'], ['pistachio']
+- [ ] `intersection()`
+- [ ] `union()`
+- [x] `add()`
+- [ ] `is_subset()`
 
 
 ::: {.explanation}
-- `coffee[-1]` returns the last element, `'decaf'`.
-- `coffee[0]` returns the first element, `'pumpkin spice'`.
-- `coffee[:0]` returns an empty list because it slices up to index 0, but does not include any elements.
-- `coffee[:-2]` slices up to but excludes the second-to-last element, returning `['pumpkin spice', 'pistachio']`.
-:::
+Frozen sets are immutable, so methods that modify the set, like `add()`, are not available.
 :::
 :::
 :::
 
 ### Question 48 {.question}
 
-Which of the following is **not** a valid variable name in Python?
+What is the highest level of severity in Python's logging module?
 
 ::: {.r-stack}
-
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `2score`
-- [ ] `_score`
-- [ ] `total_score`
-- [ ] `score2`
+- [ ] CRITICAL
+- [ ] critical
+- [ ] Critical
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `2score`
-- [ ] `_score`
-- [ ] `total_score`
-- [ ] `score2`
-
+- [x] CRITICAL
+- [ ] critical
+- [ ] Critical
 
 ::: {.explanation}
-Variable names in Python cannot begin with a number, so `2score` is invalid. All other options are valid variable names.
+In Python's logging module, the highest level of severity is `CRITICAL`. The logging levels in order of increasing severity are: DEBUG, INFO, WARNING, ERROR, and CRITICAL. These levels are typically written in all caps when referred to by their constants in the logging module.
 :::
 :::
 :::
 
 ### Question 49 {.question}
 
-Are dictionaries in Python accessed by index or key?
+Which keyword negates a boolean value?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Index
-- [ ] Key
+- [ ] `not`
+- [ ] `no`
+- [ ] `negate`
+- [ ] `inverse`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Index
-- [x] Key
+- [x] `not`
+- [ ] `no`
+- [ ] `negate`
+- [ ] `inverse`
 
 
 ::: {.explanation}
-Dictionaries in Python are accessed using keys, which are used to retrieve the associated values.
+The `not` keyword is used to negate a boolean value in Python. For example, `not True` evaluates to `False`.
 :::
 :::
 :::
 
 ### Question 50 {.question}
 
-What do we call the function inside a decorator called?
-
-The ________ function.
+For instance methods, what is always the first parameter?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Inner
-- [ ] Decorated
-- [ ] Wrapper
+- [ ] `self`
+- [ ] `cls`
+- [ ] `instance`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Inner
-- [ ] Decorated
-- [x] Wrapper
+- [x] `self`
+- [ ] `cls`
+- [ ] `instance`
+
 
 ::: {.explanation}
-The function inside a decorator is called the "wrapper" function because it wraps around the original function to add extra functionality.
+The first parameter for instance methods in Python must always be `self`, which refers to the current instance of the class.
 :::
 :::
 :::

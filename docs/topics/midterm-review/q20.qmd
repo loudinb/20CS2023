@@ -1,58 +1,6 @@
 ### Question 21 {.question}
 
-Which of the following is NOT a way to run Python code?
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Using the interactive shell
-- [ ] Running a `.py` file from the command line
-- [ ] Using an Integrated Development Environment (IDE)
-- [ ] Compiling Python code into a standalone executable
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Using the interactive shell
-- [ ] Running a `.py` file from the command line
-- [ ] Using an Integrated Development Environment (IDE)
-- [x] Compiling Python code into a standalone executable
-
-
-::: {.explanation}
-Python is an interpreted language, and it is not typically compiled into standalone executables. Instead, Python scripts are executed directly by the interpreter.
-:::
-:::
-:::
-
-### Question 22 {.question}
-
-What is used to define a set in Python?
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `{}`
-- [ ] `()`
-- [ ] `[]`
-- [ ] `||`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `{}`
-- [ ] `()`
-- [ ] `[]`
-- [ ] `||`
-
-
-::: {.explanation}
-In Python, a set is defined using curly braces `{}`, while parentheses `()` are used for tuples and square brackets `[]` for lists.
-:::
-:::
-:::
-
-### Question 23 {.question}
-
-The `if-else` statement is an extension of the `if` statement that allows you to execute one block of code if the condition is `True` and another block if it is `False`.
+Composition often provides more flexibility than inheritance.
 
 ::: {.r-stack}
 
@@ -67,38 +15,62 @@ The `if-else` statement is an extension of the `if` statement that allows you to
 
 
 ::: {.explanation}
-The `if-else` statement adds an alternative block of code that will run if the `if` condition evaluates to `False`.
+Composition allows greater flexibility by enabling the reuse of code through object composition rather than the rigid structure imposed by inheritance.
+:::
+:::
+:::
+
+### Question 22 {.question}
+
+Which of the following methods modify a list in place? (Select all that apply)
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `sort()`
+- [ ] `reverse()`
+- [ ] `append()`
+- [ ] `extend()`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `sort()`
+- [x] `reverse()`
+- [x] `append()`
+- [x] `extend()`
+
+
+::: {.explanation}
+All of these methods—`sort()`, `reverse()`, `append()`, and `extend()`—modify the list in place without creating a new list object.
+:::
+:::
+:::
+
+### Question 23 {.question}
+
+Dictionaries are unordered sets of pairs. You access dictionary data by what?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Key
+- [ ] Index
+- [ ] Cell
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Key
+- [ ] Index
+- [ ] Cell
+
+
+::: {.explanation}
+In Python, dictionary values are accessed by their keys, which are unique identifiers for each value in the dictionary.
 :::
 :::
 :::
 
 ### Question 24 {.question}
-
-The `zip()` function takes two or more lists and merges them. The return type of the function is what?
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] list
-- [ ] tuple
-- [ ] set
-- [ ] zip object
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] list
-- [ ] tuple
-- [ ] set
-- [x] zip object
-
-
-::: {.explanation}
-The `zip()` function returns an iterator of tuples, which is a `zip` object. It can be converted to other types like lists if needed.
-:::
-:::
-:::
-
-### Question 25 {.question}
 
 Which of the following will convert the string `"123"` to an integer in Python?
 
@@ -124,105 +96,109 @@ The `int()` function converts the string `"123"` to an integer. The other method
 :::
 :::
 
-### Question 26 {.question}
+### Question 25 {.question}
 
-What will be the result of the following code?
-
-```python
-numbers = [1, 2, 3, 4, 5]
-numbers.clear()
-print(numbers)
-```
+Arguments are passed by assignment, meaning a _________ to the object is passed to the function.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `[1, 2, 3, 4, 5]`
-- [ ] `[1]`
-- [ ] `None`
-- [ ] `[]`
+- [ ] reference
+- [ ] copy
+- [ ] pointer
+- [ ] object
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `[1, 2, 3, 4, 5]`
-- [ ] `[1]`
-- [ ] `None`
-- [x] `[]`
+- [x] reference
+- [ ] copy
+- [ ] pointer
+- [ ] object
 
 
 ::: {.explanation}
-The `clear()` method removes all elements from the list, leaving it empty (`[]`).
+In Python, arguments are passed by assignment, which means that the reference to the object is passed to the function.
+:::
+:::
+:::
+
+### Question 26 {.question}
+
+_________ methods don’t operate on instance or class data.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Static
+- [ ] Instance
+- [ ] Class
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Static
+- [ ] Instance
+- [ ] Class
+
+
+::: {.explanation}
+Static methods don’t operate on instance or class data; they are utility methods within a class’s namespace.
 :::
 :::
 :::
 
 ### Question 27 {.question}
 
-::: {.smaller-85}
-The bolded and underlined code below demonstrates __________ attribute access.
-
-```python
-class Dog:
-    def __init__(self, name):
-        self.name = name
-
-res = Dog("Sunday")
-my_dog_name = ______________
-print(my_dog_name)
-```
+In inheritance, the new class (subclass) inherits attributes and methods from the existing class, called the _________.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Instance
-- [ ] Class
-- [ ] API
-- [ ] Port
+- [ ] superclass
+- [ ] submethod
+- [ ] metaclass
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] Instance
-- [ ] Class
-- [ ] API
-- [ ] Port
+- [x] superclass
+- [ ] submethod
+- [ ] metaclass
 
 
 ::: {.explanation}
-The code demonstrates instance attribute access because `my_dog_name` retrieves the value of the `name` attribute from the instance `res`.
-:::
+The superclass (also known as the parent class) provides the attributes and methods that the subclass inherits.
 :::
 :::
 :::
 
 ### Question 28 {.question}
 
-Which of the following is an example of a **constant** in Python, by convention?
+Which of the following are mutable?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `Total_Score`
-- [ ] `PI`
-- [ ] `maxScore`
-- [ ] `snake_case`
+- [ ] Strings
+- [ ] Dictionaries
+- [ ] Numbers
+- [ ] Tuples
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `Total_Score`
-- [x] `PI`
-- [ ] `maxScore`
-- [ ] `snake_case`
+- [ ] Strings
+- [x] Dictionaries
+- [ ] Numbers
+- [ ] Tuples
 
 
 ::: {.explanation}
-By convention, constants in Python are written in all uppercase letters. `PI` is an example of a constant.
+Dictionaries are mutable, meaning they can be changed after creation. Strings, numbers, and tuples are immutable.
 :::
 :::
 :::
 
 ### Question 29 {.question}
 
-Which of the following will result in a `TypeError`?
+Which of the following expressions will raise a `TypeError`?
 
 ::: {.r-stack}
 
@@ -241,29 +217,36 @@ Which of the following will result in a `TypeError`?
 
 
 ::: {.explanation}
-The expression `"5" + 6` will raise a `TypeError` because Python does not allow concatenation of a string and an integer without explicit conversion. The other operations are valid.
+The expression `"5" + 6` will raise a `TypeError` because Python does not allow the concatenation of a string and an integer without explicit conversion.
 :::
 :::
 :::
 
 ### Question 30 {.question}
 
-True or False: `True` and `False` are subclasses of `int` in Python.
+Will the variable `x` have different memory addresses before and after modification in the following scenario?
+
+```python
+x = 5
+print(id(x))
+x = x + 1
+print(id(x))
+```
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] True
-- [ ] False
+- [ ] Yes
+- [ ] No
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] True
-- [ ] False
+- [x] Yes
+- [ ] No
 
 
 ::: {.explanation}
-In Python, `True` and `False` are actually instances of `int`, where `True` is equivalent to `1` and `False` is equivalent to `0`.
+When you assign a new value to `x`, the memory address changes because integers are immutable in Python. Reassigning a variable creates a new object.
 :::
 :::
 :::

@@ -1,224 +1,66 @@
 ### Question 51 {.question}
 
-What will be the result of the following code?
+::: {.smaller-70}
+Match the list operation to its action:
 
-```python
-numbers = [1, 2, 3]
-numbers.extend([4, 5])
-print(numbers)
-```
+- `list.append(x)`
+- `list.pop()`
+- `list.remove(x)`
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `[1, 2, 3]`
-- [ ] `[1, 2, 3, [4, 5]]`
-- [ ] `[4, 5, 1, 2, 3]`
-- [ ] `[1, 2, 3, 4, 5]`
+- [ ] Adds x to the end of the list, Removes the last element of the list, Removes the first item from the list whose value is x
+- [ ] Removes the last element of the list, Adds x to the end of the list, Removes the first item from the list whose value is x
+- [ ] Removes the first item from the list whose value is x, Removes the last element of the list, Adds x to the end of the list
+- [ ] Adds x to the end of the list, Removes the first item from the list whose value is x, Removes the last element of the list
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `[1, 2, 3]`
-- [ ] `[1, 2, 3, [4, 5]]`
-- [ ] `[4, 5, 1, 2, 3]`
-- [x] `[1, 2, 3, 4, 5]`
+- [x] Adds x to the end of the list, Removes the last element of the list, Removes the first item from the list whose value is x
+- [ ] Removes the last element of the list, Adds x to the end of the list, Removes the first item from the list whose value is x
+- [ ] Removes the first item from the list whose value is x, Removes the last element of the list, Adds x to the end of the list
+- [ ] Adds x to the end of the list, Removes the first item from the list whose value is x, Removes the last element of the list
 
 
 ::: {.explanation}
-The `extend()` method adds all elements from the provided iterable (`[4, 5]`) to the end of the list, resulting in `[1, 2, 3, 4, 5]`.
+- `list.append(x)` adds `x` to the end of the list.
+- `list.pop()` removes and returns the last element of the list.
+- `list.remove(x)` removes the first occurrence of `x` from the list.
+:::
 :::
 :::
 :::
 
 ### Question 52 {.question}
 
-Arguments can be passed only by position.
+What keyword is used as the short version of `else if`?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] True
-- [ ] False
+- [ ] `elseif`
+- [ ] `elif`
+- [ ] `ifelse`
+- [ ] `else`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] True
-- [x] False
+- [ ] `elseif`
+- [x] `elif`
+- [ ] `ifelse`
+- [ ] `else`
 
 
 ::: {.explanation}
-In Python, arguments can be passed either by position or by keyword.
+In Python, the `elif` keyword is used as a shorthand for `else if`, allowing multiple conditional statements.
 :::
 :::
 :::
 
 ### Question 53 {.question}
 
-Arguments are passed by assignment, meaning a _________ to the object is passed to the function.
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] reference
-- [ ] copy
-- [ ] pointer
-- [ ] object
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] reference
-- [ ] copy
-- [ ] pointer
-- [ ] object
-
-
-::: {.explanation}
-In Python, arguments are passed by assignment, which means that the reference to the object is passed to the function.
-:::
-:::
-:::
-
-### Question 54 {.question}
-
-Fill in the blank: To remove and return the last element from a list, use the ________ method.
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `remove()`
-- [ ] `pop()`
-- [ ] `clear()`
-- [ ] `delete()`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `remove()`
-- [x] `pop()`
-- [ ] `clear()`
-- [ ] `delete()`
-
-
-::: {.explanation}
-The `pop()` method removes and returns the last element of a list. The `remove()` method deletes a specific element by value.
-:::
-:::
-:::
-
-### Question 55 {.question}
-
-What function creates a new object and recursively inserts copies into it of the objects found in the original?
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `shallowcopy()`
-- [ ] `deepcopy()`
-- [ ] `copy()`
-- [ ] `clone()`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `shallowcopy()`
-- [x] `deepcopy()`
-- [ ] `copy()`
-- [ ] `clone()`
-
-
-::: {.explanation}
-The `deepcopy()` function creates a new object and recursively copies all objects found in the original. A shallow copy only copies the references to the original objects.
-:::
-:::
-:::
-
-### Question 56 {.question}
-
-Do static methods have a standard first parameter like instance and class methods? If so, which of the following?
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] No parameters are passed to static methods.
-- [ ] `self`
-- [ ] `cls`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] No parameters are passed to static methods.
-- [ ] `self`
-- [ ] `cls`
-
-
-::: {.explanation}
-Static methods do not require parameters like `self` or `cls` since they don’t operate on instance or class data.
-:::
-:::
-:::
-
-### Question 57 {.question}
-
-What is the result of the following code?
-
-```python
-numbers = [1, 2, 3, 4, 5]
-numbers.pop(2)
-print(numbers)
-```
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `[1, 2, 3, 4, 5]`
-- [ ] `[1, 3, 4, 5]`
-- [ ] `[1, 2, 4, 5]`
-- [ ] `[1, 2, 3, 5]`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `[1, 2, 3, 4, 5]`
-- [ ] `[1, 3, 4, 5]`
-- [x] `[1, 2, 4, 5]`
-- [ ] `[1, 2, 3, 5]`
-
-
-::: {.explanation}
-The `pop(2)` method removes the element at index 2, which is `3`. The list becomes `[1, 2, 4, 5]`.
-:::
-:::
-:::
-
-### Question 58 {.question}
-
-Fill in the indices that will return the first element of the third row from the following matrix:
-
-```python
-matrix = [[9, 0, 1], [3, 3, 2], [7, 8, 3]]
-```
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `matrix[2][0]`
-- [ ] `matrix[0][2]`
-- [ ] `matrix[1][0]`
-- [ ] `matrix[0][0]`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `matrix[2][0]`
-- [ ] `matrix[0][2]`
-- [ ] `matrix[1][0]`
-- [ ] `matrix[0][0]`
-
-
-::: {.explanation}
-To access the first element of the third row (`[7, 8, 3]`), you use `matrix[2][0]`, which returns `7`.
-:::
-:::
-:::
-
-### Question 59 {.question}
-
-The Python interpreter executes code line by line, rather than compiling the entire program at once.
+The `match` statement can be used to replace complex if-elif-else chains.
 
 ::: {.r-stack}
 
@@ -233,33 +75,183 @@ The Python interpreter executes code line by line, rather than compiling the ent
 
 
 ::: {.explanation}
-Python is an interpreted language, meaning the interpreter reads and executes code line by line, as opposed to compiled languages that translate the entire program into machine code before execution.
+The `match` statement, introduced in Python 3.10, allows for pattern matching, making it a good replacement for complex if-elif-else chains.
+:::
+:::
+:::
+
+### Question 54 {.question}
+
+What is the documentation called when it is below a function and denoted with triple quotes (`"""`)?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Multiline comment
+- [ ] Docstring
+- [ ] Inline comment
+- [ ] Block comment
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Multiline comment
+- [x] Docstring
+- [ ] Inline comment
+- [ ] Block comment
+
+
+::: {.explanation}
+In Python, a `docstring` is a string literal that appears right after the definition of a function, method, class, or module, used for documentation.
+:::
+:::
+:::
+
+### Question 55 {.question}
+
+Which of the following is **not** a native type in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Matrix
+- [ ] Float
+- [ ] Bool
+- [ ] Dict
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Matrix
+- [ ] Float
+- [ ] Bool
+- [ ] Dict
+
+
+::: {.explanation}
+Python does not have a native "Matrix" type. However, libraries like NumPy provide a matrix or array type. Float, Bool, and Dict are native types.
+:::
+:::
+:::
+
+### Question 56 {.question}
+
+In Python, a dictionary element has both a __________ and __________.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Key, Value
+- [ ] Index, Value
+- [ ] Key, Index
+- [ ] Name, Value
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Key, Value
+- [ ] Index, Value
+- [ ] Key, Index
+- [ ] Name, Value
+
+
+::: {.explanation}
+In Python, dictionary elements are stored as key-value pairs. The key is used to access the associated value.
+:::
+:::
+:::
+
+### Question 57 {.question}
+
+Which of the following are valid iterator tools?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `enumerate`
+- [ ] `reversed`
+- [ ] `parse`
+- [ ] `split`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `enumerate`
+- [x] `reversed`
+- [ ] `parse`
+- [ ] `split`
+
+
+::: {.explanation}
+The `enumerate` and `reversed` functions are iterator tools. `parse` and `split` are not valid iterator tools in this context.
+:::
+:::
+:::
+
+### Question 58 {.question}
+
+Which of the following is an example of a **constant** in Python, by convention?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `Total_Score`
+- [ ] `PI`
+- [ ] `maxScore`
+- [ ] `snake_case`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `Total_Score`
+- [x] `PI`
+- [ ] `maxScore`
+- [ ] `snake_case`
+
+
+::: {.explanation}
+By convention, constants in Python are written in all uppercase letters. `PI` is an example of a constant.
+:::
+:::
+:::
+
+### Question 59 {.question}
+
+The primary benefit of using partial application in Python is which of the following?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] By fixing some arguments of a function, it can be called with fewer and make it simpler
+- [ ] Faster performance can be achieved
+- [ ] The function becomes immutable
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] By fixing some arguments of a function, it can be called with fewer and make it simpler
+- [ ] Faster performance can be achieved
+- [ ] The function becomes immutable
+
+
+::: {.explanation}
+The main benefit of partial application is that it simplifies function calls by fixing some arguments, making the function easier to use.
 :::
 :::
 :::
 
 ### Question 60 {.question}
 
-What keyword is used to indicate we are defining a function?
+Raw strings are useful when your string is a file path that contains backslashes.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `fun`
-- [ ] `function`
-- [ ] `define`
-- [ ] `def`
+- [ ] True
+- [ ] False
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `fun`
-- [ ] `function`
-- [ ] `define`
-- [x] `def`
+- [x] True
+- [ ] False
 
 
 ::: {.explanation}
-The `def` keyword is used in Python to define a function.
+Raw strings treat backslashes as literal characters rather than escape characters, which is useful when working with file paths that contain backslashes.
 :::
 :::
 :::

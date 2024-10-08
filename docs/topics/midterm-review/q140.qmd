@@ -1,32 +1,6 @@
 ### Question 141 {.question}
 
-Which of the following is **not** a valid Python data type?
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `int`
-- [ ] `string`
-- [ ] `float`
-- [ ] `list`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `int`
-- [x] `string`
-- [ ] `float`
-- [ ] `list`
-
-
-::: {.explanation}
-In Python, `string` is not a built-in data type. The correct name is `str`. The other options (`int`, `float`, and `list`) are valid Python data types.
-:::
-:::
-:::
-
-### Question 142 {.question}
-
-Static methods behave like regular functions but belong to the class namespace.
+We use dot notation to access both attributes and call methods on instances of classes.
 
 ::: {.r-stack}
 
@@ -41,207 +15,252 @@ Static methods behave like regular functions but belong to the class namespace.
 
 
 ::: {.explanation}
-Static methods behave like regular functions, but they belong to the class namespace and are accessed through the class.
+Dot notation is used in Python to access an object's attributes or to call its methods.
+:::
+:::
+:::
+
+### Question 142 {.question}
+
+Choose all that apply: Which of the following can be used as dictionary keys?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Integers
+- [ ] Strings
+- [ ] Tuples
+- [ ] Lists
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Integers
+- [x] Strings
+- [x] Tuples
+- [ ] Lists
+
+
+::: {.explanation}
+Dictionaries require immutable objects as keys. Integers, strings, and tuples are immutable, while lists are mutable and cannot be used as keys.
 :::
 :::
 :::
 
 ### Question 143 {.question}
 
-________ loops are often used when working with multidimensional data structures.
+Which of the following is a class attribute in the following code?
+
+```python
+class Book:
+    book_count = 0
+    def __init__(self, title):
+        self.title = title
+        Book.book_count += 1
+```
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `nested`
-- [ ] `while`
-- [ ] `for`
-- [ ] `recursive`
+- [ ] `book_count`
+- [ ] `title`
+- [ ] `Book`
+- [ ] `init`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `nested`
-- [ ] `while`
-- [ ] `for`
-- [ ] `recursive`
+- [x] `book_count`
+- [ ] `title`
+- [ ] `Book`
+- [ ] `init`
 
 
 ::: {.explanation}
-Nested loops are frequently used to iterate over multidimensional data structures such as matrices or tensors.
+`book_count` is a class attribute because it is defined directly on the class and shared across all instances.
 :::
 :::
 :::
 
 ### Question 144 {.question}
 
-How would you compute `A ∩ B` (intersection of sets A and B) in Python?
+Which of the following will result in a `TypeError`?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `A.intersection(B)`
-- [ ] `A.symmetric_difference(B)`
-- [ ] `A.int(B)`
+- [ ] `"5" + "6"`
+- [ ] `5 + 6`
+- [ ] `"5" * 3`
+- [ ] `"5" + 6`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `A.intersection(B)`
-- [ ] `A.symmetric_difference(B)`
-- [ ] `A.int(B)`
+- [ ] `"5" + "6"`
+- [ ] `5 + 6`
+- [ ] `"5" * 3`
+- [x] `"5" + 6`
 
 
 ::: {.explanation}
-The `intersection()` method returns a set containing elements that are present in both sets `A` and `B`.
+The expression `"5" + 6` will raise a `TypeError` because Python does not allow concatenation of a string and an integer without explicit conversion. The other operations are valid.
 :::
 :::
 :::
 
 ### Question 145 {.question}
 
-What is the value of `x` before the break condition occurs in the following code?
+Fill in the missing parameter in the method definition.
 
 ```python
-for x in range(10):
-    if x >= 3:
-        break
+class Fungi:
+    def add_fungus(_______, fungus_species):
+        self.favorite_fungi[fungus_species] = "added"
 ```
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] 0
-- [ ] 2
-- [ ] 3
-- [ ] 4
+- [ ] `fungi`
+- [ ] `self`
+- [ ] `cls`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] 0
-- [ ] 2
-- [x] 3
-- [ ] 4
+- [ ] `fungi`
+- [x] `self`
+- [ ] `cls`
 
 
 ::: {.explanation}
-The loop runs until `x` is equal to 3, at which point the `break` statement is triggered, stopping the loop.
+The first parameter of instance methods must be `self`, which refers to the current instance of the class.
 :::
 :::
 :::
 
 ### Question 146 {.question}
 
-You want to maintain a single shared dictionary across all instances of the `Fungi` class. Which of the following would solve this problem? (Select all that apply)
+A function that calls itself is called a(n) __________ function.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Use a global variable
-- [ ] Make `favorite_fungi` a class variable
-- [ ] Use a static method
+- [ ] Looping
+- [ ] Anonymous
+- [ ] Recursive
+- [ ] Inline
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Use a global variable
-- [x] Make `favorite_fungi` a class variable
-- [ ] Use a static method
+- [ ] Looping
+- [ ] Anonymous
+- [x] Recursive
+- [ ] Inline
 
 
 ::: {.explanation}
-To share data across all instances of a class, you can make the attribute a class variable instead of an instance variable.
+A recursive function is one that calls itself to solve smaller instances of a problem.
 :::
 :::
 :::
 
 ### Question 147 {.question}
 
-The primary benefit of using partial application in Python is which of the following?
+Which of the following are iterable objects?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] By fixing some arguments of a function, it can be called with fewer and make it simpler
-- [ ] Faster performance can be achieved
-- [ ] The function becomes immutable
+- [ ] Lists
+- [ ] Tuples
+- [ ] Strings
+- [ ] Dictionaries
+- [ ] All of the above
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] By fixing some arguments of a function, it can be called with fewer and make it simpler
-- [ ] Faster performance can be achieved
-- [ ] The function becomes immutable
+- [ ] Lists
+- [ ] Tuples
+- [ ] Strings
+- [ ] Dictionaries
+- [x] All of the above
 
 
 ::: {.explanation}
-The main benefit of partial application is that it simplifies function calls by fixing some arguments, making the function easier to use.
+Lists, tuples, strings, and dictionaries are all iterable objects in Python.
 :::
 :::
 :::
 
 ### Question 148 {.question}
 
-The process of creating an object from a class is called __________.
+What is the result of the following code?
+
+```python
+numbers = [1, 2, 3, 4, 5]
+print(numbers[1:4])
+```
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] instantiation
-- [ ] declaration
-- [ ] referencing
+- [ ] `[1, 2, 3]`
+- [ ] `[2, 3, 4]`
+- [ ] `[2, 3]`
+- [ ] `[1, 2, 3, 4]`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] instantiation
-- [ ] declaration
-- [ ] referencing
+- [ ] `[1, 2, 3]`
+- [x] `[2, 3, 4]`
+- [ ] `[2, 3]`
+- [ ] `[1, 2, 3, 4]`
 
 
 ::: {.explanation}
-Instantiation is the process of creating a concrete object from a class definition.
+The slice `numbers[1:4]` extracts elements from index 1 to 3 (excluding 4), resulting in `[2, 3, 4]`.
 :::
 :::
 :::
 
 ### Question 149 {.question}
 
-Are list slices deep or shallow?
+What is used to define a set in Python?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Deep
-- [ ] Shallow
+- [ ] `{}`
+- [ ] `()`
+- [ ] `[]`
+- [ ] `||`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Deep
-- [x] Shallow
+- [x] `{}`
+- [ ] `()`
+- [ ] `[]`
+- [ ] `||`
 
 
 ::: {.explanation}
-List slices in Python are shallow copies, meaning they copy the references to the objects in the list, not the objects themselves.
+In Python, a set is defined using curly braces `{}`, while parentheses `()` are used for tuples and square brackets `[]` for lists.
 :::
 :::
 :::
 
 ### Question 150 {.question}
-
-What is the special method that is automatically called when a new instance of a class is created, allowing you to initialize the attributes of the class?
+A(n) ___________ is a collection of modules and packages that provide functionality which can be reused in multiple projects.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `__str__`
-- [ ] `__call__`
-- [ ] `__init__`
+Answer: 
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `__str__`
-- [ ] `__call__`
-- [x] `__init__`
-
+Answer: `library`
 
 ::: {.explanation}
-The `__init__` method is the constructor method in Python, used to initialize the attributes of a class when an object is created.
+A library in Python is a collection of modules and packages that provide reusable functionality. Libraries can be built-in (like the standard library) or third-party, and they allow developers to extend Python's capabilities without having to write all the code from scratch.
 :::
 :::
 :::

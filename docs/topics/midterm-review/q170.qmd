@@ -1,270 +1,270 @@
 ### Question 171 {.question}
 
-What is this type of evaluation between `x` and `y` called?
-
-```python
-x = 1
-y = 1
-if x and y:
-    print("both true")
-```
+Complete this statement regarding mutability: Lists are ____________ while tuples are ____________.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Short-circuit evaluation
-- [ ] Shortcut evaluation
-- [ ] Lazy evaluation
+- [ ] mutable, mutable
+- [ ] mutable, immutable
+- [ ] immutable, mutable
+- [ ] immutable, immutable
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] Short-circuit evaluation
-- [ ] Shortcut evaluation
-- [ ] Lazy evaluation
+- [ ] mutable, mutable
+- [x] mutable, immutable
+- [ ] immutable, mutable
+- [ ] immutable, immutable
 
 
 ::: {.explanation}
-Short-circuit evaluation means that the second condition is evaluated only if the first condition is not enough to determine the result.
+Lists in Python are mutable, meaning their elements can be changed, added, or removed. Tuples, on the other hand, are immutable and cannot be altered after their creation.
 :::
 :::
 :::
 
 ### Question 172 {.question}
 
-We _________ objects from a class to create concrete instances with specific attribute values.
+Fill in the blank: To remove and return the last element from a list, use the ________ method.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] instantiate
-- [ ] concatenate
-- [ ] interpret
-- [ ] syscall
+- [ ] `remove()`
+- [ ] `pop()`
+- [ ] `clear()`
+- [ ] `delete()`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] instantiate
-- [ ] concatenate
-- [ ] interpret
-- [ ] syscall
+- [ ] `remove()`
+- [x] `pop()`
+- [ ] `clear()`
+- [ ] `delete()`
 
 
 ::: {.explanation}
-To create a concrete instance of a class, we instantiate the class, assigning specific values to the object's attributes.
+The `pop()` method removes and returns the last element of a list. The `remove()` method deletes a specific element by value.
 :::
 :::
 :::
 
 ### Question 173 {.question}
 
-Anonymous functions in Python are defined with what keyword?
+The following is the output from what module often used for automated testing?
+
+```{.bash}
+======================================================================
+FAIL: test (__main__.TestIdentity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<ipython-input-11-e44778304d6f>", line 5, in test
+    self.assertAlmostEqual(result, expected)
+AssertionError: 0.00017089843750002018 != 0.0 within 7 places
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+FAILED (failures=1)
+```
 
 ::: {.r-stack}
-
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `def`
-- [ ] `anon`
-- [ ] `lambda`
-- [ ] `fun`
+Answer: 
 :::
-
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `def`
-- [ ] `anon`
-- [x] `lambda`
-- [ ] `fun`
-
-
+Answer: `unittest`
 ::: {.explanation}
-In Python, anonymous functions are created using the `lambda` keyword.
+This output is from the `unittest` module, which is Python's built-in testing framework. The output shows a test failure, including the name of the test method, the line where the failure occurred, and details about the assertion that failed.
 :::
 :::
 :::
 
 ### Question 174 {.question}
 
-What is the technique called when some arguments of a function are fixed?
+The `__init__` method is the __________ for a class.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Partial application
-- [ ] Semi function
-- [ ] Static argumentation
+- [ ] Destructor
+- [ ] Constructor
+- [ ] Method initializer
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] Partial application
-- [ ] Semi function
-- [ ] Static argumentation
+- [ ] Destructor
+- [x] Constructor
+- [ ] Method initializer
 
 
 ::: {.explanation}
-Partial application refers to fixing some arguments of a function, producing a new function with fewer arguments.
+The `__init__` method is the constructor method in Python, used to initialize objects of a class when they are instantiated.
 :::
 :::
 :::
 
 ### Question 175 {.question}
 
-::: {.smaller-70}
-Match the list operation to its action:
+Fill in the missing code:
 
-- `list.append(x)`
-- `list.pop()`
-- `list.remove(x)`
+```python
+import logging
+logger = logging.getLogger(__name__)
+file_handler = logging.FileHandler('file.log')
+file_handler._______________(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+logger.addHandler(file_handler)
+# now do whatever you want like logger.debug, logger.error, etc. 
+
+```
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Adds x to the end of the list, Removes the last element of the list, Removes the first item from the list whose value is x
-- [ ] Removes the last element of the list, Adds x to the end of the list, Removes the first item from the list whose value is x
-- [ ] Removes the first item from the list whose value is x, Removes the last element of the list, Adds x to the end of the list
-- [ ] Adds x to the end of the list, Removes the first item from the list whose value is x, Removes the last element of the list
+Answer: 
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] Adds x to the end of the list, Removes the last element of the list, Removes the first item from the list whose value is x
-- [ ] Removes the last element of the list, Adds x to the end of the list, Removes the first item from the list whose value is x
-- [ ] Removes the first item from the list whose value is x, Removes the last element of the list, Adds x to the end of the list
-- [ ] Adds x to the end of the list, Removes the first item from the list whose value is x, Removes the last element of the list
-
+Answer: `setFormatter`
 
 ::: {.explanation}
-- `list.append(x)` adds `x` to the end of the list.
-- `list.pop()` removes and returns the last element of the list.
-- `list.remove(x)` removes the first occurrence of `x` from the list.
-:::
+The `setFormatter()` method is used to set the formatter for the handler. This determines how the log messages are formatted when they are written to the log file.
 :::
 :::
 :::
 
 ### Question 176 {.question}
 
-What is the result of the following code?
-
-```python
-numbers = [10, 20, 30]
-numbers.append(40)
-print(numbers)
-```
+You use the decorator, `@___________`, to denote static methods.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `[10, 20]`
-- [ ] `[10, 20, 30]`
-- [x] `[10, 20, 30, 40]`
-- [ ] `[40, 10, 20, 30]`
+- [ ] `staticmethod`
+- [ ] `classmethod`
+- [ ] `initmethod`
+- [ ] `property`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `[10, 20]`
-- [ ] `[10, 20, 30]`
-- [x] `[10, 20, 30, 40]`
-- [ ] `[40, 10, 20, 30]`
+- [x] `staticmethod`
+- [ ] `classmethod`
+- [ ] `initmethod`
+- [ ] `property`
 
 
 ::: {.explanation}
-The `append()` method adds `40` to the end of the list, so the result is `[10, 20, 30, 40]`.
+The `@staticmethod` decorator is used to denote static methods, which do not access instance or class-level attributes.
 :::
 :::
 :::
 
 ### Question 177 {.question}
 
-Which of the following expressions will raise a `TypeError`?
+Exceptions in Python are derived (inherited) from a base class called `Exception`.
 
 ::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `"5" + "6"`
-- [ ] `5 + 6`
-- [ ] `"5" * 3`
-- [ ] `"5" + 6`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `"5" + "6"`
-- [ ] `5 + 6`
-- [ ] `"5" * 3`
-- [x] `"5" + 6`
-
-
-::: {.explanation}
-The expression `"5" + 6` will raise a `TypeError` because Python does not allow the concatenation of a string and an integer without explicit conversion.
-:::
-:::
-:::
-
-### Question 178 {.question}
-
-Which of the following methods modify a list in place? (Select all that apply)
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `sort()`
-- [ ] `reverse()`
-- [ ] `append()`
-- [ ] `extend()`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `sort()`
-- [x] `reverse()`
-- [x] `append()`
-- [x] `extend()`
-
-
-::: {.explanation}
-All of these methods—`sort()`, `reverse()`, `append()`, and `extend()`—modify the list in place without creating a new list object.
-:::
-:::
-:::
-
-### Question 179 {.question}
-
-Which statement expresses that a function maps elements from the domain to the range?
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `f: D→R`
-- [ ] `f(D,R)`
-- [ ] `f: D==R`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `f: D→R`
-- [ ] `f(D,R)`
-- [ ] `f: D==R`
-
-
-::: {.explanation}
-The mathematical notation `f: D→R` indicates that the function `f` maps elements from the domain `D` to the range `R`.
-:::
-:::
-:::
-
-### Question 180 {.question}
-
-The `break` statement skips the rest of the current iteration and moves to the next iteration.
-
-::: {.r-stack}
-
 ::: {.absolute .left-0 .top-0 width=100%}
 - [ ] True
 - [ ] False
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] True
-- [x] False
+- [x] True
+- [ ] False
+
+::: {.explanation}
+This statement is true. In Python, most built-in exceptions are derived from the `Exception` class. This class serves as the base class for all built-in, non-system-exiting exceptions.
+:::
+:::
+:::
+
+### Question 178 {.question}
+
+Which of the following are considered `False` in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `0`
+- [ ] `set()`
+- [ ] `1`
+- [ ] `None`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `0`
+- [x] `set()`
+- [ ] `1`
+- [x] `None`
 
 
 ::: {.explanation}
-The `break` statement exits the loop entirely, while the `continue` statement skips the rest of the current iteration and moves to the next one.
+In Python, `0`, `set()`, and `None` are considered `False` in boolean contexts, while `1` is `True`.
+:::
+:::
+:::
+
+### Question 179 {.question}
+
+What will be the result of the following code?
+
+```python
+text = "Python Programming"
+print(text.replace("Python", "Java"))
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `Python Java`
+- [ ] `Java Programming`
+- [ ] `PythonProgramming`
+- [ ] `Programming Java`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `Python Java`
+- [x] `Java Programming`
+- [ ] `PythonProgramming`
+- [ ] `Programming Java`
+
+
+::: {.explanation}
+The `replace()` method replaces all occurrences of the substring `"Python"` with `"Java"`, resulting in `"Java Programming"`.
+:::
+:::
+:::
+
+### Question 180 {.question}
+
+::: {.smaller-80}
+You don’t know how many people will attend your club meeting, but you want to make a record of who attended by passing names through your function. Fill in the blank to unpack the arguments.
+
+```python
+def record_attendance(meeting_date, *__________):
+    print(f"Meeting date: {meeting_date}")
+    print("People who attended:", __________)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `names`
+- [ ] `args`
+- [ ] `kwargs`
+- [ ] `participants`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `names`
+- [x] `args`
+- [ ] `kwargs`
+- [ ] `participants`
+
+
+::: {.explanation}
+The `*args` syntax allows you to pass a variable number of positional arguments to the function. The variable `args` will hold all the passed names.
+:::
 :::
 :::
 :::

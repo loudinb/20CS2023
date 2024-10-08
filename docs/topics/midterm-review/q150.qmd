@@ -1,26 +1,181 @@
 ### Question 151 {.question}
 
-Both class attributes and instance attributes can be modified in class methods.
+What Python module is often used to facilitate automated testing?
 
 ::: {.r-stack}
-
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] True
-- [ ] False
+Answer: 
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] True
-- [ ] False
-
+Answer: `unittest`
 
 ::: {.explanation}
-Class methods can modify both class attributes and instance attributes by accessing them via the `cls` and `self` parameters, respectively.
+The `unittest` module is a built-in Python module that provides a rich set of tools for constructing and running tests. It supports test automation, sharing of setup and shutdown code for tests, and aggregation of tests into collections.
 :::
 :::
 :::
 
 ### Question 152 {.question}
+
+What statement should be used to prevent an infinite `while` loop?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `stop`
+- [ ] `halt`
+- [ ] `break`
+- [ ] `continue`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `stop`
+- [ ] `halt`
+- [x] `break`
+- [ ] `continue`
+
+
+::: {.explanation}
+The `break` statement is used to exit a `while` loop prematurely, preventing it from becoming infinite.
+:::
+:::
+:::
+
+### Question 153 {.question}
+
+Which of the following is a correct way to iterate through a list in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `for i in range(list):`
+- [ ] `for i in len(list):`
+- [ ] `for i in list:`
+- [ ] `while i in list:`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `for i in range(list):`
+- [ ] `for i in len(list):`
+- [x] `for i in list:`
+- [ ] `while i in list:`
+
+
+::: {.explanation}
+The correct syntax for iterating through each element in a list is `for i in list:` where `i` will represent each element of the list in each iteration.
+:::
+:::
+:::
+
+### Question 154 {.question}
+
+What is the result of the following code?
+
+```python
+text = "Python Programming"
+print(text[7:])
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `Python`
+- [ ] `Programming`
+- [ ] `thon Programming`
+- [ ] `Py`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `Python`
+- [x] `Programming`
+- [ ] `thon Programming`
+- [ ] `Py`
+
+
+::: {.explanation}
+The slice `text[7:]` returns the substring starting from index 7 to the end, which results in `"Programming"`.
+:::
+:::
+:::
+
+### Question 155 {.question}
+
+Which of the following are included in the base Python installation? (Select all that apply)
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Jupyter Notebook
+- [ ] IPython
+- [ ] Python shell
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Jupyter Notebook
+- [ ] IPython
+- [x] Python shell
+
+
+::: {.explanation}
+The base Python installation includes the standard Python shell but not IPython or Jupyter Notebook. These tools need to be installed separately.
+:::
+:::
+:::
+
+### Question 156 {.question}
+
+Which statement expresses that a function maps elements from the domain to the range?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `f: D→R`
+- [ ] `f(D,R)`
+- [ ] `f: D==R`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `f: D→R`
+- [ ] `f(D,R)`
+- [ ] `f: D==R`
+
+
+::: {.explanation}
+The mathematical notation `f: D→R` indicates that the function `f` maps elements from the domain `D` to the range `R`.
+:::
+:::
+:::
+
+### Question 157 {.question}
+
+::: {.smaller-80}
+Objects are used to represent entities with both characteristics and behaviors. Which of the following statements most accurately describes the relationship between attributes and data?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Attributes are external variables that are passed to the object’s methods.
+- [ ] Attributes are synonymous with class methods and cannot store data.
+- [ ] Attributes are the data stored within the object, representing its state or characteristics.
+- [ ] Attributes are the methods that operate on the object’s data.
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Attributes are external variables that are passed to the object’s methods.
+- [ ] Attributes are synonymous with class methods and cannot store data.
+- [x] Attributes are the data stored within the object, representing its state or characteristics.
+- [ ] Attributes are the methods that operate on the object’s data.
+
+
+::: {.explanation}
+Attributes are data members of an object that store information about the object's state or characteristics.
+:::
+:::
+:::
+:::
+
+### Question 158 {.question}
 
 To indicate that a method is a class method, what is the decorator line that precedes the method definition?
 
@@ -44,213 +199,50 @@ The `@classmethod` decorator is used to define a class method in Python. It modi
 :::
 :::
 
-### Question 153 {.question}
-
-What will be the result of the following code?
-
-```python
-numbers = [1, 2, 3, 4, 5]
-print(sum(numbers))
-```
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `5`
-- [ ] `10`
-- [ ] `15`
-- [ ] `None`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `5`
-- [ ] `10`
-- [x] `15`
-- [ ] `None`
-
-
-::: {.explanation}
-The `sum()` function calculates the sum of all elements in the list `[1, 2, 3, 4, 5]`, resulting in `15`.
-:::
-:::
-:::
-
-### Question 154 {.question}
-
-A closure is formed when an inner function is defined within an outer function. True or False?
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] True
-- [ ] False
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] True
-- [ ] False
-
-
-::: {.explanation}
-In Python, a closure occurs when an inner function is defined inside an outer function and the inner function retains access to the variables in the outer function's scope.
-:::
-:::
-:::
-
-### Question 155 {.question}
-
-Passing mutable input arguments to a function and changing them inside the function can change them outside the function too.
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] True
-- [ ] False
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] True
-- [ ] False
-
-
-::: {.explanation}
-When mutable objects like lists or dictionaries are passed to a function, modifications inside the function can affect the object outside the function.
-:::
-:::
-:::
-
-### Question 156 {.question}
-
-The number of levels passed by the execution of a recursive function is called the __________ __________.
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Call stack
-- [ ] Depth level
-- [ ] Execution count
-- [ ] Recursion depth
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] Call stack
-- [ ] Depth level
-- [ ] Execution count
-- [x] Recursion depth
-
-
-::: {.explanation}
-Recursion depth refers to how deep the function calls go during the execution of a recursive function.
-:::
-:::
-:::
-
-### Question 157 {.question}
-
-When calling a function, what term is used to describe the values passed to the function when it is called?
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] Arguments
-- [ ] Parameters
-- [ ] Inputs
-- [ ] Values
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] Arguments
-- [ ] Parameters
-- [ ] Inputs
-- [ ] Values
-
-
-::: {.explanation}
-Arguments are the actual values passed into the function when it is called. Parameters are the placeholders used in the function definition.
-:::
-:::
-:::
-
-### Question 158 {.question}
-
-What will be the result of the following code?
-
-```python
-text = "Python"
-reversed_text = text[::-1]
-print(reversed_text)
-```
-
-::: {.r-stack}
-
-::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `"Python"`
-- [ ] `"nohtyP"`
-- [ ] `"Pyth"`
-- [ ] `"noth"`
-:::
-
-::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `"Python"`
-- [x] `"nohtyP"`
-- [ ] `"Pyth"`
-- [ ] `"noth"`
-
-
-::: {.explanation}
-The slicing `[::-1]` reverses the string `"Python"`, so the result is `"nohtyP"`.
-:::
-:::
-:::
-
 ### Question 159 {.question}
 
-You use the decorator, `@___________`, to denote static methods.
+Which of the following operations will return the first character of the string `text = "hello"`?
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `staticmethod`
-- [ ] `classmethod`
-- [ ] `initmethod`
-- [ ] `property`
+- [ ] `text[1]`
+- [ ] `text[0]`
+- [ ] `text[-1]`
+- [ ] `text[:1]`
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [x] `staticmethod`
-- [ ] `classmethod`
-- [ ] `initmethod`
-- [ ] `property`
+- [ ] `text[1]`
+- [x] `text[0]`
+- [ ] `text[-1]`
+- [ ] `text[:1]`
 
 
 ::: {.explanation}
-The `@staticmethod` decorator is used to denote static methods, which do not access instance or class-level attributes.
+The expression `text[0]` returns the first character of the string `"hello"`, which is `"h"`. The slice `text[:1]` also works but includes slicing instead of direct indexing.
 :::
 :::
 :::
 
 ### Question 160 {.question}
 
-Which of the following methods is not available for frozen sets?
+All methods and attributes of the parent class are inherited by the subclasses as long as they are not overridden.
 
 ::: {.r-stack}
 
 ::: {.absolute .left-0 .top-0 width=100%}
-- [ ] `intersection()`
-- [ ] `union()`
-- [ ] `add()`
-- [ ] `is_subset()`
+- [ ] True
+- [ ] False
 :::
 
 ::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
-- [ ] `intersection()`
-- [ ] `union()`
-- [x] `add()`
-- [ ] `is_subset()`
+- [x] True
+- [ ] False
 
 
 ::: {.explanation}
-Frozen sets are immutable, so methods that modify the set, like `add()`, are not available.
+Subclasses inherit all methods and attributes from the parent class unless they are explicitly overridden in the subclass.
 :::
 :::
 :::
