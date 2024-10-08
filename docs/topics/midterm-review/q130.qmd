@@ -1,0 +1,263 @@
+### Question 131 {.question}
+
+Which of the following will remove the element `3` from the list?
+
+```python
+numbers = [1, 2, 3, 4, 5]
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `numbers.pop(3)`
+- [ ] `numbers.remove(3)`
+- [ ] `del numbers[3]`
+- [ ] `numbers.clear()`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `numbers.pop(3)`
+- [x] `numbers.remove(3)`
+- [ ] `del numbers[3]`
+- [ ] `numbers.clear()`
+
+
+::: {.explanation}
+The `remove(3)` method will remove the first occurrence of the value `3` from the list. `pop()` and `del` remove elements by index, not value, and `clear()` removes all elements.
+:::
+:::
+:::
+
+### Question 132 {.question}
+
+In Python, a dictionary element has both a __________ and __________.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Key, Value
+- [ ] Index, Value
+- [ ] Key, Index
+- [ ] Name, Value
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Key, Value
+- [ ] Index, Value
+- [ ] Key, Index
+- [ ] Name, Value
+
+
+::: {.explanation}
+In Python, dictionary elements are stored as key-value pairs. The key is used to access the associated value.
+:::
+:::
+:::
+
+### Question 133 {.question}
+
+::: {.smaller-75}
+Match the programming paradigm to the description:
+
+- Procedural Programming
+- Functional Programming
+- Object-Oriented Programming
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Step-by-step instructions; Functions to solve problems; Objects with data and methods
+- [ ] Objects with data and methods; Functions to solve problems; Step-by-step instructions
+- [ ] Functions to solve problems; Objects with data and methods; Step-by-step instructions
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Step-by-step instructions; Functions to solve problems; Objects with data and methods
+- [ ] Objects with data and methods; Functions to solve problems; Step-by-step instructions
+- [ ] Functions to solve problems; Objects with data and methods; Step-by-step instructions
+
+
+::: {.explanation}
+Procedural programming follows step-by-step instructions, functional programming uses functions to solve problems, and OOP organizes code using objects that contain both data and methods.
+:::
+:::
+:::
+:::
+
+### Question 134 {.question}
+
+::: {.smaller-80}
+Objects are used to represent entities with both characteristics and behaviors. Which of the following statements most accurately describes the relationship between attributes and data?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Attributes are external variables that are passed to the object’s methods.
+- [ ] Attributes are synonymous with class methods and cannot store data.
+- [ ] Attributes are the data stored within the object, representing its state or characteristics.
+- [ ] Attributes are the methods that operate on the object’s data.
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Attributes are external variables that are passed to the object’s methods.
+- [ ] Attributes are synonymous with class methods and cannot store data.
+- [x] Attributes are the data stored within the object, representing its state or characteristics.
+- [ ] Attributes are the methods that operate on the object’s data.
+
+
+::: {.explanation}
+Attributes are data members of an object that store information about the object's state or characteristics.
+:::
+:::
+:::
+:::
+
+### Question 135 {.question}
+
+If you modify an immutable object in either the original or the copied list, the change will be reflected in both lists.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [x] False
+
+
+::: {.explanation}
+Immutable objects cannot be modified after creation. When an immutable object (like a tuple or a string) is copied, changes are not reflected in both lists.
+:::
+:::
+:::
+
+### Question 136 {.question}
+
+What will be the result of the following code?
+
+```python
+text = "hello world"
+print(text.capitalize())
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `"HELLO WORLD"`
+- [ ] `"Hello world"`
+- [ ] `"hello World"`
+- [ ] `"Hello World"`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `"HELLO WORLD"`
+- [x] `"Hello world"`
+- [ ] `"hello World"`
+- [ ] `"Hello World"`
+
+
+::: {.explanation}
+The `capitalize()` method capitalizes the first character of the string, so `"hello world"` becomes `"Hello world"`.
+:::
+:::
+:::
+
+### Question 137 {.question}
+
+The memory addresses for two list objects are shown below. No modifications to the list were made after the copy operation. Was the copy operation a deep copy or shallow copy?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Deep
+- [ ] Shallow
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Deep
+- [x] Shallow
+
+
+::: {.explanation}
+The copy operation was a shallow copy. A shallow copy copies the references to objects rather than the objects themselves.
+:::
+:::
+:::
+
+### Question 138 {.question}
+
+Two lists can be concatenated using what operator?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `+`
+- [ ] `-`
+- [ ] `*`
+- [ ] `/`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `+`
+- [ ] `-`
+- [ ] `*`
+- [ ] `/`
+
+
+::: {.explanation}
+In Python, the `+` operator is used to concatenate two lists, combining them into one.
+:::
+:::
+:::
+
+### Question 139 {.question}
+
+__________ is a core concept of OOP about hiding complex details.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Encapsulation
+- [ ] Inheritance
+- [ ] Polymorphism
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Encapsulation
+- [ ] Inheritance
+- [ ] Polymorphism
+
+
+::: {.explanation}
+Encapsulation hides the internal details of how an object works and exposes only necessary interfaces.
+:::
+:::
+:::
+
+### Question 140 {.question}
+
+For instance methods, what is always the first parameter?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `self`
+- [ ] `cls`
+- [ ] `instance`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `self`
+- [ ] `cls`
+- [ ] `instance`
+
+
+::: {.explanation}
+The first parameter for instance methods in Python must always be `self`, which refers to the current instance of the class.
+:::
+:::
+:::
+

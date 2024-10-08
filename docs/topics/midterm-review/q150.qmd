@@ -1,0 +1,257 @@
+### Question 151 {.question}
+
+Both class attributes and instance attributes can be modified in class methods.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+Class methods can modify both class attributes and instance attributes by accessing them via the `cls` and `self` parameters, respectively.
+:::
+:::
+:::
+
+### Question 152 {.question}
+
+To indicate that a method is a class method, what is the decorator line that precedes the method definition?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `@staticmethod`
+- [ ] `@property`
+- [ ] `@classmethod`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `@staticmethod`
+- [ ] `@property`
+- [x] `@classmethod`
+
+
+::: {.explanation}
+The `@classmethod` decorator is used to define a class method in Python. It modifies the method to take the class itself as the first argument (`cls`).
+:::
+:::
+:::
+
+### Question 153 {.question}
+
+What will be the result of the following code?
+
+```python
+numbers = [1, 2, 3, 4, 5]
+print(sum(numbers))
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `5`
+- [ ] `10`
+- [ ] `15`
+- [ ] `None`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `5`
+- [ ] `10`
+- [x] `15`
+- [ ] `None`
+
+
+::: {.explanation}
+The `sum()` function calculates the sum of all elements in the list `[1, 2, 3, 4, 5]`, resulting in `15`.
+:::
+:::
+:::
+
+### Question 154 {.question}
+
+A closure is formed when an inner function is defined within an outer function. True or False?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+In Python, a closure occurs when an inner function is defined inside an outer function and the inner function retains access to the variables in the outer function's scope.
+:::
+:::
+:::
+
+### Question 155 {.question}
+
+Passing mutable input arguments to a function and changing them inside the function can change them outside the function too.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+When mutable objects like lists or dictionaries are passed to a function, modifications inside the function can affect the object outside the function.
+:::
+:::
+:::
+
+### Question 156 {.question}
+
+The number of levels passed by the execution of a recursive function is called the __________ __________.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Call stack
+- [ ] Depth level
+- [ ] Execution count
+- [ ] Recursion depth
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Call stack
+- [ ] Depth level
+- [ ] Execution count
+- [x] Recursion depth
+
+
+::: {.explanation}
+Recursion depth refers to how deep the function calls go during the execution of a recursive function.
+:::
+:::
+:::
+
+### Question 157 {.question}
+
+When calling a function, what term is used to describe the values passed to the function when it is called?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Arguments
+- [ ] Parameters
+- [ ] Inputs
+- [ ] Values
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Arguments
+- [ ] Parameters
+- [ ] Inputs
+- [ ] Values
+
+
+::: {.explanation}
+Arguments are the actual values passed into the function when it is called. Parameters are the placeholders used in the function definition.
+:::
+:::
+:::
+
+### Question 158 {.question}
+
+What will be the result of the following code?
+
+```python
+text = "Python"
+reversed_text = text[::-1]
+print(reversed_text)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `"Python"`
+- [ ] `"nohtyP"`
+- [ ] `"Pyth"`
+- [ ] `"noth"`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `"Python"`
+- [x] `"nohtyP"`
+- [ ] `"Pyth"`
+- [ ] `"noth"`
+
+
+::: {.explanation}
+The slicing `[::-1]` reverses the string `"Python"`, so the result is `"nohtyP"`.
+:::
+:::
+:::
+
+### Question 159 {.question}
+
+You use the decorator, `@___________`, to denote static methods.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `staticmethod`
+- [ ] `classmethod`
+- [ ] `initmethod`
+- [ ] `property`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `staticmethod`
+- [ ] `classmethod`
+- [ ] `initmethod`
+- [ ] `property`
+
+
+::: {.explanation}
+The `@staticmethod` decorator is used to denote static methods, which do not access instance or class-level attributes.
+:::
+:::
+:::
+
+### Question 160 {.question}
+
+Which of the following methods is not available for frozen sets?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `intersection()`
+- [ ] `union()`
+- [ ] `add()`
+- [ ] `is_subset()`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `intersection()`
+- [ ] `union()`
+- [x] `add()`
+- [ ] `is_subset()`
+
+
+::: {.explanation}
+Frozen sets are immutable, so methods that modify the set, like `add()`, are not available.
+:::
+:::
+:::
+

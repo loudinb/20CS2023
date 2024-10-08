@@ -1,0 +1,248 @@
+### Question 141 {.question}
+
+Which of the following is **not** a valid Python data type?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `int`
+- [ ] `string`
+- [ ] `float`
+- [ ] `list`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `int`
+- [x] `string`
+- [ ] `float`
+- [ ] `list`
+
+
+::: {.explanation}
+In Python, `string` is not a built-in data type. The correct name is `str`. The other options (`int`, `float`, and `list`) are valid Python data types.
+:::
+:::
+:::
+
+### Question 142 {.question}
+
+Static methods behave like regular functions but belong to the class namespace.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+Static methods behave like regular functions, but they belong to the class namespace and are accessed through the class.
+:::
+:::
+:::
+
+### Question 143 {.question}
+
+________ loops are often used when working with multidimensional data structures.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `nested`
+- [ ] `while`
+- [ ] `for`
+- [ ] `recursive`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `nested`
+- [ ] `while`
+- [ ] `for`
+- [ ] `recursive`
+
+
+::: {.explanation}
+Nested loops are frequently used to iterate over multidimensional data structures such as matrices or tensors.
+:::
+:::
+:::
+
+### Question 144 {.question}
+
+How would you compute `A ∩ B` (intersection of sets A and B) in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `A.intersection(B)`
+- [ ] `A.symmetric_difference(B)`
+- [ ] `A.int(B)`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `A.intersection(B)`
+- [ ] `A.symmetric_difference(B)`
+- [ ] `A.int(B)`
+
+
+::: {.explanation}
+The `intersection()` method returns a set containing elements that are present in both sets `A` and `B`.
+:::
+:::
+:::
+
+### Question 145 {.question}
+
+What is the value of `x` before the break condition occurs in the following code?
+
+```python
+for x in range(10):
+    if x >= 3:
+        break
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] 0
+- [ ] 2
+- [ ] 3
+- [ ] 4
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] 0
+- [ ] 2
+- [x] 3
+- [ ] 4
+
+
+::: {.explanation}
+The loop runs until `x` is equal to 3, at which point the `break` statement is triggered, stopping the loop.
+:::
+:::
+:::
+
+### Question 146 {.question}
+
+You want to maintain a single shared dictionary across all instances of the `Fungi` class. Which of the following would solve this problem? (Select all that apply)
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Use a global variable
+- [ ] Make `favorite_fungi` a class variable
+- [ ] Use a static method
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Use a global variable
+- [x] Make `favorite_fungi` a class variable
+- [ ] Use a static method
+
+
+::: {.explanation}
+To share data across all instances of a class, you can make the attribute a class variable instead of an instance variable.
+:::
+:::
+:::
+
+### Question 147 {.question}
+
+The primary benefit of using partial application in Python is which of the following?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] By fixing some arguments of a function, it can be called with fewer and make it simpler
+- [ ] Faster performance can be achieved
+- [ ] The function becomes immutable
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] By fixing some arguments of a function, it can be called with fewer and make it simpler
+- [ ] Faster performance can be achieved
+- [ ] The function becomes immutable
+
+
+::: {.explanation}
+The main benefit of partial application is that it simplifies function calls by fixing some arguments, making the function easier to use.
+:::
+:::
+:::
+
+### Question 148 {.question}
+
+The process of creating an object from a class is called __________.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] instantiation
+- [ ] declaration
+- [ ] referencing
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] instantiation
+- [ ] declaration
+- [ ] referencing
+
+
+::: {.explanation}
+Instantiation is the process of creating a concrete object from a class definition.
+:::
+:::
+:::
+
+### Question 149 {.question}
+
+Are list slices deep or shallow?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Deep
+- [ ] Shallow
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Deep
+- [x] Shallow
+
+
+::: {.explanation}
+List slices in Python are shallow copies, meaning they copy the references to the objects in the list, not the objects themselves.
+:::
+:::
+:::
+
+### Question 150 {.question}
+
+What is the special method that is automatically called when a new instance of a class is created, allowing you to initialize the attributes of the class?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `__str__`
+- [ ] `__call__`
+- [ ] `__init__`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `__str__`
+- [ ] `__call__`
+- [x] `__init__`
+
+
+::: {.explanation}
+The `__init__` method is the constructor method in Python, used to initialize the attributes of a class when an object is created.
+:::
+:::
+:::
+

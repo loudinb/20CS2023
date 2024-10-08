@@ -1,0 +1,267 @@
+### Question 181 {.question}
+
+In inheritance, the new class (subclass) inherits attributes and methods from the existing class, called the _________.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] superclass
+- [ ] submethod
+- [ ] metaclass
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] superclass
+- [ ] submethod
+- [ ] metaclass
+
+
+::: {.explanation}
+The superclass (also known as the parent class) provides the attributes and methods that the subclass inherits.
+:::
+:::
+:::
+
+### Question 182 {.question}
+
+What is the term for a function that retains access to variables from its surrounding scope, even after that scope has finished executing?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Closure
+- [ ] Partial function
+- [ ] Static function
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Closure
+- [ ] Partial function
+- [ ] Static function
+
+
+::: {.explanation}
+A closure is a function that remembers the variables from its enclosing scope even after that scope has finished executing.
+:::
+:::
+:::
+
+### Question 183 {.question}
+
+What is the result of the following code?
+
+```python
+text = "Python Programming"
+print(text.find("Prog"))
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `0`
+- [ ] `7`
+- [ ] `-1`
+- [ ] `None`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `0`
+- [x] `7`
+- [ ] `-1`
+- [ ] `None`
+
+
+::: {.explanation}
+The `find()` method returns the index of the first occurrence of the substring `"Prog"` in `"Python Programming"`, which starts at index 7.
+:::
+:::
+:::
+
+### Question 184 {.question}
+
+::: {.smaller-80}
+You don’t know how many people will attend your club meeting, but you want to make a record of who attended by passing names through your function. Fill in the blank to unpack the arguments.
+
+```python
+def record_attendance(meeting_date, *__________):
+    print(f"Meeting date: {meeting_date}")
+    print("People who attended:", __________)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `names`
+- [ ] `args`
+- [ ] `kwargs`
+- [ ] `participants`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `names`
+- [x] `args`
+- [ ] `kwargs`
+- [ ] `participants`
+
+
+::: {.explanation}
+The `*args` syntax allows you to pass a variable number of positional arguments to the function. The variable `args` will hold all the passed names.
+:::
+:::
+:::
+:::
+
+### Question 185 {.question}
+
+Is “vacuous” a key or value in the following dictionary?
+
+```python
+dictionary = {
+    "vacuous": "having or showing a lack of thought or intelligence; mindless",
+    "apocryphal": "of doubtful authenticity",
+    "Machiavellian": "devious"
+}
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Key
+- [ ] Value
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Key
+- [ ] Value
+
+
+::: {.explanation}
+In this dictionary, `"vacuous"` is the key, and its definition is the value associated with it.
+:::
+:::
+:::
+
+### Question 186 {.question}
+
+Are there duplicates when you union two sets?
+
+Example:
+```python
+A = {1, 2, 3}
+B = {2, 3, 4}
+A.union(B)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Yes
+- [ ] No
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Yes
+- [x] No
+
+
+::: {.explanation}
+When you perform a union operation on two sets, the result contains only unique elements, meaning there are no duplicates.
+:::
+:::
+:::
+
+### Question 187 {.question}
+
+Which keyword negates a boolean value?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `not`
+- [ ] `no`
+- [ ] `negate`
+- [ ] `inverse`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `not`
+- [ ] `no`
+- [ ] `negate`
+- [ ] `inverse`
+
+
+::: {.explanation}
+The `not` keyword is used to negate a boolean value in Python. For example, `not True` evaluates to `False`.
+:::
+:::
+:::
+
+### Question 188 {.question}
+
+A class can inherit from multiple superclasses.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+Python supports multiple inheritance, allowing a class to inherit from more than one superclass.
+:::
+:::
+:::
+
+### Question 189 {.question}
+
+Static methods can access or modify class state.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [x] False
+
+
+::: {.explanation}
+Static methods cannot access or modify class or instance state since they do not take `self` or `cls` as arguments.
+:::
+:::
+:::
+
+### Question 190 {.question}
+
+Which of the following are benefits of using a consistent style guide? (Select all that apply)
+
+::: {.r-stack .smaller-80}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] It improves code readability
+- [ ] It makes collaboration easier
+- [ ] It maintains consistency across projects
+- [ ] It prevents certain classes of errors
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] It improves code readability
+- [x] It makes collaboration easier
+- [x] It maintains consistency across projects
+- [ ] It prevents certain classes of errors
+
+::: {.explanation}
+Using a consistent style guide like PEP 8 improves code readability, enhances collaboration, and maintains consistency across multiple projects, though it does not inherently prevent errors.
+:::
+:::
+:::
+

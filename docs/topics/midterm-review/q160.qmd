@@ -1,0 +1,260 @@
+### Question 161 {.question}
+
+::: {.smaller-70}
+Consider the following statement about list copying in Python: You modify a mutable object (sometimes referred to as a shared object) within either the original list or a copied list, and the change was not reflected in the other list. Which statement explains this correctly?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Deep copying creates new objects for all nested elements, preventing changes from affecting both lists
+- [ ] Shallow copying creates new objects for the top-level elements, but nested mutable objects still share references
+- [ ] Both the original and copied lists reference the same memory addresses for all elements
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Deep copying creates new objects for all nested elements, preventing changes from affecting both lists
+- [x] Shallow copying creates new objects for the top-level elements, but nested mutable objects still share references
+- [ ] Both the original and copied lists reference the same memory addresses for all elements
+
+
+::: {.explanation}
+In a shallow copy, only the references to the top-level elements are copied, meaning any changes to nested mutable objects will affect both lists.
+:::
+:::
+:::
+:::
+
+### Question 162 {.question}
+
+For the code below, we call the variables `genus` and `species` _____________ of the instance `instance_of_Fungi_class`.
+
+```python
+class Dog:
+    def __init__(self, name, breed):
+        self.name = name
+        self.breed = breed
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Methods
+- [ ] Attributes
+- [ ] Parameters
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Methods
+- [x] Attributes
+- [ ] Parameters
+
+
+::: {.explanation}
+The `genus` and `species` in the class `Fungi` would be considered attributes of the instance `instance_of_Fungi_class`.
+:::
+:::
+:::
+
+### Question 163 {.question}
+
+According to Google’s Python Style Guide, which of the following is the correct way to name a function in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] camelCase
+- [ ] snake_case
+- [ ] PascalCase
+- [ ] UPPERCASE
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] camelCase
+- [x] snake_case
+- [ ] PascalCase
+- [ ] UPPERCASE
+
+
+::: {.explanation}
+Google's Python Style Guide (and PEP 8) recommend using `snake_case` for function names, which is lowercase letters separated by underscores. This style improves readability.
+:::
+:::
+:::
+
+### Question 164 {.question}
+
+A best practice for inheritance is to use _______ _______ classes to define interfaces. (2 words)
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Template-based
+- [ ] Abstract base
+- [ ] Super-parent
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Template-based
+- [x] Abstract base
+- [ ] Super-parent
+
+
+::: {.explanation}
+Abstract base classes define interfaces that subclasses are required to implement, promoting consistency in the class hierarchy.
+:::
+:::
+:::
+
+### Question 165 {.question}
+
+Which of the following methods can be used to add an element to the end of a list?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `insert()`
+- [ ] `append()`
+- [ ] `extend()`
+- [ ] `push()`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `insert()`
+- [x] `append()`
+- [ ] `extend()`
+- [ ] `push()`
+
+
+::: {.explanation}
+The `append()` method adds a single element to the end of a list. The `extend()` method adds all elements from an iterable, while `insert()` inserts an element at a specific index.
+:::
+:::
+:::
+
+### Question 166 {.question}
+
+When using the `@property` decorator to create a getter method in Python, you are always required to also implement a corresponding setter method.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [x] False
+
+
+::: {.explanation}
+The `@property` decorator can be used to create a getter method without the need for a corresponding setter method unless you need to control or validate the setting of the attribute.
+:::
+:::
+:::
+
+### Question 167 {.question}
+
+Which of the following are valid iterator tools?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `enumerate`
+- [ ] `reversed`
+- [ ] `parse`
+- [ ] `split`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `enumerate`
+- [x] `reversed`
+- [ ] `parse`
+- [ ] `split`
+
+
+::: {.explanation}
+The `enumerate` and `reversed` functions are iterator tools. `parse` and `split` are not valid iterator tools in this context.
+:::
+:::
+:::
+
+### Question 168 {.question}
+
+Which of the following is the correct syntax to open a file for reading in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `open('file.txt', 'w')`
+- [ ] `open('file.txt', 'r')`
+- [ ] `open('file.txt', 'rw')`
+- [ ] `open('file.txt', 'a')`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `open('file.txt', 'w')`
+- [x] `open('file.txt', 'r')`
+- [ ] `open('file.txt', 'rw')`
+- [ ] `open('file.txt', 'a')`
+
+
+::: {.explanation}
+To open a file for reading, the correct mode is `'r'`. The `'w'` mode is for writing, and `'a'` is for appending. The `'rw'` mode does not exist.
+:::
+:::
+:::
+
+### Question 169 {.question}
+
+Will the variable `x` have different memory addresses before and after modification in the following scenario?
+
+```python
+x = 5
+print(id(x))
+x = x + 1
+print(id(x))
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Yes
+- [ ] No
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Yes
+- [ ] No
+
+
+::: {.explanation}
+When you assign a new value to `x`, the memory address changes because integers are immutable in Python. Reassigning a variable creates a new object.
+:::
+:::
+:::
+
+### Question 170 {.question}
+
+Which of the following are limitations of static methods? (Select all that apply)
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] They don’t have access to `self` and `cls`
+- [ ] Race conditions are of primary concern
+- [ ] They are detrimental to namespace organization
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] They don’t have access to `self` and `cls`
+- [ ] Race conditions are of primary concern
+- [ ] They are detrimental to namespace organization
+
+
+::: {.explanation}
+Static methods have the limitation of not being able to access `self` (instance data) or `cls` (class data), but they are not typically related to race conditions or namespace organization.
+:::
+:::
+:::
+

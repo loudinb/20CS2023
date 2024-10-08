@@ -1,0 +1,272 @@
+### Question 131 {.question}
+
+The `zip()` function takes two or more lists and merges them. The return type of the function is what?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] list
+- [ ] tuple
+- [ ] set
+- [ ] zip object
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] list
+- [ ] tuple
+- [ ] set
+- [x] zip object
+
+
+::: {.explanation}
+The `zip()` function returns an iterator of tuples, which is a `zip` object. It can be converted to other types like lists if needed.
+:::
+:::
+:::
+
+### Question 132 {.question}
+
+A function that calls itself is called a(n) __________ function.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Looping
+- [ ] Anonymous
+- [ ] Recursive
+- [ ] Inline
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Looping
+- [ ] Anonymous
+- [x] Recursive
+- [ ] Inline
+
+
+::: {.explanation}
+A recursive function is one that calls itself to solve smaller instances of a problem.
+:::
+:::
+:::
+
+### Question 133 {.question}
+
+Fill in the blank with the correct argument(s) to have the `Bike` class inherit from `Transportation`.
+
+```python
+class Bike(__________):
+    def does(self):
+        return f"{self.action} cycles"
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `object`
+- [ ] `Vehicle`
+- [ ] `Transportation`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `object`
+- [ ] `Vehicle`
+- [x] `Transportation`
+
+
+::: {.explanation}
+The class `Bike` inherits from `Transportation`, which provides the `action` attribute or method that is referenced in the subclass.
+:::
+:::
+:::
+
+### Question 134 {.question}
+
+What will be the result of the following code?
+
+```python
+numbers = [1, 2, 3]
+numbers.extend([4, 5])
+print(numbers)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `[1, 2, 3]`
+- [ ] `[1, 2, 3, [4, 5]]`
+- [ ] `[4, 5, 1, 2, 3]`
+- [ ] `[1, 2, 3, 4, 5]`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `[1, 2, 3]`
+- [ ] `[1, 2, 3, [4, 5]]`
+- [ ] `[4, 5, 1, 2, 3]`
+- [x] `[1, 2, 3, 4, 5]`
+
+
+::: {.explanation}
+The `extend()` method adds all elements from the provided iterable (`[4, 5]`) to the end of the list, resulting in `[1, 2, 3, 4, 5]`.
+:::
+:::
+:::
+
+### Question 135 {.question}
+
+Arguments can be passed only by position.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [x] False
+
+
+::: {.explanation}
+In Python, arguments can be passed either by position or by keyword.
+:::
+:::
+:::
+
+### Question 136 {.question}
+
+What is the value of `x` before the break condition occurs in the following code?
+
+```python
+for x in range(10):
+    if x >= 3:
+        break
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] 0
+- [ ] 2
+- [ ] 3
+- [ ] 4
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] 0
+- [ ] 2
+- [x] 3
+- [ ] 4
+
+
+::: {.explanation}
+The loop runs until `x` is equal to 3, at which point the `break` statement is triggered, stopping the loop.
+:::
+:::
+:::
+
+### Question 137 {.question}
+
+Which of the following are true about class methods? (Select all that apply)
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] They operate on the class itself.
+- [ ] They are defined using `@classmethod`.
+- [ ] The first parameter is `cls`.
+- [ ] The first parameter is `self`.
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] They operate on the class itself.
+- [x] They are defined using `@classmethod`.
+- [x] The first parameter is `cls`.
+- [ ] The first parameter is `self`.
+
+
+::: {.explanation}
+Class methods are defined with the `@classmethod` decorator, and the first parameter is `cls`, representing the class.
+:::
+:::
+:::
+
+### Question 138 {.question}
+
+What keyword is used as the short version of `else if`?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `elif`
+- [ ] `elseif`
+- [ ] `ifelse`
+- [ ] `else`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `elif`
+- [ ] `elseif`
+- [ ] `ifelse`
+- [ ] `else`
+
+
+::: {.explanation}
+The `elif` keyword in Python is used as a shorthand for `else if`, allowing multiple conditions in conditional statements.
+:::
+:::
+:::
+
+### Question 139 {.question}
+
+Which of the following are valid iterator tools?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `enumerate`
+- [ ] `reversed`
+- [ ] `parse`
+- [ ] `split`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `enumerate`
+- [x] `reversed`
+- [ ] `parse`
+- [ ] `split`
+
+
+::: {.explanation}
+The `enumerate` and `reversed` functions are iterator tools. `parse` and `split` are not valid iterator tools in this context.
+:::
+:::
+:::
+
+### Question 140 {.question}
+
+When performing comparisons in Python using operators like `==`, `>=`, `>`, `!=`, `<`, and `<=`, the result of the evaluation is always of what type?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `int`
+- [ ] `float`
+- [ ] `bool`
+- [ ] `str`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `int`
+- [ ] `float`
+- [x] `bool`
+- [ ] `str`
+
+
+::: {.explanation}
+Logical comparisons in Python always return a boolean value: `True` or `False`.
+:::
+:::
+:::
+

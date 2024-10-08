@@ -1,0 +1,270 @@
+### Question 21 {.question}
+
+Which of the following is NOT a way to run Python code?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Using the interactive shell
+- [ ] Running a `.py` file from the command line
+- [ ] Using an Integrated Development Environment (IDE)
+- [ ] Compiling Python code into a standalone executable
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Using the interactive shell
+- [ ] Running a `.py` file from the command line
+- [ ] Using an Integrated Development Environment (IDE)
+- [x] Compiling Python code into a standalone executable
+
+
+::: {.explanation}
+Python is an interpreted language, and it is not typically compiled into standalone executables. Instead, Python scripts are executed directly by the interpreter.
+:::
+:::
+:::
+
+### Question 22 {.question}
+
+What is used to define a set in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `{}`
+- [ ] `()`
+- [ ] `[]`
+- [ ] `||`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `{}`
+- [ ] `()`
+- [ ] `[]`
+- [ ] `||`
+
+
+::: {.explanation}
+In Python, a set is defined using curly braces `{}`, while parentheses `()` are used for tuples and square brackets `[]` for lists.
+:::
+:::
+:::
+
+### Question 23 {.question}
+
+The `if-else` statement is an extension of the `if` statement that allows you to execute one block of code if the condition is `True` and another block if it is `False`.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+The `if-else` statement adds an alternative block of code that will run if the `if` condition evaluates to `False`.
+:::
+:::
+:::
+
+### Question 24 {.question}
+
+The `zip()` function takes two or more lists and merges them. The return type of the function is what?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] list
+- [ ] tuple
+- [ ] set
+- [ ] zip object
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] list
+- [ ] tuple
+- [ ] set
+- [x] zip object
+
+
+::: {.explanation}
+The `zip()` function returns an iterator of tuples, which is a `zip` object. It can be converted to other types like lists if needed.
+:::
+:::
+:::
+
+### Question 25 {.question}
+
+Which of the following will convert the string `"123"` to an integer in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `int("123")`
+- [ ] `float("123")`
+- [ ] `str("123")`
+- [ ] `eval("123")`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `int("123")`
+- [ ] `float("123")`
+- [ ] `str("123")`
+- [ ] `eval("123")`
+
+
+::: {.explanation}
+The `int()` function converts the string `"123"` to an integer. The other methods either convert to a different type or evaluate a string as Python code, which is unnecessary here.
+:::
+:::
+:::
+
+### Question 26 {.question}
+
+What will be the result of the following code?
+
+```python
+numbers = [1, 2, 3, 4, 5]
+numbers.clear()
+print(numbers)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `[1, 2, 3, 4, 5]`
+- [ ] `[1]`
+- [ ] `None`
+- [ ] `[]`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `[1, 2, 3, 4, 5]`
+- [ ] `[1]`
+- [ ] `None`
+- [x] `[]`
+
+
+::: {.explanation}
+The `clear()` method removes all elements from the list, leaving it empty (`[]`).
+:::
+:::
+:::
+
+### Question 27 {.question}
+
+::: {.smaller-85}
+The bolded and underlined code below demonstrates __________ attribute access.
+
+```python
+class Dog:
+    def __init__(self, name):
+        self.name = name
+
+res = Dog("Sunday")
+my_dog_name = ______________
+print(my_dog_name)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Instance
+- [ ] Class
+- [ ] API
+- [ ] Port
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Instance
+- [ ] Class
+- [ ] API
+- [ ] Port
+
+
+::: {.explanation}
+The code demonstrates instance attribute access because `my_dog_name` retrieves the value of the `name` attribute from the instance `res`.
+:::
+:::
+:::
+:::
+
+### Question 28 {.question}
+
+Which of the following is an example of a **constant** in Python, by convention?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `Total_Score`
+- [ ] `PI`
+- [ ] `maxScore`
+- [ ] `snake_case`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `Total_Score`
+- [x] `PI`
+- [ ] `maxScore`
+- [ ] `snake_case`
+
+
+::: {.explanation}
+By convention, constants in Python are written in all uppercase letters. `PI` is an example of a constant.
+:::
+:::
+:::
+
+### Question 29 {.question}
+
+Which of the following will result in a `TypeError`?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `"5" + "6"`
+- [ ] `5 + 6`
+- [ ] `"5" * 3`
+- [ ] `"5" + 6`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `"5" + "6"`
+- [ ] `5 + 6`
+- [ ] `"5" * 3`
+- [x] `"5" + 6`
+
+
+::: {.explanation}
+The expression `"5" + 6` will raise a `TypeError` because Python does not allow concatenation of a string and an integer without explicit conversion. The other operations are valid.
+:::
+:::
+:::
+
+### Question 30 {.question}
+
+True or False: `True` and `False` are subclasses of `int` in Python.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+In Python, `True` and `False` are actually instances of `int`, where `True` is equivalent to `1` and `False` is equivalent to `0`.
+:::
+:::
+:::
+

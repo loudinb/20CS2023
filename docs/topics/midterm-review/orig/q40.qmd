@@ -1,0 +1,279 @@
+### Question 41 {.question}
+
+::: {.smaller-75}
+What will be the result of the following code?
+
+```python
+text = "Python Programming"
+print(text.split())
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `['Python', 'Programming']`
+- [ ] `['P', 'y', 't', 'h', 'o', 'n', 'P', 'r', 'o', 'g', 'r', 'a', 'm', 'm', 'i', 'n', 'g']`
+- [ ] `'Python' 'Programming'`
+- [ ] `['PythonProgramming']`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `['Python', 'Programming']`
+- [ ] `['P', 'y', 't', 'h', 'o', 'n', 'P', 'r', 'o', 'g', 'r', 'a', 'm', 'm', 'i', 'n', 'g']`
+- [ ] `'Python' 'Programming'`
+- [ ] `['PythonProgramming']`
+
+
+::: {.explanation}
+The `split()` method splits a string by whitespace by default, so `"Python Programming"` becomes `['Python', 'Programming']`.
+:::
+:::
+:::
+:::
+
+### Question 42 {.question}
+
+Which of the following is a class attribute in the following code?
+
+```python
+class Book:
+    book_count = 0
+    def __init__(self, title):
+        self.title = title
+        Book.book_count += 1
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `book_count`
+- [ ] `title`
+- [ ] `Book`
+- [ ] `init`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `book_count`
+- [ ] `title`
+- [ ] `Book`
+- [ ] `init`
+
+
+::: {.explanation}
+`book_count` is a class attribute because it is defined directly on the class and shared across all instances.
+:::
+:::
+:::
+
+### Question 43 {.question}
+
+Choose all that apply: Which of the following can be used as dictionary keys?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Integers
+- [ ] Strings
+- [ ] Tuples
+- [ ] Lists
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Integers
+- [x] Strings
+- [x] Tuples
+- [ ] Lists
+
+
+::: {.explanation}
+Dictionaries require immutable objects as keys. Integers, strings, and tuples are immutable, while lists are mutable and cannot be used as keys.
+:::
+:::
+:::
+
+### Question 44 {.question}
+
+What keyword is used as the short version of `else if`?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `elseif`
+- [ ] `elif`
+- [ ] `ifelse`
+- [ ] `else`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `elseif`
+- [x] `elif`
+- [ ] `ifelse`
+- [ ] `else`
+
+
+::: {.explanation}
+In Python, the `elif` keyword is used as a shorthand for `else if`, allowing multiple conditional statements.
+:::
+:::
+:::
+
+### Question 45 {.question}
+
+Which of the following are true regarding objects? (Select all that apply)
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] An object is an instance of a class
+- [ ] An object can have its unique set of attribute values
+- [ ] An object can only have one function
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] An object is an instance of a class
+- [x] An object can have its unique set of attribute values
+- [ ] An object can only have one function
+
+
+::: {.explanation}
+Objects in Python are instances of classes, and they can have unique attribute values. An object can have multiple methods (functions).
+:::
+:::
+:::
+
+### Question 46 {.question}
+
+What logical comparison operator do you use to compare two values?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `==`
+- [ ] `>`
+- [ ] `<`
+- [ ] `!=`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `==`
+- [ ] `>`
+- [ ] `<`
+- [ ] `!=`
+
+
+::: {.explanation}
+The `==` operator is used to compare two values for equality.
+:::
+:::
+:::
+
+### Question 47 {.question}
+
+__________ is a core concept of OOP about creating new classes from existing ones.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Polymorphism
+- [ ] Abstraction
+- [ ] Inheritance
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Polymorphism
+- [ ] Abstraction
+- [x] Inheritance
+
+
+::: {.explanation}
+Inheritance allows a new class to be created from an existing class, inheriting its attributes and methods.
+:::
+:::
+:::
+
+### Question 48 {.question}
+
+You can create your own iterator by using the keyword ______ .
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `yield`
+- [ ] `def`
+- [ ] `return`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `yield`
+- [ ] `def`
+- [ ] `return`
+
+
+::: {.explanation}
+You can create your own iterator in Python by defining a generator function that uses the `yield` keyword to return values one at a time.
+:::
+:::
+:::
+
+### Question 49 {.question}
+
+What is the result of the following code?
+
+```python
+numbers = [1, 2, 3, 4, 5]
+del numbers[1:4]
+print(numbers)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `[1, 2, 3, 4, 5]`
+- [ ] `[1, 4, 5]`
+- [ ] `[1, 5]`
+- [ ] `[]`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `[1, 2, 3, 4, 5]`
+- [ ] `[1, 4, 5]`
+- [x] `[1, 5]`
+- [ ] `[]`
+
+
+::: {.explanation}
+The `del` statement removes the elements from index 1 to 3 (excluding index 4), so `numbers` becomes `[1, 5]`.
+:::
+:::
+:::
+
+### Question 50 {.question}
+
+::: {.smaller-75}
+Match the programming paradigm to the description:
+
+- Procedural Programming
+- Functional Programming
+- Object-Oriented Programming
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Step-by-step instructions; Functions to solve problems; Objects with data and methods
+- [ ] Objects with data and methods; Functions to solve problems; Step-by-step instructions
+- [ ] Functions to solve problems; Objects with data and methods; Step-by-step instructions
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Step-by-step instructions; Functions to solve problems; Objects with data and methods
+- [ ] Objects with data and methods; Functions to solve problems; Step-by-step instructions
+- [ ] Functions to solve problems; Objects with data and methods; Step-by-step instructions
+
+
+::: {.explanation}
+Procedural programming follows step-by-step instructions, functional programming uses functions to solve problems, and OOP organizes code using objects that contain both data and methods.
+:::
+:::
+:::
+:::
+

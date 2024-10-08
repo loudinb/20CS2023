@@ -1,0 +1,266 @@
+### Question 1 {.question}
+
+What error does this return?
+
+```python
+def define_local(number):
+    local_variable = 7
+    return local_variable
+
+print(local_variable)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `SyntaxError`
+- [ ] `NameError`
+- [ ] `TypeError`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `SyntaxError`
+- [x] `NameError`
+- [ ] `TypeError`
+
+
+::: {.explanation}
+A `NameError` occurs because `local_variable` is defined inside the function and is not accessible outside its scope.
+:::
+:::
+:::
+
+### Question 2 {.question}
+
+What is the type resulting from this conversion of a dictionary to a collection?
+
+```python
+my_dict = {'a': 1, 'b': 2}
+my_set = set(my_dict)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] List
+- [ ] Set
+- [ ] Tuple
+- [ ] Array
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] List
+- [x] Set
+- [ ] Tuple
+- [ ] Array
+
+
+::: {.explanation}
+Converting a dictionary to a set returns a set containing only the keys of the dictionary.
+:::
+:::
+:::
+
+### Question 3 {.question}
+
+Which keyword negates a boolean value?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `not`
+- [ ] `no`
+- [ ] `negate`
+- [ ] `inverse`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `not`
+- [ ] `no`
+- [ ] `negate`
+- [ ] `inverse`
+
+
+::: {.explanation}
+The `not` keyword is used to negate a boolean value in Python. For example, `not True` evaluates to `False`.
+:::
+:::
+:::
+
+### Question 4 {.question}
+
+Static methods behave like regular functions but belong to the class namespace.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+Static methods behave like regular functions, but they belong to the class namespace and are accessed through the class.
+:::
+:::
+:::
+
+### Question 5 {.question}
+
+Are list slices deep or shallow?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Deep
+- [ ] Shallow
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Deep
+- [x] Shallow
+
+
+::: {.explanation}
+List slices in Python are shallow copies, meaning they copy the references to the objects in the list, not the objects themselves.
+:::
+:::
+:::
+
+### Question 6 {.question}
+
+What is the result of the following code?
+
+```python
+x = 10
+x += 5
+print(x)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `5`
+- [ ] `10`
+- [ ] `15`
+- [ ] `None`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `5`
+- [ ] `10`
+- [x] `15`
+- [ ] `None`
+
+
+::: {.explanation}
+The expression `x += 5` increments the value of `x` by 5, so the value of `x` becomes 15.
+:::
+:::
+:::
+
+### Question 7 {.question}
+
+You want to add functionality to a function `boring_house()` by implementing a decorator. What code is missing?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] The `def` keyword.
+- [ ] A return statement.
+- [ ] The decorator definition with `@`.
+- [ ] A lambda function.
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] The `def` keyword.
+- [ ] A return statement.
+- [x] The decorator definition with `@`.
+- [ ] A lambda function.
+
+
+::: {.explanation}
+To use a decorator, you need to define it with the `@` symbol before the function it decorates.
+:::
+:::
+:::
+
+### Question 8 {.question}
+
+What is the result of the following code?
+
+```python
+numbers = [1, 2, 3, 4, 5]
+print(numbers[1:4])
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `[1, 2, 3]`
+- [ ] `[2, 3, 4]`
+- [ ] `[2, 3]`
+- [ ] `[1, 2, 3, 4]`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `[1, 2, 3]`
+- [x] `[2, 3, 4]`
+- [ ] `[2, 3]`
+- [ ] `[1, 2, 3, 4]`
+
+
+::: {.explanation}
+The slice `numbers[1:4]` extracts elements from index 1 to 3 (excluding 4), resulting in `[2, 3, 4]`.
+:::
+:::
+:::
+
+### Question 9 {.question}
+
+Raw strings are useful when your string is a file path that contains backslashes.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+Raw strings treat backslashes as literal characters rather than escape characters, which is useful when working with file paths that contain backslashes.
+:::
+:::
+:::
+
+### Question 10 {.question}
+
+F-strings can include expressions and function calls.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+F-strings allow you to embed expressions and function calls inside curly braces, making them a flexible way to format strings in Python.
+:::
+:::
+:::
+

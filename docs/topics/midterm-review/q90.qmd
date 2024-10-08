@@ -1,0 +1,264 @@
+### Question 91 {.question}
+
+Which of the following statements is true about comments in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Comments begin with the characters `//`
+- [ ] Comments begin with a `#` symbol
+- [ ] Comments are only allowed on their own line, not after code on the same line
+- [ ] Python does not support comments
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Comments begin with the characters `//`
+- [x] Comments begin with a `#` symbol
+- [ ] Comments are only allowed on their own line, not after code on the same line
+- [ ] Python does not support comments
+
+
+::: {.explanation}
+Comments in Python start with the `#` symbol and can be placed either on their own line or at the end of a line of code.
+:::
+:::
+:::
+
+### Question 92 {.question}
+
+This is an example of passing arguments by __________.
+
+```python
+def mess(name, message):
+    print(f"To {name}, {message}")
+
+mess(message="Happy Fall", name="You")
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Position
+- [ ] Keyword
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Position
+- [x] Keyword
+
+
+::: {.explanation}
+In this example, arguments are passed by keyword (e.g., `message="Happy Fall"`, `name="You"`).
+:::
+:::
+:::
+
+### Question 93 {.question}
+
+Which of the following is a key benefit of using setter methods in object-oriented programming?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] They automatically optimize the performance of attribute access.
+- [ ] They allow for data validation, preventing invalid states.
+- [ ] They enable automatic synchronization with external databases.
+- [ ] They provide built-in encryption for sensitive attributes.
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] They automatically optimize the performance of attribute access.
+- [x] They allow for data validation, preventing invalid states.
+- [ ] They enable automatic synchronization with external databases.
+- [ ] They provide built-in encryption for sensitive attributes.
+
+
+::: {.explanation}
+Setter methods allow for data validation, ensuring that attributes are set to valid values and preventing invalid states in an object.
+:::
+:::
+:::
+
+### Question 94 {.question}
+
+What is the result of the following code?
+
+```python
+numbers = [1, 2, 3, 4, 5]
+print(numbers[1:4])
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `[1, 2, 3]`
+- [ ] `[2, 3, 4]`
+- [ ] `[2, 3]`
+- [ ] `[1, 2, 3, 4]`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `[1, 2, 3]`
+- [x] `[2, 3, 4]`
+- [ ] `[2, 3]`
+- [ ] `[1, 2, 3, 4]`
+
+
+::: {.explanation}
+The slice `numbers[1:4]` extracts elements from index 1 to 3 (excluding 4), resulting in `[2, 3, 4]`.
+:::
+:::
+:::
+
+### Question 95 {.question}
+
+The function `___________()` can be used to call methods from the superclass.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `super()`
+- [ ] `base()`
+- [ ] `parent()`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `super()`
+- [ ] `base()`
+- [ ] `parent()`
+
+
+::: {.explanation}
+The `super()` function allows you to call methods from the superclass, enabling access to inherited methods and attributes.
+:::
+:::
+:::
+
+### Question 96 {.question}
+
+The `if-elif-else` statement is an extension of the `if-else` statement that allows you to evaluate multiple conditions.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+The `if-elif-else` statement allows you to test multiple conditions and execute different blocks of code based on which condition is `True`.
+:::
+:::
+:::
+
+### Question 97 {.question}
+
+You can only instantiate a class object once.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [x] False
+
+
+::: {.explanation}
+A class can be instantiated multiple times to create different objects with different states.
+:::
+:::
+:::
+
+### Question 98 {.question}
+
+Complete this statement regarding mutability: Lists are ____________ while tuples are ____________.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] mutable, mutable
+- [ ] mutable, immutable
+- [ ] immutable, mutable
+- [ ] immutable, immutable
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] mutable, mutable
+- [x] mutable, immutable
+- [ ] immutable, mutable
+- [ ] immutable, immutable
+
+
+::: {.explanation}
+Lists in Python are mutable, meaning their elements can be changed, added, or removed. Tuples, on the other hand, are immutable and cannot be altered after their creation.
+:::
+:::
+:::
+
+### Question 99 {.question}
+
+Fill in the missing parameter in the method definition.
+
+```python
+class Fungi:
+    def add_fungus(_______, fungus_species):
+        self.favorite_fungi[fungus_species] = "added"
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `fungi`
+- [ ] `self`
+- [ ] `cls`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `fungi`
+- [x] `self`
+- [ ] `cls`
+
+
+::: {.explanation}
+The first parameter of instance methods must be `self`, which refers to the current instance of the class.
+:::
+:::
+:::
+
+### Question 100 {.question}
+
+Which of the following are true about the bolded line of code? (Select all that apply)
+
+```python
+instance_of_Fungi_class = Fungi("Agaricus", "bisporus")
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] This is object instantiation
+- [ ] The `__init__` function is invoked
+- [ ] You forgot to explicitly pass `self`. It should be `tasty_fungus = Fungi(self, "Agaricus", "bisporus")`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] This is object instantiation
+- [x] The `__init__` function is invoked
+- [ ] You forgot to explicitly pass `self`. It should be `tasty_fungus = Fungi(self, "Agaricus", "bisporus")`
+
+
+::: {.explanation}
+The bolded line of code creates a new instance of the `Fungi` class, invoking the `__init__` method. There is no need to pass `self` explicitly, as it is automatically handled by Python.
+:::
+:::
+:::
+

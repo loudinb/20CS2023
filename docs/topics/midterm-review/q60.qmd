@@ -1,0 +1,256 @@
+### Question 61 {.question}
+
+Fill in the blank: The average time complexity for dictionary operations (insert, delete, lookup) is O(___).
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] O(1)
+- [ ] O(log n)
+- [ ] O(n)
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] O(1)
+- [ ] O(log n)
+- [ ] O(n)
+
+
+::: {.explanation}
+Dictionary operations like insert, delete, and lookup generally have an average time complexity of O(1) due to the underlying hash table implementation.
+:::
+:::
+:::
+
+### Question 62 {.question}
+
+Give one example of a higher-order function that takes other functions as arguments.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `map()`
+- [ ] `max()`
+- [ ] `print()`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `map()`
+- [ ] `max()`
+- [ ] `print()`
+
+
+::: {.explanation}
+The `map()` function is a higher-order function that takes another function as an argument and applies it to all items in an iterable.
+:::
+:::
+:::
+
+### Question 63 {.question}
+
+Which of the following is an example of assigning a default value to a parameter in a function?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `x1, x2=0`
+- [ ] `x1:0, x2`
+- [ ] `x1, x2`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `x1, x2=0`
+- [ ] `x1:0, x2`
+- [ ] `x1, x2`
+
+
+::: {.explanation}
+In Python, default values are assigned in function definitions like `x2=0`, meaning `x2` will take the value `0` if no argument is passed.
+:::
+:::
+:::
+
+### Question 64 {.question}
+
+When recursion continues until all available memory is used, the Python interpreter can crash without further exception. True or False?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+When recursion continues beyond the system's memory limit, the Python interpreter can crash due to a stack overflow error.
+:::
+:::
+:::
+
+### Question 65 {.question}
+
+Which of the following is a mutable data type in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `tuple`
+- [ ] `str`
+- [ ] `list`
+- [ ] `int`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `tuple`
+- [ ] `str`
+- [x] `list`
+- [ ] `int`
+
+
+::: {.explanation}
+The `list` data type is mutable, meaning its elements can be changed after the list is created. Other types like `tuple` and `str` are immutable.
+:::
+:::
+:::
+
+### Question 66 {.question}
+
+What will be the result of the following code?
+
+```python
+numbers = [5, 3, 8, 1]
+numbers.sort()
+print(numbers)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `[5, 3, 8, 1]`
+- [ ] `[8, 5, 3, 1]`
+- [ ] `[1, 3, 5, 8]`
+- [ ] `[3, 5, 8, 1]`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `[5, 3, 8, 1]`
+- [ ] `[8, 5, 3, 1]`
+- [x] `[1, 3, 5, 8]`
+- [ ] `[3, 5, 8, 1]`
+
+
+::: {.explanation}
+The `sort()` method sorts the list in ascending order, so the list becomes `[1, 3, 5, 8]`.
+:::
+:::
+:::
+
+### Question 67 {.question}
+
+If a function has no return statement, it returns what?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] None
+- [ ] 0
+- [ ] NaN
+- [ ] null
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] None
+- [ ] 0
+- [ ] NaN
+- [ ] null
+
+
+::: {.explanation}
+If a Python function does not explicitly return a value, it returns `None` by default.
+:::
+:::
+:::
+
+### Question 68 {.question}
+
+Which of the following functions returns the largest value from a list of numbers?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `sum()`
+- [ ] `max()`
+- [ ] `largest()`
+- [ ] `greater()`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `sum()`
+- [x] `max()`
+- [ ] `largest()`
+- [ ] `greater()`
+
+
+::: {.explanation}
+The `max()` function returns the largest value in a list or any iterable. The other options do not exist or serve a different purpose in Python.
+:::
+:::
+:::
+
+### Question 69 {.question}
+
+When defining a function, the input variables are called the __________ of the function.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Arguments
+- [ ] Parameters
+- [ ] Inputs
+- [ ] Variables
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Arguments
+- [x] Parameters
+- [ ] Inputs
+- [ ] Variables
+
+
+::: {.explanation}
+Parameters are the input variables defined in the function signature, while arguments are the actual values passed to the function when it is called.
+:::
+:::
+:::
+
+### Question 70 {.question}
+
+What operator is used to unpack a list or tuple?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `&`
+- [ ] `*`
+- [ ] `@`
+- [ ] `#`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `&`
+- [x] `*`
+- [ ] `@`
+- [ ] `#`
+
+
+::: {.explanation}
+The `*` operator is used to unpack lists or tuples in Python, for example, `*args` for unpacking arguments.
+:::
+:::
+:::
+

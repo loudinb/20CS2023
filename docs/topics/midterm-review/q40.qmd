@@ -1,0 +1,266 @@
+### Question 41 {.question}
+
+::: {.smaller-80}
+Which of the following is true about lambda functions?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Lambda functions must use the `def` keyword.
+- [ ] Lambda functions are always used as decorators.
+- [ ] Lambda functions are single-expression functions.
+- [ ] Lambda functions cannot be assigned to variables.
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Lambda functions must use the `def` keyword.
+- [ ] Lambda functions are always used as decorators.
+- [x] Lambda functions are single-expression functions.
+- [ ] Lambda functions cannot be assigned to variables.
+
+
+::: {.explanation}
+Lambda functions are anonymous, single-expression functions defined using the `lambda` keyword. They can be assigned to variables or used as arguments.
+:::
+:::
+:::
+:::
+
+### Question 42 {.question}
+
+::: {.smaller-80}
+Select the correct statement regarding class methods:
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Class methods are always bound to the class and can be called on both the class and its instances
+- [ ] Class methods are unbound and can only be called on the class itself, not on instances
+- [ ] Class methods are bound to instances and can only be called on instances of the class
+- [ ] Class methods are dynamically bound at runtime and can change their binding
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Class methods are always bound to the class and can be called on both the class and its instances
+- [ ] Class methods are unbound and can only be called on the class itself, not on instances
+- [ ] Class methods are bound to instances and can only be called on instances of the class
+- [ ] Class methods are dynamically bound at runtime and can change their binding
+
+::: {.explanation}
+Class methods are bound to the class, meaning they can be called on both the class itself and instances of the class. They are defined using the `@classmethod` decorator.
+:::
+:::
+:::
+:::
+
+### Question 43 {.question}
+
+True or False: In Python, the maximum recursion depth can be modified using the `sys` module.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+The `sys` module provides a function `sys.setrecursionlimit()` which allows you to change the maximum recursion depth.
+:::
+:::
+:::
+
+### Question 44 {.question}
+
+What function do you use on an iterable to keep the index for each element when iterating through it?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `zip()`
+- [ ] `enumerate()`
+- [ ] `map()`
+- [ ] `iter()`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `zip()`
+- [x] `enumerate()`
+- [ ] `map()`
+- [ ] `iter()`
+
+
+::: {.explanation}
+The `enumerate()` function allows you to loop over an iterable and have an automatic counter (index) with each element.
+:::
+:::
+:::
+
+### Question 45 {.question}
+
+In Python, functions are __________.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Objects
+- [ ] Articles
+- [ ] Things
+- [ ] Items
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Objects
+- [ ] Articles
+- [ ] Things
+- [ ] Items
+
+
+::: {.explanation}
+In Python, functions are first-class objects, meaning they can be passed as arguments, returned from other functions, and assigned to variables.
+:::
+:::
+:::
+
+### Question 46 {.question}
+
+When the function `calculate_letter_grade` is called, every parameter is replaced by an argument. True or False?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+True. When a function is called, every parameter defined in the function is replaced by the corresponding argument provided during the function call.
+:::
+:::
+:::
+
+### Question 47 {.question}
+
+::: {.smaller-70}
+Consider the following code:
+
+```python
+coffee = ['pumpkin spice', 'pistachio', 'decaf']
+```
+
+Match the results of the index to the output:
+
+- `coffee[-1]`
+- `coffee[0]`
+- `coffee[:0]`
+- `coffee[:-2]`
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] decaf, pumpkin spice, [], ['pumpkin spice', 'pistachio']
+- [ ] decaf, pistachio, ['pumpkin spice'], []
+- [ ] pistachio, decaf, ['pistachio'], ['pumpkin spice', 'decaf']
+- [ ] pumpkin spice, decaf, ['decaf'], ['pistachio']
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] decaf, pumpkin spice, [], ['pumpkin spice', 'pistachio']
+- [ ] decaf, pistachio, ['pumpkin spice'], []
+- [ ] pistachio, decaf, ['pistachio'], ['pumpkin spice', 'decaf']
+- [ ] pumpkin spice, decaf, ['decaf'], ['pistachio']
+
+
+::: {.explanation}
+- `coffee[-1]` returns the last element, `'decaf'`.
+- `coffee[0]` returns the first element, `'pumpkin spice'`.
+- `coffee[:0]` returns an empty list because it slices up to index 0, but does not include any elements.
+- `coffee[:-2]` slices up to but excludes the second-to-last element, returning `['pumpkin spice', 'pistachio']`.
+:::
+:::
+:::
+:::
+
+### Question 48 {.question}
+
+Which of the following is **not** a valid variable name in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `2score`
+- [ ] `_score`
+- [ ] `total_score`
+- [ ] `score2`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `2score`
+- [ ] `_score`
+- [ ] `total_score`
+- [ ] `score2`
+
+
+::: {.explanation}
+Variable names in Python cannot begin with a number, so `2score` is invalid. All other options are valid variable names.
+:::
+:::
+:::
+
+### Question 49 {.question}
+
+Are dictionaries in Python accessed by index or key?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Index
+- [ ] Key
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Index
+- [x] Key
+
+
+::: {.explanation}
+Dictionaries in Python are accessed using keys, which are used to retrieve the associated values.
+:::
+:::
+:::
+
+### Question 50 {.question}
+
+What do we call the function inside a decorator called?
+
+The ________ function.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Inner
+- [ ] Decorated
+- [ ] Wrapper
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Inner
+- [ ] Decorated
+- [x] Wrapper
+
+::: {.explanation}
+The function inside a decorator is called the "wrapper" function because it wraps around the original function to add extra functionality.
+:::
+:::
+:::
+

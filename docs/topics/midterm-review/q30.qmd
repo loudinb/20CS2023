@@ -1,0 +1,257 @@
+### Question 31 {.question}
+
+Which of the following is **not** a native type in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Matrix
+- [ ] Float
+- [ ] Bool
+- [ ] Dict
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Matrix
+- [ ] Float
+- [ ] Bool
+- [ ] Dict
+
+
+::: {.explanation}
+Python does not have a native "Matrix" type. However, libraries like NumPy provide a matrix or array type. Float, Bool, and Dict are native types.
+:::
+:::
+:::
+
+### Question 32 {.question}
+
+::: {.smaller-80}
+What is the primary difference between the Python shell and IPython shell?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Python shell is faster than IPython
+- [ ] Python shell has better syntax highlighting
+- [ ] There is no difference; they are just different names for the same thing
+- [ ] IPython offers more features like tab completion and magic commands
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Python shell is faster than IPython
+- [ ] Python shell has better syntax highlighting
+- [ ] There is no difference; they are just different names for the same thing
+- [x] IPython offers more features like tab completion and magic commands
+
+
+::: {.explanation}
+IPython provides additional features such as enhanced introspection, tab completion, magic commands, and more, making it a more powerful interactive shell compared to the standard Python shell.
+:::
+:::
+:::
+:::
+
+### Question 33 {.question}
+
+In Python, TAB characters and 4 spaces can be used interchangeably for indentation.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [x] False
+
+
+::: {.explanation}
+Tabs and spaces should not be used interchangeably in Python. PEP 8 recommends using 4 spaces per indentation level to maintain consistency and avoid indentation errors.
+:::
+:::
+:::
+
+### Question 34 {.question}
+
+You can access the docstring of a function using the __________ attribute.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `__help__`
+- [ ] `__doc__`
+- [ ] `__info__`
+- [ ] `__desc__`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `__help__`
+- [x] `__doc__`
+- [ ] `__info__`
+- [ ] `__desc__`
+
+
+::: {.explanation}
+In Python, the `__doc__` attribute holds the docstring of a function, class, or module, providing an explanation of its purpose.
+:::
+:::
+:::
+
+### Question 35 {.question}
+
+Which of the following methods is used to remove whitespace from both the beginning and end of a string?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `strip()`
+- [ ] `split()`
+- [ ] `remove()`
+- [ ] `replace()`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `strip()`
+- [ ] `split()`
+- [ ] `remove()`
+- [ ] `replace()`
+
+
+::: {.explanation}
+The `strip()` method removes leading and trailing whitespace from a string, while `split()` divides a string into parts, and `replace()` replaces substrings.
+:::
+:::
+:::
+
+### Question 36 {.question}
+
+A class method is only called on an instance of a class.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [x] False
+
+
+::: {.explanation}
+Class methods can be called on both the class itself and its instances, making them more versatile than instance methods.
+:::
+:::
+:::
+
+### Question 37 {.question}
+
+Dictionaries are unordered sets of pairs. You access dictionary data by what?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Key
+- [ ] Index
+- [ ] Cell
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Key
+- [ ] Index
+- [ ] Cell
+
+
+::: {.explanation}
+In Python, dictionary values are accessed by their keys, which are unique identifiers for each value in the dictionary.
+:::
+:::
+:::
+
+### Question 38 {.question}
+
+Which of the following are benefits of OOP? (Select all that apply)
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Modularity
+- [ ] Maintainability
+- [ ] Complexity
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Modularity
+- [x] Maintainability
+- [ ] Complexity
+
+
+::: {.explanation}
+OOP improves modularity by organizing code into objects and classes, which also enhances maintainability by making the code easier to understand and manage.
+:::
+:::
+:::
+
+### Question 39 {.question}
+
+What is the result of the following code?
+
+```python
+numbers = [1, 2, 3, 4, 5]
+print(numbers[2:])
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `[1, 2]`
+- [ ] `[3, 4, 5]`
+- [ ] `[1, 2, 3, 4, 5]`
+- [ ] `[2, 3, 4, 5]`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `[1, 2]`
+- [x] `[3, 4, 5]`
+- [ ] `[1, 2, 3, 4, 5]`
+- [ ] `[2, 3, 4, 5]`
+
+
+::: {.explanation}
+The slice `numbers[2:]` returns a new list starting from index 2 to the end, which includes `[3, 4, 5]`.
+:::
+:::
+:::
+
+### Question 40 {.question}
+
+Which of the following are iterable objects?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Lists
+- [ ] Tuples
+- [ ] Strings
+- [ ] Dictionaries
+- [ ] All of the above
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Lists
+- [ ] Tuples
+- [ ] Strings
+- [ ] Dictionaries
+- [x] All of the above
+
+
+::: {.explanation}
+Lists, tuples, strings, and dictionaries are all iterable objects in Python.
+:::
+:::
+:::
+

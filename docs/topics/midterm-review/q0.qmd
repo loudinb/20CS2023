@@ -1,0 +1,238 @@
+### Question 1 {.question}
+
+Which of the following is a correct way to iterate through a list in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `for i in range(list):`
+- [ ] `for i in len(list):`
+- [ ] `for i in list:`
+- [ ] `while i in list:`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `for i in range(list):`
+- [ ] `for i in len(list):`
+- [x] `for i in list:`
+- [ ] `while i in list:`
+
+
+::: {.explanation}
+The correct syntax for iterating through each element in a list is `for i in list:` where `i` will represent each element of the list in each iteration.
+:::
+:::
+:::
+
+### Question 2 {.question}
+
+Raw strings are useful when your string is a file path that contains backslashes.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+Raw strings treat backslashes as literal characters rather than escape characters, which is useful when working with file paths that contain backslashes.
+:::
+:::
+:::
+
+### Question 3 {.question}
+
+Lists can store elements of only one type. True or False?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [x] False
+
+
+::: {.explanation}
+Lists in Python can store elements of different types, including numbers, strings, and even other lists.
+:::
+:::
+:::
+
+### Question 4 {.question}
+
+You can only define a method once in a subclass that already exists in the superclass.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [x] False
+
+
+::: {.explanation}
+A method in a subclass can override the one defined in the superclass, allowing customization of inherited behavior.
+:::
+:::
+:::
+
+### Question 5 {.question}
+
+Global variables should be avoided because they can make code harder to maintain.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+Global variables can make code harder to maintain and debug because their values can be changed from anywhere in the program, leading to unpredictable behavior.
+:::
+:::
+:::
+
+### Question 6 {.question}
+
+True or false: Functions can be used as arguments just like other objects.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+In Python, functions are first-class objects, so they can be passed as arguments to other functions, returned from functions, and assigned to variables.
+:::
+:::
+:::
+
+### Question 7 {.question}
+
+What logical comparison operator do you use to compare two values?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `==`
+- [ ] `>`
+- [ ] `<`
+- [ ] `!=`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `==`
+- [ ] `>`
+- [ ] `<`
+- [ ] `!=`
+
+
+::: {.explanation}
+The `==` operator is used to compare two values for equality.
+:::
+:::
+:::
+
+### Question 8 {.question}
+
+To access an element of a vector, we need one index, while an element of a matrix is addressed by two indexes.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+In a vector (1D list), a single index is used, while a matrix (2D list) requires two indices: one for the row and one for the column.
+:::
+:::
+:::
+
+### Question 9 {.question}
+
+Fill in the blank with the correct argument(s) to have the `Bike` class inherit from `Transportation`.
+
+```python
+class Bike(__________):
+    def does(self):
+        return f"{self.action} cycles"
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `object`
+- [ ] `Vehicle`
+- [ ] `Transportation`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `object`
+- [ ] `Vehicle`
+- [x] `Transportation`
+
+
+::: {.explanation}
+The class `Bike` inherits from `Transportation`, which provides the `action` attribute or method that is referenced in the subclass.
+:::
+:::
+:::
+
+### Question 10 {.question}
+
+Which of the following are reasons to use a class method? (Select all that apply)
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] When you want the method to be able to modify the class state
+- [ ] When the method is creating instances (factory method)
+- [ ] When defining instance attributes
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] When you want the method to be able to modify the class state
+- [x] When the method is creating instances (factory method)
+- [ ] When defining instance attributes
+
+
+::: {.explanation}
+Class methods are useful when you need to modify class state or create new instances (factory methods), but they are not typically used for defining instance attributes.
+:::
+:::
+:::
+

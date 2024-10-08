@@ -1,0 +1,270 @@
+### Question 81 {.question}
+
+What is the type resulting from this conversion of a dictionary to a collection?
+
+```python
+my_dict = {'a': 1, 'b': 2}
+my_set = set(my_dict)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] List
+- [ ] Set
+- [ ] Tuple
+- [ ] Array
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] List
+- [x] Set
+- [ ] Tuple
+- [ ] Array
+
+
+::: {.explanation}
+Converting a dictionary to a set returns a set containing only the keys of the dictionary.
+:::
+:::
+:::
+
+### Question 82 {.question}
+
+Which of the following is a class attribute in the following code?
+
+```python
+class Book:
+    book_count = 0
+    def __init__(self, title):
+        self.title = title
+        Book.book_count += 1
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `book_count`
+- [ ] `title`
+- [ ] `Book`
+- [ ] `init`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `book_count`
+- [ ] `title`
+- [ ] `Book`
+- [ ] `init`
+
+
+::: {.explanation}
+`book_count` is a class attribute because it is defined directly on the class and shared across all instances.
+:::
+:::
+:::
+
+### Question 83 {.question}
+
+::: {.smaller-80}
+Match the following to their purpose:
+
+- `*args`
+- `**kwargs`
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Collects keyword arguments; Collects positional arguments
+- [ ] Collects positional arguments; Collects keyword arguments
+- [ ] Collects arguments; Ignores arguments
+- [ ] Ignores all arguments; Collects arguments
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Collects keyword arguments; Collects positional arguments
+- [x] Collects positional arguments; Collects keyword arguments
+- [ ] Collects arguments; Ignores arguments
+- [ ] Ignores all arguments; Collects arguments
+
+
+::: {.explanation}
+In Python, `*args` collects a variable number of positional arguments, while `**kwargs` collects keyword arguments.
+:::
+:::
+:::
+:::
+
+### Question 84 {.question}
+
+Which of the following are included in the base Python installation? (Select all that apply)
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Jupyter Notebook
+- [ ] IPython
+- [ ] Python shell
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Jupyter Notebook
+- [ ] IPython
+- [x] Python shell
+
+
+::: {.explanation}
+The base Python installation includes the standard Python shell but not IPython or Jupyter Notebook. These tools need to be installed separately.
+:::
+:::
+:::
+
+### Question 85 {.question}
+
+You can pass functions as arguments, rename them, or delete them. 
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+In Python, functions are first-class objects, meaning they can be passed as arguments to other functions, renamed, or even deleted.
+:::
+:::
+:::
+
+### Question 86 {.question}
+
+What is the result of the following code?
+
+```python
+x = 10
+x += 5
+print(x)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `5`
+- [ ] `10`
+- [ ] `15`
+- [ ] `None`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `5`
+- [ ] `10`
+- [x] `15`
+- [ ] `None`
+
+
+::: {.explanation}
+The expression `x += 5` increments the value of `x` by 5, so the value of `x` becomes 15.
+:::
+:::
+:::
+
+### Question 87 {.question}
+
+The `match` statement can be used to replace complex if-elif-else chains.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+The `match` statement, introduced in Python 3.10, allows for pattern matching, making it a good replacement for complex if-elif-else chains.
+:::
+:::
+:::
+
+### Question 88 {.question}
+
+Which of the following functions can be used to get the length of a list in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `count()`
+- [ ] `size()`
+- [ ] `length()`
+- [ ] `len()`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `count()`
+- [ ] `size()`
+- [ ] `length()`
+- [x] `len()`
+
+
+::: {.explanation}
+The built-in `len()` function returns the number of items in a list or any iterable in Python.
+:::
+:::
+:::
+
+### Question 89 {.question}
+
+A function that calls itself is called a(n) __________ function.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Looping
+- [ ] Anonymous
+- [ ] Recursive
+- [ ] Inline
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Looping
+- [ ] Anonymous
+- [x] Recursive
+- [ ] Inline
+
+
+::: {.explanation}
+A recursive function is one that calls itself to solve smaller instances of a problem.
+:::
+:::
+:::
+
+### Question 90 {.question}
+
+Can you access a tuple element by index?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Yes
+- [ ] No
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Yes
+- [ ] No
+
+
+::: {.explanation}
+Yes, tuple elements can be accessed by index in the same way as list elements.
+:::
+:::
+:::
+

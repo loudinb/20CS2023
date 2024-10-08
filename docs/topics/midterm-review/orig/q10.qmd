@@ -1,0 +1,273 @@
+### Question 11 {.question}
+
+Are there duplicates when you union two sets?
+
+Example:
+```python
+A = {1, 2, 3}
+B = {2, 3, 4}
+A.union(B)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Yes
+- [ ] No
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Yes
+- [x] No
+
+
+::: {.explanation}
+When you perform a union operation on two sets, the result contains only unique elements, meaning there are no duplicates.
+:::
+:::
+:::
+
+### Question 12 {.question}
+
+What will be the result of the following code?
+
+```python
+text = "Python Programming"
+print(text.replace("Python", "Java"))
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `Python Java`
+- [ ] `Java Programming`
+- [ ] `PythonProgramming`
+- [ ] `Programming Java`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `Python Java`
+- [x] `Java Programming`
+- [ ] `PythonProgramming`
+- [ ] `Programming Java`
+
+
+::: {.explanation}
+The `replace()` method replaces all occurrences of the substring `"Python"` with `"Java"`, resulting in `"Java Programming"`.
+:::
+:::
+:::
+
+### Question 13 {.question}
+
+A closure is formed when an inner function is defined within an outer function. True or False?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+In Python, a closure occurs when an inner function is defined inside an outer function and the inner function retains access to the variables in the outer function's scope.
+:::
+:::
+:::
+
+### Question 14 {.question}
+
+::: {.smaller-80}
+Match the term to the type of relationship:
+
+**Term**:
+
+- Inheritance
+- Composition
+
+**Meaning**:
+
+- is-a
+- has-a
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Inheritance: has-a, Composition: is-a
+- [ ] Inheritance: is-a, Composition: has-a
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Inheritance: has-a, Composition: is-a
+- [x] Inheritance: is-a, Composition: has-a
+
+
+::: {.explanation}
+Inheritance defines an "is-a" relationship, where the subclass is a type of the superclass. Composition defines a "has-a" relationship, where a class contains objects from other classes.
+:::
+:::
+:::
+:::
+
+### Question 15 {.question}
+
+For the code below, we call the variables `genus` and `species` _____________ of the instance `instance_of_Fungi_class`.
+
+```python
+class Dog:
+    def __init__(self, name, breed):
+        self.name = name
+        self.breed = breed
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Methods
+- [ ] Attributes
+- [ ] Parameters
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Methods
+- [x] Attributes
+- [ ] Parameters
+
+
+::: {.explanation}
+The `genus` and `species` in the class `Fungi` would be considered attributes of the instance `instance_of_Fungi_class`.
+:::
+:::
+:::
+
+### Question 16 {.question}
+
+Instance methods always begin with `__init__`.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [x] False
+
+
+::: {.explanation}
+Not all instance methods begin with `__init__`. The `__init__` method is just one example, used specifically for initialization.
+:::
+:::
+:::
+
+### Question 17 {.question}
+
+If a function has no return statement, it returns what?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] None
+- [ ] 0
+- [ ] NaN
+- [ ] null
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] None
+- [ ] 0
+- [ ] NaN
+- [ ] null
+
+
+::: {.explanation}
+If a Python function does not explicitly return a value, it returns `None` by default.
+:::
+:::
+:::
+
+### Question 18 {.question}
+
+Which of the following is the correct syntax to open a file for reading in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `open('file.txt', 'w')`
+- [ ] `open('file.txt', 'r')`
+- [ ] `open('file.txt', 'rw')`
+- [ ] `open('file.txt', 'a')`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `open('file.txt', 'w')`
+- [x] `open('file.txt', 'r')`
+- [ ] `open('file.txt', 'rw')`
+- [ ] `open('file.txt', 'a')`
+
+
+::: {.explanation}
+To open a file for reading, the correct mode is `'r'`. The `'w'` mode is for writing, and `'a'` is for appending. The `'rw'` mode does not exist.
+:::
+:::
+:::
+
+### Question 19 {.question}
+
+Which of the following is **not** a valid Python data type?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `int`
+- [ ] `string`
+- [ ] `float`
+- [ ] `list`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `int`
+- [x] `string`
+- [ ] `float`
+- [ ] `list`
+
+
+::: {.explanation}
+In Python, `string` is not a built-in data type. The correct name is `str`. The other options (`int`, `float`, and `list`) are valid Python data types.
+:::
+:::
+:::
+
+### Question 20 {.question}
+
+::: {.smaller-70}
+Consider the following statement about list copying in Python: You modify a mutable object (sometimes referred to as a shared object) within either the original list or a copied list, and the change was not reflected in the other list. Which statement explains this correctly?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Deep copying creates new objects for all nested elements, preventing changes from affecting both lists
+- [ ] Shallow copying creates new objects for the top-level elements, but nested mutable objects still share references
+- [ ] Both the original and copied lists reference the same memory addresses for all elements
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Deep copying creates new objects for all nested elements, preventing changes from affecting both lists
+- [x] Shallow copying creates new objects for the top-level elements, but nested mutable objects still share references
+- [ ] Both the original and copied lists reference the same memory addresses for all elements
+
+
+::: {.explanation}
+In a shallow copy, only the references to the top-level elements are copied, meaning any changes to nested mutable objects will affect both lists.
+:::
+:::
+:::
+:::
+

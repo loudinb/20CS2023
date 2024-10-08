@@ -1,0 +1,210 @@
+### Question 191 {.question}
+
+Attributes specified in the class declaration are called ______ attributes.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Instance
+- [ ] Local
+- [ ] Class
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Instance
+- [ ] Local
+- [x] Class
+
+
+::: {.explanation}
+Attributes defined within a class but outside of any methods are known as class attributes. These attributes are shared across all instances of the class.
+:::
+:::
+:::
+
+### Question 192 {.question}
+
+When performing comparisons in Python using operators like `==`, `>=`, `>`, `!=`, `<`, and `<=`, the result of the evaluation is always of what type?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `int`
+- [ ] `float`
+- [ ] `bool`
+- [ ] `str`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `int`
+- [ ] `float`
+- [x] `bool`
+- [ ] `str`
+
+
+::: {.explanation}
+Logical comparisons in Python always return a boolean value: `True` or `False`.
+:::
+:::
+:::
+
+### Question 193 {.question}
+
+What will be the result of the following code?
+
+```python
+text = "Python Programming"
+print(text.replace("Python", "Java"))
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `Python Java`
+- [ ] `Java Programming`
+- [ ] `PythonProgramming`
+- [ ] `Programming Java`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `Python Java`
+- [x] `Java Programming`
+- [ ] `PythonProgramming`
+- [ ] `Programming Java`
+
+
+::: {.explanation}
+The `replace()` method replaces all occurrences of the substring `"Python"` with `"Java"`, resulting in `"Java Programming"`.
+:::
+:::
+:::
+
+### Question 194 {.question}
+
+The `return` statement is required in every function in Python.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [x] False
+
+
+::: {.explanation}
+In Python, the `return` statement is optional. If no return value is provided, the function returns `None` by default.
+:::
+:::
+:::
+
+### Question 195 {.question}
+
+The `__init__` method is the __________ for a class.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Destructor
+- [ ] Constructor
+- [ ] Method initializer
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Destructor
+- [x] Constructor
+- [ ] Method initializer
+
+
+::: {.explanation}
+The `__init__` method is the constructor method in Python, used to initialize objects of a class when they are instantiated.
+:::
+:::
+:::
+
+### Question 196 {.question}
+
+::: {.smaller-80}
+Which of the following are true about Jupyter notebooks? (Select all that apply)
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] They allow for mixing code, text, and visualizations in a single document
+- [ ] They support multiple programming languages, not just Python
+- [ ] They can be run in a web browser
+- [ ] They require a powerful dedicated server to run
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] They allow for mixing code, text, and visualizations in a single document
+- [x] They support multiple programming languages, not just Python
+- [x] They can be run in a web browser
+- [ ] They require a powerful dedicated server to run
+
+
+::: {.explanation}
+Jupyter notebooks allow for mixing code, text (with Markdown), and visualizations. They are flexible and support multiple languages through different kernels. They can run locally on a personal machine via a web browser, so a powerful dedicated server is not required.
+:::
+:::
+:::
+:::
+
+### Question 197 {.question}
+
+What is the output of the following code?
+
+```python
+s = "Python"
+print(s[::-1])
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `"Python"`
+- [ ] `"nohtyP"`
+- [ ] `"P"`
+- [ ] `Error`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `"Python"`
+- [x] `"nohtyP"`
+- [ ] `"P"`
+- [ ] `Error`
+
+
+::: {.explanation}
+The slice `[::-1]` reverses the string, resulting in `"nohtyP"`.
+:::
+:::
+:::
+
+### Question 198 {.question}
+
+If an object cannot be modified, which of the following describes it?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Mutable
+- [ ] Immutable
+- [ ] Static
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Mutable
+- [x] Immutable
+- [ ] Static
+
+
+::: {.explanation}
+An object that cannot be modified is considered "immutable". Examples of immutable types in Python include tuples and strings.
+:::
+:::
+:::
+

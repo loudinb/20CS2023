@@ -1,0 +1,271 @@
+### Question 31 {.question}
+
+What is the term for a function that retains access to variables from its surrounding scope, even after that scope has finished executing?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Closure
+- [ ] Partial function
+- [ ] Static function
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] Closure
+- [ ] Partial function
+- [ ] Static function
+
+
+::: {.explanation}
+A closure is a function that remembers the variables from its enclosing scope even after that scope has finished executing.
+:::
+:::
+:::
+
+### Question 32 {.question}
+
+If an object cannot be modified, which of the following describes it?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Mutable
+- [ ] Immutable
+- [ ] Static
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Mutable
+- [x] Immutable
+- [ ] Static
+
+
+::: {.explanation}
+An object that cannot be modified is considered "immutable". Examples of immutable types in Python include tuples and strings.
+:::
+:::
+:::
+
+### Question 33 {.question}
+
+Which of the following methods will replace all occurrences of a substring in a string?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `replace()`
+- [ ] `find()`
+- [ ] `split()`
+- [ ] `strip()`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `replace()`
+- [ ] `find()`
+- [ ] `split()`
+- [ ] `strip()`
+
+
+::: {.explanation}
+The `replace()` method is used to replace all occurrences of a specified substring with another substring.
+:::
+:::
+:::
+
+### Question 34 {.question}
+
+What will be the result of the following code?
+
+```python
+text = "Python"
+reversed_text = text[::-1]
+print(reversed_text)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `"Python"`
+- [ ] `"nohtyP"`
+- [ ] `"Pyth"`
+- [ ] `"noth"`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `"Python"`
+- [x] `"nohtyP"`
+- [ ] `"Pyth"`
+- [ ] `"noth"`
+
+
+::: {.explanation}
+The slicing `[::-1]` reverses the string `"Python"`, so the result is `"nohtyP"`.
+:::
+:::
+:::
+
+### Question 35 {.question}
+
+________ loops are often used when working with multidimensional data structures.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `nested`
+- [ ] `while`
+- [ ] `for`
+- [ ] `recursive`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `nested`
+- [ ] `while`
+- [ ] `for`
+- [ ] `recursive`
+
+
+::: {.explanation}
+Nested loops are frequently used to iterate over multidimensional data structures such as matrices or tensors.
+:::
+:::
+:::
+
+### Question 36 {.question}
+
+What is the output of the following code?
+
+```python
+x = 10
+y = 3
+print(f"{x/y:.2f}")
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `3.3333333333`
+- [ ] `3.33`
+- [ ] `3.34`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `3.3333333333`
+- [x] `3.33`
+- [ ] `3.34`
+
+
+::: {.explanation}
+The format `:.2f` rounds the division result to two decimal places, giving an output of `3.33`.
+:::
+:::
+:::
+
+### Question 37 {.question}
+
+What is the result of the following code?
+
+```python
+text = "Python Programming"
+print(text[7:])
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `Python`
+- [ ] `Programming`
+- [ ] `thon Programming`
+- [ ] `Py`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `Python`
+- [x] `Programming`
+- [ ] `thon Programming`
+- [ ] `Py`
+
+
+::: {.explanation}
+The slice `text[7:]` returns the substring starting from index 7 to the end, which results in `"Programming"`.
+:::
+:::
+:::
+
+### Question 38 {.question}
+
+What is the index variable here?
+
+```python
+x = [4, 5, 6]
+for k, element in enumerate(x):
+    print(k, element)
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `element`
+- [ ] `k`
+- [ ] `x`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `element`
+- [x] `k`
+- [ ] `x`
+
+
+::: {.explanation}
+In `enumerate(x)`, `k` is the index variable that represents the current position in the list, and `element` is the value at that position.
+:::
+:::
+:::
+
+### Question 39 {.question}
+
+OOP is a programming approach that organizes code around objects.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+Object-Oriented Programming (OOP) focuses on organizing code by creating objects that represent both data and behavior.
+:::
+:::
+:::
+
+### Question 40 {.question}
+
+Which of the following is **not** a valid variable name in Python?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `2score`
+- [ ] `_score`
+- [ ] `total_score`
+- [ ] `score2`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `2score`
+- [ ] `_score`
+- [ ] `total_score`
+- [ ] `score2`
+
+
+::: {.explanation}
+Variable names in Python cannot begin with a number, so `2score` is invalid. All other options are valid variable names.
+:::
+:::
+:::
+

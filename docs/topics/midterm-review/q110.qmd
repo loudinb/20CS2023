@@ -1,0 +1,267 @@
+### Question 111 {.question}
+
+What is the output of the following code?
+
+```python
+x = 10
+y = 3
+print(f"{x/y:.2f}")
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `3.3333333333`
+- [ ] `3.33`
+- [ ] `3.34`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `3.3333333333`
+- [x] `3.33`
+- [ ] `3.34`
+
+
+::: {.explanation}
+The format `:.2f` rounds the division result to two decimal places, giving an output of `3.33`.
+:::
+:::
+:::
+
+### Question 112 {.question}
+
+Is a class method or static method intended to be essentially a utility function?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Class method
+- [ ] Static method
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Class method
+- [x] Static method
+
+
+::: {.explanation}
+Static methods are utility functions that don’t operate on class or instance data but are called in a class’s namespace.
+:::
+:::
+:::
+
+### Question 113 {.question}
+
+__________ is a core concept of OOP about creating new classes from existing ones.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] Polymorphism
+- [ ] Abstraction
+- [ ] Inheritance
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] Polymorphism
+- [ ] Abstraction
+- [x] Inheritance
+
+
+::: {.explanation}
+Inheritance allows a new class to be created from an existing class, inheriting its attributes and methods.
+:::
+:::
+:::
+
+### Question 114 {.question}
+
+What keyword is used as the short version of `else if`?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `elif`
+- [ ] `elseif`
+- [ ] `ifelse`
+- [ ] `else`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `elif`
+- [ ] `elseif`
+- [ ] `ifelse`
+- [ ] `else`
+
+
+::: {.explanation}
+The `elif` keyword in Python is used as a shorthand for `else if`, allowing multiple conditions in conditional statements.
+:::
+:::
+:::
+
+### Question 115 {.question}
+
+F-strings can include expressions and function calls.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+F-strings allow you to embed expressions and function calls inside curly braces, making them a flexible way to format strings in Python.
+:::
+:::
+:::
+
+### Question 116 {.question}
+
+If I do a shallow copy of `og_list`, which of the following have different addresses?
+
+```python
+og_list = ['c', 'b', [53, 21], 40, 'a']
+copied = og_list.copy()
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] List objects
+- [ ] Element 3: `[53, 21]`
+- [ ] Element 3, inner 1 and 2: `53` and `21`
+- [ ] Element 4: `40`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] List objects
+- [ ] Element 3: `[53, 21]`
+- [ ] Element 3, inner 1 and 2: `53` and `21`
+- [ ] Element 4: `40`
+
+
+::: {.explanation}
+In a shallow copy, the list objects themselves have different addresses, but the elements within the inner lists share the same references.
+:::
+:::
+:::
+
+### Question 117 {.question}
+
+::: {.smaller-75}
+What will be the result of the following code?
+
+```python
+text = "Python Programming"
+print(text.split())
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `['Python', 'Programming']`
+- [ ] `['P', 'y', 't', 'h', 'o', 'n', 'P', 'r', 'o', 'g', 'r', 'a', 'm', 'm', 'i', 'n', 'g']`
+- [ ] `'Python' 'Programming'`
+- [ ] `['PythonProgramming']`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] `['Python', 'Programming']`
+- [ ] `['P', 'y', 't', 'h', 'o', 'n', 'P', 'r', 'o', 'g', 'r', 'a', 'm', 'm', 'i', 'n', 'g']`
+- [ ] `'Python' 'Programming'`
+- [ ] `['PythonProgramming']`
+
+
+::: {.explanation}
+The `split()` method splits a string by whitespace by default, so `"Python Programming"` becomes `['Python', 'Programming']`.
+:::
+:::
+:::
+:::
+
+### Question 118 {.question}
+
+Which of the following would result in a `SyntaxError`?
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `print("Hello, world!")`
+- [ ] `my_variable = 10`
+- [ ] `if True print("Yes")`
+- [ ] `a = 5 + 3`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `print("Hello, world!")`
+- [ ] `my_variable = 10`
+- [x] `if True print("Yes")`
+- [ ] `a = 5 + 3`
+
+
+::: {.explanation}
+The line `if True print("Yes")` is missing a colon `:` after `True`, which results in a `SyntaxError`.
+:::
+:::
+:::
+
+### Question 119 {.question}
+
+All methods and attributes of the parent class are inherited by the subclasses as long as they are not overridden.
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] True
+- [ ] False
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [x] True
+- [ ] False
+
+
+::: {.explanation}
+Subclasses inherit all methods and attributes from the parent class unless they are explicitly overridden in the subclass.
+:::
+:::
+:::
+
+### Question 120 {.question}
+
+What is the result of the following code?
+
+```python
+text = "Python Programming"
+print(text[7:])
+```
+
+::: {.r-stack}
+
+::: {.absolute .left-0 .top-0 width=100%}
+- [ ] `Python`
+- [ ] `Programming`
+- [ ] `thon Programming`
+- [ ] `Py`
+:::
+
+::: {.fragment .fade-in .absolute .left-0 .top-0 width=100%}
+- [ ] `Python`
+- [x] `Programming`
+- [ ] `thon Programming`
+- [ ] `Py`
+
+
+::: {.explanation}
+The slice `text[7:]` returns the substring starting from index 7 to the end, which results in `"Programming"`.
+:::
+:::
+:::
+
