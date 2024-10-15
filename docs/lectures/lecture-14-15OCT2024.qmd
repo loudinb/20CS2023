@@ -2,4 +2,14 @@
 
 ## Agenda
 
-{{< include ../topics/modules-packages-application-layout/if__name__equals__main__.qmd >}}
+- Standard I/O: `print()`, `input()`
+- Controlling Code Execution: `__name__`, `if __name__ == "__main__":`
+- `argparse`: Command-line arguments for Python programs.
+
+{{< include ../topics/input-output/standard-io.qmd >}}
+
+{{< include ../topics/modules-packages-application-layout/controlling-code-execution.qmd >}}
+
+{{< include ../topics/input-output/argparse.qmd >}}
+
+

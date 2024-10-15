@@ -1,0 +1,157 @@
+# Controlling Code Execution {.smaller-60}
+
+## Reference Documentation
+
+The following resources from the official Python documentation provide more information on the topics covered:
+
+- [`__main__` Top-level code environment](https://docs.python.org/3/library/__main__.html)
+- [`module.__name__`](https://docs.python.org/3/reference/datamodel.html#module.__name__)
+- [Modules](https://docs.python.org/3/tutorial/modules.html)
+
+## Python Scripts
+
+- A **Python script** is a file containing Python code that can be executed.
+- Scripts are often written to perform a specific task.
+- Can be run directly from the command line or an IDE:
+
+```bash
+$ python myscript.py
+```
+
+## Python Modules
+
+- A **Python module** is any file that contains definitions and statements, like functions or classes.
+- Code from the module can be reused in other Python modules, scripts, or applications.
+
+```python
+import myscript
+```
+
+## The Role of `__name__`
+
+- Every Python script has a built-in variable called `__name__`.
+- It helps Python know whether the script is being run **directly** or **imported** as a module.
+  
+
+## Hands-on: Understanding `__name__` {.exercise}
+
+::: {.smaller-95}
+There are two possible values for the `__name__` variable in Python:
+
+   1. **`'__main__'`**: When the script is run directly. 
+   2. **Module name** (e.g., 'myscript'): When the script is imported.
+
+Create the following files and run them to see the difference in the `__name__` variable:
+
+::: {.columns .smaller-75}
+
+::: {.column width="55%"}
+```{.python filename="myscript.py"}
+print(
+    f'The __name__ variable is set to: {__name__}'
+)
+
+```
+
+<br />
+
+```{.bash code-line-numbers="false"}
+$ python myscript.py
+```
+:::
+
+
+::: {.column width="45%"}
+```{.python filename="myapp.py"}
+import myscript
+
+
+
+```
+
+<br />
+
+```{.bash code-line-numbers="false"}
+$ python myapp.py
+```
+:::
+
+:::
+
+:::
+
+::: {.notes}
+
+- If executed directly, the __name__ variable is set to: __main__
+- If imported, the __name__ variable is set to: myscript
+
+:::
+
+
+## Idiomatic Usage of `if __name__ == "__main__":` {.hide}
+
+::: {.smaller-90}
+
+The `if __name__ == "__main__":` is used for controlling the behavior of scripts based on how they are executed.
+
+```python
+# myscript.py
+def main():
+    print("Executing main function...")
+
+if __name__ == "__main__":
+    main()
+```
+
+- **Direct Execution**: When the script is run directly (e.g., `python myscript.py`), the `main()` function is executed.
+- **Module Import**: When the script is imported elsewhere (e.g., `import myscript`), the `main()` function is *not* executed.
+
+
+:::
+
+::: {.notes}
+
+:::
+
+## Hands-on: Practical Example {.exercise}
+
+
+```{.python filename="calculator.py"}
+# calculator.py
+def add(a, b):
+    return a + b
+
+def main():
+    x, y = 5, 10
+    print(f"The sum of {x} and {y} is: {add(x, y)}")
+
+if __name__ == "__main__":
+    main()
+```
+
+1. Run the script directly:
+
+```bash
+$ python calculator.py
+```
+
+2. Import the script as a module:
+
+```python
+import calculator
+
+result = calculator.add(3, 7)
+print(result)
+```
+
+## Best Practices
+
+If a file is meant to be used as an executable, its main functionality should be in a `main()` function, and your code should always check if `__name__ == '__main__'` before executing your main program, so that it is not executed when the module is imported.
+
+1. **Separation of Concerns**: Isolates script execution code from core logic, improving code modularity and readability.
+2. **Conditional Execution**: Dictates whether certain code should run when the script is executed directly or imported as a module.
+
+
+::: {.notes}
+It is recommended that you always use the `if __name__ == "__main__"` idiom so that your script can be imported as a moudle if the need arises.
+:::
