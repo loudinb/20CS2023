@@ -11,5 +11,5 @@ format:
     toc-depth: 4
     scrollable: true
     preview-links: true
-    css: "quarto-styles.css"
+    css: "docs/_static/quarto-styles.css"
     controls: true

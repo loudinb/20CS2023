@@ -1,0 +1,5 @@
+# Tuesday, October 15, 2024
+
+## Agenda
+
+{{< include ../topics/modules-packages-application-layout/if__name__equals__main__.qmd >}}

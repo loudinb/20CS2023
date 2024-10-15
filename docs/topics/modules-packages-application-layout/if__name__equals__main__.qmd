@@ -1,0 +1,208 @@
+# `if __name__ == "__main__":` {.smaller}
+
+## Python Scripts
+
+- A **Python script** is a file containing Python code that can be executed.
+- Scripts are often written to perform a specific task.
+- Can be run directly from the command line or an IDE:
+
+```bash
+$ python myscript.py
+```
+
+## Python Modules
+
+- A **Python module** is any file that contains definitions and statements, like functions or classes.
+- Code from the module can be reused in other Python modules, scripts, or applications.
+
+```python
+import myscript
+```
+
+## The Role of `__name__`
+
+- Every Python script has a built-in variable called `__name__`.
+- It helps Python know whether the script is being run **directly** or **imported** as a module.
+  
+
+## Hands-on: Understanding `__name__` {.exercise}
+
+::: {.smaller-70}
+There are two possible values for the `__name__` variable in Python:
+
+- `__main__`: When the script is run directly. 
+- Module name (e.g., `myscript`): When the script is imported.
+
+Create the following files and run them to see the difference in the `__name__` variable:
+
+::: {.columns}
+
+::: {.column width="55%"}
+```{.python filename="myscript.py"}
+print(
+    f'The __name__ variable is set to: {__name__}'
+)
+
+```
+
+<br />
+
+```{.bash code-line-numbers="false"}
+$ python myscript.py
+```
+:::
+
+
+::: {.column width="45%"}
+```{.python filename="myapp.py"}
+import myscript
+
+
+
+```
+
+<br />
+
+```{.bash code-line-numbers="false"}
+$ python myapp.py
+```
+:::
+
+:::
+
+:::
+
+::: {.notes}
+
+- If executed directly, the __name__ variable is set to: __main__
+- If imported, the __name__ variable is set to: myscript
+
+:::
+
+
+
+## Purpose of `if __name__ == "__main__":` {.smaller}
+
+- The construct is used to determine if the script is being run as the **main program** or imported as a **module** into another script.
+- It allows developers to write code that behaves differently based on how the script is used.
+  
+
+::: {.notes}
+- If a script is being **run directly**, execute certain code.
+- If the script is **imported** elsewhere, do not execute that code.
+:::
+
+
+
+## Basic Structure
+
+```python
+# myscript.py
+def main():
+    print("Running the main function.")
+
+if __name__ == "__main__":
+    main()
+```
+
+- When the script is run directly, the `main()` function is called.
+- If the script is imported, the `main()` function is **not** called.
+
+
+
+### Without `if __name__ == "__main__":`
+
+```python
+# myscript.py
+def greet():
+    print("Hello from the script!")
+
+print("This script is running.")
+```
+
+- Running this script directly will print:
+  ```
+  This script is running.
+  ```
+
+- However, if imported into another script, **it will still print** `"This script is running."`
+
+---
+
+## With `if __name__ == "__main__":`
+
+```python
+# myscript.py
+def greet():
+    print("Hello from the script!")
+
+if __name__ == "__main__":
+    print("This script is running directly.")
+```
+
+- When run directly:
+  ```
+  This script is running directly.
+  ```
+
+- When imported:
+  - The output is **nothing** (unless `greet()` is called).
+
+---
+
+## Practical Usage
+
+```python
+# calculator.py
+def add(a, b):
+    return a + b
+
+def main():
+    x, y = 5, 10
+    print(f"The sum of {x} and {y} is: {add(x, y)}")
+
+if __name__ == "__main__":
+    main()
+```
+
+### Direct Execution:
+```bash
+$ python calculator.py
+```
+Output:
+```
+The sum of 5 and 10 is: 15
+```
+
+### Importing as a Module:
+
+```python
+import calculator
+
+result = calculator.add(3, 7)
+print(result)
+```
+
+Output:
+```
+10
+```
+
+## Best Practices
+
+- Always use `if __name__ == "__main__":` for any **script** that may later be reused as a **module**.
+- Separate **logic** from **execution** code, allowing functions and classes to be reused without triggering other parts of the code.
+
+Benefits:
+1. **Modularity**:
+   - Code can serve two purposes: standalone execution and modular import.
+   
+2. **Cleaner Imports**:
+   - Prevents code from running unintentionally when a script is imported.
+
+3. **Testing**:
+   - You can include test code or sample runs that will execute only when the script is run directly.
+
+
+
+
