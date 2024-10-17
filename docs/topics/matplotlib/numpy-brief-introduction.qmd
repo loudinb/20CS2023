@@ -1,0 +1,115 @@
+# A Brief Introduction to NumPy 
+
+
+## What is NumPy?
+
+NumPy (**Num**erical **Py**thon) is an open-source Python library that provides support for large, multi-dimensional homogeneous arrays and matrices, along with a collection of mathematical functions to efficiently operate on these data structures. It is the core package for scientific computing in Python.
+
+
+## Reference Documentation {.hide .smaller-80}
+
+Reference the official NumPy documentation for additional information on the library:
+
+- [NumPy Homepage](https://numpy.org/)
+- [NumPy Documentation](https://numpy.org/doc/stable/)
+- [NumPy User Guide](https://numpy.org/doc/stable/user/index.html)
+
+
+## Arrays {.hide}
+
+A one-dimensional array is like a list:
+
+$$
+\begin{array}{|c||c|c|c|}
+\hline
+1 & 5 & 2 & 0 \\
+\hline
+\end{array}
+$$
+
+A two-dimensional array (matrix) would be like a table:
+
+$$
+\begin{array}{|c||c|c|c|}
+\hline
+1 & 5 & 2 & 0 \\
+\hline
+8 & 3 & 6 & 1 \\
+\hline
+1 & 7 & 2 & 9 \\
+\hline
+\end{array}
+$$
+
+## Why Use NumPy? {.hide .smaller-75}
+
+NumPy arrays are faster and more memory-efficient than Python lists because they are implemented in C, stored in contiguous memory, and are homogeneous.  This allows for vectorized operations, meaning that operations are performed on the entire array at once, rather than on each element individually.
+
+```{python}
+#| echo: true
+
+import numpy as np
+
+# Create a list of numbers
+numbers = list(range(1000000))
+
+# Create a NumPy array of numbers
+np_numbers = np.array(numbers)
+
+# Multiply each element by 2
+%timeit [number * 2 for number in numbers]
+%timeit np_numbers * 2
+```
+
+::: {.notes}
+- the example demonstrates the difference in speed between a Python list and a NumPy array when multiplying each element by 2.
+- %timeit is a magic command available in IPython and Jupyter notebooks that runs a statement multiple times and returns the average time taken.
+:::
+
+
+## Installing and Importing NumPy {.hide}
+
+NumPy is a third-party library, so you need to install it separately. You can install it using `pip`:
+
+```bash
+pip install numpy
+```
+
+Or if using `conda`:
+
+```bash
+conda install numpy
+```
+
+To use NumPy in your Python code, you need to import the library. The convention is:
+
+```python
+import NumPy as np
+```
+
+## Key Features of NumPy {.smaller-70}
+
+1. **N-dimensional Arrays**: At the core of NumPy is the `ndarray`, a versatile and efficient multidimensional array object. Arrays in NumPy are homogenous, meaning all elements must be of the same data type, which ensures speed and memory efficiency.
+  
+2. **Vectorized Operations**: NumPy allows for element-wise operations on arrays, eliminating the need for explicit loops, which makes the code cleaner and faster. This is often referred to as **vectorization**.
+  
+3. **Broadcasting**: This feature allows NumPy to perform arithmetic operations on arrays of different shapes in a smart way, by stretching or "broadcasting" the smaller array to match the larger array’s shape.
+  
+4. **Mathematical Functions**: NumPy includes a wide range of mathematical functions, including trigonometry, statistics, linear algebra, and random number generation, making it a powerful tool for scientific computing.
+  
+5. **Integration with Other Libraries**: NumPy arrays are the standard way of representing data in many other Python libraries, such as **Matplotlib**, **Pandas**, **SciPy**, **scikit-learn**, and **TensorFlow**.
+
+
+## Example
+
+```python
+import numpy as np
+
+# Creating a 1D array
+arr = np.array([1, 2, 3, 4])
+
+# Element-wise operations (squaring each element)
+arr_squared = arr ** 2
+
+print(arr_squared)  # Output: [1 4 9 16]
+```

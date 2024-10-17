@@ -3,3 +3,12 @@
 ## Agenda
 
 
+{{< include ../topics/input-output/file-and-file-paths.qmd >}}
+
+{{< include ../topics/input-output/reading-and-writing-files.qmd >}}
+
+{{< include ../topics/matplotlib/numpy-brief-introduction.qmd >}}
+
+{{< include ../topics/matplotlib/matplotlib.qmd >}}
+
+{{< include ../topics/matplotlib/matplotlib-quickstart.qmd >}}

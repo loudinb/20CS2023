@@ -1,0 +1,297 @@
+# Matplotlib Quickstart
+
+
+## Introduction
+
+The content of this section is based on the [Quick Start Guide](https://matplotlib.org/stable/users/explain/quick_start.html#quick-start) from the Matplotlib team.  We will cover basic Matplotlib usage patterns and best practices.
+
+
+## Plotting {.hide}
+
+`pyplot` is a module within the Matplotlib library used to create plots, it includes functions to set up the figure, add plots, labels, titles, and more. It's often imported as `plt` as shown below:
+
+```{python}
+#| echo: true
+
+import matplotlib.pyplot as plt
+```
+
+::: {.notes}
+pyplot is similar to MATLAB's plotting functions, so if you're familiar with MATLAB, you'll find it easy to use.
+:::
+
+
+
+## A Simple Example {.hide}
+
+::: {.smaller-60}
+Matplotlib graphs your data on [Figures](https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure).
+
+- Each contain one or more [Axes](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes)
+- The axes are the area of a plot where data points are specified using a coordinate system, such as x-y for 2D Cartesian plots, theta-r for polar plots, or x-y-z for 3D plots.
+
+::: {.r-stack}
+
+::: {.fragment .fade-in-then-out .absolute width=100%}
+You can create a Figure with an Axes using [pyplot.subplots](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots).
+
+```{python}
+#| echo: true
+
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots()
+```
+:::
+
+::: {.fragment .fade-in-then-out .absolute width=100%}
+Then use [Axes.plot](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot) to draw data on the Axes:
+```{python}
+#| echo: true
+
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots()
+ax.plot([1, 2, 3, 4], [1, 4, 2, 3])
+```
+:::
+
+
+
+::: {.fragment .fade-in-then-out .absolute width=100%}
+Depending on your environment, you made need to use [show](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show) to display the :
+```{python}
+#| echo: true
+
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots()
+ax.plot([1, 2, 3, 4], [1, 4, 2, 3])
+plt.show()
+```
+:::
+
+:::
+
+:::
+
+
+## A Numpy Example {.hide}
+
+::: {.smaller-80}
+```{python}
+#| echo: true
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0, 2 * np.pi, 200)
+y = np.sin(x)
+
+fig, ax = plt.subplots()
+ax.plot(x, y)
+plt.show()
+```
+:::
+
+::: {.notes}
+In this example, we use NumPy to generate a sequence of evenly spaced numbers from 0 to 2π, and then calculate the sine of each number. We then plot the result using Matplotlib.
+
+- `np.linspace` generates a sequence of numbers from 0 to 2π, with 200 points.
+- `np.sin` calculates the sine of each number in the sequence.
+:::
+
+
+## Parts of a Figure {.hide}
+
+::: {.columns}
+
+::: {.column width=50%}
+![](https://matplotlib.org/stable/_images/anatomy.png)
+:::
+
+::: {.column width=50%}
+
+::: {.smaller-60}
+
+::: {.r-stack}
+
+::: {.fragment .fade-in-then-out .absolute top=0}
+The **Figure** keeps track of all the child [Axes](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes), a group of 'special' Artists (titles, figure legends, colorbars, etc.), and nested subfigures.
+
+Common ways you'll create a new Figure:
+
+```{.python}
+fig = plt.figure()             # an empty figure with no Axes
+fig, ax = plt.subplots()       # a figure with a single Axes
+fig, axs = plt.subplots(2, 2)  # a figure with a 2x2 grid of Axes
+# a figure with one Axes on the left, and two on the right:
+fig, axs = plt.subplot_mosaic([['left', 'right_top'],
+                               ['left', 'right_bottom']])
+```
+
+[`subplots()`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots) and [`subplot_mosaic()`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplot_mosaic.html#matplotlib.pyplot.subplot_mosaic) are convenient functions that create a Figure and multiple Axes objects within it. You can also add individual Axes manually to a Figure later if needed.
+
+See [Introduction to Figures](https://matplotlib.org/stable/users/explain/figure/figure_intro.html#figure-intro) for more information.
+:::
+
+
+::: {.fragment .fade-in-then-out .absolute top=0}
+An **Axes** is an Artist attached to a Figure that contains a region for plotting data, and usually includes two (or three in the case of 3D) [Axis](https://matplotlib.org/stable/api/axis_api.html#matplotlib.axis.Axis) objects (be aware of the difference between **Axes** and **Axis**) that provide ticks and tick labels to provide scales for the data in the Axes. Each [Axes](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes) has:
+
+- A title (set via [set_title()](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_title.html#matplotlib.axes.Axes.set_title))
+- An x-label (set via [set_xlabel()](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xlabel.html#matplotlib.axes.Axes.set_xlabel))
+- A y-label (set via [set_ylabel()](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylabel.html#matplotlib.axes.Axes.set_ylabel))
+
+The Axes methods are the primary interface for configuring most parts of your plot (adding data, controlling axis scales and limits, adding labels etc.).
+:::
+
+::: {.fragment .fade-in-then-out .absolute top=0}
+**Axis** objects control the scale, limits, and generation of ticks (marks on the axis) and tick labels (the text labeling the ticks). The placement of ticks is managed by a [Locator](https://matplotlib.org/stable/api/ticker_api.html#matplotlib.ticker.Locator) object, while the formatting of tick labels is handled by a [Formatter](https://matplotlib.org/stable/api/ticker_api.html#matplotlib.ticker.Formatter) object.
+:::
+
+::: {.fragment .fade-in-then-out .absolute top=0}
+Everything visible on a Figure is an **Artist**, including [Figure](https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure), [Axes](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes), and [Axis](https://matplotlib.org/stable/api/axis_api.html#matplotlib.axis.Axis) objects. This also applies to [Text](https://matplotlib.org/stable/api/text_api.html#matplotlib.text.Text) objects, [Line2D](https://matplotlib.org/stable/api/_as_gen/matplotlib.lines.Line2D.html#matplotlib.lines.Line2D) objects, [collections](https://matplotlib.org/stable/api/collections_api.html#module-matplotlib.collections), [Patch](https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Patch.html#matplotlib.patches.Patch) objects, and more. When the Figure is rendered, all Artists are drawn to the canvas. Most Artists are associated with a specific Axes; they cannot be shared across multiple Axes or moved between them.
+:::
+
+:::
+
+:::
+
+:::
+
+:::
+
+## Types of inputs to plotting functions {.hide .smaller-65}
+
+Plotting functions generally expect inputs as `numpy.array`, it is common practice to explicitly convert to `numpy.array` before plotting.
+This example demonstrates using `np.asarray` to convert a `numpy.matrix` to a `numpy.array` before plotting:
+
+
+```{python}
+#| echo: true
+
+import matplotlib.pyplot as plt
+import numpy as np
+b = np.matrix([[1, 2], [2, 3], [3, 4]])
+b_asarray = np.asarray(b)
+
+# plotting the first column against the second column
+x, y = b_asarray[:, 0], b_asarray[:, 1]
+plt.scatter(x, y)
+```
+
+### String-Indexable Objects {.hide .smaller-65}
+
+You can specify a dataset using the `data` keyword argument, allowing you to work with string-indexable objects (dictionaries, structured NumPy arrays, or Pandas DataFrames). By passing the names of the `x` and `y` variables as strings, Matplotlib will automatically extract the corresponding data from the specified dataset.
+
+```{python}
+#| echo: true
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+np.random.seed(19680801)  # seed the random number generator.
+data = {'a': np.arange(50),
+        'c': np.random.randint(0, 50, 50),
+        'd': np.random.randn(50)}
+data['b'] = data['a'] + 10 * np.random.randn(50)
+data['d'] = np.abs(data['d']) * 100
+
+fig, ax = plt.subplots(figsize=(5, 2.7), layout='constrained')
+ax.scatter('a', 'b', c='c', s='d', data=data)
+ax.set_xlabel('entry a')
+ax.set_ylabel('entry b')
+```
+
+::: {.notes}
+The signature for ax.scatter is `scatter(x, y, s=None, c=None, **kwargs)`, where `x` and `y` are the data positions, `s` is the marker size, and `c` is the marker color. In this example, we use the `data` keyword argument to specify the dataset, and the names of the `x`, `y`, `s`, and `c` variables as strings.
+:::
+
+## Coding Styles
+
+There are essentially two ways to use Matplotlib:
+
+- **Explicitly** create Figures and Axes, and call methods on them (the "object-oriented (OO) style").
+- Rely on pyplot to **implicitly** create and manage the Figures and Axes, and use pyplot functions for plotting.
+
+
+
+### Pyplot Style (Implicit) {.hide .smaller-65}
+
+The pyplot style is more convenient for simple plots and is often used in scripts and notebooks.
+
+```{python}
+#| echo: true
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0, 2, 100)  # Sample data.
+
+plt.figure(figsize=(5, 2.7), layout='constrained')
+plt.plot(x, x, label='linear')  # Plot some data on the (implicit) Axes.
+plt.plot(x, x**2, label='quadratic')  # etc.
+plt.plot(x, x**3, label='cubic')
+plt.xlabel('x label')
+plt.ylabel('y label')
+plt.title("Simple Plot")
+plt.legend()
+```
+
+
+### Object-Oriented Style {.hide .smaller-65}
+
+The OO style is more customizable and is generally the preferred approach, especially for more complex plots.
+
+```{python}
+#| echo: true
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0, 2, 100)  # Sample data.
+
+# Note that even in the OO-style, we use `.pyplot.figure` to create the Figure.
+fig, ax = plt.subplots(figsize=(5, 2.7), layout='constrained')
+ax.plot(x, x, label='linear')  # Plot some data on the Axes.
+ax.plot(x, x**2, label='quadratic')  # Plot more data on the Axes...
+ax.plot(x, x**3, label='cubic')  # ... and some more.
+ax.set_xlabel('x label')  # Add an x-label to the Axes.
+ax.set_ylabel('y label')  # Add a y-label to the Axes.
+ax.set_title("Simple Plot")  # Add a title to the Axes.
+ax.legend()  # Add a legend.
+```
+
+## Styling Artists {.hide .smaller-65}
+
+Most plotting methods have styling options for the Artists, accessible either when a plotting method is called, or from a "setter" on the Artist. In the plot below we manually set the color, linewidth, and linestyle of the Artists created by `plot`, and we set the linestyle of the second line after the fact with `set_linestyle`.
+
+```{python}
+#| echo: true
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+data1, data2 = np.random.randn(2, 100)
+fig, ax = plt.subplots(figsize=(5, 2.7))
+x = np.arange(len(data1))
+ax.plot(x, np.cumsum(data1), color='blue', linewidth=3, linestyle='--')
+l, = ax.plot(x, np.cumsum(data2), color='orange', linewidth=2)
+l.set_linestyle(':')
+```
+
+### Colors {.hide .smaller-65}
+
+Matplotlib offers a flexible range of color options (see [allowable color definitions](https://matplotlib.org/stable/users/explain/colors/colors.html#colors-def)). Some plots allow the use of multiple colors; for example, in a scatter plot, the marker edges can be a different color from the marker interiors.
+
+```{python}
+#| echo: true
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+data1, data2 = np.random.randn(2, 100)
+fig, ax = plt.subplots(figsize=(5, 2.7))
+ax.scatter(data1, data2, s=50, facecolor='c', edgecolor='k')
+```
