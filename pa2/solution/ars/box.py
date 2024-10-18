@@ -1,12 +1,10 @@
-"""Module for the Box class, which manages a collection of cards in the Adaptive Review System."""
-
 from datetime import datetime, timedelta
 from typing import List, Optional
 from ars.card import Card
 
 class Box:
     """Represents a box that holds a set of cards for adaptive review."""
-    
+
     def __init__(self, name: str, priority_interval: timedelta) -> None:
         """Initializes a box with a name and priority interval."""
         self.name = name
@@ -15,7 +13,8 @@ class Box:
 
     def add_card(self, card: Card) -> None:
         """Adds a card to the box."""
-        self._cards.append(card)
+        if card not in self._cards:
+            self._cards.append(card)
 
     def remove_card(self, card: Card) -> None:
         """Removes a card from the box."""
@@ -30,14 +29,9 @@ class Box:
                 return card
         return None
 
-    def has_card(self, card: Card) -> bool:
-        """Checks if the card is present in the box."""
-        return card in self._cards
-
-    def move_card_to(self, destination: 'Box', card: Card) -> None:
-        """Moves a card from this box to another box."""
-        self.remove_card(card)
-        destination.add_card(card)
+    def __len__(self) -> int:
+        """Returns the number of cards in the box."""
+        return len(self._cards)
 
     def __repr__(self) -> str:
         """Returns a string representation of the Box object."""

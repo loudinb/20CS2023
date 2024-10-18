@@ -26,3 +26,14 @@ class Question(ABC):
             True if the answer is correct, False otherwise.
         """
         pass
+
+    @property
+    @abstractmethod
+    def incorrect_response(self) -> str:
+        """Returns a response to display when the user provides an incorrect answer."""
+        pass
+
+    @abstractmethod
+    def __repr__(self) -> str:
+        """Returns a string representation of the Question object."""
+        pass

@@ -27,6 +27,7 @@ class ShortAnswer(Question):
     def ask(self) -> str:
         """Returns the short answer question."""
         return self.question
+    
 
     def check_answer(self, answer: str) -> bool:
         """Checks if the provided answer matches the correct answer.
@@ -45,6 +46,13 @@ class ShortAnswer(Question):
             return re.sub(r'[^\w\s]', '', text)  # Removes punctuation
 
         return normalize(answer) == normalize(self.correct_answer)
+
+
+    @property
+    def incorrect_response(self) -> str:
+        """Returns a response to display when the user provides an incorrect answer."""
+        return f"Incorrect. The correct answer is: {self.correct_answer}"    
+
 
     def __repr__(self) -> str:
         """Returns a string representation of the ShortAnswer object."""

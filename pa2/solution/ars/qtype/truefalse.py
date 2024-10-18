@@ -49,13 +49,11 @@ class TrueFalse(Question):
 
         return user_answer == self.correct_answer
 
-    def get_feedback(self) -> str:
-        """Returns feedback based on the correct answer and explanation."""
-        if self.correct_answer:
-            return "The correct answer is True."
-        else:
-            return f"The correct answer is False. {self.explanation}"
-
+    @property
+    def incorrect_response(self) -> str:
+        """Returns a response to display when the user provides an incorrect answer."""
+        return f"Incorrect. {self.explanation}"  
+        
     def __repr__(self) -> str:
         """Returns a string representation of the TrueFalse object."""
         return f"TrueFalse(question='{self.question}', correct_answer={self.correct_answer})"

@@ -1,22 +1,23 @@
-"""Module for the Card class, which wraps a quiz question and tracks its timestamp."""
-
-from ars.qtype.question import Question
+import uuid
 from datetime import datetime
+from ars.qtype.question import Question
 
 class Card:
     """A wrapper for a quiz question.
     
     Attributes:
+        id (uuid.UUID): A unique identifier for the card.
         question (Question): The quiz question associated with the card.
         last_asked (datetime): The timestamp when the question was last asked.
     """
 
     def __init__(self, question: Question) -> None:
-        """Initializes a card with the given quiz question.
+        """Initializes a card with the given quiz question and a unique identifier.
 
         Args:
             question (Question): The question to be wrapped in the card.
         """
+        self.id = uuid.uuid4()
         self.question = question
         self.last_asked = None
 
@@ -42,4 +43,14 @@ class Card:
 
     def __repr__(self) -> str:
         """Returns a string representation of the Card object."""
-        return f"Card(question={repr(self.question)}, last_asked={self.last_asked})"
+        return f"Card(id={self.id}, question={repr(self.question)}, last_asked={self.last_asked})"
+
+    def __eq__(self, other):
+        """Defines equality based on the card's unique id."""
+        if isinstance(other, Card):
+            return self.id == other.id
+        return False
+
+    def __hash__(self):
+        """Defines a hash value based on the card's unique id."""
+        return hash(self.id)
