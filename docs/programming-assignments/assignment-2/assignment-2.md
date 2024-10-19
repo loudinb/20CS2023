@@ -1,6 +1,6 @@
-# Assignment 2: QuizMe CLI
+# Assignment 2
 
-This assignment involves implementing QuizMe, a Command Line Interface (CLI) application for adaptive review of study questions. QuizMe utilizes an internal library called the Adaptive Review System (ARS) to provide an efficient learning experience that adapts to the user's performance.
+This assignment involves creating **QuizMe**, a Command Line Interface (CLI) application for adaptive review of study questions. QuizMe utilizes an internal library called the Adaptive Review System (ARS) which provides an efficient learning experience by adapting to the user's performance.
 
 ## QuizMe CLI Application
 
@@ -20,10 +20,9 @@ The ARS is an internal library that implements the core functionality of the ada
 
 ### Key Components of ARS:
 
-1. **AdaptiveReview**: Manages the overall flow of the quiz session.
+1. **ARController**: Manages the overall flow of the quiz session.
 2. **BoxManager**: Handles the organization of questions into different "boxes" based on the user's performance.
 3. **Box**: Represents a category of questions (e.g., missed, unasked, correctly answered once).
-4. **Card**: Encapsulates a single question and its metadata.
 5. **Question**: Defines different types of questions (e.g., true/false, short answer).
 
 ### How ARS Works
@@ -43,10 +42,9 @@ Questions move between boxes based on the user's answers and time intervals, ens
 ```
 quizme/
 ├── ars/                          # Adaptive Review System library
-│   ├── adaptivereview.py
+│   ├── arcontroller.py
 │   ├── box.py
 │   ├── boxmanager.py
-│   ├── card.py
 │   └── qtype/
 │       ├── question.py
 │       ├── truefalse.py

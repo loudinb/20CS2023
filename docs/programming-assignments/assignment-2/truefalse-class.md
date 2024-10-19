@@ -1,86 +1,74 @@
 # `TrueFalse` Class
 
-The `TrueFalse` class represents a true/false question in the Adaptive Review System (ARS). It inherits from the `Question` abstract base class and implements the specific behavior for true/false questions.
+The `TrueFalse` class represents a true/false question in the Adaptive Review System. It inherits from the `Question` base class and implements specific behavior for true/false questions.
 
-Follow the specifications provided below to create a `TrueFalse` class in the `ars/qtype/truefalse.py` file. Remember to import the `Question` abstract base class and inherit from it:
-
-```python
-from ars.qtype.question import Question
-
-class TrueFalse(Question):
-    # Implementation will go here
-```
-
-Ensure that all abstract methods from the `Question` class are implemented in the `TrueFalse` class.
+Follow the specifications provided below to create a `TrueFalse` class in the `truefalse.py` file within the `qtype` directory.
 
 ## Attributes
 
-| Name               | Kind     | Access Level | Type   | Description                                    |
-|--------------------|----------|--------------|--------|------------------------------------------------|
-| `_question`        | Instance | Protected    | `str`  | The text of the true/false question            |
-| `_correct_answer`  | Instance | Protected    | `bool` | The correct answer (True or False)             |
-| `_explanation`     | Instance | Protected    | `str`  | Additional explanation for the correct answer  |
+| Name          | Kind     | Access Level | Type     | Description                                    |
+|---------------|----------|--------------|----------|------------------------------------------------|
+| `_explanation`| Instance | Protected    | `str`    | Additional information explaining the answer   |
+
+Note: This class also inherits all attributes from the `Question` base class.
 
 ## Methods
 
-| Name                      | Kind     | Return Type | Parameters                                          | Description                                           |
-|---------------------------|----------|-------------|-----------------------------------------------------|-------------------------------------------------------|
-| `__init__`                | Instance | None        | `question: str, correct_answer: bool, explanation: str = ""` | Initialize a new TrueFalse instance                   |
-| `ask`                     | Instance | `str`       | None                                                | Returns the question text                             |
-| `check_answer`            | Instance | `bool`      | `answer: str`                                       | Checks if the provided answer is correct              |
-| `incorrect_answer_feedback` | Instance | `str`     | None                                                | Returns feedback for an incorrect answer              |
-| `__repr__`                | Instance | `str`       | None                                                | Returns a string representation of the TrueFalse object |
+| Name                 | Kind     | Return Type | Parameters                                        | Description                                           |
+|----------------------|----------|-------------|---------------------------------------------------|-------------------------------------------------------|
+| `__init__`           | Instance | None        | `question: str, answer: bool, explanation: Optional[str] = None` | Initialize a new TrueFalse instance |
+| `ask`                | Instance | `str`       | None                                              | Return the true/false question                        |
+| `check_answer`       | Instance | `bool`      | `answer: str`                                     | Check if the provided answer is correct               |
+| `incorrect_feedback` | Instance | `str`       | None                                              | Return feedback for an incorrect answer               |
 
 ### Implementation Details
 
-**`__init__(self, question: str, correct_answer: bool, explanation: str = "")`**
-- Initialize a new TrueFalse question instance.
-- Set `self._question` to the provided `question` parameter.
-- Set `self._correct_answer` to the provided `correct_answer` parameter.
-- Set `self._explanation` to the provided `explanation` parameter (default is an empty string).
-- Raise a `ValueError` with the message "The correct_answer must be a boolean (True or False)." if `correct_answer` is not a boolean.
+**`__init__(self, question: str, answer: bool, explanation: Optional[str] = None) -> None`**
+- Call the superclass `__init__` method with `question` and `answer` parameters.
+- Validate that the `answer` is a boolean. If not, raise a `ValueError` with the message "The answer must be a boolean (True or False)."
+- Set the `_explanation` attribute to the `explanation` parameter if provided, or an empty string if not.
 
 **`ask(self) -> str`**
-- Implement this method to return the question text.
-- The returned string should be in the format: "{self._question} (True/False)"
+- Override the `ask` method from the base class.
+- Call the superclass `ask` method to update the `_last_asked` timestamp.
+- Return the question text appended with " (True/False)".
 
 **`check_answer(self, answer: str) -> bool`**
 - Implement this method to check if the provided answer is correct.
-- Convert the input `answer` to lowercase and strip any leading/trailing whitespace.
-- Return `True` if the normalized answer matches the correct answer:
-  - If `answer` is "true" or "t", it should match `self._correct_answer == True`
-  - If `answer` is "false" or "f", it should match `self._correct_answer == False`
-- Return `False` for any other input.
+- Normalize the input `answer` by stripping whitespace and converting to lowercase.
+- Convert the normalized answer to a boolean:
+  - If the answer is "true" or "t", set `user_answer` to `True`.
+  - If the answer is "false" or "f", set `user_answer` to `False`.
+  - For any other input, raise a `ValueError` with the message "Answer must be 'True' or 'False'."
+- Return `True` if `user_answer` matches the `_answer` attribute, `False` otherwise.
 
-**`incorrect_answer_feedback(self) -> str`**
-- Implement this method to provide feedback when an incorrect answer is given.
-- Return a string in the format: "Incorrect. {self._explanation}" if an explanation is provided.
-- If no explanation is provided, return "Incorrect. The correct answer is {correct_answer}.", where `correct_answer` is "True" or "False" based on `self._correct_answer`.
+**`incorrect_feedback(self) -> str`**
+- Implement this method to return feedback for an incorrect answer.
+- Return a string that includes "Incorrect." followed by the explanation.
 
-**`__repr__(self) -> str`**
-- Implement this method to return a string representation of the TrueFalse object.
-- The returned string should be in the format: "TrueFalse(question='{self._question}', correct_answer={self._correct_answer})"
-
-## Example Usage
-
-Here's an example of how to create and use a TrueFalse question:
+Remember to import the necessary modules at the beginning of your file:
 
 ```python
-from ars.qtype.truefalse import TrueFalse
+from typing import Optional
+from .question import Question
+```
 
-# Create a TrueFalse question
-question = TrueFalse("The Earth is flat.", False, "The Earth is actually an oblate spheroid.")
+Here's an example of how to use the `TrueFalse` class:
 
-# Ask the question
-print(question.ask())
+```python
+tf_question = TrueFalse(
+    question="Python is a statically typed language.",
+    answer=False,
+    explanation="Python is actually a dynamically typed language."
+)
 
-# Check an answer
-user_answer = input("Your answer (True/False): ")
-if question.check_answer(user_answer):
+print(tf_question.ask())  # Outputs: Python is a statically typed language. (True/False)
+
+user_input = input("Your answer (True/False): ")
+if tf_question.check_answer(user_input):
     print("Correct!")
 else:
-    print(question.incorrect_answer_feedback())
-
-# Print the question object
-print(repr(question))
+    print(tf_question.incorrect_feedback())
 ```
+
+This example demonstrates creating a TrueFalse question, asking it, checking the user's answer, and providing feedback.

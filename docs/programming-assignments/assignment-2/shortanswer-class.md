@@ -1,82 +1,77 @@
 # `ShortAnswer` Class
 
-The `ShortAnswer` class represents a short answer question in the Adaptive Review System (ARS). It inherits from the `Question` abstract base class and implements the specific behavior for short answer questions.
+The `ShortAnswer` class represents a short answer question in the Adaptive Review System. It inherits from the `Question` base class and implements specific behavior for short answer questions.
 
-Follow the specifications provided below to create a `ShortAnswer` class in the `ars/qtype/shortanswer.py` file. Remember to import the `Question` abstract base class and inherit from it:
-
-```python
-from ars.qtype.question import Question
-
-class ShortAnswer(Question):
-    # Implementation will go here
-```
-
-Ensure that all abstract methods from the `Question` class are implemented in the `ShortAnswer` class.
+Follow the specifications provided below to create a `ShortAnswer` class in the `shortanswer.py` file within the `qtype` directory.
 
 ## Attributes
 
-| Name               | Kind     | Access Level | Type   | Description                                    |
-|--------------------|----------|--------------|--------|------------------------------------------------|
-| `_question`        | Instance | Protected    | `str`  | The text of the short answer question          |
-| `_correct_answer`  | Instance | Protected    | `str`  | The correct answer to the question             |
-| `_case_sensitive`  | Instance | Protected    | `bool` | Whether the answer is case-sensitive           |
+| Name             | Kind     | Access Level | Type  | Description                                   |
+|------------------|----------|--------------|-------|-----------------------------------------------|
+| `_case_sensitive`| Instance | Protected    | `bool`| Flag to determine if answer is case sensitive |
+
+Note: This class also inherits all attributes from the `Question` base class.
 
 ## Methods
 
-| Name                      | Kind     | Return Type | Parameters                                          | Description                                           |
-|---------------------------|----------|-------------|-----------------------------------------------------|-------------------------------------------------------|
-| `__init__`                | Instance | None        | `question: str, correct_answer: str, case_sensitive: bool = False` | Initialize a new ShortAnswer instance                 |
-| `ask`                     | Instance | `str`       | None                                                | Returns the question text                             |
-| `check_answer`            | Instance | `bool`      | `answer: str`                                       | Checks if the provided answer is correct              |
-| `incorrect_answer_feedback` | Instance | `str`     | None                                                | Returns feedback for an incorrect answer              |
-| `__repr__`                | Instance | `str`       | None                                                | Returns a string representation of the ShortAnswer object |
+| Name                 | Kind     | Return Type | Parameters                                        | Description                                           |
+|----------------------|----------|-------------|---------------------------------------------------|-------------------------------------------------------|
+| `__init__`           | Instance | None        | `question: str, answer: str, case_sensitive: bool = False` | Initialize a new ShortAnswer instance |
+| `ask`                | Instance | `str`       | None                                              | Return the short answer question                      |
+| `check_answer`       | Instance | `bool`      | `answer: str`                                     | Check if the provided answer is correct               |
+| `incorrect_feedback` | Instance | `str`       | None                                              | Return feedback for an incorrect answer               |
+| `_normalize`         | Instance | `str`       | `text: str`                                       | Normalize the text for comparison                     |
 
 ### Implementation Details
 
-**`__init__(self, question: str, correct_answer: str, case_sensitive: bool = False)`**
-- Initialize a new ShortAnswer question instance.
-- Set `self._question` to the provided `question` parameter.
-- Set `self._correct_answer` to the provided `correct_answer` parameter.
-- Set `self._case_sensitive` to the provided `case_sensitive` parameter (default is False).
+**`__init__(self, question: str, answer: str, case_sensitive: bool = False) -> None`**
+- Call the superclass `__init__` method with `question` and `answer` parameters.
+- Set the `_case_sensitive` attribute to the `case_sensitive` parameter.
 
 **`ask(self) -> str`**
-- Implement this method to return the question text.
-- Simply return `self._question`.
+- Override the `ask` method from the base class.
+- Call the superclass `ask` method to update the `_last_asked` timestamp.
+- Return the question text (the `_question` attribute).
 
 **`check_answer(self, answer: str) -> bool`**
 - Implement this method to check if the provided answer is correct.
-- If `self._case_sensitive` is False, convert both the input `answer` and `self._correct_answer` to lowercase.
-- Strip any leading/trailing whitespace from both the input `answer` and `self._correct_answer`.
-- Return `True` if the processed `answer` exactly matches the processed `self._correct_answer`, otherwise return `False`.
+- Use the `_normalize` method to normalize both the provided answer and the correct answer.
+- Return `True` if the normalized provided answer matches the normalized correct answer, `False` otherwise.
 
-**`incorrect_answer_feedback(self) -> str`**
-- Implement this method to provide feedback when an incorrect answer is given.
-- Return a string in the format: "Incorrect. The correct answer is: {self._correct_answer}"
+**`incorrect_feedback(self) -> str`**
+- Implement this method to return feedback for an incorrect answer.
+- Return a string that includes "Incorrect. The correct answer is: " followed by the correct answer.
 
-**`__repr__(self) -> str`**
-- Implement this method to return a string representation of the ShortAnswer object.
-- The returned string should be in the format: "ShortAnswer(question='{self._question}', correct_answer='{self._correct_answer}', case_sensitive={self._case_sensitive})"
+**`_normalize(self, text: str) -> str`**
+- Implement this private method to normalize the text for comparison.
+- Strip leading and trailing whitespace from the input `text`.
+- If `_case_sensitive` is `False`, convert the text to lowercase.
+- Remove all punctuation from the text using a regular expression.
+- Return the normalized text.
 
-## Example Usage
-
-Here's an example of how to create and use a ShortAnswer question:
+Remember to import the necessary modules at the beginning of your file:
 
 ```python
-from ars.qtype.shortanswer import ShortAnswer
+import re
+from .question import Question
+```
 
-# Create a ShortAnswer question
-question = ShortAnswer("What is the capital of France?", "Paris")
+Here's an example of how to use the `ShortAnswer` class:
 
-# Ask the question
-print(question.ask())
+```python
+sa_question = ShortAnswer(
+    question="What is the capital of France?",
+    answer="Paris",
+    case_sensitive=False
+)
 
-# Check an answer
-user_answer = input("Your answer: ")
-if question.check_answer(user_answer):
+print(sa_question.ask())  # Outputs: What is the capital of France?
+
+user_input = input("Your answer: ")
+if sa_question.check_answer(user_input):
     print("Correct!")
 else:
-    print(question.incorrect_answer_feedback())
-
-# Print the question object
-print(repr(question))
+    print(sa_question.incorrect_feedback())
 ```
+
+This example demonstrates creating a ShortAnswer question, asking it, checking the user's answer, and providing feedback. The answer checking is case-insensitive by default, so "paris" would be accepted as a correct answer.

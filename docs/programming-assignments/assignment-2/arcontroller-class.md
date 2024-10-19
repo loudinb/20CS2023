@@ -1,90 +1,87 @@
 # `ARController` Class
 
-The `ARController` class serves as the main controller for running an adaptive review session. It manages the overall flow of the quiz, including initializing questions, presenting them to the user, and processing answers.
+The `ARController` class serves as the main controller for running an adaptive review session in the Adaptive Review System. It manages the interaction between the user, questions, and the BoxManager.
 
-Follow the specifications provided below to create an `ARController` class in the `ars/arcontroller.py` file.
-
-## Imports
-
-Ensure you have the following imports at the beginning of your file:
-
-```python
-from typing import List
-from ars.boxmanager import BoxManager
-from ars.card import Card
-from ars.qtype.shortanswer import ShortAnswer
-from ars.qtype.truefalse import TrueFalse
-```
+Follow the specifications provided below to create an `ARController` class in the `arcontroller.py` file.
 
 ## Attributes
 
 | Name           | Kind     | Access Level | Type         | Description                                    |
 |----------------|----------|--------------|--------------|------------------------------------------------|
-| `box_manager`  | Instance | Public       | `BoxManager` | The BoxManager instance for managing cards     |
+| `_box_manager` | Instance | Protected    | `BoxManager` | The BoxManager instance used by the controller |
 
 ## Methods
 
-| Name                | Kind     | Return Type | Parameters                  | Description                                           |
-|---------------------|----------|-------------|---------------------------|-------------------------------------------------------|
-| `__init__`          | Instance | None        | `question_data: List[dict]` | Initialize a new ARController instance              |
-| `_initialize_cards` | Instance | None        | `question_data: List[dict]` | Create cards from question data and add to BoxManager |
-| `start`             | Instance | None        | None                      | Run the interactive adaptive review session           |
+| Name                    | Kind     | Return Type | Parameters                  | Description                                           |
+|-------------------------|----------|-------------|---------------------------|-------------------------------------------------------|
+| `__init__`              | Instance | None        | `question_data: List[dict]` | Initialize a new ARController instance                |
+| `_initialize_questions` | Instance | None        | `question_data: List[dict]` | Initialize questions and add them to the BoxManager   |
+| `start`                 | Instance | None        | None                        | Run the interactive adaptive review session           |
 
 ### Implementation Details
 
 **`__init__(self, question_data: List[dict]) -> None`**
-- Initialize a new ARController instance.
-- Create a new BoxManager instance and assign it to `self.box_manager`.
-- Call `self._initialize_cards(question_data)` to set up the initial cards.
+- Initialize the `ARController` instance with the given `question_data`.
+- Create a new `BoxManager` instance and assign it to `_box_manager`.
+- Call `_initialize_questions` with the `question_data`.
 
-**`_initialize_cards(self, question_data: List[dict]) -> None`**
-- Iterate through the `question_data` list.
-- For each question dictionary:
-  - Check the `type` key to determine if it's a "shortanswer" or "truefalse" question.
-  - Create the appropriate Question subclass instance (ShortAnswer or TrueFalse) with the provided data.
-  - Create a new Card with this question.
-  - Add the card to the BoxManager using `self.box_manager.move_card(card, correct=False)`.
-- Handle potential KeyError exceptions if required fields are missing in the question data.
-- Skip questions with unsupported types, printing a message to indicate this.
+**`_initialize_questions(self, question_data: List[dict]) -> None`**
+- Implement this private method to initialize questions and add them to the BoxManager.
+- Iterate through the `question_data` list:
+  - For each question dictionary, get the `type` key.
+  - Based on the question type, create either a `ShortAnswer` or `TrueFalse` question:
+    - For "shortanswer" type:
+      - Create a `ShortAnswer` instance with `question`, `correct_answer`, and `case_sensitive` (default to False if not provided) from the dictionary.
+    - For "truefalse" type:
+      - Create a `TrueFalse` instance with `question`, `correct_answer`, and `explanation` (default to empty string if not provided) from the dictionary.
+  - If the question type is not supported, print a message and continue to the next question.
+  - Add the created question to the BoxManager using `add_new_question`.
+  - Handle any `KeyError` exceptions that might occur due to missing required fields, print an error message, and skip the question.
 
 **`start(self) -> None`**
-- Print a welcome message for the Adaptive Review Session.
-- Enter a loop that continues until all questions have been reviewed or the user quits:
-  - Get the next card from `self.box_manager.get_next_card()`.
-  - If there are no more cards, print a completion message and break the loop.
-  - Present the question to the user using `card.ask()`.
+- Implement this method to run the interactive adaptive review session.
+- Print a welcome message and instructions for quitting the session.
+- Enter a loop that continues until all questions have been reviewed:
+  - Get the next question from the BoxManager using `get_next_question`.
+  - If there are no more questions, print a completion message and break the loop.
+  - Print the question using the `ask` method.
   - Get the user's answer as input.
-  - If the user inputs 'q', break the loop to quit the session.
-  - Check the answer using `card.check_answer(user_answer)`.
-  - Print "Correct!" if the answer is right, otherwise print the incorrect answer feedback.
-  - Move the card in the BoxManager based on whether the answer was correct.
+  - If the user enters 'q', break the loop to quit the session.
+  - Check if the answer is correct using the question's `check_answer` method.
+  - Print "Correct!" if the answer is correct, otherwise print the `incorrect_feedback`.
+  - Move the question in the BoxManager based on whether it was answered correctly.
 - Print a thank you message when the session ends.
 
-## Example Usage
-
-Here's an example of how to use the ARController class:
+Remember to import the necessary modules at the beginning of your file:
 
 ```python
-from ars.arcontroller import ARController
+from typing import List
+from .boxmanager import BoxManager
+from .qtype.shortanswer import ShortAnswer
+from .qtype.truefalse import TrueFalse
+```
 
+Here's an example of how to use the `ARController` class:
+
+```python
 # Sample question data
-questions = [
+question_data = [
     {
         "type": "shortanswer",
-        "question": "What is the capital of France?",
+        "question": "What's the capital of France?",
         "correct_answer": "Paris"
     },
     {
         "type": "truefalse",
         "question": "The Earth is flat.",
         "correct_answer": False,
-        "explanation": "The Earth is actually an oblate spheroid."
+        "explanation": "The Earth is actually approximately spherical."
     }
 ]
 
-# Create an ARController instance
-quiz = ARController(questions)
-
-# Start the review session
-quiz.start()
+# Create and start the Adaptive Review Controller
+controller = ARController(question_data)
+controller.start()
 ```
+
+This example demonstrates creating an ARController with sample question data and starting the adaptive review session. The session will continue until the user quits or all questions have been reviewed.

@@ -5,6 +5,9 @@ from datetime import timedelta
 import uuid
 from .box import Box
 from .qtype.question import Question
+import logging
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class BoxManager:
     """Manages multiple boxes in the Adaptive Review System."""
@@ -14,8 +17,8 @@ class BoxManager:
         self._boxes: List[Box] = [
             Box("Missed Questions", timedelta(seconds=60)),
             Box("Unasked Questions", timedelta.max),
-            Box("Correctly Answered Once", timedelta(seconds=360)),
-            Box("Correctly Answered Twice", timedelta(seconds=600)),
+            Box("Correctly Answered Once", timedelta(seconds=180)),
+            Box("Correctly Answered Twice", timedelta(seconds=360)),
             Box("Known Questions", timedelta.max)
         ]
         self._question_location: Dict[uuid.UUID, int] = {}
@@ -26,11 +29,11 @@ class BoxManager:
         self._question_location[question.id] = 1
 
 
-    def move_question(self, question: Question, correct: bool) -> None:
+    def move_question(self, question: Question, answered_correctly: bool) -> None:
         """Moves a question based on whether it was answered correctly."""
         current_box = self._question_location.get(question.id)
 
-        if correct:
+        if answered_correctly:
             if current_box == 0:
                 new_box = 2
             else:
@@ -41,6 +44,7 @@ class BoxManager:
         self._boxes[current_box].remove_question(question)
         self._boxes[new_box].add_question(question)
         self._question_location[question.id] = new_box
+        self._log_box_counts()
 
     def get_next_question(self) -> Optional[Question]:
         """Determines and returns the next question to present."""
@@ -49,3 +53,9 @@ class BoxManager:
             if next_question:
                 return next_question
         return None
+    
+    
+    def _log_box_counts(self) -> None:
+        """Logs the number of questions in each box."""
+        box_counts = {box.name: len(box) for box in self._boxes}
+        logging.info(f"Box Counts: {box_counts}")

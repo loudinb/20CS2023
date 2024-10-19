@@ -14,6 +14,17 @@ class Box:
         self._priority_interval: timedelta = priority_interval
 
 
+    @property
+    def name(self) -> str:
+        """Returns the name of the box."""
+        return self._name
+
+    @property
+    def priority_interval(self) -> timedelta:
+        """Returns the priority interval of the box."""
+        return self._priority_interval
+    
+    
     def add_question(self, question: Question) -> None:
         """Add a question to the box."""
         if question not in self._questions:
