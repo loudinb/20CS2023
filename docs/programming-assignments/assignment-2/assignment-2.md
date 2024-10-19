@@ -1,6 +1,6 @@
 # Assignment 2
 
-This assignment involves creating **QuizMe**, a Command Line Interface (CLI) application for adaptive review of study questions. QuizMe utilizes an internal library called the Adaptive Review System (ARS) which provides an efficient learning experience by adapting to the user's performance.
+In this assignment you will be creating a Command Line Interface (CLI) application called **QuizMe**.  The CLI will quiz as user on a set of questions. The application will adapt to the user's performance, prioritizing missed questions for review and spacing out reviews for questions answered correctly. The application will include an internal library called the Adaptive Review System (ARS) which provides the logic for managing the adaptive learning process.
 
 ## QuizMe CLI Application
 
@@ -10,20 +10,13 @@ QuizMe is the main interface through which users interact with the quiz system. 
 2. Initiating a quiz session
 3. Presenting questions to the user
 4. Accepting and processing user answers
-5. Displaying feedback and progress
+5. Displaying feedback
 
-The CLI application is responsible for the user interaction flow and integrates with the underlying ARS library to manage the adaptive review process.
+The CLI application is responsible for the user interaction flow and integrates with the underlying ARS library.
 
 ## Adaptive Review System (ARS) Library
 
-The ARS is an internal library that implements the core functionality of the adaptive review process. It uses a hybrid spaced repetition system designed for effective single-session review. The ARS combines principles of adaptive learning and interval-based repetition to enhance retention by dynamically adjusting review priorities based on performance.
-
-### Key Components of ARS:
-
-1. **ARController**: Manages the overall flow of the quiz session.
-2. **BoxManager**: Handles the organization of questions into different "boxes" based on the user's performance.
-3. **Box**: Represents a category of questions (e.g., missed, unasked, correctly answered once).
-5. **Question**: Defines different types of questions (e.g., true/false, short answer).
+The ARS is an internal library that implements the core functionality of the adaptive learning process. It uses a hybrid spaced repetition system designed for effective single-session review, combined with the principle of interval-based repetition to enhance retention by dynamically adjusting question priorities based on performance.
 
 ### How ARS Works
 
@@ -36,6 +29,14 @@ The system uses five boxes to manage questions:
 5. **Box 4 (Known Questions)**: Reviewed only if all other boxes are empty.
 
 Questions move between boxes based on the user's answers and time intervals, ensuring focused attention on difficult questions while spacing out reviews for well-learned content.
+
+### Key Components of ARS:
+
+1. **ARController**: Manages the overall flow of the quiz session.
+2. **BoxManager**: Handles the organization of questions into different "boxes" based on the user's performance.
+3. **Box**: Represents a category of questions (e.g., missed, unasked, correctly answered once).
+4. **Question**: Defines different types of questions (e.g., true/false, short answer).
+
 
 ## Project Structure
 

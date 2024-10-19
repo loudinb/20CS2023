@@ -23,39 +23,79 @@ Note: This class also inherits all attributes from the `Question` base class.
 
 ### Implementation Details
 
-**`__init__(self, question: str, answer: bool, explanation: Optional[str] = None) -> None`**
+**`class TrueFalse(Question)`**
+- Define the `TrueFalse` class that inherits from the `Question` class.
+- Add a docstring to describe the class.
+  ```python
+  """Class for a True/False quiz item."""
+  ```
+**`__init__(self, question, answer, explanation = None)`**
+- Impletement the `__init__` method to initialize a new `TrueFalse` instance.
+- Add a docstring to describe the method.
+  ```python
+  """Initialize a true/false quiz item.
+        
+    Args:
+        question: The question to be displayed.
+        answer: The correct answer, either True or False.
+        explanation: Additional information to explain the correct answer.
+
+    Raises:
+        ValueError: If the answer is not a boolean.
+  """ 
+  ```
 - Call the superclass `__init__` method with `question` and `answer` parameters.
 - Validate that the `answer` is a boolean. If not, raise a `ValueError` with the message "The answer must be a boolean (True or False)."
 - Set the `_explanation` attribute to the `explanation` parameter if provided, or an empty string if not.
 
+
 **`ask(self) -> str`**
 - Override the `ask` method from the base class.
+- Add a docstring to describe the method.
+  ```python
+  """Return the true/false question text."""
+  ```
 - Call the superclass `ask` method to update the `_last_asked` timestamp.
 - Return the question text appended with " (True/False)".
 
 **`check_answer(self, answer: str) -> bool`**
 - Implement this method to check if the provided answer is correct.
+- Add a docstring to describe the method.
+  ```python
+  """Check if the provided answer is correct.
+        
+    Args:
+        answer: The user's answer to the question.
+        
+    Returns:
+        True if the answer is correct, False otherwise.
+        
+    Raises:
+        ValueError: If the answer is not 'True' or 'False'.
+    """
+    ```
 - Normalize the input `answer` by stripping whitespace and converting to lowercase.
 - Convert the normalized answer to a boolean:
-  - If the answer is "true" or "t", set `user_answer` to `True`.
-  - If the answer is "false" or "f", set `user_answer` to `False`.
+  - If the normalized answer is "true" or "t", set `user_answer` to `True`.
+  - If the normalized answer is "false" or "f", set `user_answer` to `False`.
   - For any other input, raise a `ValueError` with the message "Answer must be 'True' or 'False'."
 - Return `True` if `user_answer` matches the `_answer` attribute, `False` otherwise.
 
 **`incorrect_feedback(self) -> str`**
 - Implement this method to return feedback for an incorrect answer.
-- Return a string that includes "Incorrect." followed by the explanation.
+- Add a docstring to describe the method.
+  ```python
+  """Return feedback for an incorrect answer."""
+  ```
+- Return a string that includes "Incorrect." followed by the explanation as provided in the `_explanation` attribute. 
 
-Remember to import the necessary modules at the beginning of your file:
+### Testing the `TrueFalse` Class
+
+To test the `TrueFalse` class, you can create an instance of the class, ask the question, check the answer, and provide feedback based on the correctness of the answer.  Here's an example:
 
 ```python
-from typing import Optional
-from .question import Question
-```
+from ars.qtype.truefalse import TrueFalse
 
-Here's an example of how to use the `TrueFalse` class:
-
-```python
 tf_question = TrueFalse(
     question="Python is a statically typed language.",
     answer=False,
@@ -70,5 +110,3 @@ if tf_question.check_answer(user_input):
 else:
     print(tf_question.incorrect_feedback())
 ```
-
-This example demonstrates creating a TrueFalse question, asking it, checking the user's answer, and providing feedback.

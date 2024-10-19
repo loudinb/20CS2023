@@ -30,7 +30,6 @@ class Question(ABC):
         """Returns the timestamp when the question was last asked."""
         return self._last_asked
 
-    @abstractmethod
     def ask(self) -> str:
         """Return the question as a string."""
         self._last_asked = datetime.now()
@@ -64,7 +63,3 @@ class Question(ABC):
     def __hash__(self) -> int:
         """Defines a hash value based on the question's unique id."""
         return hash(self._id)
-
-    def __repr__(self) -> str:
-        """Return a string representation of the Question object."""
-        return f"{self.__class__.__name__}(id={self._id}, question='{self._question}', last_asked={self._last_asked})"

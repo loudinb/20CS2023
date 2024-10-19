@@ -24,41 +24,85 @@ Note: This class also inherits all attributes from the `Question` base class.
 
 ### Implementation Details
 
-**`__init__(self, question: str, answer: str, case_sensitive: bool = False) -> None`**
+**`class ShortAnswer(Question)`**
+- Define the `ShortAnswer` class that inherits from the `Question` base class.
+- Add a docstring to describe the class.
+  ```python
+  """A quiz item representing a short answer question."""
+  ```
+
+**`__init__(self, question, answer, case_sensitive = False)`**
+- Implement the constructor method to initialize a new `ShortAnswer` instance.
+- Add a docstring to describe the method.
+  ```python
+  """Initialize a new ShortAnswer instance.
+
+  Args:
+      question (str): The question text.
+      answer (str): The correct answer.
+      case_sensitive (bool, optional): Flag to determine if the answer is case sensitive. Defaults to False.
+  """
+  ```
 - Call the superclass `__init__` method with `question` and `answer` parameters.
 - Set the `_case_sensitive` attribute to the `case_sensitive` parameter.
 
-**`ask(self) -> str`**
-- Override the `ask` method from the base class.
-- Call the superclass `ask` method to update the `_last_asked` timestamp.
-- Return the question text (the `_question` attribute).
+**`_normalize(self, text)`**
+- Implement this private method to normalize the text for comparison.
+- Add a docstring to describe the method.
+  ```python
+  """Normalize the text for comparison.
 
-**`check_answer(self, answer: str) -> bool`**
+  Args:
+      text (str): The text to normalize.
+
+  Returns:
+      str: The normalized text.
+  """
+  ```
+- Strip leading and trailing whitespace from the input `text`.
+- If `_case_sensitive` is `False`, convert the text to lowercase.
+- Remove all punctuation from the text using the following regular expression.
+  ```python
+  text = re.sub(r'[^\w\s]', '', text)
+  ```
+- Return the normalized text.
+
+**`check_answer(self, answer)`**
 - Implement this method to check if the provided answer is correct.
+- Add a docstring to describe the method.
+  ```python
+  """Check if the provided answer is correct.
+
+  Args:
+      answer (str): The provided answer.
+
+  Returns:
+      bool: True if the provided answer is correct, False otherwise.
+  """
+  ```
 - Use the `_normalize` method to normalize both the provided answer and the correct answer.
 - Return `True` if the normalized provided answer matches the normalized correct answer, `False` otherwise.
 
-**`incorrect_feedback(self) -> str`**
+**`incorrect_feedback(self)`**
 - Implement this method to return feedback for an incorrect answer.
-- Return a string that includes "Incorrect. The correct answer is: " followed by the correct answer.
+- Add a docstring to describe the method.
+  ```python
+  """Return feedback for an incorrect answer.
 
-**`_normalize(self, text: str) -> str`**
-- Implement this private method to normalize the text for comparison.
-- Strip leading and trailing whitespace from the input `text`.
-- If `_case_sensitive` is `False`, convert the text to lowercase.
-- Remove all punctuation from the text using a regular expression.
-- Return the normalized text.
+  Returns:
+      str: Feedback message for an incorrect answer.
+  """
+  ```
+- Return a string that includes "Incorrect. The correct answer is: " followed by the correct answer as it was originally provided.
 
-Remember to import the necessary modules at the beginning of your file:
 
-```python
-import re
-from .question import Question
-```
+### Testing the `ShortAnswer` Class
 
-Here's an example of how to use the `ShortAnswer` class:
+To test the `ShortAnswer` class, you can create an instance of the class, ask the question, check the answer, and provide feedback based on the correctness of the answer.  Here's an example of how to use the `ShortAnswer` class:
 
 ```python
+from ars.qtype.shortanswer import ShortAnswer
+
 sa_question = ShortAnswer(
     question="What is the capital of France?",
     answer="Paris",

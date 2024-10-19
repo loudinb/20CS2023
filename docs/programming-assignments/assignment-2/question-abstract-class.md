@@ -1,5 +1,3 @@
-Certainly! I'll create instructions for the Question abstract class based on the provided solution and the style of the example instructions. Here's a draft of the instructions for the Question class:
-
 # `Question` Class
 
 The `Question` class is an abstract base class that represents a quiz question in the Adaptive Review System. It provides a foundation for different types of questions and includes common attributes and methods.
@@ -32,11 +30,14 @@ Follow the specifications provided below to create a `Question` class in the `qu
 
 ### Implementation Details
 
+**`def Question(ABC):`**
+- Implement the `Question` class as an abstract base class using the `ABC` metaclass.
+
 **`__init__(self, question: str, answer: Any) -> None`**
-- Initialize the `Question` instance with the given `question` and `answer`.
-- Generate a unique `UUID` for the `_id` attribute using `uuid.uuid4()`.
+- Implement the `__init__` method to initialize a new `Question` instance.
 - Set the `_question` attribute to the `question` parameter.
 - Set the `_answer` attribute to the `answer` parameter.
+- Generate a unique `UUID` for the `_id` attribute using `uuid.uuid4()`.
 - Initialize the `_last_asked` attribute to `None`.
 
 **`id(self) -> uuid.UUID`**
@@ -46,20 +47,20 @@ Follow the specifications provided below to create a `Question` class in the `qu
 - Implement this property to return the value of the `_last_asked` attribute.
 
 **`ask(self) -> str`**
-- Implement this abstract method to return the question as a string.
+- Implement this method to return the question as a string.
 - Update the `_last_asked` attribute with the current timestamp using `datetime.now()`.
 - Return the value of the `_question` attribute.
 
+**`reset(self) -> None`**
+- Implement this method to reset the `_last_asked` attribute to `None`.
+
 **`check_answer(self, answer: Any) -> bool`**
-- Implement this abstract method to check if the provided answer is correct.
+- Add this **abstract** method to check if the provided answer is correct.
 - The implementation should be provided by subclasses.
 
 **`incorrect_feedback(self) -> str`**
-- Implement this abstract method to return feedback for an incorrect answer.
+- Implement this **abstract** method to return feedback for an incorrect answer.
 - The implementation should be provided by subclasses.
-
-**`reset(self) -> None`**
-- Implement this method to reset the `_last_asked` attribute to `None`.
 
 **`__eq__(self, other: object) -> bool`**
 - Implement this method to define equality based on the question's unique id.
@@ -69,9 +70,4 @@ Follow the specifications provided below to create a `Question` class in the `qu
 **`__hash__(self) -> int`**
 - Implement this method to define a hash value based on the question's unique id.
 - Return the hash of the `_id` attribute.
-
-**`__repr__(self) -> str`**
-- Implement this method to return a string representation of the Question object.
-- The string should include the class name, id, question text, and last asked timestamp.
-
 
