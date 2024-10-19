@@ -10,8 +10,7 @@ class Question(ABC):
         self._id = uuid.uuid4()
         self._question = question
         self._answer = answer
-        self._last_asked = None
-
+        self._last_asked = datetime.min
     @property
     def id(self):
         return self._id

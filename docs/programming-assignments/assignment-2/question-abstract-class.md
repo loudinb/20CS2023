@@ -33,12 +33,12 @@ Follow the specifications provided below to create a `Question` class in the `qu
 **`def Question(ABC):`**
 - Implement the `Question` class as an abstract base class using the `ABC` metaclass.
 
-**`__init__(self, question: str, answer: Any) -> None`**
+**`__init__(self, question, answer)`**
 - Implement the `__init__` method to initialize a new `Question` instance.
 - Set the `_question` attribute to the `question` parameter.
 - Set the `_answer` attribute to the `answer` parameter.
 - Generate a unique `UUID` for the `_id` attribute using `uuid.uuid4()`.
-- Initialize the `_last_asked` attribute to `None`.
+- Initialize the `_last_asked` attribute to the current time using possible time using `datetime.min`.
 
 **`id(self) -> uuid.UUID`**
 - Implement this property to return the value of the `_id` attribute.

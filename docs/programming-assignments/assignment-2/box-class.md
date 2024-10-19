@@ -1,5 +1,3 @@
-Certainly! Here are the instructions for the Box class based on the provided solution and following the style of the example instructions:
-
 # `Box` Class
 
 The `Box` class represents a container for questions in the Adaptive Review System. It manages a set of questions and provides methods for adding, removing, and retrieving questions based on priority.
@@ -29,74 +27,140 @@ Follow the specifications provided below to create a `Box` class in the `box.py`
 
 ### Implementation Details
 
-**`__init__(self, name: str, priority_interval: timedelta) -> None`**
-- Initialize the `Box` instance with the given `name` and `priority_interval`.
+**`class Box`**
+- Define the `Box` class.
+- Add a docstring to describe the class.
+  ```python
+  """Represents a box that holds a set of questions for adaptive review."""
+  ```
+
+**`__init__(self, name, priority_interval)`**
+- Implement the constructor method for the `Box` class.
+- Add a docstring to describe the method.
+  ```python
+  """Initialize a new Box instance.
+
+  Args:
+      name (str): The name of the box.
+      priority_interval (timedelta): The time interval for prioritizing questions.
+  """
+  ```
 - Set the `_name` attribute to the `name` parameter.
 - Initialize the `_questions` attribute as an empty list.
 - Set the `_priority_interval` attribute to the `priority_interval` parameter.
 
-**`name(self) -> str`**
+**`name(self)`**
 - Implement this property to return the value of the `_name` attribute.
+- Add a docstring to describe the property.
+  ```python
+  """Returns the name of the box."""
+  ```
 
-**`priority_interval(self) -> timedelta`**
+**`priority_interval(self)`**
 - Implement this property to return the value of the `_priority_interval` attribute.
+- Add a docstring to describe the property.
+  ```python
+  """Returns the priority interval of the box."""
+  ```
 
-**`add_question(self, question: Question) -> None`**
+**`add_question(self, question)`**
 - Implement this method to add a question to the box.
+- Add a docstring to describe the method.
+  ```python
+  """Add a question to the box.
+
+  Args:
+      question (Question): The question to be added.
+  """
+  ```
 - Check if the question is not already in `_questions` before adding it.
 - If the question is not in `_questions`, append it to the list.
 
 **`remove_question(self, question: Question) -> None`**
 - Implement this method to remove a question from the box.
+- Add a docstring to describe the method.
+  ```python
+  """Remove a question from the box.
+
+  Args:
+      question (Question): The question to be removed.
+  """
+  ```
 - Check if the question is in `_questions` before removing it.
 - If the question is in `_questions`, remove it from the list.
 
 **`get_next_priority_question(self) -> Optional[Question]`**
 - Implement this method to return the next priority question if available.
-- Get the current time using `datetime.now()`.
-- Iterate through the questions in `_questions`:
-  - If a question's `last_asked` is `None` or if the time since it was last asked is greater than or equal to the `_priority_interval`, return that question.
+- Add a docstring to describe the method.
+  ```python
+  """Return the next priority question if available.
+
+  Returns:
+      Optional[Question]: The next priority question or None if no priority question is available.
+  """
+  ```
+- Create a variable named `sorted_questions` to store a sorted copy of the `_questions` list based on the `last_asked` attribute, so the oldest questions are at the beginning.  
+- Create a variable named `now` to store the current time using `datetime.now()`.
+- Iterate through the questions in `sorted_questions`:
+  - If the time since it was last asked (e.g., `now - question.last_asked`) is greater than or equal to the `_priority_interval`, return that question.
 - If no priority question is found, return `None`.
 
-**`__len__(self) -> int`**
+**`__len__(self)`**
 - Implement this method to return the number of questions in the box.
+- Add a docstring to describe the method.
+  ```python
+  """Return the number of questions in the box."""
+  ```
 - Return the length of the `_questions` list.
 
-**`__repr__(self) -> str`**
-- Implement this method to return a string representation of the Box object.
-- The string should include the class name, box name, and the count of questions in the box.
 
-Remember to import the necessary modules at the beginning of your file:
+**`__str__(self)`**
+- Implement this method to return a string representation of the `Box` object.
+- Add a docstring to describe the method.
+  ```python
+  """Return a string representation of the Box object."""
+  ```
+- Return a string that includes the name of the box and the number of questions in the box.
 
-```python
-from datetime import datetime, timedelta
-from typing import List, Optional
-from .qtype.question import Question
-```
 
-Here's an example of how to use the `Box` class:
+### Testing the `Box` Class
+
+To test the `Box` class, you can create an instance of the class, add some questions to it, and retrieve the next priority question. Here's an example of how to use the `Box` class:
 
 ```python
 from datetime import timedelta
-from .qtype.shortanswer import ShortAnswer
+from time import sleep
+
+from ars.box import Box
+from ars.qtype.shortanswer import ShortAnswer
 
 # Create a box
-review_box = Box("Review Box", timedelta(minutes=5))
+review_box = Box("Review Box", timedelta(seconds=30))
 
 # Create some questions
 q1 = ShortAnswer("What's the capital of France?", "Paris")
-q2 = ShortAnswer("Who wrote 'Romeo and Juliet'?", "William Shakespeare")
 
 # Add questions to the box
 review_box.add_question(q1)
-review_box.add_question(q2)
 
 print(review_box)  # Output: Box(name='Review Box', questions_count=2)
 
+# Ask the question, which updates the last_asked property to the current time
+print(q1.ask())  # Output: "What's the capital of France?"
+
 # Get the next priority question
+# Since the question was just asked, it won't be returned
+next_question = review_box.get_next_priority_question()
+if next_question:
+    print(next_question.ask())
+else:
+    print("No priority question available")
+
+sleep(31)  # Wait for the priority interval to pass
+
+# Get the next priority question
+# Since the question was asked more than 30 seconds ago, it will be returned
 next_question = review_box.get_next_priority_question()
 if next_question:
     print(next_question.ask())
 ```
-
-This example demonstrates creating a Box, adding questions to it, and retrieving the next priority question.

@@ -24,13 +24,22 @@ class BoxManager:
         self._question_location: Dict[uuid.UUID, int] = {}
 
     def add_new_question(self, question: Question) -> None:
-        """Adds a new question to the Unasked Questions box."""
+        """Add a new question to the Unasked Questions box.
+  
+        Args:
+            question (Question): The question to add.
+        """
         self._boxes[1].add_question(question)
         self._question_location[question.id] = 1
 
 
     def move_question(self, question: Question, answered_correctly: bool) -> None:
-        """Moves a question based on whether it was answered correctly."""
+        """Move a question based on whether it was answered correctly.
+  
+        Args:
+            question (Question): The question to move.
+            answered_correctly (bool): True if the question was answered correctly, False otherwise.
+        """
         current_box = self._question_location.get(question.id)
 
         if answered_correctly:

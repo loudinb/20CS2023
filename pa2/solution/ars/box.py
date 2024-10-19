@@ -8,7 +8,12 @@ class Box:
     """Represents a box that holds a set of questions for adaptive review."""
 
     def __init__(self, name: str, priority_interval: timedelta) -> None:
-        """Initialize a box with a name and priority interval."""
+        """Initialize a new Box instance.
+
+        Args:
+            name (str): The name of the box.
+            priority_interval (timedelta): The time interval for prioritizing questions.
+        """
         self._name: str = name
         self._questions: List[Question] = []
         self._priority_interval: timedelta = priority_interval
