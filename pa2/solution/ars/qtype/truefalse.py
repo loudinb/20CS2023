@@ -11,7 +11,7 @@ class TrueFalse(Question):
         explanation (str): Additional information to explain why the correct answer is False.
     """
 
-    def __init__(self, question: str, correct_answer: bool, explanation: str = "") -> None:
+    def __init__(self, question: str, answer: bool, explanation: str = "") -> None:
         """Initializes a true/false quiz item.
         
         Args:
@@ -19,16 +19,16 @@ class TrueFalse(Question):
             correct_answer (bool): The correct answer, either True or False.
             explanation (str): Additional information if the correct answer is False.
         """
-        if not isinstance(correct_answer, bool):
+        if not isinstance(answer, bool):
             raise ValueError("The correct_answer must be a boolean (True or False).")
 
-        self.question = question
-        self.correct_answer = correct_answer
-        self.explanation = explanation
+        self._question = question
+        self._answer = answer
+        self._explanation = explanation
 
     def ask(self) -> str:
         """Returns the true/false question."""
-        return f"{self.question} (True/False)"
+        return f"{self._question} (True/False)"
 
     def check_answer(self, answer: str) -> bool:
         """Checks if the provided answer matches the correct answer.
@@ -47,13 +47,12 @@ class TrueFalse(Question):
         else:
             raise ValueError("Answer must be 'True' or 'False'.")
 
-        return user_answer == self.correct_answer
+        return user_answer == self._answer
 
-    @property
-    def incorrect_response(self) -> str:
+    def get_incorrect_answer_feedback(self) -> str:
         """Returns a response to display when the user provides an incorrect answer."""
-        return f"Incorrect. {self.explanation}"  
+        return f"Incorrect. {self._explanation}"  
         
     def __repr__(self) -> str:
         """Returns a string representation of the TrueFalse object."""
-        return f"TrueFalse(question='{self.question}', correct_answer={self.correct_answer})"
+        return f"TrueFalse(question='{self._question}', answer={self._answer}, explanation={self._explanation})"

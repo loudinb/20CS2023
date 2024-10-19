@@ -10,6 +10,10 @@ from abc import ABC, abstractmethod
 class Question(ABC):
     """Abstract base class for quiz items."""
 
+    def __init__(self, question: str, answer: str):
+        self._question = question
+        self._answer = answer
+
     @abstractmethod
     def ask(self) -> str:
         """Returns the question as a string."""
@@ -27,9 +31,8 @@ class Question(ABC):
         """
         pass
 
-    @property
     @abstractmethod
-    def incorrect_response(self) -> str:
+    def get_incorrect_answer_feedback(self) -> str:
         """Returns a response to display when the user provides an incorrect answer."""
         pass
 

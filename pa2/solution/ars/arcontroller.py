@@ -5,11 +5,11 @@ from ars.card import Card
 from ars.qtype.shortanswer import ShortAnswer
 from ars.qtype.truefalse import TrueFalse
 
-class AdaptiveReview:
+class ARController:
     """Main controller for running an adaptive review session."""
 
     def __init__(self, question_data: List[dict]) -> None:
-        """Initializes the Adaptive Review System."""
+        """Initializes the Adaptive Review Controller."""
         self.box_manager = BoxManager()
         self._initialize_cards(question_data)
 
@@ -22,13 +22,13 @@ class AdaptiveReview:
                 if question_type == "shortanswer":
                     question = ShortAnswer(
                         question=q["question"],
-                        correct_answer=q["correct_answer"],
-                        case_sensitive=q.get("case_sensitive", False)
+                        answer=q["correct_answer"],
+                        case_sensitive_answer=q.get("case_sensitive", False)
                     )
                 elif question_type == "truefalse":
                     question = TrueFalse(
                         question=q["question"],
-                        correct_answer=q["correct_answer"],
+                        answer=q["correct_answer"],
                         explanation=q.get("explanation", "")
                     )
                 else:
@@ -62,7 +62,7 @@ class AdaptiveReview:
                 if answer_is_correct:
                     print("Correct!")
                 else:
-                    print(card.question.incorrect_response)
+                    print(card.question.get_incorrect_answer_feedback())
 
                 self.box_manager.move_card(card, answer_is_correct)
 

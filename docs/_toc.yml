@@ -81,6 +81,16 @@ parts:
             - file: programming-assignments/assignment-1/post-class
             - file: programming-assignments/assignment-1/comment-class
             - file: programming-assignments/assignment-1/reference-material
+        - file: programming-assignments/assignment-2/assignment-2
+          sections:
+            - file: programming-assignments/assignment-2/question-abstract-class
+            - file: programming-assignments/assignment-2/truefalse-class
+            - file: programming-assignments/assignment-2/shortanswer-class
+            - file: programming-assignments/assignment-2/card-class
+            - file: programming-assignments/assignment-2/box-class
+            - file: programming-assignments/assignment-2/boxmanager-class
+            - file: programming-assignments/assignment-2/adaptivereview-class
+            - file: programming-assignments/assignment-2/reference-material 
   - caption: Other Resources
     chapters:
       - file: faqs

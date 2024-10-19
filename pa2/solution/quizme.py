@@ -1,7 +1,7 @@
 import random
 from data.sample_questions import QUESTIONS
-from ars.adaptivereview import AdaptiveReview
+from ars.arcontroller import ARController
 
 random.shuffle(QUESTIONS)
-quiz = AdaptiveReview(QUESTIONS)
+quiz = ARController(QUESTIONS)
 quiz.start()
