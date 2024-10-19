@@ -65,4 +65,4 @@ class ARController:
 
             self._box_manager.move_question(question, answer_is_correct)
 
-        print("Thank you for using the Adaptive Review System!")
+        print("Thank you, goodbye!")
