@@ -1,38 +1,41 @@
+"""Module for the Box class in the Adaptive Review System."""
+
 from datetime import datetime, timedelta
 from typing import List, Optional
-from ars.card import Card
+from .qtype.question import Question
 
 class Box:
-    """Represents a box that holds a set of cards for adaptive review."""
+    """Represents a box that holds a set of questions for adaptive review."""
 
     def __init__(self, name: str, priority_interval: timedelta) -> None:
-        """Initializes a box with a name and priority interval."""
-        self.name = name
-        self._cards: List[Card] = []
-        self.priority_interval = priority_interval
+        """Initialize a box with a name and priority interval."""
+        self._name: str = name
+        self._questions: List[Question] = []
+        self._priority_interval: timedelta = priority_interval
 
-    def add_card(self, card: Card) -> None:
-        """Adds a card to the box."""
-        if card not in self._cards:
-            self._cards.append(card)
 
-    def remove_card(self, card: Card) -> None:
-        """Removes a card from the box."""
-        if card in self._cards:
-            self._cards.remove(card)
+    def add_question(self, question: Question) -> None:
+        """Add a question to the box."""
+        if question not in self._questions:
+            self._questions.append(question)
 
-    def get_next_priority_card(self) -> Optional[Card]:
-        """Returns the next priority card if available, or None."""
+    def remove_question(self, question: Question) -> None:
+        """Remove a question from the box."""
+        if question in self._questions:
+            self._questions.remove(question)
+
+    def get_next_priority_question(self) -> Optional[Question]:
+        """Return the next priority question if available."""
         now = datetime.now()
-        for card in self._cards:
-            if card.last_asked is None or (now - card.last_asked) >= self.priority_interval:
-                return card
+        for question in self._questions:
+            if question.last_asked is None or (now - question.last_asked) >= self._priority_interval:
+                return question
         return None
 
     def __len__(self) -> int:
-        """Returns the number of cards in the box."""
-        return len(self._cards)
+        """Return the number of questions in the box."""
+        return len(self._questions)
 
     def __repr__(self) -> str:
-        """Returns a string representation of the Box object."""
-        return f"Box(name='{self.name}', cards_count={len(self._cards)})"
+        """Return a string representation of the Box object."""
+        return f"Box(name='{self._name}', questions_count={len(self._questions)})"
