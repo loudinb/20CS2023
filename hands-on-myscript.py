@@ -1,1 +1,0 @@
-print(f'The __name__ variable is set to: {__name__}')

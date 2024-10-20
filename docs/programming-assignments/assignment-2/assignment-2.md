@@ -43,14 +43,6 @@ quizme/
 │       ├── question.py
 │       ├── truefalse.py
 │       └── shortanswer.py
-├── tests/                        # Test files for both QuizMe and ARS
-│   ├── test_arcontroller.py
-│   ├── test_box.py
-│   ├── test_boxmanager.py
-│   ├── test_question.py
-│   ├── test_truefalse.py
-│   ├── test_shortanswer.py
-│   └── test_quizme.py
 └── quizme.py                     # Main CLI application
 ```
 

@@ -83,7 +83,7 @@ parts:
             - file: programming-assignments/assignment-1/reference-material
         - file: programming-assignments/assignment-2/assignment-2
           sections:
-            - file: programming-assignments/assignment-2/question-abstract-class
+            - file: programming-assignments/assignment-2/question-abstract-base-class
             - file: programming-assignments/assignment-2/truefalse-class
             - file: programming-assignments/assignment-2/shortanswer-class
             - file: programming-assignments/assignment-2/card-class
