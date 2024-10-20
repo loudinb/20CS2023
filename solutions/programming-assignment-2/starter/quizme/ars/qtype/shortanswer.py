@@ -1,1 +1,1 @@
-"""Module for the ShortAnswer quiz item class, which checks answers based on user input."""
+"""Module for the ShortAnswer quiz item class in the Adaptive Review System."""

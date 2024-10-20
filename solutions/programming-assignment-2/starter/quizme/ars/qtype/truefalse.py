@@ -1,1 +1,1 @@
-"""Module for the TrueFalse quiz item class, which checks answers based on a true/false response."""
+"""Module for the TrueFalse quiz item class in the Adaptive Review System."""

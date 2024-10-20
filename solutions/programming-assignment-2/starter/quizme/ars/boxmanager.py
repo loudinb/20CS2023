@@ -1,1 +1,1 @@
-"""Module for managing multiple boxes in the Adaptive Review System."""
+"""Module for managing boxes in the Adaptive Review System."""
