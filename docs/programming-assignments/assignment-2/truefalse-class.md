@@ -2,7 +2,11 @@
 
 The `TrueFalse` class represents a true/false question in the Adaptive Review System. It inherits from the `Question` base class and implements specific behavior for true/false questions.
 
-Follow the specifications provided below to create a `TrueFalse` class in the `truefalse.py` file within the `qtype` directory.
+Follow the specifications provided below to create a `TrueFalse` class in the `truefalse.py` file within the `qtype` directory.  The module level docstring should be:
+
+```python
+"""Module for the TrueFalse quiz item class in the Adaptive Review System."""
+```
 
 ## Attributes
 
@@ -16,7 +20,7 @@ Note: This class also inherits all attributes from the `Question` base class.
 
 | Name                 | Kind     | Return Type | Parameters                                        | Description                                           |
 |----------------------|----------|-------------|---------------------------------------------------|-------------------------------------------------------|
-| `__init__`           | Instance | None        | `question: str, answer: bool, explanation: Optional[str] = None` | Initialize a new TrueFalse instance |
+| `__init__`           | Instance | None        | `question: str, answer: bool, explanation: str = ""` | Initialize a new TrueFalse instance |
 | `ask`                | Instance | `str`       | None                                              | Return the true/false question                        |
 | `check_answer`       | Instance | `bool`      | `answer: str`                                     | Check if the provided answer is correct               |
 | `incorrect_feedback` | Instance | `str`       | None                                              | Return feedback for an incorrect answer               |
@@ -29,16 +33,17 @@ Note: This class also inherits all attributes from the `Question` base class.
   ```python
   """Class for a True/False quiz item."""
   ```
-**`__init__(self, question, answer, explanation = None)`**
-- Impletement the `__init__` method to initialize a new `TrueFalse` instance.
+
+**`__init__(self, question, answer, explanation = "")`**
+- Implement the `__init__` method to initialize a new `TrueFalse` instance.
 - Add a docstring to describe the method.
   ```python
   """Initialize a true/false quiz item.
         
     Args:
-        question: The question to be displayed.
-        answer: The correct answer, either True or False.
-        explanation: Additional information to explain the correct answer.
+        question (str): The question to be displayed.
+        answer (bool): The correct answer, either True or False.
+        explanation (str, optional): Additional information to explain the correct answer.
 
     Raises:
         ValueError: If the answer is not a boolean.
@@ -46,8 +51,7 @@ Note: This class also inherits all attributes from the `Question` base class.
   ```
 - Call the superclass `__init__` method with `question` and `answer` parameters.
 - Validate that the `answer` is a boolean. If not, raise a `ValueError` with the message "The answer must be a boolean (True or False)."
-- Set the `_explanation` attribute to the `explanation` parameter if provided, or an empty string if not.
-
+- Set the `_explanation` attribute to the `explanation` parameter.
 
 **`ask(self) -> str`**
 - Override the `ask` method from the base class.
@@ -65,10 +69,10 @@ Note: This class also inherits all attributes from the `Question` base class.
   """Check if the provided answer is correct.
         
     Args:
-        answer: The user's answer to the question.
+        answer (str): The user's answer to the question.
         
     Returns:
-        True if the answer is correct, False otherwise.
+        bool: True if the answer is correct, False otherwise.
         
     Raises:
         ValueError: If the answer is not 'True' or 'False'.
@@ -85,13 +89,17 @@ Note: This class also inherits all attributes from the `Question` base class.
 - Implement this method to return feedback for an incorrect answer.
 - Add a docstring to describe the method.
   ```python
-  """Return feedback for an incorrect answer."""
+  """Return feedback for an incorrect answer.
+
+  Returns:
+      str: Feedback message for an incorrect answer, including the explanation if provided.
+  """
   ```
-- Return a string that includes "Incorrect." followed by the explanation as provided in the `_explanation` attribute. 
+- Return a string that includes "Incorrect." followed by the explanation, only if `_explanation` is not an empty string.
 
 ### Testing the `TrueFalse` Class
 
-To test the `TrueFalse` class, you can create an instance of the class, ask the question, check the answer, and provide feedback based on the correctness of the answer.  Here's an example:
+To test the `TrueFalse` class, you can create an instance of the class, ask the question, check the answer, and provide feedback based on the correctness of the answer. Here's an example:
 
 ```python
 from ars.qtype.truefalse import TrueFalse

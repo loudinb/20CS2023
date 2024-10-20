@@ -2,7 +2,11 @@
 
 The `Box` class represents a container for questions in the Adaptive Review System. It manages a set of questions and provides methods for adding, removing, and retrieving questions based on priority.
 
-Follow the specifications provided below to create a `Box` class in the `box.py` file.
+Follow the specifications provided below to create a `Box` class in the `box.py` file. The module-level docstring should be:
+
+```python
+"""Module for the Box class in the Adaptive Review System."""
+```
 
 ## Attributes
 
@@ -19,24 +23,24 @@ Follow the specifications provided below to create a `Box` class in the `box.py`
 | `__init__`                | Instance | None                | `name: str, priority_interval: timedelta` | Initialize a new Box instance |
 | `name`                    | Property | `str`               | None                 | Get the name of the box                               |
 | `priority_interval`       | Property | `timedelta`         | None                 | Get the priority interval of the box                  |
-| `add_question`            | Instance | None                | `question: Question` | Add a question to the box                             |
+| `add_question`            | Instance | None                | `question: Question` | Add a question to the box (if not already present)    |
 | `remove_question`         | Instance | None                | `question: Question` | Remove a question from the box                        |
 | `get_next_priority_question` | Instance | `Optional[Question]` | None              | Return the next priority question if available        |
 | `__len__`                 | Instance | `int`               | None                 | Return the number of questions in the box             |
-| `__repr__`                | Instance | `str`               | None                 | Return a string representation of the Box object      |
+| `__str__`                 | Instance | `str`               | None                 | Return a string representation of the Box object      |
 
 ### Implementation Details
 
 **`class Box`**
 - Define the `Box` class.
-- Add a docstring to describe the class.
+- The class docstring should be:
   ```python
   """Represents a box that holds a set of questions for adaptive review."""
   ```
 
 **`__init__(self, name, priority_interval)`**
 - Implement the constructor method for the `Box` class.
-- Add a docstring to describe the method.
+- The docstring should be:
   ```python
   """Initialize a new Box instance.
 
@@ -51,21 +55,21 @@ Follow the specifications provided below to create a `Box` class in the `box.py`
 
 **`name(self)`**
 - Implement this property to return the value of the `_name` attribute.
-- Add a docstring to describe the property.
+- The docstring should be:
   ```python
   """Returns the name of the box."""
   ```
 
 **`priority_interval(self)`**
 - Implement this property to return the value of the `_priority_interval` attribute.
-- Add a docstring to describe the property.
+- The docstring should be:
   ```python
   """Returns the priority interval of the box."""
   ```
 
 **`add_question(self, question)`**
 - Implement this method to add a question to the box.
-- Add a docstring to describe the method.
+- The docstring should be:
   ```python
   """Add a question to the box.
 
@@ -73,12 +77,11 @@ Follow the specifications provided below to create a `Box` class in the `box.py`
       question (Question): The question to be added.
   """
   ```
-- Check if the question is not already in `_questions` before adding it.
-- If the question is not in `_questions`, append it to the list.
+- Check if the question is not already in `_questions` before adding it. Append it to the list only if not present.
 
 **`remove_question(self, question: Question) -> None`**
 - Implement this method to remove a question from the box.
-- Add a docstring to describe the method.
+- The docstring should be:
   ```python
   """Remove a question from the box.
 
@@ -91,7 +94,7 @@ Follow the specifications provided below to create a `Box` class in the `box.py`
 
 **`get_next_priority_question(self) -> Optional[Question]`**
 - Implement this method to return the next priority question if available.
-- Add a docstring to describe the method.
+- The docstring should be:
   ```python
   """Return the next priority question if available.
 
@@ -107,21 +110,19 @@ Follow the specifications provided below to create a `Box` class in the `box.py`
 
 **`__len__(self)`**
 - Implement this method to return the number of questions in the box.
-- Add a docstring to describe the method.
+- The docstring should be:
   ```python
   """Return the number of questions in the box."""
   ```
 - Return the length of the `_questions` list.
 
-
 **`__str__(self)`**
 - Implement this method to return a string representation of the `Box` object.
-- Add a docstring to describe the method.
+- The docstring should be:
   ```python
   """Return a string representation of the Box object."""
   ```
 - Return a string that includes the name of the box and the number of questions in the box.
-
 
 ### Testing the `Box` Class
 
@@ -143,7 +144,7 @@ q1 = ShortAnswer("What's the capital of France?", "Paris")
 # Add questions to the box
 review_box.add_question(q1)
 
-print(review_box)  # Output: Box(name='Review Box', questions_count=2)
+print(review_box)  # Output: Box(name='Review Box', questions_count=1)
 
 # Ask the question, which updates the last_asked property to the current time
 print(q1.ask())  # Output: "What's the capital of France?"

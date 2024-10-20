@@ -2,7 +2,11 @@
 
 The `ARController` class serves as the main controller for running an adaptive review session. It manages the interaction between the user, questions, and the BoxManager.
 
-Follow the specifications provided below to create an `ARController` class in the `arcontroller.py` file.
+Follow the specifications provided below to create an `ARController` class in the `arcontroller.py` file. The module-level docstring should be:
+
+```python
+"""Core module for running the Adaptive Review System (ARS) session."""
+```
 
 ## Attributes
 
@@ -31,10 +35,10 @@ Follow the specifications provided below to create an `ARController` class in th
 - Initialize the `ARController` instance with the given `question_data`.
 - Add a docstring with a brief description of the method.
   ```python
-  """Initialize a new ARController instance.
+  """Initialize the Adaptive Review Controller.
 
   Args:
-      question_data (List[dict]): A list of dictionaries containing question data. 
+      question_data (List[Dict[str, Any]]): A list of dictionaries containing question data.
   """
   ```
 - Create a new `BoxManager` instance and assign it to `_box_manager`.
@@ -44,32 +48,32 @@ Follow the specifications provided below to create an `ARController` class in th
 - Implement this private method to initialize questions and add them to the BoxManager.
 - Add a docstring with a brief description of the method.
   ```python
-  """Initialize questions and add them to the BoxManager.
+  """Initialize questions and place them in the Unasked Questions box.
 
   Args:
-      question_data (List[dict]): A list of dictionaries containing question data.
+      question_data (List[Dict[str, Any]]): A list of dictionaries containing question data.
   """
   ```
 - Iterate through the `question_data` list:
   - For each question dictionary, get the `type` key.
   - Use the `try-except` block to create either a `ShortAnswer` or `TrueFalse` question and add it to the BoxManager:
-    - `try` block:
-      - If "shortanswer" type, create a `ShortAnswer` instance with `question`, `correct_answer`, and `case_sensitive` (default to False if not provided) from the dictionary.
-      - If "truefalse" type, create a `TrueFalse` instance with `question`, `correct_answer`, and `explanation` (default to empty string if not provided) from the dictionary.
+    - **Try Block:**
+      - If `"shortanswer"` type, create a `ShortAnswer` instance with `question`, `correct_answer`, and `case_sensitive` (default to `False` if not provided).
+      - If `"truefalse"` type, create a `TrueFalse` instance with `question`, `correct_answer`, and `explanation` (default to an empty string if not provided).
       - If the question type is not supported, print a message and `continue` to the next question.
       - Add the created `question` to the BoxManager using `add_new_question`.
-    - `except` block:
+    - **Except Block:**
       - Handle any `KeyError` exceptions that might occur due to missing required fields, print an error message, and skip the question.
 
 **`start(self) -> None`**
 - Implement this method to run the interactive adaptive review session.
 - Add a docstring with a brief description of the method.
   ```python
-  """Runs the interactive adaptive review session."""
+  """Run the interactive adaptive review session."""
   ```
 - Print a message and instructions for quitting the session.
   ```python
-  print("Welcome! Type 'q' at any time to quit the session.")
+  print("Type 'q' at any time to quit the session.")
   ```
 - Enter a loop that continues until all questions have been reviewed:
   - Get the next question from the BoxManager using `get_next_question`.
@@ -78,10 +82,9 @@ Follow the specifications provided below to create an `ARController` class in th
   - Get the user's answer as input and assign it to a variable named `user_answer`.
   - If the user enters 'q', `break` the loop to quit the session.
   - Check if `user_answer` is correct using the question's `check_answer` method.
-  - Print "Correct!" if the answer is correct, otherwise print the `incorrect_feedback` as provided by the question.
+  - Print "Correct!" if the answer is correct; otherwise, print the `incorrect_feedback` as provided by the question.
   - Move the question in the BoxManager based on whether it was answered correctly.
 - Print "Thank you, goodbye!" when the session ends.
-
 
 ### Testing the `ARController` Class
 

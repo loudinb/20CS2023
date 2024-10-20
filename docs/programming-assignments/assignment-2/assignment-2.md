@@ -1,44 +1,37 @@
-# Assignment 2
+# Assignment 2: QuizMe 
 
-In this assignment you will be creating a Command Line Interface (CLI) application called **QuizMe**.  The CLI will quiz as user on a set of questions. The application will adapt to the user's performance, prioritizing missed questions for review and spacing out reviews for questions answered correctly. The application will include an internal library called the Adaptive Review System (ARS) which provides the logic for managing the adaptive learning process.
+In this assignment, you will create a Command Line Interface (CLI) application called **QuizMe**. This application will quiz users on a set of questions, adapting to their performance using a hybrid [Leitner system](https://en.wikipedia.org/wiki/Leitner_system). The application includes an internal library called the Adaptive Review System (ARS), which provides the logic for managing the adaptive learning process.
 
 ## QuizMe CLI Application
 
-QuizMe is the main interface through which users interact with the quiz system. It provides a command-line interface for:
+QuizMe is the main interface through which users interact with the quiz system. You will implement a command-line interface that:
 
-1. Loading quiz questions from a data file
-2. Initiating a quiz session
-3. Presenting questions to the user
-4. Accepting and processing user answers
-5. Displaying feedback
-
-The CLI application is responsible for the user interaction flow and integrates with the underlying ARS library.
+1. Loads quiz questions from a JSON data file
+2. Initiates a quiz session
+3. Presents questions to the user
+4. Accepts and processes user answers
+5. Displays feedback
+6. Adapts the question order based on user performance
 
 ## Adaptive Review System (ARS) Library
 
-The ARS is an internal library that implements the core functionality of the adaptive learning process. It uses a hybrid spaced repetition system designed for effective single-session review, combined with the principle of interval-based repetition to enhance retention by dynamically adjusting question priorities based on performance.
+The ARS is an internal library that implements the core functionality of the adaptive learning process. It uses a hybrid spaced repetition system designed for effective single-session review, combined with interval-based repetition to enhance retention.
 
 ### How ARS Works
 
 The system uses five boxes to manage questions:
 
-1. **Box 0 (Missed Questions)**: Prioritized for immediate review after 60 seconds.
+1. **Box 0 (Missed Questions)**: Prioritized for review after 60 seconds.
 2. **Box 1 (Unasked Questions)**: New questions are drawn from here.
-3. **Box 2 (Correctly Answered Once)**: Reviewed after 360 seconds.
-4. **Box 3 (Correctly Answered Twice)**: Reviewed after 600 seconds.
+3. **Box 2 (Correctly Answered Once)**: Reviewed after 180 seconds.
+4. **Box 3 (Correctly Answered Twice)**: Reviewed after 360 seconds.
 5. **Box 4 (Known Questions)**: Reviewed only if all other boxes are empty.
 
-Questions move between boxes based on the user's answers and time intervals, ensuring focused attention on difficult questions while spacing out reviews for well-learned content.
-
-### Key Components of ARS:
-
-1. **ARController**: Manages the overall flow of the quiz session.
-2. **BoxManager**: Handles the organization of questions into different "boxes" based on the user's performance.
-3. **Box**: Represents a category of questions (e.g., missed, unasked, correctly answered once).
-4. **Question**: Defines different types of questions (e.g., true/false, short answer).
-
+Questions move between boxes based on the user's answers, ensuring focused attention on questions the user finds challenging while spacing out reviews for well-learned content.
 
 ## Project Structure
+
+The project is structured into the following directories and files. The GitHub repository includes the initial setup and template files for each component, along with comprehensive test files that will be used to evaluate your implementation.
 
 ```
 quizme/
@@ -51,23 +44,24 @@ quizme/
 │       ├── truefalse.py
 │       └── shortanswer.py
 ├── tests/                        # Test files for both QuizMe and ARS
-│   ├── test_adaptivereview.py
-│   ├── test_boxes.py
-│   ├── test_card.py
-│   ├── test_quizme.py
-│   └── test_config.py
-├── data/                         # Sample question data
-│   └── example_questions.py
+│   ├── test_arcontroller.py
+│   ├── test_box.py
+│   ├── test_boxmanager.py
+│   ├── test_question.py
+│   ├── test_truefalse.py
+│   ├── test_shortanswer.py
+│   └── test_quizme.py
 └── quizme.py                     # Main CLI application
 ```
 
 ## Assignment Tasks
 
-1. Implement the QuizMe CLI application (`quizme.py`) that interfaces with the ARS library.
-2. Complete the implementation of the ARS library components in the `ars/` directory.
-3. Ensure proper integration between the CLI and the ARS library.
-4. Implement loading of questions from the data file.
-5. Create a user-friendly CLI experience for taking quizzes.
-6. Write comprehensive tests for both the CLI application and the ARS library.
+Your task is to implement the following components in the specified order. Since each task builds on the previous one, it is essential to complete them sequentially and verify that each component functions correctly using the provided tests before moving on to the next.
 
-This assignment challenges you to create an effective and efficient learning tool that adapts to the user's performance in real-time, while also focusing on building a clear separation between the user interface (QuizMe CLI) and the core functionality (ARS library).
+1. Implement the [`Question` abstract base class](question-abstract-base-class.md) in `question.py`:
+2. Implement the [`TrueFalse` class](truefalse-class.md) in `truefalse.py`:
+3. Implement the [`ShortAnswer` class](shortanswer-class.md) in `shortanswer.py`:
+4. Implement the [`Box` class](box-class.md) in `box.py`:
+5. Implement the [`BoxManager` class](boxmanager-class.md) in `boxmanager.py`:
+6. Implement the [`ARController` class](arcontroller-class.md) in `arcontroller.py`:
+7. Implement the QuizMe CLI in `quizme.py`:

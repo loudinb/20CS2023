@@ -2,7 +2,11 @@
 
 The `ShortAnswer` class represents a short answer question in the Adaptive Review System. It inherits from the `Question` base class and implements specific behavior for short answer questions.
 
-Follow the specifications provided below to create a `ShortAnswer` class in the `shortanswer.py` file within the `qtype` directory.
+Follow the specifications provided below to create a `ShortAnswer` class in the `shortanswer.py` file within the `qtype` directory. Use the following for the module-level docstring:
+
+```python
+"""Module for the ShortAnswer quiz item class in the Adaptive Review System."""
+```
 
 ## Attributes
 
@@ -17,7 +21,7 @@ Note: This class also inherits all attributes from the `Question` base class.
 | Name                 | Kind     | Return Type | Parameters                                        | Description                                           |
 |----------------------|----------|-------------|---------------------------------------------------|-------------------------------------------------------|
 | `__init__`           | Instance | None        | `question: str, answer: str, case_sensitive: bool = False` | Initialize a new ShortAnswer instance |
-| `ask`                | Instance | `str`       | None                                              | Return the short answer question                      |
+| `ask`                | Instance | `str`       | None                                              | Return the short answer question (inherited from `Question`)|
 | `check_answer`       | Instance | `bool`      | `answer: str`                                     | Check if the provided answer is correct               |
 | `incorrect_feedback` | Instance | `str`       | None                                              | Return feedback for an incorrect answer               |
 | `_normalize`         | Instance | `str`       | `text: str`                                       | Normalize the text for comparison                     |
@@ -26,21 +30,22 @@ Note: This class also inherits all attributes from the `Question` base class.
 
 **`class ShortAnswer(Question)`**
 - Define the `ShortAnswer` class that inherits from the `Question` base class.
-- Add a docstring to describe the class.
+- The class docstring should be:
   ```python
   """A quiz item representing a short answer question."""
   ```
 
 **`__init__(self, question, answer, case_sensitive = False)`**
 - Implement the constructor method to initialize a new `ShortAnswer` instance.
-- Add a docstring to describe the method.
+- The docstring should be:
   ```python
-  """Initialize a new ShortAnswer instance.
+  """Initialize a short answer quiz item.
 
-  Args:
-      question (str): The question text.
-      answer (str): The correct answer.
-      case_sensitive (bool, optional): Flag to determine if the answer is case sensitive. Defaults to False.
+    Args:
+        question (str): The question prompt.
+        answer (str): The correct answer.
+        case_sensitive (bool, optional): Whether the answer comparison should be case-sensitive. 
+                                         Defaults to False.
   """
   ```
 - Call the superclass `__init__` method with `question` and `answer` parameters.
@@ -48,7 +53,7 @@ Note: This class also inherits all attributes from the `Question` base class.
 
 **`_normalize(self, text)`**
 - Implement this private method to normalize the text for comparison.
-- Add a docstring to describe the method.
+- The docstring should be:
   ```python
   """Normalize the text for comparison.
 
@@ -69,7 +74,7 @@ Note: This class also inherits all attributes from the `Question` base class.
 
 **`check_answer(self, answer)`**
 - Implement this method to check if the provided answer is correct.
-- Add a docstring to describe the method.
+- The docstring should be:
   ```python
   """Check if the provided answer is correct.
 
@@ -95,10 +100,9 @@ Note: This class also inherits all attributes from the `Question` base class.
   ```
 - Return a string that includes "Incorrect. The correct answer is: " followed by the correct answer as it was originally provided.
 
-
 ### Testing the `ShortAnswer` Class
 
-To test the `ShortAnswer` class, you can create an instance of the class, ask the question, check the answer, and provide feedback based on the correctness of the answer.  Here's an example of how to use the `ShortAnswer` class:
+To test the `ShortAnswer` class, you can create an instance of the class, ask the question, check the answer, and provide feedback based on the correctness of the answer. Here's an example of how to use the `ShortAnswer` class:
 
 ```python
 from ars.qtype.shortanswer import ShortAnswer
@@ -117,5 +121,3 @@ if sa_question.check_answer(user_input):
 else:
     print(sa_question.incorrect_feedback())
 ```
-
-This example demonstrates creating a ShortAnswer question, asking it, checking the user's answer, and providing feedback. The answer checking is case-insensitive by default, so "paris" would be accepted as a correct answer.

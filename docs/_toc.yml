@@ -89,8 +89,8 @@ parts:
             - file: programming-assignments/assignment-2/card-class
             - file: programming-assignments/assignment-2/box-class
             - file: programming-assignments/assignment-2/boxmanager-class
-            - file: programming-assignments/assignment-2/adaptivereview-class
-            - file: programming-assignments/assignment-2/reference-material 
+            - file: programming-assignments/assignment-2/arcontroller-class
+            - file: programming-assignments/assignment-2/quizme
   - caption: Other Resources
     chapters:
       - file: faqs
