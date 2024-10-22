@@ -1,5 +1,7 @@
 import argparse
-from typing import Dict
+from typing import Dict, List
+import re
+from collections import Counter
 
 def read_text_file(input_file: str) -> str:
     """Reads the content of a text file.
@@ -9,13 +11,17 @@ def read_text_file(input_file: str) -> str:
 
     Returns:
         The content of the file as a string.
+
+    Raises:
+        FileNotFoundError: If the specified file does not exist.
     """
-    # TODO: Open the input file in text read mode
-    #       Read the entire file content and return it
+    # TODO-1: Implement try/except blocl
+    # TODO-2: try block - read and return contents of file as string using context manager
+    # TODO-3: handle "FileNotFoundError" execption
     pass
 
 
-def clean_and_split_text(text: str) -> list:
+def clean_and_split_text(text: str) -> List[str]:
     """Cleans and splits the text into words.
 
     Args:
@@ -24,9 +30,9 @@ def clean_and_split_text(text: str) -> list:
     Returns:
         A list of words after converting to lowercase and removing punctuation.
     """
-    # TODO: Convert text to lowercase
-    #       Remove punctuation (e.g., .,!?)
-    #       Split the text into words and return the list
+    # TODO-1: Convert text to lowercase
+    # TODO-2: Remove punctuation (re.sub(r'[^\w\s]', '', text))
+    # TODO-3: Split the text into words and return the list
     pass
 
 
@@ -45,13 +51,15 @@ def count_word_occurrences(words: list) -> Dict[str, int]:
 
 
 def display_word_counts(word_counts: Dict[str, int]) -> None:
-    """Displays the word counts.
+    """Counts the occurrences of each word in a list.
 
     Args:
-        word_counts: A dictionary of word counts.
+        words: A list of words.
+
+    Returns:
+        A dictionary where keys are words and values are their counts.
     """
-    # TODO: Print each word and its corresponding count
-    #       Sort the words alphabetically for better readability
+    # TODO-1: retrun a (collections) Counter object as a dictionary
     pass
 
 
@@ -71,7 +79,6 @@ def process_text_file(input_file: str) -> None:
 if __name__ == '__main__':
     # TODO-1: Create a parser with a description of the program
     # TODO-2: Add an argument for input_file
-    
     # TODO-3: Parse the arguments
-    
     # TODO-4: Call process_text_file with the input file path
+    pass

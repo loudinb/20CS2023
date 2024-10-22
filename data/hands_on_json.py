@@ -9,10 +9,16 @@ def read_json_file(input_file: str) -> Dict:
         input_file: Path to the JSON file to be read.
 
     Returns:
-        A dictionary representation of the JSON data.
+        A dictionary representation of the JSON data.  
+
+    Raises:
+        FileNotFoundError: If the specified file does not exist.
+        json.JSONDDecodeError: If the file is not valid JSON
     """
-    # TODO: Open the input file in read mode
-    #       Use json.load() to parse the JSON file into a dictionary
+    # TODO-1: Implement try/except blocl
+    # TODO-2: try block - read contents of file using json.load()
+    # TODO-3: handle "FileNotFoundError" execption, return an empty dictionary
+    # TODO-4: handle "json.JSONDDecodeError" exception, reutrn an empty dictionary
     pass
 
 
@@ -22,8 +28,8 @@ def process_json_file(input_file: str) -> None:
     Args:
         input_file: Path to the JSON file.
     """
-    # TODO-1: Call read_json_file to get the JSON data
-    # TODO-2: Print the dictionary to verify the content
+    # TODO-1: Call read_json_file to get the JSON data, json_data = ...
+    # TODO-2: If json_data is not empty, print the dictionary
     pass
 
 

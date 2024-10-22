@@ -12,9 +12,10 @@ class Post:
         self._tags = set()
         if tags:
             for tag in tags:
-                if not self.is_valid_tag(tag):
-                    raise ValueError("Invalid tag.")
-                self._tags.add(tag)
+                self.add_tag(tag)
+                # if not self.is_valid_tag(tag):
+                #     raise ValueError("Invalid tag.")
+                # self._tags.add(tag)
         self._created_on = datetime.now()
         self._liked_by = []
         self._comments = []

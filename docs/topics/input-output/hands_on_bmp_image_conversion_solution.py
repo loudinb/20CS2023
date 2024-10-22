@@ -1,5 +1,6 @@
 import argparse
 from typing import Tuple
+from pathlib import Path
 
 
 def read_bmp(input_file: str) -> Tuple[bytes, bytearray]:
@@ -10,12 +11,19 @@ def read_bmp(input_file: str) -> Tuple[bytes, bytearray]:
 
     Returns:
         A tuple containing the BMP header (54 bytes) and the pixel data.
-    """
-    with open(input_file, 'rb') as bmp:
-        header: bytes = bmp.read(54)  # BMP header is 54 bytes
-        pixel_data: bytearray = bytearray(bmp.read())  # Read the rest as pixel data
-    return header, pixel_data
 
+    Raises:
+        FileNotFoundError: If the specified BMP file does not exist.
+        IOError: If an I/O error occurs while reading the file.
+    """
+    try:
+        with open(input_file, 'rb') as bmp:
+            header: bytes = bmp.read(54)  # BMP header is 54 bytes
+            pixel_data: bytearray = bytearray(bmp.read())  # Read the rest as pixel data
+        return header, pixel_data
+    except FileNotFoundError:
+        print(f"Error: The file '{input_file}' was not found.")
+        raise
 
 def calculate_grayscale_value(red: int, green: int, blue: int) -> int:
     """Calculates the grayscale value from RGB components.
@@ -62,10 +70,23 @@ def write_bmp(output_file: str, header: bytes, pixel_data: bytearray) -> None:
         output_file: Path to the output BMP file.
         header: The BMP file header.
         pixel_data: The modified pixel data to be written.
+
+    Raises:
+        FileExistsError: If the output file already exists.
+        IOError: If an I/O error occurs while writing the file.
     """
-    with open(output_file, 'wb') as bmp:
-        bmp.write(header)  # Write the header
-        bmp.write(pixel_data)  # Write the modified pixel data
+    output_path = Path(output_file)
+    
+    if output_path.exists():
+        raise FileExistsError(f"Error: The file '{output_file}' already exists.")
+
+    try:
+        with open(output_file, 'wb') as bmp:
+            bmp.write(header)  # Write the header
+            bmp.write(pixel_data)  # Write the modified pixel data
+    except IOError as e:
+        print(f"Error writing file '{output_file}': {e}")
+        raise
 
 
 def bmp_to_grayscale(input_file: str, output_file: str) -> None:
@@ -75,10 +96,11 @@ def bmp_to_grayscale(input_file: str, output_file: str) -> None:
         input_file: Path to the input BMP file.
         output_file: Path to the output BMP file.
     """
+    
     header, pixel_data = read_bmp(input_file)
     grayscale_pixel_data = convert_to_grayscale(pixel_data)
     write_bmp(output_file, header, grayscale_pixel_data)
-    print("Grayscale conversion completed!")
+    
 
 
 if __name__ == '__main__':

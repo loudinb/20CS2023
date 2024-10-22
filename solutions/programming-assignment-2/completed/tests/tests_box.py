@@ -1,95 +1,160 @@
-"""Unit tests for the Box class."""
-
 import unittest
-from datetime import timedelta, datetime
+from datetime import datetime, timedelta
 from ars.box import Box
 from ars.qtype.question import Question
+from unittest.mock import patch 
+
+
 
 class MockQuestion(Question):
-    """A mock Question class for testing purposes."""
-    def check_answer(self, answer):
-        return True
-    def incorrect_feedback(self):
-        return "Incorrect"
+    """Mock Question class for testing."""
+    def __init__(self, question: str, answer: str, last_asked: datetime = None):
+        super().__init__(question, answer)
+        if last_asked:
+            self._last_asked = last_asked
+            
+    def check_answer(self, answer: str) -> bool:
+        return True  # Simplified for testing
+        
+    def incorrect_feedback(self) -> str:
+        return "Incorrect"  # Simplified for testing
 
 class TestBox(unittest.TestCase):
-    """Test cases for the Box class."""
-
     def setUp(self):
         """Set up test fixtures."""
         self.box_name = "Test Box"
-        self.priority_interval = timedelta(minutes=5)
+        self.priority_interval = timedelta(days=1)
         self.box = Box(self.box_name, self.priority_interval)
-        self.question1 = MockQuestion("Question 1?", "Answer 1")
-        self.question2 = MockQuestion("Question 2?", "Answer 2")
+        self.base_time = datetime(2024, 1, 1, 12, 0)  # Fixed time for testing
+        
+        # Create some test questions
+        self.question1 = MockQuestion("Q1", "A1", self.base_time - timedelta(days=2))
+        self.question2 = MockQuestion("Q2", "A2", self.base_time - timedelta(hours=12))
+        self.question3 = MockQuestion("Q3", "A3", self.base_time - timedelta(days=1))
 
     def test_initialization(self):
-        """Test the initialization of a Box instance."""
+        """Test box initialization."""
         self.assertEqual(self.box.name, self.box_name)
         self.assertEqual(self.box.priority_interval, self.priority_interval)
         self.assertEqual(len(self.box), 0)
+        self.assertEqual(str(self.box), f"Box(name='{self.box_name}', questions_count=0)")
 
     def test_add_question(self):
         """Test adding questions to the box."""
+        # Test adding a single question
         self.box.add_question(self.question1)
         self.assertEqual(len(self.box), 1)
         
-        # Adding the same question again should not increase the count
+        # Test adding duplicate question
         self.box.add_question(self.question1)
         self.assertEqual(len(self.box), 1)
-
+        
+        # Test adding multiple different questions
         self.box.add_question(self.question2)
-        self.assertEqual(len(self.box), 2)
+        self.box.add_question(self.question3)
+        self.assertEqual(len(self.box), 3)
 
     def test_remove_question(self):
         """Test removing questions from the box."""
+        # Add questions first
         self.box.add_question(self.question1)
         self.box.add_question(self.question2)
         
+        # Test removing existing question
         self.box.remove_question(self.question1)
         self.assertEqual(len(self.box), 1)
-
-        # Removing a question not in the box should not raise an error
-        self.box.remove_question(self.question1)
+        
+        # Test removing non-existent question
+        self.box.remove_question(self.question3)
         self.assertEqual(len(self.box), 1)
-
+        
+        # Test removing last question
         self.box.remove_question(self.question2)
         self.assertEqual(len(self.box), 0)
 
     def test_get_next_priority_question(self):
-        """Test getting the next priority question."""
-        self.box.add_question(self.question1)
-        self.box.add_question(self.question2)
-
-        # Set last_asked time for question1 to be older than the priority interval
-        self.question1._last_asked = datetime.now() - self.priority_interval - timedelta(seconds=1)
+        """Test retrieving priority questions."""
+        # Add questions with different last_asked times
+        self.box.add_question(self.question1)  # 2 days ago
+        self.box.add_question(self.question2)  # 12 hours ago
+        self.box.add_question(self.question3)  # 1 day ago
         
-        # Set last_asked time for question2 to be newer than the priority interval
-        self.question2._last_asked = datetime.now()
+        # Test with current time
+        with unittest.mock.patch('datetime.datetime') as mock_datetime:
+            mock_datetime.now.return_value = self.base_time
+            
+            # Should return question1 (oldest)
+            next_question = self.box.get_next_priority_question()
+            self.assertEqual(next_question, self.question1)
+            
+            # Remove question1 and test again
+            self.box.remove_question(self.question1)
+            next_question = self.box.get_next_priority_question()
+            self.assertEqual(next_question, self.question3)  # Next oldest eligible question
 
-        next_question = self.box.get_next_priority_question()
-        self.assertEqual(next_question, self.question1)
-
-        # If no questions are due, should return None
-        self.question1._last_asked = datetime.now()
+    def test_no_priority_questions(self):
+        """Test behavior when no priority questions are available."""
+        # Add a recently asked question
+        recent_question = MockQuestion("Recent", "Answer", datetime.now() - timedelta(minutes=30))
+        self.box.add_question(recent_question)
+        
+        # Should return None as no questions meet priority interval
         self.assertIsNone(self.box.get_next_priority_question())
 
-    def test_len(self):
-        """Test the __len__ method."""
-        self.assertEqual(len(self.box), 0)
+    def test_box_properties(self):
+        """Test box property getters."""
+        self.assertEqual(self.box.name, self.box_name)
+        self.assertEqual(self.box.priority_interval, self.priority_interval)
+
+    def test_box_string_representation(self):
+        """Test string representation of box."""
         self.box.add_question(self.question1)
-        self.assertEqual(len(self.box), 1)
         self.box.add_question(self.question2)
-        self.assertEqual(len(self.box), 2)
-
-    def test_str(self):
-        """Test the __str__ method."""
-        expected_str = f"Box(name='{self.box_name}', questions_count=0)"
+        expected_str = f"Box(name='{self.box_name}', questions_count=2)"
         self.assertEqual(str(self.box), expected_str)
 
-        self.box.add_question(self.question1)
-        expected_str = f"Box(name='{self.box_name}', questions_count=1)"
-        self.assertEqual(str(self.box), expected_str)
+    def test_edge_cases(self):
+        """Test edge cases."""
+        # Test with empty string name
+        empty_box = Box("", timedelta(days=1))
+        self.assertEqual(empty_box.name, "")
+        
+        # Test with zero priority interval
+        zero_interval_box = Box("Zero", timedelta(0))
+        self.assertEqual(zero_interval_box.priority_interval, timedelta(0))
+        
+        # Test with very large priority interval
+        large_interval = timedelta(days=365*100)  # 100 years
+        large_interval_box = Box("Large", large_interval)
+        self.assertEqual(large_interval_box.priority_interval, large_interval)
+        
+        # Test with very short priority interval
+        short_interval_box = Box("Short", timedelta(microseconds=1))
+        self.assertEqual(short_interval_box.priority_interval, timedelta(microseconds=1))
+
+    def test_priority_sorting(self):
+        """Test that questions are properly sorted by last_asked time."""
+        # Create questions with specific last_asked times
+        q1 = MockQuestion("Q1", "A1", self.base_time - timedelta(days=3))
+        q2 = MockQuestion("Q2", "A2", self.base_time - timedelta(days=2))
+        q3 = MockQuestion("Q3", "A3", self.base_time - timedelta(days=1))
+        
+        # Add questions in random order
+        self.box.add_question(q2)
+        self.box.add_question(q3)
+        self.box.add_question(q1)
+        
+        with unittest.mock.patch('datetime.datetime') as mock_datetime:
+            mock_datetime.now.return_value = self.base_time
+            
+            # Should return oldest question first
+            self.assertEqual(self.box.get_next_priority_question(), q1)
+            
+            self.box.remove_question(q1)
+            self.assertEqual(self.box.get_next_priority_question(), q2)
+            
+            self.box.remove_question(q2)
+            self.assertEqual(self.box.get_next_priority_question(), q3)
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,9 +1,6 @@
-# Thursday, October 17, 2024
+# Thursday, October 24, 2024
 
 ## Agenda
-
-
-{{< include ../topics/matplotlib/numpy-brief-introduction.qmd >}}
 
 {{< include ../topics/matplotlib/matplotlib.qmd >}}
 

@@ -10,10 +10,17 @@ def read_bmp(input_file: str) -> Tuple[bytes, bytearray]:
 
     Returns:
         A tuple containing the BMP header (54 bytes) and the pixel data.
+
+    Raises:
+        FileNotFoundError: If the specified BMP file does not exist.
     """
-    
-    # TODO: Open the input file in binary read mode
-    #       Read the file and return the header and pixel data
+    # TODO-1: Implement try/except block
+    # TODO-2: try block
+    #            - use context manager to open the binary input file for reading 
+    #            - read(54) the first 54 bytes as the header
+    #            - read() the rest of the data as pixel_data
+    #            - return header, pixel_data
+    # TODO-3: handle "FileNotFoundError" execption
     pass
 
 
@@ -28,7 +35,7 @@ def calculate_grayscale_value(red: int, green: int, blue: int) -> int:
     Returns:
         The grayscale value as an integer.
     """
-    # TODO: Calculate the grayscale value from RGB components
+    # TODO: return the grayscale value from RGB components
     #       Grayscale value = (R + G + B) / 3
     pass
 
@@ -43,11 +50,17 @@ def convert_to_grayscale(pixel_data: bytearray) -> bytearray:
         The modified bytearray where each pixel is converted to grayscale.
     """
 
-    # TODO: Iterate over the pixel data in steps of 3 bytes
-    #       Call calculate_grayscale_value with the BGR values
-    #       Set the BGR values to the grayscale value
+    # Note: BMP pixel data is in BGR format, so the order is blue, green, red
+    # TODO: Iterate over the pixel_data in steps of 3 bytes
+    #           - get the blue value at index i
+    #           - get the green value at index i+1
+    #           - get the red value at index i+2
+    #           - call calculate_grayscale_value with the BGR values
+    #           - set pixel_data at i index to the grayscale value
+    #           - set pixel_data at i+1 index to the grayscale value
+    #           - set pixel_data at i+2 index to the grayscale value
     #       Return the modified pixel data
-    #       Note: BMP pixel data is in BGR format, so the order is blue, green, red
+    
     pass
     
 
@@ -59,9 +72,20 @@ def write_bmp(output_file: str, header: bytes, pixel_data: bytearray) -> None:
         output_file: Path to the output BMP file.
         header: The BMP file header.
         pixel_data: The modified pixel data to be written.
+
+    Raises:
+        FileExistsError: If the output file already exists.
+        IOError: If an I/O error occurs while writing the file.
     """
-    # TODO: Open output file in binary write mode 
-    #       Write header and pixel data to file
+    # TODO-1: Using pathlib check if the output file exists() and raise a FileExistsError
+
+    # TODO-2: Implement try/except block
+    # TODO-3: try block
+    #            - use context manager to open the binary output file for writing 
+    #            - write() the header data
+    #            - write() the pixel_data
+    #            - return header, pixel_data
+    # TODO-4: handle "IOError" execption
     pass
 
 
@@ -72,8 +96,8 @@ def bmp_to_grayscale(input_file: str, output_file: str) -> None:
         input_file: Path to the input BMP file.
         output_file: Path to the output BMP file.
     """
-    # TODO-1: Call read_bmp to get the header and pixel data
-    # TODO-2: Call convert_to_grayscale to modify the pixel data
+    # TODO-1: Call read_bmp to get the header and pixel_data, e.g., header, pixel_data = ...
+    # TODO-2: Call convert_to_grayscale to modify the pixel data, e.g., grayscale_pixel_data = ...
     # TODO-3: Call write_bmp to write the modified data to the output file
      
     pass

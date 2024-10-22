@@ -1,5 +1,13 @@
-# Thursday, October 17, 2024
+# Tuesday, October 22, 2024
+
+## Agenda
+
+- File and File Paths using Pathlib
+- Reading and Writing Files, with hands-on exercies.
+- A Brief Introduction to NumPy
 
 {{< include ../topics/input-output/file-and-file-paths.qmd >}}
 
 {{< include ../topics/input-output/reading-and-writing-files.qmd >}}
+
+{{< include ../topics/arrays_matrices/numpy-brief-introduction.qmd >}}

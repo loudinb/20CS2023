@@ -1,6 +1,7 @@
 import argparse
-from typing import Dict
+from typing import Dict, List
 import re
+from collections import Counter
 
 def read_text_file(input_file: str) -> str:
     """Reads the content of a text file.
@@ -10,13 +11,20 @@ def read_text_file(input_file: str) -> str:
 
     Returns:
         The content of the file as a string.
+
+    Raises:
+        FileNotFoundError: If the specified file does not exist.
     """
-    with open(input_file, "r") as file:
-        content = file.read()
-    return content
+    try:
+        with open(input_file, "r") as file:
+            content = file.read()
+        return content
+    except FileNotFoundError:
+        print(f"Error: The file '{input_file}' was not found.")
+        raise
 
 
-def clean_and_split_text(text: str) -> list:
+def clean_and_split_text(text: str) -> List[str]:
     """Cleans and splits the text into words.
 
     Args:
@@ -25,18 +33,14 @@ def clean_and_split_text(text: str) -> list:
     Returns:
         A list of words after converting to lowercase and removing punctuation.
     """
-    # Convert text to lowercase
-    text = text.lower()
-
-    # Remove punctuation
-    text = re.sub(r'[^\w\s]', '', text)
-
+    # Convert text to lowercase and remove punctuation
+    text = re.sub(r'[^\w\s]', '', text.lower())
+    
     # Split the text into words
-    words = text.split()
-    return words
+    return text.split()
 
 
-def count_word_occurrences(words: list) -> Dict[str, int]:
+def count_words(words: List[str]) -> Dict[str, int]:
     """Counts the occurrences of each word in a list.
 
     Args:
@@ -45,13 +49,7 @@ def count_word_occurrences(words: list) -> Dict[str, int]:
     Returns:
         A dictionary where keys are words and values are their counts.
     """
-    word_counts = {}
-    for word in words:
-        if word in word_counts:
-            word_counts[word] += 1
-        else:
-            word_counts[word] = 1
-    return word_counts
+    return dict(Counter(words))
 
 
 def display_word_counts(word_counts: Dict[str, int]) -> None:
@@ -60,7 +58,7 @@ def display_word_counts(word_counts: Dict[str, int]) -> None:
     Args:
         word_counts: A dictionary of word counts.
     """
-    # Sort the words alphabetically
+    # Sort the words alphabetically and display counts
     for word in sorted(word_counts):
         print(f"{word}: {word_counts[word]}")
 
@@ -71,17 +69,16 @@ def process_text_file(input_file: str) -> None:
     Args:
         input_file: Path to the input text file.
     """
-    # Step 1: Read the file content
-    content = read_text_file(input_file)
-
-    # Step 2: Clean and split the text into words
-    words = clean_and_split_text(content)
-
-    # Step 3: Count the word occurrences
-    word_counts = count_word_occurrences(words)
-
-    # Step 4: Display the word counts
-    display_word_counts(word_counts)
+    try:
+        content = read_text_file(input_file)
+        if not content.strip():
+            print("Warning: The file is empty.")
+            return
+        words = clean_and_split_text(content)
+        word_counts = count_words(words)
+        display_word_counts(word_counts)
+    except Exception as e:
+        print(f"An error occurred during processing: {e}")
 
 
 if __name__ == '__main__':
@@ -94,5 +91,5 @@ if __name__ == '__main__':
     # Parse the arguments
     args = parser.parse_args()
 
-    # Call process_text_file with the input file path
+    # Process the text file
     process_text_file(args.input_file)

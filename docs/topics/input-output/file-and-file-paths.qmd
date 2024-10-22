@@ -1,11 +1,40 @@
 # Files and File Paths
 
+::: {.notes}
+Welcome to our session on files and file paths in Python. This fundamental topic forms the basis of how Python interacts with the file system. Today's learning objectives:
+1. Understanding file system concepts
+2. Learning about absolute and relative paths
+3. Mastering Python's pathlib module
+4. Practicing file system operations
+:::
+
+
 ## Files and File Paths {.smaller-85}
 
 - **Files**: Containers to store data, text, or binary information.
 - **File Paths**: The address of a file in the file system.  It can be either an absolute or relative path.
   - **Absolute Paths**: Start from the root directory (e.g., `/home/user/file.txt`).
   - **Relative Paths**: Start from the current directory (e.g., `./file.txt`).
+
+::: {.notes}
+Let's break down these concepts:
+
+Files:
+- Text files (.txt, .py, .csv) contain human-readable characters
+- Binary files (.jpg, .pdf, .exe) contain machine-readable data
+- Each file has metadata (size, creation date, permissions)
+
+Paths:
+- Absolute paths: Like a complete postal address
+- Relative paths: Like giving directions from current location
+- ./ means "current directory"
+- ../ means "parent directory"
+
+Common student questions:
+1. "When should I use absolute vs relative paths?" → Absolute for scripts that run from anywhere, relative for project-specific files
+2. "Why do some paths start with ./ ?" → It explicitly indicates current directory
+3. "What about Windows backslashes?" → Python handles this automatically
+:::
 
 
 ## Legacy vs. Modern Python Path Handling {.hide}
@@ -27,6 +56,37 @@
 - Better error handling and type safety
 :::
 
+::: {.notes}
+Historical context is important here:
+
+Legacy os.path:
+- Still found in older code and tutorials
+- String-based operations can be error-prone
+- Platform-specific code needed for Windows vs Unix
+
+Modern pathlib advantages:
+- Consistent behavior across operating systems
+- Method chaining for complex operations
+- Better type checking and error messages
+- More intuitive syntax
+
+Teaching tips:
+1. Show both approaches side by side
+2. Demonstrate platform differences
+3. Explain why pathlib is preferred
+4. Help students recognize and update legacy code
+
+Example comparison:
+```python
+# Legacy way
+os.path.join('folder', 'subfolder', 'file.txt')
+
+# Modern way
+Path('folder') / 'subfolder' / 'file.txt'
+```
+:::
+
+
 ## Using the `pathlib` Module {.hide}
 
 The `pathlib` module is Python's modern way of handling file system paths.
@@ -39,9 +99,32 @@ path = Path("example_directory/file.txt")
 ```
 
 :::{.notes}
-- Provides an easy-to-use, object-oriented interface for working with paths.
-- Supports methods for path manipulation, file handling, and more.
+Key teaching points for this slide:
+
+1. Path object creation:
+   - Can use forward slashes on any platform
+   - Accepts strings or other Path objects
+   - Doesn't check if path exists when created
+
+2. Common patterns:
+   ```python
+   # Different ways to create paths
+   path1 = Path.cwd() / 'file.txt'  # From current directory
+   path2 = Path.home() / 'Documents' / 'file.txt'  # From home directory
+   path3 = Path('./data/file.txt')  # Relative path
+   ```
+
+3. Common mistakes to watch for:
+   - Forgetting to import Path
+   - Using backslashes on Windows
+   - Mixing string concatenation with paths
+
+4. Live demo suggestions:
+   - Show path creation on different operating systems
+   - Demonstrate error handling
+   - Show how Path objects print nicely
 :::
+
 
 ## Common `Path` object attributes and methods {.hide}
 
@@ -115,7 +198,6 @@ path.absolute()
 ```
 :::
 
-
 ::: {.fragment .fade-in-then-out .absolute top=100}
 Create a new path object with a different extension.
 <br/>
@@ -150,6 +232,40 @@ Path.home()
 
 :::
 
+::: {.notes}
+This is a crucial slide for hands-on learning. Here's how to present it effectively:
+
+1. Method Categories:
+   - Path information (name, stem, suffix, parent)
+   - Path checking (exists, is_file, is_dir)
+   - Path modification (with_suffix, with_name)
+   - Special paths (cwd, home)
+
+2. Practical Examples:
+   ```python
+   # Working with file extensions
+   py_file = Path('script.py')
+   print(py_file.suffix)  # '.py'
+   txt_file = py_file.with_suffix('.txt')  # Convert to .txt
+
+   # Working with directories
+   data_dir = Path('data')
+   if not data_dir.exists():
+       data_dir.mkdir()
+   ```
+
+3. Common Use Cases:
+   - Checking if files exist before opening
+   - Getting file extensions for filtering
+   - Creating new paths based on existing ones
+   - Finding parent directories
+
+4. Exercise Ideas:
+   - Have students write code to batch rename files
+   - Create a function to organize files by extension
+   - Write a script to find duplicate files
+:::
+
 
 ## Current Working Directory {.hide .smaller-85}
 
@@ -163,8 +279,31 @@ print(cwd)
 ```
 
 ::: {.notes}
-When you run a Python script, the current working directory is the directory where the script is located.
+Understanding the current working directory is crucial for Python file operations:
+
+Key Concepts:
+1. CWD is where Python looks for files by default
+2. CWD might not be where your script is located
+3. CWD can change during script execution
+
+Common Issues:
+- FileNotFoundError when using relative paths
+- Scripts behaving differently when run from different locations
+- IDEs vs command line behavior differences
+
+Best Practices:
+1. Use absolute paths for critical files
+2. Print cwd when debugging path issues
+3. Document any assumptions about working directory
+
+Demo:
+```python
+# Show how CWD can differ
+print("Script location:", Path(__file__).parent)
+print("Current working directory:", Path.cwd())
+```
 :::
+
 
 ## Changing the Current Working Directory {.hide}
 
@@ -181,6 +320,41 @@ except FileNotFoundError:
 print(Path.cwd())
 ```
 
+::: {.notes}
+Changing directories requires careful handling:
+
+Safety Tips:
+1. Always save the original directory if you need to return
+2. Use try/except blocks for error handling
+3. Verify the change was successful
+
+Example with context manager:
+```python
+import os
+from contextlib import contextmanager
+
+@contextmanager
+def change_dir(path):
+    original_dir = os.getcwd()
+    try:
+        os.chdir(path)
+        yield
+    finally:
+        os.chdir(original_dir)
+
+# Usage
+with change_dir("data_directory"):
+    # Work in data_directory
+    pass
+# Automatically returns to original directory
+```
+
+Common Pitfalls:
+1. Not handling non-existent directories
+2. Forgetting to return to original directory
+3. Race conditions in multi-threaded code
+:::
+
 
 ## Creating a Directory {.hide}
 
@@ -194,6 +368,34 @@ new_dir.mkdir(exist_ok=True)
 
 ::: {.callout-note}
 A `FileExistsError` will be raised if the directory already exists and `exist_ok=False`.
+:::
+
+::: {.notes}
+Directory creation best practices:
+
+1. Error Handling:
+   ```python
+   def create_directory(path):
+       path = Path(path)
+       try:
+           path.mkdir(parents=True, exist_ok=True)
+       except PermissionError:
+           print(f"No permission to create {path}")
+       return path.exists()
+   ```
+
+2. Common Options:
+   - parents=True: Create parent directories
+   - exist_ok=True: Don't error if exists
+   - mode=0o777: Set permissions (Unix)
+
+3. Security Considerations:
+   - Check permissions before creating
+   - Use appropriate file modes
+   - Handle race conditions
+
+4. Practice Exercise:
+   "Write a function that creates a dated backup directory"
 :::
 
 
@@ -211,6 +413,45 @@ dir = Path("example_directory")
 dir.rmdir()
 ```
 
+::: {.notes}
+File deletion requires careful handling:
+
+Safety Practices:
+1. Always verify before deletion
+2. Use appropriate error handling
+3. Consider using safer alternatives
+
+Example with safety checks:
+```python
+def safe_delete(path):
+    path = Path(path)
+    if not path.exists():
+        return False
+    
+    if path.is_file():
+        try:
+            path.unlink()
+            return True
+        except PermissionError:
+            return False
+    
+    if path.is_dir():
+        if not any(path.iterdir()):  # Check if empty
+            try:
+                path.rmdir()
+                return True
+            except PermissionError:
+                return False
+    return False
+```
+
+Warning Points:
+1. unlink() and rmdir() are permanent
+2. rmdir() only works on empty directories
+3. No built-in recycling bin feature
+:::
+
+
 ## Listing Files and Directories
 
 List all files and sub-directories in a given path.
@@ -220,5 +461,43 @@ for item in Path(".").iterdir():
     print(item)
 ```
 
+::: {.notes}
+Directory listing techniques and patterns:
 
+1. Basic Patterns:
+   ```python
+   # List only files
+   files = [f for f in Path(".").iterdir() if f.is_file()]
+   
+   # List only directories
+   dirs = [d for d in Path(".").iterdir() if d.is_dir()]
+   
+   # Filter by extension
+   python_files = list(Path(".").glob("*.py"))
+   ```
 
+2. Recursive Listing:
+   ```python
+   # Walk through subdirectories
+   for path in Path(".").rglob("*"):
+       print(path)
+   ```
+
+3. Filtering Examples:
+   ```python
+   # Find large files
+   large_files = [
+       f for f in Path(".").iterdir()
+       if f.is_file() and f.stat().st_size > 1_000_000
+   ]
+   
+   # Find recent files
+   from datetime import datetime, timedelta
+   recent = [
+       f for f in Path(".").iterdir()
+       if f.is_file() and 
+       datetime.fromtimestamp(f.stat().st_mtime) > 
+       datetime.now() - timedelta(days=7)
+   ]
+   ```
+:::

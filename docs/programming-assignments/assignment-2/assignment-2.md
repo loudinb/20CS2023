@@ -43,6 +43,15 @@ quizme/
 │       ├── question.py
 │       ├── truefalse.py
 │       └── shortanswer.py
+├── tests/                          
+│   ├── tests_arcontroller.py
+│   ├── tests_box.py
+│   ├── tests_boxmanager.py
+│   ├── tests_truefalse.py
+│   ├── tests_shortanswer.py
+│   ├── tests_box.py
+│   └── tests_quizme.py
+├── run_tests.py                  # Script to run all tests
 └── quizme.py                     # Main CLI application
 ```
 
@@ -57,3 +66,21 @@ Your task is to implement the following components in the specified order. Since
 5. Implement the [`BoxManager` class](boxmanager-class.md) in `boxmanager.py`:
 6. Implement the [`ARController` class](arcontroller-class.md) in `arcontroller.py`:
 7. Implement the QuizMe CLI in `quizme.py`:
+
+## Running the Tests
+
+You must use the provided test files to verify the correctness of your implementation. Becuase we are using an internal library, we need to make sure it can be found by the test files. To do this, we created a special `run_tests.py` script that will add the ars directory to the Python path before running the tests.
+
+You can run the tests for each component individually by executing the corresponding component name as an argument to the `run_tests.py` script. For example, to run the tests for the `TrueFalse` class, you would execute the following command:
+
+```bash
+python run_tests.py truefalse
+```
+
+Valid component names are `truefalse`, `shortanswer`, `box`, `boxmanager`, `arcontroller`, and `quizme`.
+
+To run all tests, execute the `run_tests.py` script without any arguments:
+
+```bash
+python run_tests.py
+```

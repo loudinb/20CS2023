@@ -10,6 +10,10 @@ def read_json_file(input_file: str) -> Dict:
 
     Returns:
         A dictionary representation of the JSON data.
+
+    Raises:
+        FileNotFoundError: If the specified file does not exist.
+        json.JSONDDecodeError: If the file is not valid JSON
     """
     try:
         with open(input_file, 'r') as file:
@@ -20,9 +24,6 @@ def read_json_file(input_file: str) -> Dict:
         return {}
     except json.JSONDecodeError:
         print(f"Error: The file '{input_file}' is not a valid JSON file.")
-        return {}
-    except Exception as e:
-        print(f"An unexpected error occurred: {e}")
         return {}
 
 
