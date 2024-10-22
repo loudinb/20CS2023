@@ -66,7 +66,7 @@ parts:
         - file: lectures/lecture-12-03OCT2024
         - file: lectures/lecture-13-08OCT2024
         - file: lectures/lecture-14-15OCT2024
-        - file: lectures/lecture-15-17OCT2024
+        - file: lectures/lecture-15-22OCT2024
     - file: exercises
       sections:
         - glob: exercises/*

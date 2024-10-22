@@ -1,181 +1,247 @@
-# Reading and Writing to Files in Python
+# File Handling
 
-## Opening a File
+::: {.notes}
+In this lecture, we will introduce file handling in Python, a crucial skill for storing and retrieving data within programs. By the end of this session, you will be able to:
+1. Understand basic file operations
+2. Implement best practices for file handling
+3. Use error handling effectively in file operations
+:::
 
-- The `open()` function is used to open files in Python.
-- Syntax: `open(file, mode)`, where `file` is the name of the file, and `mode` specifies how to open the file.
+
+
+## Opening Files in Python
+
+To interact with files, you first need to open them. Python provides the `open()` function, which allows you to open a file in different modes (e.g., read, write). Here's how you can open a file for reading:
 
 ```python
-file = open("example.txt", "r")  # Open for reading
-```
-
-## Closing a File
-
-- Always close a file after you are done.
-- Use `file.close()` to free up system resources.
-
-```python
+# Basic file opening
 file = open("example.txt", "r")
-# Do some operations
-file.close()
-```
-
-## Problems Without Closing
-
-- Not closing a file can lead to:
-  - Resource leaks.
-  - Issues with data not being written correctly.
-  
-## Using `with` for Safer File Handling
-
-- **Best Practice**: Use `with` to open files.
-- **Why?** The `with` statement handles closing the file automatically, even if an error occurs.
-
-```python
-with open("example.txt", "r") as file:
-    data = file.read()  # File automatically closed after this block
 ```
 
 ::: {.notes}
-- Automatic cleanup of resources.
-- Cleaner, more readable code.
+The `open()` function initiates file operations in Python. It accepts two main arguments:
+1. **Filename/Path** - The name or path of the file you want to work with.
+2. **Mode** - Specifies the purpose (e.g., reading, writing) for accessing the file.
+
+**Important**: This approach requires manually closing the file using `file.close()`, which can lead to issues if forgotten. We will introduce a safer method using the `with` statement later.
 :::
 
-## File Modes
 
-- Modes define the purpose for which a file is opened.
-- **Common Modes**:
-  - `'r'` : Read (default).
-  - `'w'` : Write (overwrites the file).
-  - `'a'` : Append (adds to the file).
-  - `'r+'`: Read and write.
+
+## File Modes Explained
+
+When opening files, you can specify the mode, which tells Python how to handle the file. Here are the most common modes:
 
 ```python
-# Read mode (default)
+# Common file modes
+read_file = open("data.txt", "r")    # Read mode
+write_file = open("new.txt", "w")    # Write mode
+append_file = open("log.txt", "a")   # Append mode
+```
+
+::: {.notes}
+File modes define how Python interacts with a file:
+- **"r" (read)**: Opens a file for reading; fails if the file does not exist.
+- **"w" (write)**: Creates a new file for writing; overwrites existing content.
+- **"a" (append)**: Opens a file for appending new content; preserves existing data.
+
+Students often confuse write and append modes. Emphasize that "write" clears the file before adding new content, whereas "append" keeps the current content intact.
+:::
+
+
+
+## Using `with` for Safe File Operations
+
+A safer way to handle files in Python is by using the `with` statement. It automatically takes care of closing the file, even if an error occurs during processing:
+
+```python
+# Safe file handling
 with open("example.txt", "r") as file:
     content = file.read()
 ```
 
-## Reading from Files
+::: {.notes}
+The `with` statement offers two key advantages:
+1. **Automatic file closure**: Ensures that the file is properly closed after the block, even if an error occurs.
+2. **Improved error handling**: Reduces the risk of unhandled exceptions leading to resource leaks.
 
-- **`read()`**: Reads the entire file.
-- **`readline()`**: Reads one line at a time.
-- **`readlines()`**: Reads all lines into a list.
+Demonstrate why the `with` statement is preferred over manual file handling, highlighting that it simplifies code and improves reliability.
+:::
 
-## Examples
+
+
+## Reading Entire Files
+
+To read the contents of a file, you can use the `read()` method. This will load the entire file into a single string:
 
 ```python
-# Read the entire file
 with open("example.txt", "r") as file:
-    data = file.read()
-    print(data)
+    # Read all content at once
+    content = file.read()
+    print(content)
+```
 
-# Read file line by line
+::: {.notes}
+The `read()` method loads the entire content of a file into memory. While this approach is simple, it can lead to memory issues with large files. Discuss when this method is appropriate and consider alternatives for processing large datasets.
+:::
+
+
+
+## Reading Files Line by Line
+
+For larger files, reading them line by line is more efficient. This approach conserves memory and makes it easier to process the file content:
+
+```python
 with open("example.txt", "r") as file:
-    line = file.readline()
-    while line:
+    for line in file:
         print(line.strip())
-        line = file.readline()
-
-# Read all lines into a list
-with open("example.txt", "r") as file:
-    lines = file.readlines()
-    for line in lines:
-        print(line.strip())
 ```
 
-## Writing to Files
+::: {.notes}
+Reading files line by line is more memory-efficient, especially when handling large files. The `strip()` method removes any newline characters, making the output cleaner. This method is preferred for processing text files that cannot fit entirely into memory.
+:::
 
-- **`write()`**: Writes a string to a file. Note that it **overwrites** by default if the file already exists.
 
-```python
-# Write to a file (overwriting it)
-with open("example.txt", "w") as file:
-    file.write("This is a new line of text.")
-```
+## Try-Except Pattern for Error Handling
 
-## Appending Data to Files
-
-- Use `'a'` mode to append instead of overwriting.
-
-```python
-# Append to the existing file
-with open("example.txt", "a") as file:
-    file.write("\nThis text is appended.")
-```
-
-# Handling File Exceptions
-
-## Handling Errors Gracefully
-
-- File operations may fail due to reasons like:
-  - The file doesn't exist.
-  - Insufficient permissions.
-
-## Example: Handling File Not Found
+Errors can occur during file operations, such as trying to read a file that doesn't exist. Using `try-except` allows you to handle these issues gracefully:
 
 ```python
 try:
     with open("nonexistent.txt", "r") as file:
-        data = file.read()
+        content = file.read()
 except FileNotFoundError:
-    print("Error: The file was not found.")
+    print("The file does not exist")
+except PermissionError:
+    print("Permission denied")
 ```
 
-## Using `try...except` for Robust Code
 
-- **Best Practice**: Use exception handling to manage potential errors.
-- Helps provide meaningful error messages to users.
+::: {.notes}
+Common file-related exceptions:
+1. **FileNotFoundError**: Raised when the specified file does not exist.
+2. **PermissionError**: Raised when access to the file is restricted.
+3. **IOError**: A more general error for input/output operations.
+
+Explain why error handling is crucial in real-world applications, providing examples of how programs can fail without proper error management. Highlight that handling these exceptions improves robustness.
+:::
+
+
+## Hands-On Exercise: Word Counter {.exercise}
+
+Using the attached [starter code](hands_on_word_counter.py), write a Python program that reads a text file, counts the number of each word, and prints the results.
+
+**Text file**: [atotc.txt](atotc.txt)
+
+
+## Basic File Writing
+
+You can use the `write()` method to write content to a file. In the following example, we open a file in write mode, which creates a new file or overwrites an existing one:
 
 ```python
-try:
-    with open("example.txt", "r") as file:
-        data = file.read()
-except FileNotFoundError:
-    print("File does not exist.")
-except IOError:
-    print("An error occurred while accessing the file.")
+with open("output.txt", "w") as file:
+    file.write("Hello, Python!")
+    file.write("\nThis is a new line")
 ```
 
-## Best Practices for File Handling
+::: {.notes}
+Key points about writing files:
+1. **"w" mode**: Creates a new file or overwrites existing content.
+2. The `write()` method does not add newlines automatically, so remember to use `\n` for line breaks.
+3. Use the `with` statement to ensure the file is closed correctly after writing.
+:::
 
-1. **Use `with` Statement**:
-   - Always use `with` to open files, ensuring proper cleanup.
 
-2. **Use Appropriate File Modes**:
-   - Choose `'r'`, `'w'`, `'a'` based on your intention—avoid unintended overwrites.
 
-3. **Handle Exceptions Gracefully**:
-   - Use `try...except` to handle common errors, such as missing files.
+## Appending to Files
 
-## Avoid Hardcoding File Paths
-
-- Hardcoding paths may cause compatibility issues across different systems.
-- Instead, use environment variables or configuration files to determine file locations.
-
-## Flushing the Write Buffer
-
-- **`flush()` Method**: Forces the buffer to write data to disk.
-  - Typically used when dealing with critical data that should be written immediately.
+If you want to add new content to a file without deleting its existing content, use the append mode ("a"):
 
 ```python
-with open("important_log.txt", "w") as file:
-    file.write("Critical log entry")
-    file.flush()  # Force data to be written immediately
+with open("log.txt", "a") as file:
+    file.write("\nNew log entry")
 ```
 
-## File Pointer Operations
+::: {.notes}
+Appending mode ("a") is useful when you want to:
+- Maintain logs
+- Continuously add data to a file without overwriting it
+- Preserve existing content while adding new entries
 
-```python
-with open('example.txt', 'r') as file:
-    # Get current position
-    position = file.tell()
-    print(f"Current position: {position}")
+Show examples that demonstrate the practical differences between "write" and "append" modes.
+:::
 
-    # Move to specific position
-    file.seek(10)
-    
-    # Read from new position
-    content = file.read(20)
-    print(f"Content: {content}")
-```
+
+## Hands-on: BMP Image Conversion {.exercise}
+
+Using the attached [starter code](hands_on_bmp_image_conversion.py), write a Python program that reads a BMP image file and converts it to greyscale, saving the result as a new image file.
+
+**BMP image**: [rainier.bmp](rainier.bmp)
+
+
+
+## Commonly Used File Formats {.hide .smaller-50}
+
+| Format | Description                    | Module / Library       |
+|-------------|-------------------------------|-------------------------------|
+| **CSV**     | Comma-Separated Values, used for tabular data | `csv`, `pandas`              |
+| **JSON**    | JavaScript Object Notation, for structured data | `json`                       |
+| **XML**     | Extensible Markup Language, used for structured data | `xml.etree.ElementTree`, `lxml` |
+| **SQLite**  | Lightweight SQL database     | `sqlite3`                     |
+| **Matlab**  | MATLAB data files (.mat)      | `scipy.io`, `h5py`            |
+| **Excel**   | Microsoft Excel spreadsheets   | `pandas`, `openpyxl`, `xlrd`  |
+| **HDF5**    | Hierarchical Data Format, for storing large datasets | `h5py`, `pandas`              |
+| **Parquet** | Columnar storage format, optimized for analytics | `pyarrow`, `pandas`           |
+| **YAML**    | Human-readable data serialization format | `pyyaml`, `ruamel.yaml`       |
+| **ZIP**     | Compressed archive files      | `zipfile`, `shutil`           |
+| **Pickle**  | Python-specific serialization format | `pickle`                      |
+| **Feather** | Fast binary format for DataFrames | `pyarrow.feather`, `pandas`   |
+| **Audio (WAV, MP3)** | Audio files used for sound processing | `wave`, `pydub`, `librosa`   |
+| **Image (JPEG, PNG, etc.)** | Common image formats | `PIL` (Pillow), `opencv`, `imageio` |
+
+: {tbl-colwidths="[15,65,20]"}
+
+::: {.notes}
+1. **CSV** is a foundational format for tabular data, and it's widely used for data exchange between systems. It is essential to include this in any lecture about file handling because it forms the basis of many data science workflows.
+
+1. **XML**: 
+   - Useful for structured data often found in configuration files or data interchange formats. 
+   - `xml.etree.ElementTree` is built into Python, while `lxml` is more powerful and faster for XML parsing and creating.
+
+2. **HDF5**:
+   - Ideal for storing and organizing large amounts of scientific data.
+   - `h5py` is often used for direct interaction, while `pandas` can read HDF5 files with structured data.
+
+3. **Parquet**:
+   - Efficient columnar storage format designed for big data processing.
+   - Widely used in data science and analytics due to its performance benefits over traditional CSVs.
+
+4. **YAML**:
+   - A more human-readable alternative to JSON, often used for configuration files.
+   - `pyyaml` and `ruamel.yaml` can read/write YAML files easily.
+
+5. **ZIP**:
+   - `zipfile` can handle creating and extracting ZIP archives, while `shutil` provides simple functions for working with compressed files.
+
+6. **Pickle**:
+   - Useful for serializing and saving Python objects (e.g., lists, dictionaries, class instances) for later use.
+   - Remember that `pickle` files are Python-specific and not secure for untrusted sources.
+
+7. **Feather**:
+   - Optimized for fast read/write of `pandas` DataFrames.
+   - Supported by `pyarrow` and integrated into `pandas`, offering quicker data loading compared to CSV.
+
+8. **Audio Files**:
+   - `wave` for basic audio handling, `pydub` for more general audio processing, and `librosa` for advanced audio analysis.
+
+9. **Image Files**:
+   - `PIL` (from the Pillow library) handles common image processing tasks like resizing, converting, and filtering.
+   - `opencv` and `imageio` are useful for more advanced image and video processing.
+:::
+
+
+## Hands-On: JSON File Processing {.exercise}
+
+Using the attached [starter code](hands_on_json.py), write a Python program that reads a JSON file and stores the content as a dictionary. Then, iterate over the dictionary and print the key-value pairs. 
+
+**JSON file**: [people.json](people.json)

@@ -1,16 +1,35 @@
 # Files and File Paths
 
-## Files and File Paths
+## Files and File Paths {.smaller-85}
 
 - **Files**: Containers to store data, text, or binary information.
-- **File Paths**: The address of a file in the file system.
+- **File Paths**: The address of a file in the file system.  It can be either an absolute or relative path.
   - **Absolute Paths**: Start from the root directory (e.g., `/home/user/file.txt`).
   - **Relative Paths**: Start from the current directory (e.g., `./file.txt`).
 
-## Using the `pathlib` Module
 
-- The `pathlib` module is Python's modern way of handling file system paths.
-- Provides an easy-to-use, object-oriented interface for working with paths.
+## Legacy vs. Modern Python Path Handling {.hide}
+
+❌ Legacy Approach: `os.path`
+
+:::{.smaller-80}
+- Functions: `os.path.join()`, `os.path.exists()`, `os.path.dirname()`
+- Manipulates paths as plain strings
+- Platform-dependent separators (`\\` vs `/`)
+
+<br />
+
+✅ Modern Approach: `pathlib` (Python 3.4+)
+
+- Object-oriented: use `Path` objects instead of strings
+- Cross-platform compatibility built-in
+- Simplified syntax with `/` operator for joining paths
+- Better error handling and type safety
+:::
+
+## Using the `pathlib` Module {.hide}
+
+The `pathlib` module is Python's modern way of handling file system paths.
 
 ```python
 from pathlib import Path
@@ -19,73 +38,187 @@ from pathlib import Path
 path = Path("example_directory/file.txt")
 ```
 
-## Why `pathlib`?
-
-- More readable and powerful compared to older modules like `os`.
+:::{.notes}
+- Provides an easy-to-use, object-oriented interface for working with paths.
 - Supports methods for path manipulation, file handling, and more.
+:::
 
-# Directory Management
+## Common `Path` object attributes and methods {.hide}
 
-## Getting the Current Working Directory
+::: {r-stack}
 
-- The **current working directory** is where your Python script runs.
+::: {.fragment .fade-out}
+Common `Path` object attributes and methods
+:::
+
+::: {.fragment .fade-in-then-out .absolute top=100}
+Checks if a path exists:
+<br/>
+```python
+path.exists()
+```
+:::
+
+::: {.fragment .fade-in-then-out .absolute top=100}
+Checks if the path is a file.
+<br/>
+```python
+path.is_file()
+```
+:::
+
+::: {.fragment .fade-in-then-out .absolute top=100}
+Checks if the path is a directory.
+<br/>
+```python
+path.is_dir()
+```
+:::
+
+::: {.fragment .fade-in-then-out .absolute top=100}
+Get the file name with extension.
+<br/>
+```python
+path.name
+```
+:::
+
+::: {.fragment .fade-in-then-out .absolute top=100}
+Get the file name without extension.
+<br/>
+```python
+path.stem
+```
+:::
+
+::: {.fragment .fade-in-then-out .absolute top=100}
+Get the file extension.
+<br/>
+```python
+path.suffix
+```
+:::
+
+::: {.fragment .fade-in-then-out .absolute top=100}
+Get the parent directory of the path.
+<br/>
+```python
+path.parent
+```
+:::
+
+::: {.fragment .fade-in-then-out .absolute top=100}
+Returns the absolute path of the path object.
+<br/>
+```python
+path.absolute()
+```
+:::
+
+
+::: {.fragment .fade-in-then-out .absolute top=100}
+Create a new path object with a different extension.
+<br/>
+```python
+path.with_suffix('.md')
+```
+:::
+
+::: {.fragment .fade-in-then-out .absolute top=100}
+Create a new path object with a different name.
+<br/>
+```python
+path.with_name('other.txt')
+```
+:::
+
+::: {.fragment .fade-in-then-out .absolute top=100}
+Returns the current working directory.
+<br/>
+```python
+Path.cwd()
+```
+:::
+
+::: {.fragment .fade-in-then-out .absolute top=100}
+Returns the user's home directory.
+<br/>
+```python
+Path.home()
+```
+:::
+
+:::
+
+
+## Current Working Directory {.hide .smaller-85}
+
+The current working directory (cwd) is the directory where all the commands are being executed.
 
 ```python
 from pathlib import Path
 
-# Get current working directory
 cwd = Path.cwd()
 print(cwd)
 ```
 
-## Absolute vs Relative Paths
+::: {.notes}
+When you run a Python script, the current working directory is the directory where the script is located.
+:::
 
-- **Absolute Path**: `/home/user/project/file.txt`
-  - Use for a fixed reference in the filesystem.
-- **Relative Path**: `../file.txt`
-  - Use when referencing files relative to the current location.
+## Changing the Current Working Directory {.hide}
 
-## Creating a Directory
-
-- You can create new directories using `pathlib`.
-
-```python
-# Create a new directory
-new_dir = Path("new_directory")
-new_dir.mkdir(exist_ok=True)  # 'exist_ok=True' prevents errors if it already exists
-```
-
-## Changing the Current Working Directory
-
-- Changing the current working directory allows the script to work in a different location.
+Change the current working directory using the `os` module using the `os.chdir()` function. Use a `try` block to catch any errors that may occur.
 
 ```python
 import os
 
 # Change to a new directory
-os.chdir("new_directory")
+try:
+    os.chdir("new_directory")
+except FileNotFoundError:
+    print("Directory not found")
 print(Path.cwd())
 ```
 
+
+## Creating a Directory {.hide}
+
+You can create new directories using `pathlib`.
+
+```python
+# Create a new directory
+new_dir = Path("new_directory")
+new_dir.mkdir(exist_ok=True)
+```
+
+::: {.callout-note}
+A `FileExistsError` will be raised if the directory already exists and `exist_ok=False`.
+:::
+
+
 ## Deleting Files and Directories
 
-- Remove files or directories using `unlink()` or `rmdir()`.
+Remove files or directories using `unlink()` and `rmdir()`.
 
 ```python
 # Deleting a file
 file = Path("example.txt")
-file.unlink()  # Removes the file
+file.unlink()
 
 # Deleting a directory
 dir = Path("example_directory")
-dir.rmdir()  # Removes the directory (must be empty)
+dir.rmdir()
 ```
 
 ## Listing Files and Directories
 
-- List all files and sub-directories in a given path.
+List all files and sub-directories in a given path.
 
 ```python
 for item in Path(".").iterdir():
     print(item)
 ```
+
+
+

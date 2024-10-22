@@ -34,6 +34,14 @@
     font-size: .60em;
 }
 
+.smaller-55 {
+    font-size: .55em;
+}
+
+.smaller-50 {
+    font-size: .50em;
+}
+
 .hide h2 {
     display: none;
 }

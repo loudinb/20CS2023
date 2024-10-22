@@ -6,33 +6,99 @@ In this lecture, we will explore:
 
 - JSON: Handling lightweight data interchange
 - SQLite: A lightweight SQL database integrated with Python
-- shelve: Persistent storage for Python objects
+- Pickle and shelve: Python-specific ways to store complex data structures
 
 ## Why These Formats?
 
 - **JSON**: Widely used for web APIs and data interchange.
 - **SQLite**: Lightweight, serverless SQL database, ideal for small to mid-size projects.
-- **shelve**: Python-specific way to persistently store complex data structures.
+- **Pickle and shelve**: Python-specific ways to store complex data structures.
 
 # Comparing JSON, SQLite, and shelve
 
-## Comparison Table
+# Python Data Storage Options Comparison
 
-| Feature          | JSON                | SQLite               | shelve                    |
-|------------------|---------------------|----------------------|---------------------------|
-| **Format**       | Text-based, compact | SQL Database (file)  | Binary                    |
-| **Use Case**     | Data interchange    | Small-scale DB       | Persistent Python storage |
-| **Readability**  | High                | Medium               | Not directly human-readable|
-| **Python Support** | `json` module      | `sqlite3` module     | `shelve` module           |
-| **Compatibility**| Cross-language      | SQL-standard         | Python-only               |
+| Feature | JSON | SQLite | shelve | pickle |
+|---------|------|---------|---------|---------|
+| **Format** | Text-based JSON | Single-file SQL database | Key-value database using DBM | Binary serialization |
+| **Data Types** | Basic types: strings, numbers, arrays, objects, booleans, null | SQL types: TEXT, INTEGER, REAL, BLOB, NULL | Any picklable Python object as value, string keys only | Almost any Python object¹ |
+| **Use Case** | - Data exchange between systems<br>- Configuration files<br>- Web API responses<br>- Human-readable data storage | - Structured data with relationships<br>- Local applications needing SQL<br>- Concurrent access to data<br>- When data integrity is crucial | - Simple persistent dictionary storage<br>- When key-value access is sufficient<br>- Local data caching<br>- Session storage | - Deep object serialization<br>- Saving program state<br>- Caching complex objects<br>- Machine learning model storage |
+| **Readability** | High (plain text, formatted) | Medium (requires SQL knowledge) | None (binary format) | None (binary format) |
+| **Python Support** | Built-in `json` module | Built-in `sqlite3` module | Built-in `shelve` module | Built-in `pickle` module |
+| **Performance² | - Fast for small data<br>- Slower for large datasets<br>- Must parse entire file | - Indexed lookups<br>- Efficient for large datasets<br>- Transaction support | - Fast key-value lookups<br>- Slower for large values<br>- No indexing | - Fast serialization<br>- Memory-intensive<br>- Must load entire object |
+| **Compatibility** | - Cross-platform<br>- Cross-language<br>- Web-friendly | - Cross-platform<br>- SQL standard<br>- Many tools available | - Python-only<br>- Platform-dependent DBM³<br>- Version sensitive | - Python-only<br>- Version sensitive<br>- Security concerns⁴ |
+| **Best For** | ```python
+# Configuration files
+config = {
+    "api_key": "abc123",
+    "max_retries": 3
+}
+json.dump(config, file)
 
-## Choosing the Right Tool
+# API responses
+response = {
+    "status": "success",
+    "data": [1, 2, 3]
+}
+``` | ```python
+# User management
+cursor.execute("""
+    CREATE TABLE users (
+        id INTEGER PRIMARY KEY,
+        name TEXT,
+        email TEXT UNIQUE
+    )
+""")
 
-- **Use JSON** if you need lightweight data exchange across different platforms.
-- **Use SQLite** if you need structured, queryable data storage without setting up a full database server.
-- **Use shelve** if you need to store Python objects for later retrieval within Python scripts.
+# Relational data
+cursor.execute("""
+    SELECT orders.id, users.name 
+    FROM orders 
+    JOIN users ON orders.user_id = users.id
+""")
+``` | ```python
+# Session storage
+with shelve.open('session') as db:
+    db['user_id'] = 42
+    db['preferences'] = {
+        'theme': 'dark'
+    }
 
-# Best Practices
+# Simple caching
+with shelve.open('cache') as db:
+    db['expensive_result'] = calculate()
+``` | ```python
+# Custom objects
+class GameState:
+    def __init__(self):
+        self.score = 0
+        self.level = 1
+
+# Save complete state
+pickle.dump(
+    GameState(), 
+    file
+)
+
+# ML models
+pickle.dump(
+    trained_model,
+    file
+)
+``` |
+
+**Important Notes:**
+¹ Pickle cannot serialize some types like file handles, database connections, and certain system-specific objects.
+² Performance characteristics are general guidelines; actual performance depends on usage patterns and data size.
+³ shelve uses different DBM implementations depending on the platform (e.g., gdbm, dbm, ndbm).
+⁴ Unpickling malicious data can execute arbitrary code; never unpickle untrusted data.
+
+**Additional Considerations:**
+- JSON: Use when data needs to be human-readable or shared across different systems
+- SQLite: Use when data has relationships or requires concurrent access with ACID guarantees
+- shelve: Use for simple persistent storage in Python applications
+- pickle: Use for Python-specific serialization, but be aware of security implications
+
 
 ## JSON Best Practices
 
