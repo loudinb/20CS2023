@@ -4,7 +4,7 @@ project:
   render:
     - "*.qmd"
 resources:
-  - "docs/_static/*"
+  - "data/*"
 format: 
   revealjs:
     slide-level: 4

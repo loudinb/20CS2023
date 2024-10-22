@@ -129,9 +129,9 @@ Explain why error handling is crucial in real-world applications, providing exam
 
 ## Hands-On Exercise: Word Counter {.exercise}
 
-Using the attached [starter code](hands_on_word_counter.py), write a Python program that reads a text file, counts the number of each word, and prints the results.
+Using the attached [starter code](/data/hands_on_word_count.py), write a Python program that reads a text file, counts the number of each word, and prints the results.
 
-**Text file**: [atotc.txt](atotc.txt)
+**Text file**: [atotc.txt](/data/atotc.txt)
 
 
 ## Basic File Writing
@@ -174,9 +174,9 @@ Show examples that demonstrate the practical differences between "write" and "ap
 
 ## Hands-on: BMP Image Conversion {.exercise}
 
-Using the attached [starter code](hands_on_bmp_image_conversion.py), write a Python program that reads a BMP image file and converts it to greyscale, saving the result as a new image file.
+Using the attached [starter code](/data/hands_on_bmp_image_conversion.py), write a Python program that reads a BMP image file and converts it to greyscale, saving the result as a new image file.
 
-**BMP image**: [rainier.bmp](rainier.bmp)
+**BMP image**: [rainier.bmp](/data/rainier.bmp)
 
 
 
@@ -242,6 +242,6 @@ Using the attached [starter code](hands_on_bmp_image_conversion.py), write a Pyt
 
 ## Hands-On: JSON File Processing {.exercise}
 
-Using the attached [starter code](hands_on_json.py), write a Python program that reads a JSON file and stores the content as a dictionary. Then, iterate over the dictionary and print the key-value pairs. 
+Using the attached [starter code](/data/hands_on_json.py), write a Python program that reads a JSON file and stores the content as a dictionary. Then, iterate over the dictionary and print the key-value pairs. 
 
-**JSON file**: [people.json](people.json)
+**JSON file**: [people.json](/data/people.json)
