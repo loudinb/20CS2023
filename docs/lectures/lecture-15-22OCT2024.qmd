@@ -1,8 +1,5 @@
 # Thursday, October 17, 2024
 
-## Agenda
-
-
 {{< include ../topics/input-output/file-and-file-paths.qmd >}}
 
 {{< include ../topics/input-output/reading-and-writing-files.qmd >}}
