@@ -2,6 +2,4 @@
 
 ## Agenda
 
-{{< include ../topics/matplotlib/matplotlib.qmd >}}
-
-{{< include ../topics/matplotlib/matplotlib-quickstart.qmd >}}
+{{< include ../topics/scientific-computing/scientific_computing.ipynb >}}

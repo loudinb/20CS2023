@@ -3,6 +3,7 @@ project:
   output-dir: docs/_build/html/slides
   render:
     - "*.qmd"
+    - "*.ipynb"
 resources:
   - "data/*"
 format: 
@@ -13,3 +14,4 @@ format:
     preview-links: true
     css: "docs/_static/quarto-styles.css"
     controls: true
+    echo: true
