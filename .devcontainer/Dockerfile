@@ -10,6 +10,8 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get install -y graphviz \
     && apt-get install -y default-jre \
     && apt-get install -y plantuml \
+    && apt-get install -y texlive-base \
+    && apt-get install -y texlive-latex-extra \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Upgrade pip to the latest version
