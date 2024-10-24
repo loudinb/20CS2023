@@ -1,3 +1,12 @@
+p {
+    margin-bottom: 1.05em !important;
+}
+
+.cell {
+    margin-bottom: 1.5em;
+    margin-top: 1.0em;
+}
+
 .no-title-slide h2 {
     display: none;
 }
